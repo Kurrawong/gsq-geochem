@@ -4,7 +4,7 @@ This repository contains the content of the https://www.business.qld.gov.au/indu
 
 This specification is delivered online at:
 
-* _coming soon!_
+* https://nicholascar.com/gsq-geochem-spec/spec.html - temporary location
 
 To test data against this Specification, use the:
 
