@@ -1,0 +1,3 @@
+= GSQ Geochemistry Data Exchange Model Specification
+
+This is a stub page for the GSQ Geochemistry Data Exchange Model Specification.
