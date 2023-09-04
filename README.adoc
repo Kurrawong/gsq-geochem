@@ -1,0 +1,20 @@
+= GSQ Geochemistry Data Exchange Model Specification
+
+This repository contains the content of the https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq[Geological Survey of Queensland's] Geochemistry Data Exchange Model Specification.
+
+This specification is delivered online at:
+
+* _coming soon!_
+
+To test data against this Specification, use the:
+
+* https://kurrawong.github.io/gsq-geochem-portal/[Demo GSQ Geochemistry Data Portal]
+
+== Contacts
+
+*Geoscience Information Team* +
+_Geological Survey of Queensland_ +
+Department of Resources +
+Government of Queensland +
+Brisbane, QLD, Australia +
+geological_info@resources.qld.gov.au
