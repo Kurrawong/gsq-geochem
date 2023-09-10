@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.16">
-<title>GSQ Geochemistry Data Exchange Model Specification</title>
+<title>OGC GeoSPARQL - A Geographic Query Language for RDF Data</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -437,18 +437,236 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="book toc2 toc-left">
 <div id="header">
-<h1>GSQ Geochemistry Data Exchange Model Specification</h1>
+<h1>GSQ Geochemistry Data Exchange Model - Specification</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">1. Abstract</a></li>
+<li><a href="#_preamble">2. Preamble</a>
+<ul class="sectlevel2">
+<li><a href="#_conformance">2.1. Conformance</a></li>
+<li><a href="#_terms_definitions">2.2. Terms &amp; Definitions</a></li>
+<li><a href="#_namespaces">2.3. Namespaces</a></li>
+</ul>
+</li>
+<li><a href="#_introduction">3. Introduction</a></li>
+<li><a href="#_model">4. Model</a></li>
+<li><a href="#_vocabularies">5. Vocabularies</a></li>
+<li><a href="#_validators">6. Validators</a></li>
+<li><a href="#_templates">7. Templates</a></li>
+<li><a href="#_references">8. References</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div class="sect1">
+<h2 id="_abstract"><a class="anchor" href="#_abstract"></a>1. Abstract</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>This is a stub page for the GSQ Geochemistry Data Exchange Model Specification.</p>
+<p>This Specification is the formal expression of a data model for the exchange of geochemistry data. It is intended for use by organisations supplying geochemistry results to the Geological Survey of Queensland.</p>
+</div>
+<div class="paragraph">
+<p>This specification is made of several parts: a data model, a listing of support vocabularies, validators to check the conformance of data to the model and templates that can be used to record data according to the model.</p>
+</div>
+<div class="paragraph">
+<p>This Specification is issued alongside online testing facilities that allow geochemistry data supply organisations to see example data, validate their data and to read all supporting resources.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preamble"><a class="anchor" href="#_preamble"></a>2. Preamble</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_conformance"><a class="anchor" href="#_conformance"></a>2.1. Conformance</h3>
+<div class="paragraph">
+<p>The conformance imperatives of data to this Specification use terms from <em>RFC 2119: Key words for use in RFCs to Indicate Requirement Levels</em> <a href="#RFC2119">[RDF2119]</a> which defines terms such as <strong><em>MUST</em></strong>, <strong><em>SHALL</em></strong> and <strong><em>MAY</em></strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_terms_definitions"><a class="anchor" href="#_terms_definitions"></a>2.2. Terms &amp; Definitions</h3>
+<div class="sect3">
+<h4 id="_rdf"><a class="anchor" href="#_rdf"></a>2.2.1. RDF</h4>
+<div class="paragraph">
+<p>The Resource Description Framework (RDF) is a framework for representing information in the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, blank nodes, or datatyped literals. They are used to express descriptions of resources. <a href="#RDFSPEC">[RDFSPEC]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rdfs"><a class="anchor" href="#_rdfs"></a>2.2.2. RDFS</h4>
+<div class="paragraph">
+<p>RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary. <a href="#_rdfs">Section 2.2.2</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_owl"><a class="anchor" href="#_owl"></a>2.2.3. OWL</h4>
+<div class="paragraph">
+<p>The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as Semantic Web documents. OWL 2 ontologies can be used along with information written in RDF, and OWL 2 ontologies themselves are primarily exchanged as RDF documents. <a href="#OWL2">[OWL2]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sparql"><a class="anchor" href="#_sparql"></a>2.2.4. SPARQL</h4>
+<div class="paragraph">
+<p>SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <a href="#_sparql">Section 2.2.4</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_namespaces"><a class="anchor" href="#_namespaces"></a>2.3. Namespaces</h3>
+<div class="paragraph">
+<p>Namespaces for model, vocabulary and validator elements are assigned the following prefixes:</p>
+</div>
+<table class="tableblock frame-none grid-none stripes-odd stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 44.4444%;">
+<col style="width: 44.4445%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ex</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://example.com/" class="bare">http://example.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A non-resolving namespace for examples</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>geo</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.opengis.net/ont/geosparql#" class="bare">http://www.opengis.net/ont/geosparql#</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GeoSPARQL Ontology</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>owl</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/2002/07/owl#" class="bare">http://www.w3.org/2002/07/owl#</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#OWL2">[OWL2]</a> ontology</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rdfs</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/2000/01/rdf-schema#" class="bare">http://www.w3.org/2000/01/rdf-schema#</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_rdfs">Section 2.2.2</a> ontology</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdo</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://schema.org/" class="bare">https://schema.org/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SDO">[SDO]</a> vocabulary</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>skos</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/2004/02/skos/core#" class="bare">http://www.w3.org/2004/02/skos/core#</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SKOS">[SKOS]</a> ontology</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sosa</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/ns/sosa/" class="bare">http://www.w3.org/ns/sosa/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOSA ontology within <a href="#SSN">[SSN]</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xsd</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/2001/XMLSchema#" class="bare">http://www.w3.org/2001/XMLSchema#</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#XSD2">[XSD2]</a> datatypes vocabulary</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>3. Introduction</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_model"><a class="anchor" href="#_model"></a>4. Model</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vocabularies"><a class="anchor" href="#_vocabularies"></a>5. Vocabularies</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_validators"><a class="anchor" href="#_validators"></a>6. Validators</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_templates"><a class="anchor" href="#_templates"></a>7. Templates</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>8. References</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a id="ISO19105"></a> [ISO19105]</dt>
+<dd>
+<p>International Organization for Standardization, <em>ISO 19105: Geographic information — Conformance and testing</em> (2022). <a href="https://www.iso.org/standard/76457.html" class="bare">https://www.iso.org/standard/76457.html</a></p>
+</dd>
+<dt class="hdlist1"><a id="ISO19156"></a> [ISO19156]</dt>
+<dd>
+<p>International Organization for Standardization, <em>ISO 19156:2011 Geographic information – Observations and measurements</em> (2011). DOI: <a href="https://doi.org/https://doi.org/10.13140%2F2.1.1142.3042">https://doi.org/10.13140%2F2.1.1142.3042</a></p>
+</dd>
+<dt class="hdlist1"><a id="JSON-LD"></a> [JSON-LD]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>JSON-LD 1.1: A JSON-based Serialization for Linked Data</em>, W3C Recommendation (16 July 2020). <a href="https://www.w3.org/TR/json-ld11/" class="bare">https://www.w3.org/TR/json-ld11/</a></p>
+</dd>
+<dt class="hdlist1"><a id="OWL2"></a> [OWL2]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>OWL 2 Web Ontology Language Document Overview (Second Edition)</em>, W3C Recommendation (11 December 2012). <a href="https://www.w3.org/TR/owl2-overview/" class="bare">https://www.w3.org/TR/owl2-overview/</a></p>
+</dd>
+<dt class="hdlist1"><a id="RDFSPEC"></a> [RDFSPEC]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>RDF 1.1 Concepts and Abstract Syntax</em>, W3C Recommendation (25 February 2014). <a href="https://www.w3.org/TR/rdf11-concepts/" class="bare">https://www.w3.org/TR/rdf11-concepts/</a></p>
+</dd>
+<dt class="hdlist1"><a id="RFC2119"></a> [RDF2119]</dt>
+<dd>
+<p>RFC 2119: Key words for use in RFCs to Indicate Requirement Levels_, Internet Engineering Taskforce_ (March 1997). <a href="https://www.rfc-editor.org/info/rfc2119" class="bare">https://www.rfc-editor.org/info/rfc2119</a>, DOI: <a href="https://doi.org/10.17487/RFC2119">10.17487/RFC2119</a></p>
+</dd>
+<dt class="hdlist1"><a id="TIME"></a> [TIME]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>Time Ontology in OWL</em>, W3C Candidate Recommendation (26 March 2020). <a href="https://www.w3.org/TR/owl-time/" class="bare">https://www.w3.org/TR/owl-time/</a></p>
+</dd>
+<dt class="hdlist1"><a id="TURTLE"></a> [TURTLE]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>RDF 1.1 Turtle - Terse RDF Triple Language</em>, W3C Recommendation (25 February 2014). <a href="https://www.w3.org/TR/turtle/" class="bare">https://www.w3.org/TR/turtle/</a></p>
+</dd>
+<dt class="hdlist1"><a id="SDO"></a> [SDO]</dt>
+<dd>
+<p>schema.org Consortium, <em>schema.org</em>, OWL vocabulary (26 June 2023). <a href="https://schema.org/" class="bare">https://schema.org/</a></p>
+</dd>
+<dt class="hdlist1"><a id="SHACL"></a> [SHACL]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>Shapes Constraint Language (SHACL)</em>, W3C Recommendation (20 July 2017). <a href="https://www.w3.org/TR/shacl/" class="bare">https://www.w3.org/TR/shacl/</a></p>
+</dd>
+<dt class="hdlist1"><a id="SKOS"></a> [SKOS]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>SKOS Simple Knowledge Organization System Reference</em>, W3C Recommendation (18 August 2009). <a href="https://www.w3.org/TR/skos-reference/" class="bare">https://www.w3.org/TR/skos-reference/</a></p>
+</dd>
+<dt class="hdlist1"><a id="SSN"></a> [SSN]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>Semantic Sensor Network Ontology</em>, W3C Recommendation (19 October 2017). <a href="https://www.w3.org/TR/vocab-ssn/" class="bare">https://www.w3.org/TR/vocab-ssn/</a></p>
+</dd>
+<dt class="hdlist1"><a id="PROF"></a> [PROF]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>The Profiles Vocabulary</em>, W3C Working Group Note (18 December 2019). <a href="https://www.w3.org/TR/dx-prof/" class="bare">https://www.w3.org/TR/dx-prof/</a></p>
+</dd>
+<dt class="hdlist1"><a id="XSD2"></a> [XSD2]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>XML Schema Part 2: Datatypes (Second Edition)</em>, W3C Recommendation (28 October 2004). <a href="https://www.w3.org/TR/xmlschema-2/" class="bare">https://www.w3.org/TR/xmlschema-2/</a></p>
+</dd>
+</dl>
+</div>
+</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-04 12:44:30 UTC
+Last updated 2023-09-10 21:24:32 UTC
 </div>
 </div>
 </body>
