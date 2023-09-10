@@ -1,0 +1,40 @@
+== Preamble
+
+=== Conformance
+
+The conformance imperatives of data to this Specification use terms from _RFC 2119: Key words for use in RFCs to Indicate Requirement Levels_ <<RFC2119>> which defines terms such as *_MUST_*, *_SHALL_* and *_MAY_*.
+
+=== Terms & Definitions
+
+==== RDF
+
+The Resource Description Framework (RDF) is a framework for representing information in the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, blank nodes, or datatyped literals. They are used to express descriptions of resources. <<RDFSPEC>>
+
+==== RDFS
+
+RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary. <<RDFS>>
+
+==== OWL
+
+The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as Semantic Web documents. OWL 2 ontologies can be used along with information written in RDF, and OWL 2 ontologies themselves are primarily exchanged as RDF documents. <<OWL2>>
+
+==== SPARQL
+
+SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <<SPARQL>>
+
+
+=== Namespaces
+
+Namespaces for model, vocabulary and validator elements are assigned the following prefixes:
+
+[frame=none, grid=none, cols="1, 4, 4"]
+|===
+| `ex`: | http://example.com/ | A non-resolving namespace for examples
+| `geo`: | http://www.opengis.net/ont/geosparql# | GeoSPARQL Ontology
+| `owl`: | http://www.w3.org/2002/07/owl# | <<OWL2>> ontology
+| `rdfs`: | http://www.w3.org/2000/01/rdf-schema# | <<RDFS>> ontology
+| `sdo`: | https://schema.org/ | <<SDO>> vocabulary
+| `skos`: | http://www.w3.org/2004/02/skos/core# | <<SKOS>> ontology
+| `sosa`: | http://www.w3.org/ns/sosa/ | SOSA ontology within <<SSN>>
+| `xsd`: | http://www.w3.org/2001/XMLSchema# | <<XSD2>> datatypes vocabulary
+|===

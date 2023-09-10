@@ -25,7 +25,7 @@ jobs:
         echo "Add README to docs/"
         asciidoctor README.adoc -o docs/index.html
         echo "Add spec to docs/"
-        asciidoctor 00-spec-master.adoc -o docs/spec.html
+        asciidoctor 00-master.adoc -o docs/spec.html
         # echo "Add RDF files to docs/"
         # cp *.ttl docs/
         # echo "Add images to docs/"

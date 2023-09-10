@@ -1,0 +1,7 @@
+== Abstract
+
+This Specification is the formal expression of a data model for the exchange of geochemistry data. It is intended for use by organisations supplying geochemistry results to the Geological Survey of Queensland.
+
+This specification is made of several parts: a data model, a listing of support vocabularies, validators to check the conformance of data to the model and templates that can be used to record data according to the model.
+
+This Specification is issued alongside online testing facilities that allow geochemistry data supply organisations to see example data, validate their data and to read all supporting resources.
