@@ -19,6 +19,10 @@
 :xrefstyle: short
 :source-highlighter: rouge
 
+[#overview]
+.An informal overview diagram of the data model in this Specification
+image::img/overview.png[GSQ Geocemistry Model Overview,align="center"]
+
 include::01-abstract.adoc[]
 
 include::02-preamble.adoc[]
