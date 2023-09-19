@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.16">
-<title>OGC GeoSPARQL - A Geographic Query Language for RDF Data</title>
+<title>GSQ Geochemistry Data Exchange Model</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -451,7 +451,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_namespaces">2.3. Namespaces</a></li>
 </ul>
 </li>
-<li><a href="#_introduction">3. Introduction</a></li>
+<li><a href="#_introduction">3. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_conceptual">3.1. Conceptual</a></li>
+<li><a href="#_logical">3.2. Logical</a></li>
+<li><a href="#_physical">3.3. Physical</a></li>
+</ul>
+</li>
 <li><a href="#_model">4. Model</a></li>
 <li><a href="#_vocabularies">5. Vocabularies</a></li>
 <li><a href="#_validators">6. Validators</a></li>
@@ -465,7 +471,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div id="overview" class="imageblock text-center">
 <div class="content">
-<img src="img/overview.png" alt="GSQ Geocemistry Model Overview">
+<img src="img/overview.svg" alt="GSQ Geochemistry Model Overview">
 </div>
 <div class="title">Figure 1. An informal overview diagram of the data model in this Specification</div>
 </div>
@@ -581,7 +587,115 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>3. Introduction</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>This section introduces the general domain of information modelling that we use for geochemistry observations and then describes the particular representation mechanism used. Following sections then detail the model and provide reference material and volidators.</p>
+</div>
+<div class="sect2">
+<h3 id="_conceptual"><a class="anchor" href="#_conceptual"></a>3.1. Conceptual</h3>
+<div class="sect3">
+<h4 id="_observations_measurements"><a class="anchor" href="#_observations_measurements"></a>3.1.1. Observations &amp; Measurements</h4>
+<div class="paragraph">
+<p>Geochemistry data - results of chemical and other analyses of geological samples - is a type of <em>observations</em> data: observations of the natural world that result in measured properties. The general-purpose standard we use for modelling <em>observations</em> data is the ISO&#8217;s <em>Observations &amp; Measurements</em> (O&amp;M) <a href="#ISO19156">[ISO19156]</a>.</p>
+</div>
+<div class="paragraph">
+<p>O&amp;M separates aspects of an <em>observations</em> scenario into distinct information elements in order to ditinguish between the thing observed, the act of observing and outputs from the observing act. An informal, high-level, view of the conceptual elements of O&amp;M is given in <a href="#om-high-level">Figure 2</a>.</p>
+</div>
+<div id="om-high-level" class="imageblock text-center">
+<div class="content">
+<img src="img/om-high-level.svg" alt="O&amp;M high-level">
+</div>
+<div class="title">Figure 2. An informal, high-level, view of the conceptual elements of <em>Observations &amp; Measurements</em> (O&amp;M) <a href="#ISO19156">[ISO19156]</a>.</div>
+</div>
+<div class="paragraph">
+<p>In <a href="#om-high-level">Figure 2</a>, an <em>Observation</em>, an event, <em>observes</em> a <em>Property</em> of a <em>Feature</em> (could be a chunk of rock, or a soil sample) and <em>produces</em> a <em>Result</em> according to a <em>Procedure</em> which is implemented by/in a Sensor. Detailed representations of the sub-elements of <em>Observation</em>, <em>Feature</em>, <em>Property</em> and so on are all specified by the use of other models, such as the <em>Quantities Units Dimensions &amp; Types</em> model for <em>Result</em> elements which include the actual value measured, the measurement units and so on.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_logical"><a class="anchor" href="#_logical"></a>3.2. Logical</h3>
+<div class="sect3">
+<h4 id="_sosa"><a class="anchor" href="#_sosa"></a>3.2.1. SOSA</h4>
+<div class="paragraph">
+<p>There are many implementations of the O&amp;M conceptual model and the one used here is the <em>SOSA (Sensor, Observation, Sample, and Actuator)</em> ontology <a href="#SSN">[SSN]</a> which realises the elements and relations of O&amp;M as <a href="#OWL2">OWL</a> <em>Classes</em> and <em>Properties</em>. Using an OWL logical model allows for the exchange of data in the <a href="#_rdf">RDF</a> format (a physical model).</p>
+</div>
+<div class="paragraph">
+<p>SOSA&#8217;s <em>Classes</em> and <em>Properties</em> for the elements in <a href="#om-high-level">Figure 2</a> are given in <a href="#sosa-overview">Figure 3</a>.</p>
+</div>
+<div id="sosa-overview" class="imageblock text-center">
+<div class="content">
+<img src="img/overview.svg" alt="SOSA Model Overview">
+</div>
+<div class="title">Figure 3. An informal overview diagram of the SOSA data model using ellipses for OWL classes and named arrows for OWL properties</div>
+</div>
+<div class="paragraph">
+<p>In <a href="#sosa-overview">Figure 3</a>, you can see a class for each of the elements in <a href="#om-high-level">Figure 2</a> as well as additional classes for collections of Observation elements and the units of a Result.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_background_models"><a class="anchor" href="#_background_models"></a>3.2.2. Background Models</h4>
+<div class="paragraph">
+<p>As mentioned in the section above, detailed modelling of aspects of O&amp;M&#8217;s main elements are undertaken by other models, therefore, to completely model geochemistry data, we need more than just SOSA: we need a profile of SOSA and several other models, the union of which forms our overall model.</p>
+</div>
+<div class="paragraph">
+<p>These other models we call <em>background models</em> to distinguish them from SOSA which is then our <em>foreground model</em>.</p>
+</div>
+<div class="paragraph">
+<p>Our set of background models, which are all <a href="#OWL2">OWL</a> models are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">GeoSPARQL <a href="#GSP">[GSP]</a></dt>
+<dd>
+<p>for relating spatial objects to one another and to representations of their geometries</p>
+</dd>
+<dt class="hdlist1">QUDT <a href="#QUDT">[QUDT]</a></dt>
+<dd>
+<p>for describing the values, units and references of results</p>
+</dd>
+<dt class="hdlist1">SKOS <a href="#SKOS">[SKOS]</a></dt>
+<dd>
+<p>for describing the structure of reference vocabularies and the relations between concepts within them</p>
+</dd>
+<dt class="hdlist1">schema.org <a href="#SDO">[SDO]</a></dt>
+<dd>
+<p>for many general-purpose classes and properties</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>All the background models we use have obvious connection points to our SOSA foreground model. For example, GeoSPARQL contains <em>Feature</em> &amp; <em>Geometry</em> classes and the <em>Feature</em> class is a superset of SOSA&#8217;s <em>Feature of Interest</em> class, thus any SOSA <em>Feature of Interest</em> is a GeosPARQL <em>Feature</em> and may have a GeoSPARQL <em>Geometry</em> associated with it. <a href="#sosa-geosparql">Figure 4</a> shows this relationship.</p>
+</div>
+<div id="sosa-geosparql" class="imageblock text-center">
+<div class="content">
+<img src="img/sosa-geosparql.svg" alt="SOSA/GeoSPARQL">
+</div>
+<div class="title">Figure 4. An informal diagram showing how SOSA and GeoSPARQL related to one another based on <em>Feature</em> classes</div>
+</div>
+<div class="paragraph">
+<p>The formal modelling of the following section relates SOSA foreground model classes to relevant background model classes using <a href="#OWL2">OWL</a> relations.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_physical"><a class="anchor" href="#_physical"></a>3.3. Physical</h3>
+<div class="sect3">
+<h4 id="_rdf_2"><a class="anchor" href="#_rdf_2"></a>3.3.1. RDF</h4>
+<div class="paragraph">
+<p>As mentioned at the start of the section above, the physical data implementation of the SOSA ontology logical model is the Resource Description Framework [<a href="#_rdf">RDF</a>].</p>
+</div>
+<div class="paragraph">
+<p>RDF data can be serialised in multiple formats. The format we use here for definitions and examples is Turtle <a href="#TURTLE">[TURTLE]</a>. <a href="#turtle-eg">Example 1</a> below shows a dummy geochemistry <em>Observation</em> represented according to SOSA and serialised in RDF&#8217;s Turtle format.</p>
+</div>
+<div id="turtle-eg" class="exampleblock">
+<div class="title">Example 1. An informal, high-level, view of the conceptual elements of <em>Observations &amp; Measurements</em> (O&amp;M) <a href="#ISO19156">[ISO19156]</a>.</div>
+<div class="content">
+<div class="paragraph">
+<p>This is turtle</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -613,6 +727,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="dlist">
 <dl>
+<dt class="hdlist1"><a id="GSP"></a> [GSP]</dt>
+<dd>
+<p>Open Geospatial Consortium, <em>OGC GeoSPARQL - A Geographic Query Language for RDF Data</em>, OGC Implementation Standard. Car, N. J., &amp; Homburg, T. (eds.) (2011)  (2011). <a href="http://www.opengis.net/doc/IS/geosparql/1.1" class="bare">http://www.opengis.net/doc/IS/geosparql/1.1</a></p>
+</dd>
 <dt class="hdlist1"><a id="ISO19105"></a> [ISO19105]</dt>
 <dd>
 <p>International Organization for Standardization, <em>ISO 19105: Geographic information — Conformance and testing</em> (2022). <a href="https://www.iso.org/standard/76457.html" class="bare">https://www.iso.org/standard/76457.html</a></p>
@@ -636,6 +754,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <dt class="hdlist1"><a id="RFC2119"></a> [RDF2119]</dt>
 <dd>
 <p>RFC 2119: Key words for use in RFCs to Indicate Requirement Levels_, Internet Engineering Taskforce_ (March 1997). <a href="https://www.rfc-editor.org/info/rfc2119" class="bare">https://www.rfc-editor.org/info/rfc2119</a>, DOI: <a href="https://doi.org/10.17487/RFC2119">10.17487/RFC2119</a></p>
+</dd>
+<dt class="hdlist1"><a id="QUDT"></a> [QUDT]</dt>
+<dd>
+<p><em>QUDT Consortium, _Quantities Units, Dimensions &amp; Types Ontology</em>, <a href="https://qudt.org/" class="bare">https://qudt.org/</a></p>
 </dd>
 <dt class="hdlist1"><a id="TIME"></a> [TIME]</dt>
 <dd>
@@ -676,7 +798,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-18 01:43:03 UTC
+Last updated 2023-09-19 06:29:14 UTC
 </div>
 </div>
 </body>
