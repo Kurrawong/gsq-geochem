@@ -1,5 +1,7 @@
 == References
 
+[[GSP]] [GSP]:: Open Geospatial Consortium, _OGC GeoSPARQL - A Geographic Query Language for RDF Data_, OGC Implementation Standard. Car, N. J., & Homburg, T. (eds.) (2011)  (2011). http://www.opengis.net/doc/IS/geosparql/1.1
+
 [[ISO19105]] [ISO19105]:: International Organization for Standardization, _ISO 19105: Geographic information — Conformance and testing_ (2022). https://www.iso.org/standard/76457.html
 
 [[ISO19156]] [ISO19156]:: International Organization for Standardization, _ISO 19156:2011 Geographic information – Observations and measurements_ (2011). DOI: https://doi.org/https://doi.org/10.13140%2F2.1.1142.3042[https://doi.org/10.13140%2F2.1.1142.3042]
@@ -11,6 +13,8 @@
 [[RDFSPEC]] [RDFSPEC]:: World Wide Web Consortium, _RDF 1.1 Concepts and Abstract Syntax_, W3C Recommendation (25 February 2014). https://www.w3.org/TR/rdf11-concepts/
 
 [[RFC2119]] [RDF2119]:: RFC 2119: Key words for use in RFCs to Indicate Requirement Levels_, Internet Engineering Taskforce_ (March 1997). https://www.rfc-editor.org/info/rfc2119, DOI: https://doi.org/10.17487/RFC2119[10.17487/RFC2119]
+
+[[QUDT]] [QUDT]:: _QUDT Consortium, _Quantities Units, Dimensions & Types Ontology_, https://qudt.org/
 
 [[TIME]] [TIME]:: World Wide Web Consortium, _Time Ontology in OWL_, W3C Candidate Recommendation (26 March 2020). https://www.w3.org/TR/owl-time/
 

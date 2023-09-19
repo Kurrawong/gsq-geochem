@@ -1,5 +1,5 @@
 = GSQ Geochemistry Data Exchange Model - Specification
-:Title: OGC GeoSPARQL - A Geographic Query Language for RDF Data
+:Title: GSQ Geochemistry Data Exchange Model
 :titletext: {title}
 :doctype: book
 :encoding: utf-8
@@ -21,7 +21,7 @@
 
 [#overview]
 .An informal overview diagram of the data model in this Specification
-image::img/overview.png[GSQ Geocemistry Model Overview,align="center"]
+image::img/overview.svg[GSQ Geochemistry Model Overview,align="center"]
 
 include::01-abstract.adoc[]
 
