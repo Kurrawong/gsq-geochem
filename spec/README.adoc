@@ -1,4 +1,4 @@
-= GSQ Geochemistry Data Exchange Model Specification
+= GSQ Geochemistry Data Exchange Model
 
 This repository contains the content of the https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq[Geological Survey of Queensland's] Geochemistry Data Exchange Model Specification.
 

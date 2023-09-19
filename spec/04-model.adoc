@@ -1,0 +1,7 @@
+== Model
+
+This model documentation describes each of the classes shown in
+
+[#sosa-overview]
+.An informal overview diagram of the SOSA data model using ellipses for OWL classes and named arrows for OWL properties
+image::../img/overview.svg[SOSA Model Overview,align="center"]
