@@ -1,7 +1,96 @@
 == Model
 
-This model documentation describes each of the classes shown in
+This section describes each of the Classes and Properties shown in the models used - both the SOSA foreground model <<SSN>> and the relevant parts of the background models (<<DCAT>>, <<GSP>>, <<PROV>>, <<SDO>>). All the Classes and Properties described are shown in <<whol-model>>.
 
-[#sosa-overview]
-.An informal overview diagram of the SOSA data model using ellipses for OWL classes and named arrows for OWL properties
-image::../img/overview.svg[SOSA Model Overview,align="center"]
+[#whol-model]
+.An OWL diagram with additional class groupings of the foreground model and background model components used for geochemistry data modelling
+image::../img/whole-model.svg[SOSA Model Overview,align="center",link="../img/whole-model.svg"]
+
+=== Classes
+
+[soa:Observation]
+==== Observation
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:Observation`
+| Preferred Label | Observation
+| Definition | Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest.
+| Is Defined By | <<SSN>>
+| Expected Properties | <<sosa:usedProcedure>>, <<sosa:madeBySensor>>, <<sosa:observedProperty>>, <<sosa:hasFeatureOfInterest>>, <<sosa:phenomenonTime>>, <<sosa:hasResult>>, <<sdo:marginOfError>>
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:usedProcedure ex:procedure-a ;
+    sosa:observedProperty op:amount-of-gold ;
+    sosa:hasFeatureOfInterest ex:sample-c ;
+    sosa:hadPhenomenonTime "2023-05-11"^^xsd:date ;
+    sosa:hasResult
+        ex:result-d ,
+        ex:result-e ;
+.
+----
+|===
+
+[soa:Result]
+==== Result
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:Result`
+| Preferred Label | Result
+| Definition | The Result of an Observation.
+| Is Defined By | <<SSN>>
+| Expected Properties | <<qudt:value>>, <<qudt:unit>>, <<sdo:marginOfError>>
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+ex:result-d
+    qudt:numericValue 0.027  ;
+    qudt:units <https://qudt.org/vocab/unit/PPM> ;
+.
+----
+|===
+
+[soa:Sample]
+==== Sample
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:Sample`
+| Preferred Label | Sample
+| Definition | Samples are typically subsets or extracts from the feature of interest of an observation.
+| Is Defined By | <<SSN>>
+| Expected Properties | <<qudt:value>>, <<qudt:unit>>, <<sdo:marginOfError>>
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+ex:result-d
+    qudt:numericValue 0.027  ;
+    qudt:units <https://qudt.org/vocab/unit/PPM> ;
+.
+----
+|===
+
+
+=== Properties
+
+Blah

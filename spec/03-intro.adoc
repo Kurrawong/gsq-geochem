@@ -14,7 +14,7 @@ O&M separates aspects of an _observations_ scenario into distinct information el
 .An informal, high-level, view of the conceptual elements of _Observations & Measurements_ (O&M) <<ISO19156>>.
 image::../img/om-high-level.svg[O&M high-level,align="center"]
 
-In <<om-high-level>>, an _Observation_, an event, _observes_ a _Property_ of a _Feature_ (could be a chunk of rock, or a soil sample) and _produces_ a _Result_ according to a _Procedure_ which is implemented by/in a Sensor. Detailed representations of the sub-elements of _Observation_, _Feature_, _Property_ and so on are all specified by the use of other models, such as the _Quantities Units Dimensions & Types_ model for _Result_ elements which include the actual value measured, the measurement units and so on.
+In <<om-high-level>>, an _Observation_, an event, _observes_ a _Property_ of a _Sample_ (could be a chunk of rock, or a soil sample) which is a sample of a _Feature_ (could be a rock unit) and _produces_ a _Result_ according to a _Procedure_ which is implemented by/in a Sensor. Detailed representations of the sub-elements of _Observation_, _Feature_, _Property_ and so on are all specified by the use of other models, such as the _Quantities Units Dimensions & Types_ model for _Result_ elements which include the actual value measured, the measurement units and so on.
 
 === Logical
 
@@ -64,8 +64,9 @@ RDF data can be serialised in multiple formats. The format we use here for defin
 
 
 [#turtle-eg]
-.Example SOSA data in RDF's Turtle format for a single geochemistry `Observation` according to the SOSA Ontology <<SSN>>
-```turtle
+.Example SOSA data in RDF's Turtle format, for a single geochemistry `Observation` according to the SOSA Ontology <<SSN>>
+[source,turtle]
+----
 PREFIX ex: <http://example.com/>
 PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
@@ -108,6 +109,16 @@ ex:result-e
     qudt:numericValue 27.0 ;
     qudt:units <https://qudt.org/vocab/unit/PPB> ;
 .
-```
+
+ex:sandy-creek
+    a sosa:FeatureOfInterest ;
+.
+----
 
 In the example data above in <<turtle-eg>, the `Observation` object, `ex:obs-1`, has a number of properties indicated, such as `sosa:hasFeatureOfInterest` which indicates the thing the observation is of, here the `Sample` `ex:sample-c`. The object `ex:sample-c` in turn has properties such as `sosa:isSampleOf` indicating that it's a sample of `ex:sandy-creek` which, although no properties are given, we understand to be a `Feature` by virtue of it being referenced by a property that indicates `Feature` instances.
+
+=== Profiles
+
+Not all classes and properties must be implemented to make valid data according to this model. For example, the `Result` of an `Observation` may have a `margin of error` indicated, but it need not and a dataset may indicate a `Feature Of Interest` with geospatial location but need not.
+
+To know if data is valid according to this model, you need to apply a validator, given in the section <<Validators>> to it. That section describes what the validators are, what they look for and tools that you can use to apply them.

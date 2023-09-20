@@ -1,5 +1,7 @@
 == References
 
+[[DCAT]] [DCAT]:: World Wide Web Consortium, _Data Catalog Vocabulary (DCAT)_, W3C Recommendation (04 February 2020). https://www.w3.org/TR/vocab-dcat/
+
 [[GSP]] [GSP]:: Open Geospatial Consortium, _OGC GeoSPARQL - A Geographic Query Language for RDF Data_, OGC Implementation Standard. Car, N. J., & Homburg, T. (eds.) (2011)  (2011). http://www.opengis.net/doc/IS/geosparql/1.1
 
 [[ISO19105]] [ISO19105]:: International Organization for Standardization, _ISO 19105: Geographic information — Conformance and testing_ (2022). https://www.iso.org/standard/76457.html
@@ -13,6 +15,8 @@
 [[RDFSPEC]] [RDFSPEC]:: World Wide Web Consortium, _RDF 1.1 Concepts and Abstract Syntax_, W3C Recommendation (25 February 2014). https://www.w3.org/TR/rdf11-concepts/
 
 [[RFC2119]] [RDF2119]:: RFC 2119: Key words for use in RFCs to Indicate Requirement Levels_, Internet Engineering Taskforce_ (March 1997). https://www.rfc-editor.org/info/rfc2119, DOI: https://doi.org/10.17487/RFC2119[10.17487/RFC2119]
+
+[[PROV]] [PROV]:: World Wide Web Consortium, _PROV-O: The PROV Ontology_, W3C Recommendation (30 February 2013). https://www.w3.org/TR/prov-o/
 
 [[QUDT]] [QUDT]:: _QUDT Consortium, _Quantities Units, Dimensions & Types Ontology_, https://qudt.org/
 
