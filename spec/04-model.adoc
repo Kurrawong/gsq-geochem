@@ -6,6 +6,22 @@ This section describes each of the Classes and Properties shown in the models us
 .An OWL diagram with additional class groupings of the foreground model and background model components used for geochemistry data modelling
 image::../img/whole-model.svg[SOSA Model Overview,align="center",link="../img/whole-model.svg"]
 
+=== Patterns
+
+Many of the parts of this complete foreground and background logical model implementation of the conceptual model are fairly obvious, for example, the classes and properties modelling that an _observation observes_ a _property_ of a _sample_, however there are patterns that need a bit more explaining, so here some of them are explained.
+
+===== Sample / Feature Of Interest
+
+===== Result
+
+===== Spatiality
+
+===== Observation Collection properties
+
+===== Attribution
+
+
+
 === Classes
 
 [soa:Observation]

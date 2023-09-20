@@ -62,7 +62,6 @@ As mentioned at the start of the section above, the physical data implementation
 
 RDF data can be serialised in multiple formats. The format we use here for definitions and examples is Turtle <<TURTLE>>. <<turtle-eg>> below shows a dummy geochemistry _Observation_ represented according to SOSA and serialised in RDF's Turtle format.
 
-
 [#turtle-eg]
 .Example SOSA data in RDF's Turtle format, for a single geochemistry `Observation` according to the SOSA Ontology <<SSN>>
 [source,turtle]
