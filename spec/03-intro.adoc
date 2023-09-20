@@ -26,7 +26,7 @@ SOSA's _Classes_ and _Properties_ for the elements in <<om-high-level>> are give
 
 [#sosa-overview]
 .An informal overview diagram of the SOSA data model using ellipses for OWL classes and named arrows for OWL properties
-image::../img/overview.svg[SOSA Model Overview,align="center"]
+image::../img/sosa-overview.svg[SOSA Model Overview,align="center"]
 
 In <<sosa-overview>>, you can see a class for each of the elements in <<om-high-level>> as well as additional classes for collections of Observation elements and the units of a Result.
 
