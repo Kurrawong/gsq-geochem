@@ -50,7 +50,7 @@ All the background models we use have obvious connection points to our SOSA fore
 
 [#sosa-geosparql]
 .An informal diagram showing how SOSA and GeoSPARQL are related to one another based on the _Feature_ & _Feature of Interest_ class relationship
-image::../img/sosa-geosparql.svg[SOSA/GeoSPARQL,align="center"]
+image::../img/sosa-geosparql.svg[SOSA/GeoSPARQL,align="center",width="60%"]
 
 The formal modelling of the following section relates SOSA foreground model classes to relevant background model classes using <<OWL2, OWL>> relations.
 
@@ -87,7 +87,7 @@ ex:obs-1
 ex:procedure-a
     a skos:Concept ;
     skos:prefLabel "Procedure A" ;
-    skos:definition "Procedure A is a method for assessing the amount of gold in a soli sample. " ;
+    skos:definition "Procedure A is a method for assessing the amount of gold in a soli sample." ;
 .
 
 ex:sample-c

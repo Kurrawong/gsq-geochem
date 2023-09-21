@@ -6,7 +6,7 @@
 :lang: en
 :table-stripes: odd
 :toc: left
-:toclevels: 2
+:toclevels: 3
 :chapter-label:
 :sectnums:
 :sectnumlevels: 4
