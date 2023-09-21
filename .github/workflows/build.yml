@@ -26,8 +26,10 @@ jobs:
         asciidoctor README.adoc -o docs/index.html
         echo "Add spec to docs/"
         asciidoctor spec/00-master.adoc -o docs/spec.html
+        sed -i 's#../img/#img/#g' docs/spec.html
         echo "Add overview to docs/"
         asciidoctor overview/00-master.adoc -o docs/overview.html
+        sed -i 's#../img/#img/#g' docs/overview.html
         # echo "Add images to docs/"
         cp -r img docs/
         # echo "Add RDF files to docs/"
