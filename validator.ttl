@@ -1,0 +1,33 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX reg: <http://purl.org/linked-data/registry#>
+PREFIX sf: <http://www.opengis.net/ont/sf#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX tern: <https://w3id.org/tern/ontologies/tern/>
+PREFIX geochem-shapes: <https://linked.data.gov.au/def/geochem/shapes/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+geochem-shapes:DatasetMandatory
+    a sh:NodeShape ;
+    rdfs:label "Dataset's Mandatory Requirements" ;
+    sh:property [
+        a sh:PropertyShape ;
+        sh:class tern:Distribution ;
+        sh:description "An available distribution of the dataset." ;
+        sh:name "dcat:distribution" ;
+        sh:nodeKind sh:IRI ;
+        sh:path dcat:distribution
+    ] ;
+.
