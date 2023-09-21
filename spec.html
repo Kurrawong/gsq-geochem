@@ -698,7 +698,7 @@ pre.rouge {
 <li><a href="#_sample_feature_of_interest">4.1.2. Sample &amp; Feature Of Interest</a></li>
 <li><a href="#_spatiality">4.1.3. Spatiality</a></li>
 <li><a href="#_result">4.1.4. Result</a></li>
-<li><a href="#_observation_collection_properties">4.1.5. Observation Collection properties</a></li>
+<li><a href="#_observation_collections">4.1.5. Observation Collections</a></li>
 <li><a href="#_attribution">4.1.6. Attribution</a></li>
 </ul>
 </li>
@@ -737,9 +737,9 @@ pre.rouge {
 <div class="sectionbody">
 <div id="overview" class="imageblock text-center">
 <div class="content">
-<img src="img/overview.svg" alt="GSQ Geochemistry Model Overview">
+<img src="img/sosa-overview.svg" alt="GSQ Geochemistry SOSA Model Overview">
 </div>
-<div class="title">Figure 1. An informal overview diagram of the data model in this Specification</div>
+<div class="title">Figure 1. An informal overview diagram of the main part of the data model in this Specification</div>
 </div>
 </div>
 </div>
@@ -1151,7 +1151,7 @@ Sample A    152.23, -35.45  ...</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_observation_collection_properties"><a class="anchor" href="#_observation_collection_properties"></a>4.1.5. Observation Collection properties</h4>
+<h4 id="_observation_collections"><a class="anchor" href="#_observation_collections"></a>4.1.5. Observation Collections</h4>
 <div class="paragraph">
 <p>Observations are usually taken in batches or runs where many observations are made together. Perhaps observations are conducted in separate evens however the data from them is presented in a collection.</p>
 </div>
@@ -1161,11 +1161,14 @@ Sample A    152.23, -35.45  ...</code></pre>
 <div class="paragraph">
 <p>Additional metadata may be associated with an <code>Observation Collection</code> that is not directly associated with any single Observation but which nevertheless is valid at the collection level, for example a Bach ID of "7" - true for the batch / Observation Collection and not specifically for any single Observation.</p>
 </div>
+<div class="paragraph">
+<p>Observation Collections can be further grouped into datasets: perhaps a company has run 5 batches of observations - 5 Observation Collections - for a prospective mining region and bundles them all up to be sent to GSQ. In that case, it&#8217;s sensible to have one dataset with basic metadata about who provided this data, when etc. and then the 5 Observations Collections within that grouping together all the Observations in each batch.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_attribution"><a class="anchor" href="#_attribution"></a>4.1.6. Attribution</h4>
 <div class="paragraph">
-<p>wwt</p>
+<p>A common issue for data modelling where data generation is distributed across organisations is to indicate what roles <em>Agents</em> - Organisations &amp; People - played with respect to data. For example, for geochemistry data, there may be an obvious</p>
 </div>
 </div>
 </div>
@@ -1487,7 +1490,7 @@ Sample A    152.23, -35.45  ...</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-21 04:02:46 UTC
+Last updated 2023-09-21 05:42:33 UTC
 </div>
 </div>
 </body>
