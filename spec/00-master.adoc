@@ -20,8 +20,8 @@
 :source-highlighter: rouge
 
 [#overview]
-.An informal overview diagram of the data model in this Specification
-image::../img/overview.svg[GSQ Geochemistry Model Overview,align="center"]
+.An informal overview diagram of the main part of the data model in this Specification
+image::../img/sosa-overview.svg[GSQ Geochemistry SOSA Model Overview,align="center"]
 
 include::01-abstract.adoc[]
 

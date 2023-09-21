@@ -10,7 +10,7 @@ This specification document is delivered online at here:
 
 To get started, to test data against this Specification and to access data examples, use the:
 
-* https://kurrawong.github.io/gsq-geochem-portal/[Demo GSQ Geochemistry Data Portal]
+* https://geochem.dev.kurrawong.ai/[Demo GSQ Geochemistry Data Portal]
 
 == License & Rights
 

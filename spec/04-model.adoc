@@ -79,7 +79,7 @@ We _could_ have more than one _Result_ form an _Observation_, e.g. a parts per m
 .The concerns of Observations / Observed properties & results
 image::../img/results.svg[SOSA Samples & FoIs,align="center",link="../img/results.svg"]
 
-==== Observation Collection properties
+==== Observation Collections
 
 Observations are usually taken in batches or runs where many observations are made together. Perhaps observations are conducted in separate evens however the data from them is presented in a collection.
 
@@ -87,9 +87,11 @@ To represent these groupings, we use an `Observation Collection` object. Such ob
 
 Additional metadata may be associated with an `Observation Collection` that is not directly associated with any single Observation but which nevertheless is valid at the collection level, for example a Bach ID of "7" - true for the batch / Observation Collection and not specifically for any single Observation.
 
+Observation Collections can be further grouped into datasets: perhaps a company has run 5 batches of observations - 5 Observation Collections - for a prospective mining region and bundles them all up to be sent to GSQ. In that case, it's sensible to have one dataset with basic metadata about who provided this data, when etc. and then the 5 Observations Collections within that grouping together all the Observations in each batch.
+
 ==== Attribution
 
-wwt
+A common issue for data modelling where data generation is distributed across organisations is to indicate what roles _Agents_ - Organisations & People - played with respect to data. For example, for geochemistry data, there may be an obvious
 
 === Classes
 
