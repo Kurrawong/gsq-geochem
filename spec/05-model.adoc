@@ -1,0 +1,748 @@
+== Model
+
+This section describes the elements of the model of this specification in detail: lists of the Classes and Predicates of the model which are all taken from the Classes and Properties of the SOSA foreground model <<SOSA>> and the background models (<<DCAT>>, <<GSP>>, <<PROV>>, <<SDO>>). All the Classes and Predicates described here are shown in <<whole-model>>.
+
+[#whole-model]
+.An OWL diagram with foreground and background model groupings used for geochemistry data modelling. _Click it to zoom._
+image::../img/whole-model.svg[SOSA Model Overview,align="center",link="../img/whole-model.svg"]
+
+NOTE: Models such as this are extensible so what you see here is the minimum information needed for geochemistry data. Data suppliers may add other information to geochemistry data as long as they follow normal <<OWL2, OWL>> modelling methods. For example, data suppliers may add additional dataset metadata or information about the sampling system.
+
+=== Classes
+
+The classes (defined in <<Class, 'Class'>>) of this model are those indicated in <<whole-model>>.
+
+[[sosa-classes]]
+==== SOSA
+
+[[sosa:Observation]]
+===== Observation
+
+_Observation_ is the central class of geochemistry data, according to this specification. Observations are the events undertaken to determine the properties of a sample.
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:Observation`
+| Name | Observation
+| Definition | Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest
+| Scope Note | Use this class to represent a single event  of observation of a property of a Feature Of Interest (Sample)
+| Is Defined By | <<SOSA>>
+| Expected Properties | <<sosa:usedProcedure>>, <<sosa:madeBySensor>>, <<sosa:observedProperty>>, <<sosa:hasFeatureOfInterest>>, <<sosa:phenomenonTime>>, <<sosa:hasResult>>, <<sdo:marginOfError>>
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:usedProcedure ex:procedure-b ;
+    sosa:observedProperty op:amount-of-gold ;
+    sosa:hasFeatureOfInterest ex:sample-c ;
+    sosa:hadPhenomenonTime "2023-05-11"^^xsd:date ;
+    sosa:hasResult
+        ex:result-d ,
+        ex:result-e ;
+.
+----
+|===
+
+[[sosa:Result]]
+===== Result
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:Result`
+| Name | Result
+| Definition | The Result of an Observation
+| Scope Note | Use this class to encapsulate the numerical or other value of the result of an observation as well as any known unit of measure. Uncertainty (error) may be recorded within a Result too
+| Is Defined By | <<SOSA>>
+| Expected Properties | <<rdf:value, value>>, <<qudt:unit, unit>>, <<sdo:marginOfError, margin of error>>
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX sdo: <https://schema.org>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:hasResult ex:result-d ;
+.
+
+ex:result-d
+    qudt:numericValue 0.027  ;
+    qudt:units <https://qudt.org/vocab/unit/PPM> ;
+    sdo:marginOfError 0.005 ;
+.
+----
+|===
+
+[[sosa:Sample]]
+===== Sample
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:Sample`
+| Name | Sample
+| Definition | Samples are typically subsets or extracts from the feature of interest of an observation
+| Scope Note | Use this class to model the thing for which properties are being determined by geochemical analysis
+| Is Defined By | <<SOSA>>
+| Expected Properties | <<sosa:isSampleOf, is sample of>>
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX sdo: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-a
+    a sosa:Observation ;
+    sosa:hasFeatureOfInterest ex:sample-c ;
+.
+
+ex:sample-c
+    a sosa:Sample ;
+    sdo:name "Sample C" ;
+    sdo:additionalType ex:soil-sample ;
+    sdo:description "A soil sample from Sandy Creek" ;
+    sdo:location "Zillmere Rock Store: Zone 4, Shelf N, Box 3" ;
+    sosa:isSampleOf ex:sandy-creek ;
+.
+----
+|===
+
+[[sosa:ObservationCollection]]
+===== Observation Collection
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:ObservationCollection`
+| Name | Observation Collection
+| Definition | Collection of one or more observations, whose members share a common value for one or more predicate
+| Scope Note | Use this class to represent batches of geochemistry observations. Additional metadata for batches, such as run numbers, may be added to the Observation Collection using scheme.org, DCAT or custom predicates
+| Is Defined By | https://www.w3.org/TR/vocab-ssn-ext/[Extension to SSN]
+| Expected Properties | <<sosa:hasMember>>, predicates for Observation objects pertaining to all members of the collection
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-1
+    a sosa:Observation ;
+.
+
+ex:obs-2
+    a sosa:Observation ;
+.
+
+ex:obs-3
+    a sosa:Observation ;
+.
+
+# it is inferred that each of the member Observation objects of this Observation Collection object
+# have the same Feature Of Interest - `ex:samplec`
+ex:obscol-a
+    a sosa:ObservationCollection ;
+    sosa:hasMember
+        ex:obs-1 ,
+        ex:obs-2 ,
+        ex:obs-3 ;
+    sosa:hasFeatureOfInterest ex:sample-c ;
+.
+----
+|===
+
+[[sosa:Procedure]]
+===== Procedure
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:Procedure`
+| Subclass Of | <<skos:Concept, Concept>>
+| Name | Procedure
+| Definition | A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation
+| Scope Note | Use <<SKOS>>`Concept` instances from vocabularies of methods to indicate the `Procedure` used for a particular `Observation`
+| Is Defined By | <<SOSA>>
+| Expected Properties | <<SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:usedProcedure ex:procedure-b ;
+.
+
+# While this Concept is understood to be a sosa:Procedure, it is only declared to be
+# a skos:Concept - the standard vocabulary element. This is fine and expected
+ex:procedure-b
+    a skos:Concept ;
+    skos:prefLabel "Procedure B" ;
+    skos:definition "A method for assessing the amount of gold in a sample." ;
+.
+----
+|===
+
+[[sosa:ObservableProperty]]
+===== Observable Property
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:ObservableProperty`
+| Subclass Of | <<skos:Concept, Concept>>
+| Name | Observable Property
+| Definition | An observable quality (property, characteristic) of a FeatureOfInterest
+| Scope Note | Use <<SKOS>>`Concept` instances from vocabularies of observable properties to indicate the `Observable Property` observed by a particular `Observation`
+| Is Defined By | <<SOSA>>
+| Expected Properties | <<SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:observedProperty op:amount-of-gold ;
+.
+
+# While this Concept is understood to be a sosa:ObservableProperty, it is only declared to be
+# a skos:Concept - the standard vocabulary element. This is fine and expected
+op:amount-of-gold
+    a skos:Concept ;
+    skos:prefLabel "Amount of Gold" ;
+    skos:definition "The amount of gold in a matrix" ;
+.
+----
+|===
+
+[[sosa:Sensor]]
+===== Sensor
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:Sensor`
+| Subclass Of | <<skos:Concept, Concept>>
+| Name | Sensor
+| Definition | Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure
+| Scope Note | Use <<SKOS>>`Concept` instances from vocabularies of observable properties to indicate the equipment conducting the a particular `Observation`
+| Is Defined By | <<SOSA>>
+| Expected Properties | <<SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:madeBySensor ex:sensor-f ;
+.
+
+# While this Concept is understood to be a sosa:Sensor, it is only declared to be
+# a skos:Concept - the standard vocabulary element. This is fine and expected
+ex:sensor-f
+    a skos:Concept ;
+    skos:prefLabel "System X" ;
+    skos:definition "System X by company Y, Version Z" ;
+.
+----
+|===
+
+[[sosa:FeatureOfInterest]]
+===== Feature Of Interest
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:FeatureOfInterest`
+| Subclass of | <<geo:Feature, Feature>>
+| Name | Feature Of Interest
+| Definition | The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result
+| Scope Note | Use this class to indicate not the direct object whose properties are observed by an `Observation` if that thing is a sample - use `Sample`. Use only if the thing whose properties are observed is the object of ultimate interest, e.g. a rock unit. Expected use is to indicate an FoI in an existing dataset, such as a geological unit in the https://linked.data.gov.au/dataset/qldgeofeatures[Queensland Geological Features Dataset]
+| Is Defined By | <<SOSA>>
+| Expected Properties | Location and other properties relevant to the specific kind of Feature that this Feature of Interest it. Properties other than location are out of scope for geochemistry modelling
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:hasFeatureOfInterest ex:sample-c ;
+.
+
+ex:sample-c
+    a sosa:Sample ;
+    sosa:isSampleOf <https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince> ;
+.
+
+<https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince>
+    a sosa:FeatureOfInterest , geo:Feature ;
+    geo:hasGeometry [
+        a geo:Geometry ;
+        geo:asWKT "POLYGON((146.850699 -23.704934,146.850699 -20.863771,148.028386 -20.863771,148.028386 -23.704934,146.850699 -23.704934))" ;
+    ] ;
+.
+----
+|===
+
+[[geosparql-classes]]
+==== GeoSPARQL
+
+[[geo:Feature]]
+===== Feature
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `geo:Feature`
+| Name | Feature
+| Definition | A discrete spatial phenomenon in a universe of discourse
+| Scope Note | See the Scope Note for <<sosa:FeatureOfInterest, Feature Of Interest>>
+| Is Defined By | <<GSP>>
+| Expected Properties |  See the Expected Properties for <<sosa:FeatureOfInterest, Feature Of Interest>>
+| Example | See the Example for <<sosa:FeatureOfInterest, Feature Of Interest>>
+|===
+
+[[geo:Geometry]]
+===== Geometry
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `geo:Geometry`
+| Name | Geometry
+| Definition | A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS)
+| Scope Note | To be used to indicate geospatial coordinates for a <<geo:Feature, Feature>>
+| Is Defined By | <<GSP>>
+| Expected Properties | <<geo:asWKT, as WKT>>
+| Example | See the Example for <<sosa:FeatureOfInterest, Feature Of Interest>>
+|===
+
+[[dcat-classes]]
+==== DCAT
+
+[[dcat:Dataset]]
+===== Dataset
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `dcat:Dataset`
+| Name | Dataset
+| Definition | A collection of data, published or curated by a single agent, and available for access or download in one or more representations
+| Scope Note | Use this class to describe a package of data that contains one or more <<sosa:ObservationCollection, Observation Collection>> objects.
+| Is Defined By | <<SOSA>>
+| Expected Properties | At least <<sdo:name, name>>, <<sdo:description, description>>, <<sdo:dateCreated, data created>>, <<sdo:dateModified, data modified>>, and <<prov:qualifiedAttribution, qualified attribution>>, but potentially any other <<DCAT>> and <<SDO>> predicates thought relevant to well describe the dataset. <<sdo:keywords, keyword>> predicate values may be calculated from contained data and need not be supplied.
+| Example
+a| [source,turtle]
+----
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX gch: <https://linked.data.gov.au/def/geochem/>
+PREFIX ex: <http://example.com/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rc: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
+PREFIX sdo: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:dataset-n
+    sdo:name "Example Dataset N" ;
+    sdo:description "An example dataset containing an example Observation Collection object" ;
+    sdo:dateCreated "2023-09-20"^^xsd:date ;
+    sdo:dateModified "2023-09-22"^^xsd:date ;
+    prov:qualifiedAttribution [
+        prov:agent [
+            a sdo:Organization ;
+            sdo:name "ACME Pty Ltd" ;
+            sdo:identifier "31 353 542 036"^^gch:ABN ;
+        ] ;
+        prov:hadRole rc:originator ;  # SKOS Concept used as a PROV Role
+    ] ;
+    sdo:hasPart ex:obscol-a ;
+.
+
+ex:obscol-a
+    a sosa:ObservationCollection ;
+.
+----
+|===
+
+[[prov-classes]]
+==== PROV
+
+[[prov:Attribution]]
+===== Attribution
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `prov:Attribution`
+| Name | Attribution
+| Definition | The ascribing of an entity to an agent
+| Scope Note | Use objects of this class to link <<dcat:Dataset, Dataset>> objects to <<prov:Agent, Agent>> objects and the roles they played with respect to the dataset
+| Is Defined By | <<PROV>>
+| Expected Properties | <<prov:agent, agent>>, <<prov:hadRole, had role>>
+| Example | See the Example for <<dcat:Dataset, Dataset>>
+|===
+
+[[prov:Agent]]
+===== Agent
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `prov:Agent`
+| Name | Agent
+| Definition | Something that bears some form of responsibility for an activity taking place
+| Scope Note | Do not use this class directly but, instead, use either <<sdo:Organization, Organisation>> or <<sdo:Person, Person>> which are subclasses of this class. This class is retained for model completeness
+| Is Defined By | <<PROV>>
+|===
+
+[[prov:Role]]
+===== Role
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `prov:Role`
+| Name | Role
+| Definition | 
+| Scope Note | Use <<SKOS>>`Concept` instances from vocabularies of methods to indicate the `Role` played by an <<prov:Agent, Agent>> object with respect to a <<dcat:Dataset, Dataset>> object
+| Is Defined By | <<PROV>>
+| Expected Properties | <<SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
+| Example | See the Example given for <<dcat:Dataset, Dataset>>
+|===
+
+[[skos-classes]]
+==== SKOS
+
+[[skos:ConceptScheme]]
+===== Concept Scheme
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `skos:ConceptScheme`
+| Name | Concept Scheme
+| Definition | An aggregation of one or more <<skos:Concpet, Concept>> objects
+| Scope Note | Use this class only if declaring whole vocabularies of <<skos:Concept, Concept>> objects
+| Is Defined By | <<SKOS>>
+| Expected Properties | Properties for `ConceptScheme` mandated by the https://w3id.org/profile/vocpub[VocPub] profile of SKOS
+| Example
+a| [source,turtle]
+----
+PREFIX cs: <https://linked.data.gov.au/def/observable-properties>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
+PREFIX sdo: <https://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+cs:
+    a skos:ConceptScheme ;
+    sdo:dateCreated "2023-06-16"^^xsd:date ;
+    skos:definition "Observable quality (property, characteristic) of a Feature Of Interest" ;
+    skos:prefLabel "Observable Properties"@en ;
+.
+
+op:amount-of-gold
+    a skos:Concept ;
+    skos:definition "The rate of presence of elemental gold within another substance"@en ;
+    skos:inScheme cs: ;
+    skos:prefLabel "Amount of Gold Per Unit Mass"@en ;
+.
+----
+|===
+
+[[skos:Concept]]
+===== Concept
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `skos:Concept`
+| Name | Concept 
+| Definition | An idea or notion; a unit of thought
+| Scope Note | Use this class to model the elements in vocabularies of terms for <<sosa:Procedure, Procedure>>, <<sosa:ObservableProperty, Observable Property>>, <<sosa:Sensor, Sensor>> & <<sosa:Role, Role>>
+| Is Defined By | <<SKOS>>
+| Expected Properties | Properties for `Concept` mandated by the https://w3id.org/profile/vocpub[VocPub] profile of SKOS
+| Example | See the Example for <<skos:ConceptScheme, Concept Scheme>>
+|===
+
+==== RDFS
+
+[[rdfs:Literal]]
+===== Literal
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `rdfs:Literal`
+| Name | Literal
+| Definition | Literal values, eg. textual strings and integers
+| Scope Note | Do not use this class directly but instead use specialised RDF literals, such as <<xsd:string, string>>, <<xsd:date, date>>, <<xsd:float, float>>,
+| Is Defined By | <<RDFS>>
+|===
+
+==== XSD Datatypes
+
+[[xsd:string]]
+===== string
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `xsd:string`
+| Name | string
+| Definition | A literal datatype that may contain characters, line feeds, carriage returns, and tab characters
+| Scope Note | This class is used whenever literal values are enclosed in quotes and not further qualified with another specialised datatype
+| Is Defined By | <XSD2>>
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+ex:procedure-b
+    a skos:Concept ;
+    skos:prefLabel "Procedure B" ;  # a string value
+.
+----
+|===
+
+[[xsd:float]]
+===== float
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `xsd:float`
+| Name | float
+| Definition | A literal datatype representing a floating point number
+| Scope Note | This class is used whenever literal values are numerical and contain a decimal point
+| Is Defined By | <XSD2>>
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sdo: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:obs-a
+    a sosa:Result ;
+    rdf:value 0.027  ; # a float value
+    sdo:marginOfError "0.05"^^xsd:float ;  # also a float value
+.
+----
+|===
+
+[[xsd:date]]
+===== date
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `xsd:date`
+| Name | date
+| Definition | A literal datatype representing a date, formatted according to https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] (YYYY-MM-DD)
+| Scope Note | Use this datatype for date literal values
+| Is Defined By | <XSD2>>
+| Example | See the Example for <<dcat:Dataset, Dataset>>
+|===
+
+[[xsd:dateTime]]
+===== date time
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `xsd:dateTime`
+| Name | date time
+| Definition | A literal datatype representing a date and a time, formatted according to https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] (YYYY-MM-DDTHH:II:SS.SSS)
+| Scope Note | Use this datatype for date & time literal values
+| Is Defined By | <XSD2>>
+| Example
+a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:obs-a
+    a sosa:Observation ;
+    sosa:phenomenonTime "2023-09-22T17:35:22"^^xsd:dateTime ;
+.
+----
+|===
+
+=== Predicates
+
+The predicates (defined in <<Class, 'Class'>>) of this model are those indicated in <<whole-model>>.
+
+[[sosa-predicates]]
+==== SOSA
+
+[[sosa:usedProcedure]]
+===== used procedure
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:usedProcedure`
+| Name | used procedure
+| Definition | A relation to link to a re-usable Procedure used in making an Observation
+| Scope Note | Use this property to indicate a <<sosa:Procedure, Procedure>> used to obtain an <<sosa:Observation, Observation>> but indicate <<skos:Concept, Concept>> objects taken from vocabularies
+| Is Defined By | <<SOSA>>
+| Example | See the Example for <<sosa:Procedure, Procedure>>
+|===
+
+[[sosa:madeBySensor]]
+===== made by sensor
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:madeBySensor`
+| Name | made by sensor
+| Definition | Relation between an Observation and the Sensor which made the Observations
+| Scope Note | Use this property to indicate a <<sosa:Sensor, Sensor>> used to obtain an <<sosa:Observation, Observation>> but indicate <<skos:Concept, Concept>> objects taken from vocabularies
+| Is Defined By | <<SOSA>>
+| Example | See the Example for <<sosa:Sensor, Sensor>>
+|===
+
+[[sosa:observedProperty]]
+===== observed property
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:observedProperty`
+| Name | observed property
+| Definition | Relation between an Observation and the Sensor which made the Observations
+| Scope Note | Use this property to indicate an <<sosa:ObservableProperty, Observable Property>> observed by an <<sosa:Observation, Observation>> but indicate <<skos:Concept, Concept>> objects taken from vocabularies
+| Is Defined By | <<SOSA>>
+| Example | See the Example for <<sosa:ObservableProperty, Observable Property>>
+|===
+
+[[sosa:hasFeatureOfInterest]]
+===== has feature of interest
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:hasFeatureOfInterest`
+| Name | has feature of interest
+| Definition | Relation between an Observation and the entity whose quality was observed
+| Scope Note | Use this property to indicate a <<sosa:FeatureOfInterest, Feature Of Interest>> whose properties were observed by an <<sosa:Observation, Observation>> but indicate <<geo:Feature, Feature>> objects taken from lists of spatial objects
+| Is Defined By | <<SOSA>>
+| Example | See the Example for <<sosa:FeatureOfInterest, Feature Of Interest>>
+|===
+
+[[sosa:phenomenonTime]]
+===== phenomenon time
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:phenomenonTime`
+| Name | phenomenon time
+| Definition | The time that the Result of an Observation applies to the FeatureOfInterest
+| Scope Note | Use this property to indicate the date and time of the production of a <<sosa:Result, Result>> by an <<sosa:Observation, Observation>>. Indicate a literal <<xsd:dateTime, date time>> or <<xsd:date, date>> value
+| Is Defined By | <<SOSA>>
+| Example | See the Example for <<sosa:Observation, Observation>>
+|===
+
+[[sosa:hasResult]]
+===== has result
+
+[[sosa:isSampleOf]]
+===== is sample of
+
+[[sosa:hasMember]]
+===== has member
+
+[[geosparql-predicates]]
+==== GeoSPARQL
+
+[[geo:asWKT]]
+===== as WKT
+
+[[dcat-predicates]]
+==== DCAT
+
+[[prov-predicates]]
+==== PROV
+
+[[skos-predicates]]
+==== SKOS
+
+[[sdo-predicates]]
+==== SDO
+
+[[sdo:location]]
+===== location
+
+[[sdo:marginOfError]]
+===== margin of error
+
+[[qudt-predicates]]
+==== QUDT
+
+[[qudt:unit]]
+===== unit
+
+[[rdf-properties]]
+==== RDF
+
+[[rdf:value]]
+===== value

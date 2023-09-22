@@ -20,12 +20,12 @@ In <<om-high-level>>, an _Observation_, an event, _observes_ a _Property_ of a _
 
 ==== SOSA
 
-There are many implementations of the O&M conceptual model and the one used here is the _SOSA (Sensor, Observation, Sample, and Actuator)_ ontology <<SSN>> which realises the elements and relations of O&M as <<OWL2, OWL>> _Classes_ and _Properties_. Using an OWL logical model allows for the exchange of data in the <<RDF, RDF>> format (a physical model).
+There are many implementations of the O&M conceptual model and the one used here is the _SOSA (Sensor, Observation, Sample, and Actuator)_ ontology <<SOSA>> which realises the elements and relations of O&M as <<OWL2, OWL>> _Classes_ and _Properties_. Using an OWL logical model allows for the exchange of data in the <<RDF, RDF>> format (a physical model).
 
 SOSA's _Classes_ and _Properties_ for the elements in <<om-high-level>> are given in <<sosa-overview>>.
 
 [#sosa-overview]
-.An informal overview diagram of the SOSA data model using ellipses for OWL classes and named arrows for OWL properties
+.An informal overview diagram of the SOSA data model using ellipses for OWL classes and named arrows for OWL predicates
 image::../img/sosa-overview.svg[SOSA Model Overview,align="center"]
 
 In <<sosa-overview>>, you can see a class for each of the elements in <<om-high-level>> as well as additional classes for collections of Observation elements and the units of a Result.
@@ -44,7 +44,7 @@ QUDT <<QUDT>>:: for describing the values, units and references of results
 
 SKOS <<SKOS>>:: for describing the structure of reference vocabularies and the relations between concepts within them
 
-schema.org <<SDO>>:: for many general-purpose classes and properties
+schema.org <<SDO>>:: for many general-purpose classes and predicates
 
 All the background models we use have obvious connection points to our SOSA foreground model. For example, GeoSPARQL contains _Feature_ & _Geometry_ classes and the _Feature_ class is a superset of SOSA's _Feature of Interest_ class, thus any SOSA _Feature of Interest_ is a GeosPARQL _Feature_ and may have a GeoSPARQL _Geometry_ associated with it. <<sosa-geosparql>> shows this relationship.
 
@@ -54,40 +54,47 @@ image::../img/sosa-geosparql.svg[SOSA/GeoSPARQL,align="center",width="60%"]
 
 The formal modelling of the following section relates SOSA foreground model classes to relevant background model classes using <<OWL2, OWL>> relations.
 
-=== Physical
+=== Physical & Exchange
+
+The canonical "physical" implementations of this model - a specific file format for data storage or exchange - is the Resource Description Framework [<<RDF, RDF>>]. RDF used for the foreground model, all the background models and thus this model too.
+
+RDF is the only form of data that can be directly validated against this model, thus any conformance claims to this model must be substantiated by applying this specificaiton's validators to RDF data. See <<Validation>> form more information.
+
+There are other physical implementations of this model available that are convertable to RDF that may be used for geochemistry data exchange. See <<Data Formats>>.
 
 ==== RDF
 
-As mentioned at the start of the section above, the physical data implementation of the SOSA ontology logical model is the Resource Description Framework [<<RDF, RDF>>].
-
-RDF data can be serialised in multiple formats. The format we use here for definitions and examples is Turtle <<TURTLE>>. <<turtle-eg>> below shows a dummy geochemistry _Observation_ represented according to SOSA and serialised in RDF's Turtle format.
+RDF data can be serialised in multiple formats. The format we use here for definitions and examples is Turtle <<TURTLE>>. The <<turtle-eg, turtle format example>> below shows a dummy geochemistry _Observation_ represented according to SOSA and serialised in RDF's Turtle format.
 
 [#turtle-eg]
-.Example SOSA data in RDF's Turtle format, for a single geochemistry `Observation` according to the SOSA Ontology <<SSN>>
+.Example SOSA data in RDF's Turtle format, for a single geochemistry `Observation` according to the SOSA Ontology <<SOSA>>
 [source,turtle]
 ----
 PREFIX ex: <http://example.com/>
 PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sdo: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-ex:obs-1
+ex:obs-a
     a sosa:Observation ;
-    sosa:usedProcedure ex:procedure-a ;
+    sosa:usedProcedure ex:procedure-b ;
     sosa:observedProperty op:amount-of-gold ;
     sosa:hasFeatureOfInterest ex:sample-c ;
     sosa:hadPhenomenonTime "2023-05-11"^^xsd:date ;
     sosa:hasResult
         ex:result-d ,
         ex:result-e ;
+    sosa:madeBySensor ex:sensor-f ;
 .
 
-ex:procedure-a
+ex:procedure-b
     a skos:Concept ;
-    skos:prefLabel "Procedure A" ;
-    skos:definition "Procedure A is a method for assessing the amount of gold in a soli sample." ;
+    skos:prefLabel "Procedure B" ;
+    skos:definition "A method for assessing the amount of gold in a sample." ;
 .
 
 ex:sample-c
@@ -100,7 +107,7 @@ ex:sample-c
 .
 
 ex:result-d
-    qudt:numericValue 0.027  ;
+    rdf:value 0.027  ;
     qudt:units <https://qudt.org/vocab/unit/PPM> ;
 .
 
@@ -114,10 +121,10 @@ ex:sandy-creek
 .
 ----
 
-In the example data above in <<turtle-eg>, the `Observation` object, `ex:obs-1`, has a number of properties indicated, such as `sosa:hasFeatureOfInterest` which indicates the thing the observation is of, here the `Sample` `ex:sample-c`. The object `ex:sample-c` in turn has properties such as `sosa:isSampleOf` indicating that it's a sample of `ex:sandy-creek` which, although no properties are given, we understand to be a `Feature` by virtue of it being referenced by a property that indicates `Feature` instances.
+In the <<turtle-eg, example data above>>, the object `ex:obs-1` is indicated as being a SOSA `Observation` (`... a sosa:Observation`), and a number of predicates are given for it, such as `sosa:hasFeatureOfInterest` which indicates the thing the observation is characterising predicates of, here the `Sample` `ex:sample-c`. The object `ex:sample-c` in turn has predicates such as `sosa:isSampleOf` indicating that it's a sample of `ex:sandy-creek` which, although no predicates are given, we understand to be a `Feature Of Interest` by virtue of the `Sample` object's relationship to it. The `Observation` is indicated to have taken place on the equipment of ID `ex:sensor-f`. This may be a class of system, rather than a particular instance of a system.
 
 === Profiles
 
-Not all classes and properties must be implemented to make valid data according to this model. For example, the `Result` of an `Observation` may have a `margin of error` indicated, but it need not and a dataset may indicate a `Feature Of Interest` with geospatial location but need not.
+Not all classes and predicates must be implemented to make valid data according to this model. For example, the `Result` of an `Observation` may have a `margin of error` indicated, but it need not and a dataset may indicate a `Feature Of Interest` with geospatial location but need not.
 
-To know if data is valid according to this model, you need to apply a validator, given in the section <<Validators>> to it. That section describes what the validators are, what they look for and tools that you can use to apply them.
+To know if data is valid according to this model, you need to apply a validator, given in the <<Validation>> to it. That section describes what the validators are, what they look for and tools that you can use to apply them.

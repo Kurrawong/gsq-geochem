@@ -29,12 +29,14 @@ include::02-preamble.adoc[]
 
 include::03-intro.adoc[]
 
-include::04-model.adoc[]
+include::04-patterns.adoc[]
 
-include::05-vocabs.adoc[]
+include::05-model.adoc[]
 
-include::06-validators.adoc[]
+include::06-vocabs.adoc[]
 
-include::07-templates.adoc[]
+include::07-validation.adoc[]
 
-include::08-references.adoc[]
+include::08-data-formats.adoc[]
+
+include::09-references.adoc[]
