@@ -12,6 +12,30 @@ NOTE: Models such as this are extensible so what you see here is the minimum inf
 
 The classes (defined in <<Class, 'Class'>>) of this model are those indicated in <<whole-model>>.
 
+==== Class Index
+
+|===
+| SOSA | GeoSPARQL | DCAT | PROV | SDO
+
+| <<sosa:Observation, Observation>>                     | <<geo:Feature, Feature>>      | <<dcat:Dataset, Dataset>> | <<prov:Attribution, Attribution>> | <<sdo:Organization, Organization>>
+| <<sosa:Result, Result>>                               | <<geo:Geometry, Geometry>>    |                           | <<prov:Agent, Agent>>             | <<sdo:Person, Person>>
+| <<sosa:Sample, Sample>>                               |                               |                           | <<prov:Role, Role>>
+| <<sosa:ObservationCollection, Observation Collection>>
+| <<sosa:Procedure, Procedure>>
+| <<sosa:ObservableProperty, Observable Property>>
+| <<sosa:Sensor, Sensor>>
+| <<sosa:FeatureOfInterest, Feature Of Interest>>
+|===
+
+|===
+| SKOS | RDFS | XSD Datatypes
+
+| <<skos:ConceptScheme, Concept Scheme>>    | <<rdfs:Literal, Literal>> | <<xsd:string, string>>
+| <<skos:Concept, Concept>>                 |                           | <<xsd:float, float>>
+|                                           |                           | <<xsd:date, date>>
+|                                           |                           | <<xsd:dateTime, date time>>
+|===
+
 [[sosa-classes]]
 ==== SOSA
 
@@ -63,12 +87,11 @@ ex:obs-1
 | Definition | The Result of an Observation
 | Scope Note | Use this class to encapsulate the numerical or other value of the result of an observation as well as any known unit of measure. Uncertainty (error) may be recorded within a Result too
 | Is Defined By | <<SOSA>>
-| Expected Properties | <<rdf:value, value>>, <<qudt:unit, unit>>, <<sdo:marginOfError, margin of error>>
+| Expected Properties | <<sdo:value, value>>, <<sdo:unitCode, unit code>>, <<sdo:marginOfError, margin of error>>
 | Example
 a| [source,turtle]
 ----
 PREFIX ex: <http://example.com/>
-PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX sdo: <https://schema.org>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 
@@ -78,8 +101,8 @@ ex:obs-1
 .
 
 ex:result-d
-    qudt:numericValue 0.027  ;
-    qudt:units <https://qudt.org/vocab/unit/PPM> ;
+    sdo:value 0.027  ;
+    sdo:unitCode <https://qudt.org/vocab/unit/PPM> ;
     sdo:marginOfError 0.005 ;
 .
 ----
@@ -450,6 +473,14 @@ ex:obscol-a
 | Example | See the Example given for <<dcat:Dataset, Dataset>>
 |===
 
+==== SDO
+
+[[sdo:Organization]]
+===== Organization
+
+[[sdo:Person]]
+===== Person
+
 [[skos-classes]]
 ==== SKOS
 
@@ -462,7 +493,7 @@ ex:obscol-a
 
 | IRI | `skos:ConceptScheme`
 | Name | Concept Scheme
-| Definition | An aggregation of one or more <<skos:Concpet, Concept>> objects
+| Definition | An aggregation of one or more <<skos:Concept, Concept>> objects
 | Scope Note | Use this class only if declaring whole vocabularies of <<skos:Concept, Concept>> objects
 | Is Defined By | <<SKOS>>
 | Expected Properties | Properties for `ConceptScheme` mandated by the https://w3id.org/profile/vocpub[VocPub] profile of SKOS
@@ -501,7 +532,7 @@ op:amount-of-gold
 | IRI | `skos:Concept`
 | Name | Concept 
 | Definition | An idea or notion; a unit of thought
-| Scope Note | Use this class to model the elements in vocabularies of terms for <<sosa:Procedure, Procedure>>, <<sosa:ObservableProperty, Observable Property>>, <<sosa:Sensor, Sensor>> & <<sosa:Role, Role>>
+| Scope Note | Use this class to model the elements in vocabularies of terms for <<sosa:Procedure, Procedure>>, <<sosa:ObservableProperty, Observable Property>>, <<sosa:Sensor, Sensor>> & <<prov:Role, Role>>
 | Is Defined By | <<SKOS>>
 | Expected Properties | Properties for `Concept` mandated by the https://w3id.org/profile/vocpub[VocPub] profile of SKOS
 | Example | See the Example for <<skos:ConceptScheme, Concept Scheme>>
@@ -566,14 +597,13 @@ ex:procedure-b
 a| [source,turtle]
 ----
 PREFIX ex: <http://example.com/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sdo: <https://schema.org/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 ex:obs-a
     a sosa:Result ;
-    rdf:value 0.027  ; # a float value
+    sdo:value 0.027  ; # a float value
     sdo:marginOfError "0.05"^^xsd:float ;  # also a float value
 .
 ----
@@ -622,7 +652,23 @@ ex:obs-a
 
 === Predicates
 
-The predicates (defined in <<Class, 'Class'>>) of this model are those indicated in <<whole-model>>.
+The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those indicated in <<whole-model>>.
+
+==== Predicate Index
+
+|===
+| SOSA | GeoSPARQL | PROV | SDO
+
+| <<sosa:usedProcedure, used procedure>>                    | <<geo:asWKT, as WKT>>             | <<prov:qualifiedAttribution, qualified attribution>>  | <<sdo:name, name>>
+| <<sosa:madeBySensor, made by sensor>>                     | <<geo:hasGeometry, has geometry>> | <<prov:agent, agent>>                                 | <<sdo:description, description>>
+| <<sosa:observedProperty, observed property>>              |                                   | <<prov:hadRole, had role>>                            | <<sdo:dateCreated, date created>>
+| <<sosa:hasFeatureOfInterest, has feature of interest>>    |                                   |                                                       | <<sdo:dateModified, date modified>>
+| <<sosa:phenomenonTime, phenomenon time>>                  |                                   |                                                       | <<sdo:keywords, keywords>>
+| <<sosa:hasResult, has result>>                            |                                   |                                                       | <<sdo:location, location>>
+| <<sosa:isSampleOf, is sample of>>                         |                                   |                                                       | <<sdo:unitCode, unitCode>>
+| <<sosa:hasMember, has member>>                            |                                   |                                                       | <<sdo:value, value>>
+|                                                           |                                   |                                                       | <<sdo:marginOfError, margin of error>>
+|===
 
 [[sosa-predicates]]
 ==== SOSA
@@ -717,32 +763,51 @@ The predicates (defined in <<Class, 'Class'>>) of this model are those indicated
 [[geo:asWKT]]
 ===== as WKT
 
+[[geo:hasGeometry]]
+===== has geometry
+
 [[dcat-predicates]]
 ==== DCAT
 
 [[prov-predicates]]
 ==== PROV
 
-[[skos-predicates]]
-==== SKOS
+[[prov:qualifiedAttribution]]
+===== qualified attribution
+
+[[prov:agent]]
+===== agent
+
+[[prov:hadRole]]
+===== had role
 
 [[sdo-predicates]]
 ==== SDO
 
+[[sdo:name]]
+===== name
+
+[[sdo:description]]
+===== description
+
+[[sdo:dateCreated]]
+===== date created
+
+[[sdo:dateModified]]
+===== date modified
+
+[[sdo:keywords]]
+===== keywords
+
 [[sdo:location]]
 ===== location
+
+[[sdo:unitCode]]
+===== unit code
+
+[[sdo:value]]
+===== value
 
 [[sdo:marginOfError]]
 ===== margin of error
 
-[[qudt-predicates]]
-==== QUDT
-
-[[qudt:unit]]
-===== unit
-
-[[rdf-properties]]
-==== RDF
-
-[[rdf:value]]
-===== value
