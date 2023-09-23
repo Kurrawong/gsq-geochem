@@ -706,25 +706,25 @@ pre.rouge {
 <ul class="sectlevel2">
 <li><a href="#_classes">5.1. Classes</a>
 <ul class="sectlevel3">
-<li><a href="#sosa-classes">5.1.1. SOSA</a></li>
-<li><a href="#geosparql-classes">5.1.2. GeoSPARQL</a></li>
-<li><a href="#dcat-classes">5.1.3. DCAT</a></li>
-<li><a href="#prov-classes">5.1.4. PROV</a></li>
-<li><a href="#skos-classes">5.1.5. SKOS</a></li>
-<li><a href="#_rdfs_2">5.1.6. RDFS</a></li>
-<li><a href="#_xsd_datatypes">5.1.7. XSD Datatypes</a></li>
+<li><a href="#_class_index">5.1.1. Class Index</a></li>
+<li><a href="#sosa-classes">5.1.2. SOSA</a></li>
+<li><a href="#geosparql-classes">5.1.3. GeoSPARQL</a></li>
+<li><a href="#dcat-classes">5.1.4. DCAT</a></li>
+<li><a href="#prov-classes">5.1.5. PROV</a></li>
+<li><a href="#_sdo">5.1.6. SDO</a></li>
+<li><a href="#skos-classes">5.1.7. SKOS</a></li>
+<li><a href="#_rdfs_2">5.1.8. RDFS</a></li>
+<li><a href="#_xsd_datatypes">5.1.9. XSD Datatypes</a></li>
 </ul>
 </li>
 <li><a href="#_predicates">5.2. Predicates</a>
 <ul class="sectlevel3">
-<li><a href="#sosa-predicates">5.2.1. SOSA</a></li>
-<li><a href="#geosparql-predicates">5.2.2. GeoSPARQL</a></li>
-<li><a href="#dcat-predicates">5.2.3. DCAT</a></li>
-<li><a href="#prov-predicates">5.2.4. PROV</a></li>
-<li><a href="#skos-predicates">5.2.5. SKOS</a></li>
+<li><a href="#_predicate_index">5.2.1. Predicate Index</a></li>
+<li><a href="#sosa-predicates">5.2.2. SOSA</a></li>
+<li><a href="#geosparql-predicates">5.2.3. GeoSPARQL</a></li>
+<li><a href="#dcat-predicates">5.2.4. DCAT</a></li>
+<li><a href="#prov-predicates">5.2.5. PROV</a></li>
 <li><a href="#sdo-predicates">5.2.6. SDO</a></li>
-<li><a href="#qudt-predicates">5.2.7. QUDT</a></li>
-<li><a href="#rdf-properties">5.2.8. RDF</a></li>
 </ul>
 </li>
 </ul>
@@ -1286,9 +1286,89 @@ Models such as this are extensible so what you see here is the minimum informati
 <p>The classes (defined in <a href="#_class">'Class'</a>) of this model are those indicated in <a href="#whole-model">Figure 8</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="sosa-classes"><a class="anchor" href="#sosa-classes"></a>5.1.1. SOSA</h4>
+<h4 id="_class_index"><a class="anchor" href="#_class_index"></a>5.1.1. Class Index</h4>
+<table class="tableblock frame-all grid-all stripes-odd stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">SOSA</th>
+<th class="tableblock halign-left valign-top">GeoSPARQL</th>
+<th class="tableblock halign-left valign-top">DCAT</th>
+<th class="tableblock halign-left valign-top">PROV</th>
+<th class="tableblock halign-left valign-top">SDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:Observation">Observation</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:Feature">Feature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#dcat:Dataset">Dataset</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:Attribution">Attribution</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:Organization">Organization</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:Result">Result</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:Geometry">Geometry</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:Agent">Agent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:Person">Person</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:Sample">Sample</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:Role">Role</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:ObservationCollection">Observation Collection</a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stripes-odd stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">SKOS</th>
+<th class="tableblock halign-left valign-top">RDFS</th>
+<th class="tableblock halign-left valign-top">XSD Datatypes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#skos:ConceptScheme">Concept Scheme</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rdfs:Literal">Literal</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#xsd:string">string</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#skos:Concept">Concept</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#xsd:float">float</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#xsd:date">date</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#xsd:dateTime">date time</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="sosa-classes"><a class="anchor" href="#sosa-classes"></a>5.1.2. SOSA</h4>
 <div class="sect4">
-<h5 id="sosa:Observation"><a class="anchor" href="#sosa:Observation"></a>5.1.1.1. Observation</h5>
+<h5 id="sosa:Observation"><a class="anchor" href="#sosa:Observation"></a>5.1.2.1. Observation</h5>
 <div class="paragraph">
 <p><em>Observation</em> is the central class of geochemistry data, according to this specification. Observations are the events undertaken to determine the properties of a sample.</p>
 </div>
@@ -1326,7 +1406,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:usedProcedure">Section 5.2.1.1</a>, <a href="#sosa:madeBySensor">Section 5.2.1.2</a>, <a href="#sosa:observedProperty">Section 5.2.1.3</a>, <a href="#sosa:hasFeatureOfInterest">Section 5.2.1.4</a>, <a href="#sosa:phenomenonTime">Section 5.2.1.5</a>, <a href="#sosa:hasResult">Section 5.2.1.6</a>, <a href="#sdo:marginOfError">Section 5.2.6.2</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:usedProcedure">Section 5.2.2.1</a>, <a href="#sosa:madeBySensor">Section 5.2.2.2</a>, <a href="#sosa:observedProperty">Section 5.2.2.3</a>, <a href="#sosa:hasFeatureOfInterest">Section 5.2.2.4</a>, <a href="#sosa:phenomenonTime">Section 5.2.2.5</a>, <a href="#sosa:hasResult">Section 5.2.2.6</a>, <a href="#sdo:marginOfError">Section 5.2.6.9</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -1354,7 +1434,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:Result"><a class="anchor" href="#sosa:Result"></a>5.1.1.2. Result</h5>
+<h5 id="sosa:Result"><a class="anchor" href="#sosa:Result"></a>5.1.2.2. Result</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1389,14 +1469,13 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rdf:value">value</a>, <a href="#qudt:unit">unit</a>, <a href="#sdo:marginOfError">margin of error</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:value">value</a>, <a href="#sdo:unitCode">unit code</a>, <a href="#sdo:marginOfError">margin of error</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">qudt:</span><span class="w"> </span><span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sosa:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/sosa/&gt;</span><span class="w">
 
@@ -1406,8 +1485,8 @@ Models such as this are extensible so what you see here is the minimum informati
 </span><span class="p">.</span><span class="w">
 
 </span><span class="nn">ex:</span><span class="n">result-d
-</span><span class="w">    </span><span class="nn">qudt:</span><span class="n">numericValue</span><span class="w"> </span><span class="mf">0.0</span><span class="mi">27</span><span class="w">  </span><span class="p">;</span><span class="w">
-    </span><span class="nn">qudt:</span><span class="n">units</span><span class="w"> </span><span class="nl">&lt;https://qudt.org/vocab/unit/PPM&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="mf">0.0</span><span class="mi">27</span><span class="w">  </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">unitCode</span><span class="w"> </span><span class="nl">&lt;https://qudt.org/vocab/unit/PPM&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">marginOfError</span><span class="w"> </span><span class="mf">0.0</span><span class="mi">05</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span></code></pre>
 </div>
@@ -1417,7 +1496,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:Sample"><a class="anchor" href="#sosa:Sample"></a>5.1.1.3. Sample</h5>
+<h5 id="sosa:Sample"><a class="anchor" href="#sosa:Sample"></a>5.1.2.3. Sample</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1482,7 +1561,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:ObservationCollection"><a class="anchor" href="#sosa:ObservationCollection"></a>5.1.1.4. Observation Collection</h5>
+<h5 id="sosa:ObservationCollection"><a class="anchor" href="#sosa:ObservationCollection"></a>5.1.2.4. Observation Collection</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1517,7 +1596,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasMember">Section 5.2.1.8</a>, predicates for Observation objects pertaining to all members of the collection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasMember">Section 5.2.2.8</a>, predicates for Observation objects pertaining to all members of the collection</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -1555,7 +1634,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:Procedure"><a class="anchor" href="#sosa:Procedure"></a>5.1.1.5. Procedure</h5>
+<h5 id="sosa:Procedure"><a class="anchor" href="#sosa:Procedure"></a>5.1.2.5. Procedure</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1623,7 +1702,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:ObservableProperty"><a class="anchor" href="#sosa:ObservableProperty"></a>5.1.1.6. Observable Property</h5>
+<h5 id="sosa:ObservableProperty"><a class="anchor" href="#sosa:ObservableProperty"></a>5.1.2.6. Observable Property</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1692,7 +1771,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:Sensor"><a class="anchor" href="#sosa:Sensor"></a>5.1.1.7. Sensor</h5>
+<h5 id="sosa:Sensor"><a class="anchor" href="#sosa:Sensor"></a>5.1.2.7. Sensor</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1760,7 +1839,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:FeatureOfInterest"><a class="anchor" href="#sosa:FeatureOfInterest"></a>5.1.1.8. Feature Of Interest</h5>
+<h5 id="sosa:FeatureOfInterest"><a class="anchor" href="#sosa:FeatureOfInterest"></a>5.1.2.8. Feature Of Interest</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1835,9 +1914,9 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 </div>
 <div class="sect3">
-<h4 id="geosparql-classes"><a class="anchor" href="#geosparql-classes"></a>5.1.2. GeoSPARQL</h4>
+<h4 id="geosparql-classes"><a class="anchor" href="#geosparql-classes"></a>5.1.3. GeoSPARQL</h4>
 <div class="sect4">
-<h5 id="geo:Feature"><a class="anchor" href="#geo:Feature"></a>5.1.2.1. Feature</h5>
+<h5 id="geo:Feature"><a class="anchor" href="#geo:Feature"></a>5.1.3.1. Feature</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1882,7 +1961,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="geo:Geometry"><a class="anchor" href="#geo:Geometry"></a>5.1.2.2. Geometry</h5>
+<h5 id="geo:Geometry"><a class="anchor" href="#geo:Geometry"></a>5.1.3.2. Geometry</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1928,9 +2007,9 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 </div>
 <div class="sect3">
-<h4 id="dcat-classes"><a class="anchor" href="#dcat-classes"></a>5.1.3. DCAT</h4>
+<h4 id="dcat-classes"><a class="anchor" href="#dcat-classes"></a>5.1.4. DCAT</h4>
 <div class="sect4">
-<h5 id="dcat:Dataset"><a class="anchor" href="#dcat:Dataset"></a>5.1.3.1. Dataset</h5>
+<h5 id="dcat:Dataset"><a class="anchor" href="#dcat:Dataset"></a>5.1.4.1. Dataset</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2007,9 +2086,9 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 </div>
 <div class="sect3">
-<h4 id="prov-classes"><a class="anchor" href="#prov-classes"></a>5.1.4. PROV</h4>
+<h4 id="prov-classes"><a class="anchor" href="#prov-classes"></a>5.1.5. PROV</h4>
 <div class="sect4">
-<h5 id="prov:Attribution"><a class="anchor" href="#prov:Attribution"></a>5.1.4.1. Attribution</h5>
+<h5 id="prov:Attribution"><a class="anchor" href="#prov:Attribution"></a>5.1.5.1. Attribution</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2054,7 +2133,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="prov:Agent"><a class="anchor" href="#prov:Agent"></a>5.1.4.2. Agent</h5>
+<h5 id="prov:Agent"><a class="anchor" href="#prov:Agent"></a>5.1.5.2. Agent</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2091,7 +2170,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="prov:Role"><a class="anchor" href="#prov:Role"></a>5.1.4.3. Role</h5>
+<h5 id="prov:Role"><a class="anchor" href="#prov:Role"></a>5.1.5.3. Role</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2137,9 +2216,20 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 </div>
 <div class="sect3">
-<h4 id="skos-classes"><a class="anchor" href="#skos-classes"></a>5.1.5. SKOS</h4>
+<h4 id="_sdo"><a class="anchor" href="#_sdo"></a>5.1.6. SDO</h4>
 <div class="sect4">
-<h5 id="skos:ConceptScheme"><a class="anchor" href="#skos:ConceptScheme"></a>5.1.5.1. Concept Scheme</h5>
+<h5 id="sdo:Organization"><a class="anchor" href="#sdo:Organization"></a>5.1.6.1. Organization</h5>
+
+</div>
+<div class="sect4">
+<h5 id="sdo:Person"><a class="anchor" href="#sdo:Person"></a>5.1.6.2. Person</h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="skos-classes"><a class="anchor" href="#skos-classes"></a>5.1.7. SKOS</h4>
+<div class="sect4">
+<h5 id="skos:ConceptScheme"><a class="anchor" href="#skos:ConceptScheme"></a>5.1.7.1. Concept Scheme</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2162,7 +2252,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An aggregation of one or more <a href="#skos:Concpet">Concept</a> objects</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An aggregation of one or more <a href="#skos:Concept">Concept</a> objects</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
@@ -2206,7 +2296,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="skos:Concept"><a class="anchor" href="#skos:Concept"></a>5.1.5.2. Concept</h5>
+<h5 id="skos:Concept"><a class="anchor" href="#skos:Concept"></a>5.1.7.2. Concept</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2233,7 +2323,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this class to model the elements in vocabularies of terms for <a href="#sosa:Procedure">Procedure</a>, <a href="#sosa:ObservableProperty">Observable Property</a>, <a href="#sosa:Sensor">Sensor</a> &amp; <a href="#sosa:Role">Role</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this class to model the elements in vocabularies of terms for <a href="#sosa:Procedure">Procedure</a>, <a href="#sosa:ObservableProperty">Observable Property</a>, <a href="#sosa:Sensor">Sensor</a> &amp; <a href="#prov:Role">Role</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -2252,9 +2342,9 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rdfs_2"><a class="anchor" href="#_rdfs_2"></a>5.1.6. RDFS</h4>
+<h4 id="_rdfs_2"><a class="anchor" href="#_rdfs_2"></a>5.1.8. RDFS</h4>
 <div class="sect4">
-<h5 id="rdfs:Literal"><a class="anchor" href="#rdfs:Literal"></a>5.1.6.1. Literal</h5>
+<h5 id="rdfs:Literal"><a class="anchor" href="#rdfs:Literal"></a>5.1.8.1. Literal</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2292,9 +2382,9 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 </div>
 <div class="sect3">
-<h4 id="_xsd_datatypes"><a class="anchor" href="#_xsd_datatypes"></a>5.1.7. XSD Datatypes</h4>
+<h4 id="_xsd_datatypes"><a class="anchor" href="#_xsd_datatypes"></a>5.1.9. XSD Datatypes</h4>
 <div class="sect4">
-<h5 id="xsd:string"><a class="anchor" href="#xsd:string"></a>5.1.7.1. string</h5>
+<h5 id="xsd:string"><a class="anchor" href="#xsd:string"></a>5.1.9.1. string</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2345,7 +2435,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="xsd:float"><a class="anchor" href="#xsd:float"></a>5.1.7.2. float</h5>
+<h5 id="xsd:float"><a class="anchor" href="#xsd:float"></a>5.1.9.2. float</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2383,14 +2473,13 @@ Models such as this are extensible so what you see here is the minimum informati
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">rdf:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sosa:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/sosa/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w">
 
 </span><span class="nn">ex:</span><span class="n">obs-a
 </span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Result</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">rdf:</span><span class="n">value</span><span class="w"> </span><span class="mf">0.0</span><span class="mi">27</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="c1"># a float value</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="mf">0.0</span><span class="mi">27</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="c1"># a float value</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">marginOfError</span><span class="w"> </span><span class="s">"0.05"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">float</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># also a float value</span><span class="w">
 </span><span class="p">.</span></code></pre>
 </div>
@@ -2400,7 +2489,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="xsd:date"><a class="anchor" href="#xsd:date"></a>5.1.7.3. date</h5>
+<h5 id="xsd:date"><a class="anchor" href="#xsd:date"></a>5.1.9.3. date</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2441,7 +2530,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="xsd:dateTime"><a class="anchor" href="#xsd:dateTime"></a>5.1.7.4. date time</h5>
+<h5 id="xsd:dateTime"><a class="anchor" href="#xsd:dateTime"></a>5.1.9.4. date time</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2497,12 +2586,87 @@ Models such as this are extensible so what you see here is the minimum informati
 <div class="sect2">
 <h3 id="_predicates"><a class="anchor" href="#_predicates"></a>5.2. Predicates</h3>
 <div class="paragraph">
-<p>The predicates (defined in <a href="#_class">'Class'</a>) of this model are those indicated in <a href="#whole-model">Figure 8</a>.</p>
+<p>The predicates (defined in <a href="#_predicate">'Predicate'</a>) of this model are those indicated in <a href="#whole-model">Figure 8</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="sosa-predicates"><a class="anchor" href="#sosa-predicates"></a>5.2.1. SOSA</h4>
+<h4 id="_predicate_index"><a class="anchor" href="#_predicate_index"></a>5.2.1. Predicate Index</h4>
+<table class="tableblock frame-all grid-all stripes-odd stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">SOSA</th>
+<th class="tableblock halign-left valign-top">GeoSPARQL</th>
+<th class="tableblock halign-left valign-top">PROV</th>
+<th class="tableblock halign-left valign-top">SDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:usedProcedure">used procedure</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:asWKT">as WKT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:qualifiedAttribution">qualified attribution</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:name">name</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:madeBySensor">made by sensor</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:hasGeometry">has geometry</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:agent">agent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:description">description</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:observedProperty">observed property</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:hadRole">had role</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:dateCreated">date created</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasFeatureOfInterest">has feature of interest</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:dateModified">date modified</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:phenomenonTime">phenomenon time</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:keywords">keywords</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasResult">has result</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:location">location</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:isSampleOf">is sample of</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:unitCode">unitCode</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasMember">has member</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:value">value</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:marginOfError">margin of error</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="sosa-predicates"><a class="anchor" href="#sosa-predicates"></a>5.2.2. SOSA</h4>
 <div class="sect4">
-<h5 id="sosa:usedProcedure"><a class="anchor" href="#sosa:usedProcedure"></a>5.2.1.1. used procedure</h5>
+<h5 id="sosa:usedProcedure"><a class="anchor" href="#sosa:usedProcedure"></a>5.2.2.1. used procedure</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2543,7 +2707,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:madeBySensor"><a class="anchor" href="#sosa:madeBySensor"></a>5.2.1.2. made by sensor</h5>
+<h5 id="sosa:madeBySensor"><a class="anchor" href="#sosa:madeBySensor"></a>5.2.2.2. made by sensor</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2584,7 +2748,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:observedProperty"><a class="anchor" href="#sosa:observedProperty"></a>5.2.1.3. observed property</h5>
+<h5 id="sosa:observedProperty"><a class="anchor" href="#sosa:observedProperty"></a>5.2.2.3. observed property</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2625,7 +2789,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:hasFeatureOfInterest"><a class="anchor" href="#sosa:hasFeatureOfInterest"></a>5.2.1.4. has feature of interest</h5>
+<h5 id="sosa:hasFeatureOfInterest"><a class="anchor" href="#sosa:hasFeatureOfInterest"></a>5.2.2.4. has feature of interest</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2666,7 +2830,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:phenomenonTime"><a class="anchor" href="#sosa:phenomenonTime"></a>5.2.1.5. phenomenon time</h5>
+<h5 id="sosa:phenomenonTime"><a class="anchor" href="#sosa:phenomenonTime"></a>5.2.2.5. phenomenon time</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2707,59 +2871,84 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:hasResult"><a class="anchor" href="#sosa:hasResult"></a>5.2.1.6. has result</h5>
+<h5 id="sosa:hasResult"><a class="anchor" href="#sosa:hasResult"></a>5.2.2.6. has result</h5>
 
 </div>
 <div class="sect4">
-<h5 id="sosa:isSampleOf"><a class="anchor" href="#sosa:isSampleOf"></a>5.2.1.7. is sample of</h5>
+<h5 id="sosa:isSampleOf"><a class="anchor" href="#sosa:isSampleOf"></a>5.2.2.7. is sample of</h5>
 
 </div>
 <div class="sect4">
-<h5 id="sosa:hasMember"><a class="anchor" href="#sosa:hasMember"></a>5.2.1.8. has member</h5>
+<h5 id="sosa:hasMember"><a class="anchor" href="#sosa:hasMember"></a>5.2.2.8. has member</h5>
 
 </div>
 </div>
 <div class="sect3">
-<h4 id="geosparql-predicates"><a class="anchor" href="#geosparql-predicates"></a>5.2.2. GeoSPARQL</h4>
+<h4 id="geosparql-predicates"><a class="anchor" href="#geosparql-predicates"></a>5.2.3. GeoSPARQL</h4>
 <div class="sect4">
-<h5 id="geo:asWKT"><a class="anchor" href="#geo:asWKT"></a>5.2.2.1. as WKT</h5>
+<h5 id="geo:asWKT"><a class="anchor" href="#geo:asWKT"></a>5.2.3.1. as WKT</h5>
+
+</div>
+<div class="sect4">
+<h5 id="geo:hasGeometry"><a class="anchor" href="#geo:hasGeometry"></a>5.2.3.2. has geometry</h5>
 
 </div>
 </div>
 <div class="sect3">
-<h4 id="dcat-predicates"><a class="anchor" href="#dcat-predicates"></a>5.2.3. DCAT</h4>
+<h4 id="dcat-predicates"><a class="anchor" href="#dcat-predicates"></a>5.2.4. DCAT</h4>
 
 </div>
 <div class="sect3">
-<h4 id="prov-predicates"><a class="anchor" href="#prov-predicates"></a>5.2.4. PROV</h4>
+<h4 id="prov-predicates"><a class="anchor" href="#prov-predicates"></a>5.2.5. PROV</h4>
+<div class="sect4">
+<h5 id="prov:qualifiedAttribution"><a class="anchor" href="#prov:qualifiedAttribution"></a>5.2.5.1. qualified attribution</h5>
 
 </div>
-<div class="sect3">
-<h4 id="skos-predicates"><a class="anchor" href="#skos-predicates"></a>5.2.5. SKOS</h4>
+<div class="sect4">
+<h5 id="prov:agent"><a class="anchor" href="#prov:agent"></a>5.2.5.2. agent</h5>
 
+</div>
+<div class="sect4">
+<h5 id="prov:hadRole"><a class="anchor" href="#prov:hadRole"></a>5.2.5.3. had role</h5>
+
+</div>
 </div>
 <div class="sect3">
 <h4 id="sdo-predicates"><a class="anchor" href="#sdo-predicates"></a>5.2.6. SDO</h4>
 <div class="sect4">
-<h5 id="sdo:location"><a class="anchor" href="#sdo:location"></a>5.2.6.1. location</h5>
+<h5 id="sdo:name"><a class="anchor" href="#sdo:name"></a>5.2.6.1. name</h5>
 
 </div>
 <div class="sect4">
-<h5 id="sdo:marginOfError"><a class="anchor" href="#sdo:marginOfError"></a>5.2.6.2. margin of error</h5>
+<h5 id="sdo:description"><a class="anchor" href="#sdo:description"></a>5.2.6.2. description</h5>
 
 </div>
-</div>
-<div class="sect3">
-<h4 id="qudt-predicates"><a class="anchor" href="#qudt-predicates"></a>5.2.7. QUDT</h4>
 <div class="sect4">
-<h5 id="qudt:unit"><a class="anchor" href="#qudt:unit"></a>5.2.7.1. unit</h5>
+<h5 id="sdo:dateCreated"><a class="anchor" href="#sdo:dateCreated"></a>5.2.6.3. date created</h5>
 
 </div>
-</div>
-<div class="sect3">
-<h4 id="rdf-properties"><a class="anchor" href="#rdf-properties"></a>5.2.8. RDF</h4>
 <div class="sect4">
-<h5 id="rdf:value"><a class="anchor" href="#rdf:value"></a>5.2.8.1. value</h5>
+<h5 id="sdo:dateModified"><a class="anchor" href="#sdo:dateModified"></a>5.2.6.4. date modified</h5>
+
+</div>
+<div class="sect4">
+<h5 id="sdo:keywords"><a class="anchor" href="#sdo:keywords"></a>5.2.6.5. keywords</h5>
+
+</div>
+<div class="sect4">
+<h5 id="sdo:location"><a class="anchor" href="#sdo:location"></a>5.2.6.6. location</h5>
+
+</div>
+<div class="sect4">
+<h5 id="sdo:unitCode"><a class="anchor" href="#sdo:unitCode"></a>5.2.6.7. unit code</h5>
+
+</div>
+<div class="sect4">
+<h5 id="sdo:value"><a class="anchor" href="#sdo:value"></a>5.2.6.8. value</h5>
+
+</div>
+<div class="sect4">
+<h5 id="sdo:marginOfError"><a class="anchor" href="#sdo:marginOfError"></a>5.2.6.9. margin of error</h5>
 
 </div>
 </div>
@@ -2868,7 +3057,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-22 07:46:53 UTC
+Last updated 2023-09-23 09:53:18 UTC
 </div>
 </div>
 </body>
