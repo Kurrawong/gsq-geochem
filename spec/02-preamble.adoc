@@ -2,35 +2,35 @@
 
 === Class
 
-Within formal <<OWL>> modelling a class is a set of objects exhibiting common properties. For example, the set of all people who are studying could be defined as being within a _Student_ class.
+Within formal <<OWL, OWL>> modelling a class is a set of objects exhibiting common properties. For example, the set of all people who are studying could be defined as being within a _Student_ class.
 
 === Conformance
 
-The conformance imperatives of data to this Specification use terms from _RFC 2119: Key words for use in RFCs to Indicate Requirement Levels_ <<RFC2119>> which defines terms such as *_MUST_*, *_SHALL_* and *_MAY_*.
+The conformance imperatives of data to this Specification use terms from _RFC 2119: Key words for use in RFCs to Indicate Requirement Levels_ <<RFC2119, RFC2119>> which defines terms such as *_MUST_*, *_SHALL_* and *_MAY_*.
 
 === Terms & Definitions
 
 ==== RDF
 
-The Resource Description Framework (RDF) is a framework for representing information in the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, blank nodes, or datatyped literals. They are used to express descriptions of resources. <<RDFSPEC>>
+The Resource Description Framework (RDF) is a framework for representing information in the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, blank nodes, or datatyped literals. They are used to express descriptions of resources. <<RDFSPEC, RDFSPEC>>
 
 ==== RDFS
 
-RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary. <<RDFS>>
+RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary. <<RDFS, RDFS>>
 
 ==== OWL
 
-The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as Semantic Web documents. OWL 2 ontologies can be used along with information written in RDF, and OWL 2 ontologies themselves are primarily exchanged as RDF documents. <<OWL2>>
+The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as Semantic Web documents. OWL 2 ontologies can be used along with information written in RDF, and OWL 2 ontologies themselves are primarily exchanged as RDF documents. <<OWL2, OWL>>
 
 ==== Predicate
 
-Predicates, within formal <<OWL>> modelling, are the defined relations between objects of different classes (see <<Class>>) and also between objects and simple data values such as numbers and dates. For example, if _Person X_ "knows" _Person Y_, then we can use a predicate of `knows` to relate them.
+Predicates, within formal <<OWL, OWL>> modelling, are the defined relations between objects of different classes (see <<Class>>) and also between objects and simple data values such as numbers and dates. For example, if _Person X_ "knows" _Person Y_, then we can use a predicate of `knows` to relate them.
 
-Frequently we use predicates already defined in existing ontologies. "knows", for example, is defined in the schema.org ontology <<SDO>> to be "The most generic bi-directional social/work relation".
+Frequently we use predicates already defined in existing ontologies. "knows", for example, is defined in the schema.org ontology <<SDO, SDO>> to be "The most generic bi-directional social/work relation".
 
 ==== SPARQL
 
-SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <<SPARQL>>
+SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <<SPARQL, SPARQL>>
 
 === Namespaces
 
@@ -38,15 +38,14 @@ Namespaces for model, vocabulary and validator elements are assigned the followi
 
 [frame=none, grid=none, cols="1, 4, 4"]
 |===
-| `dcat` | http://www.w3.org/ns/dcat# | <<DCAT>> ontology
+| `dcat` | http://www.w3.org/ns/dcat# | <<DCAT, DCAT>> ontology
 | `ex`: | http://example.com/ | A non-resolving namespace for examples
 | `geo`: | http://www.opengis.net/ont/geosparql# | GeoSPARQL Ontology
-| `owl`: | http://www.w3.org/2002/07/owl# | <<OWL2>> ontology
-| `prov`: | http://www.w3.org/ns/prov# | <<PROV>> ontology
-| `rdf`: | http://www.w3.org/1999/02/22-rdf-syntax-ns# | <<RDF>> ontology
-| `rdfs`: | http://www.w3.org/2000/01/rdf-schema# | <<RDFS>> ontology
-| `sdo`: | https://schema.org/ | <<SDO>> vocabulary
-| `skos`: | http://www.w3.org/2004/02/skos/core# | <<SKOS>> ontology
-| `sosa`: | http://www.w3.org/ns/sosa/ | SOSA ontology within <<SOSA>>
-| `xsd`: | http://www.w3.org/2001/XMLSchema# | <<XSD2>> datatypes vocabulary
+| `owl`: | http://www.w3.org/2002/07/owl# | <<OWL2, OWL>> ontology
+| `prov`: | http://www.w3.org/ns/prov# | <<PROV, PROV>> ontology
+| `rdfs`: | http://www.w3.org/2000/01/rdf-schema# | <<RDFS, RDFS>> ontology
+| `sdo`: | https://schema.org/ | <<SDO, SDO>> vocabulary
+| `skos`: | http://www.w3.org/2004/02/skos/core# | <<SKOS, SKOS>> ontology
+| `sosa`: | http://www.w3.org/ns/sosa/ | SOSA ontology within <<SOSA, SOSA>>
+| `xsd`: | http://www.w3.org/2001/XMLSchema# | <<XSD2, XSD>> datatypes vocabulary
 |===

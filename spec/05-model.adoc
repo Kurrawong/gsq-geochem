@@ -1,6 +1,6 @@
 == Model
 
-This section describes the elements of the model of this specification in detail: lists of the Classes and Predicates of the model which are all taken from the Classes and Properties of the SOSA foreground model <<SOSA>> and the background models (<<DCAT>>, <<GSP>>, <<PROV>>, <<SDO>>). All the Classes and Predicates described here are shown in <<whole-model>>.
+This section describes the elements of the model of this specification in detail: lists of the Classes and Predicates of the model which are all taken from the Classes and Properties of the SOSA foreground model <<SOSA, SOSA>> and the background models (<<DCAT, DCAT>>, <<GSP, GSP>>, <<PROV, PROV>>, <<SDO, SDO>>). All the Classes and Predicates described here are shown in <<whole-model>>.
 
 [#whole-model]
 .An OWL diagram with foreground and background model groupings used for geochemistry data modelling. _Click it to zoom._
@@ -15,7 +15,7 @@ The classes (defined in <<Class, 'Class'>>) of this model are those indicated in
 ==== Class Index
 
 |===
-| SOSA | GeoSPARQL | DCAT | PROV | SDO
+| SOSA | GSP | DCAT | PROV | SDO
 
 | <<sosa:Observation, Observation>>                     | <<geo:Feature, Feature>>      | <<dcat:Dataset, Dataset>> | <<prov:Attribution, Attribution>> | <<sdo:Organization, Organization>>
 | <<sosa:Result, Result>>                               | <<geo:Geometry, Geometry>>    |                           | <<prov:Agent, Agent>>             | <<sdo:Person, Person>>
@@ -52,8 +52,8 @@ _Observation_ is the central class of geochemistry data, according to this speci
 | Name | Observation
 | Definition | Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest
 | Scope Note | Use this class to represent a single event  of observation of a property of a Feature Of Interest (Sample)
-| Is Defined By | <<SOSA>>
-| Expected Properties | <<sosa:usedProcedure>>, <<sosa:madeBySensor>>, <<sosa:observedProperty>>, <<sosa:hasFeatureOfInterest>>, <<sosa:phenomenonTime>>, <<sosa:hasResult>>, <<sdo:marginOfError>>
+| Is Defined By | <<SOSA, SOSA>>
+| Expected Properties | <<sosa:usedProcedure, used procedure>>, <<sosa:madeBySensor, made by sensor>>, <<sosa:observedProperty, observed property>>, <<sosa:hasFeatureOfInterest, has feature of interest>>, <<sosa:phenomenonTime, phenomenon time>>, <<sosa:hasResult, has result>>, <<sdo:marginOfError, margin of error>>
 | Example
 a| [source,turtle]
 ----
@@ -86,7 +86,7 @@ ex:obs-1
 | Name | Result
 | Definition | The Result of an Observation
 | Scope Note | Use this class to encapsulate the numerical or other value of the result of an observation as well as any known unit of measure. Uncertainty (error) may be recorded within a Result too
-| Is Defined By | <<SOSA>>
+| Is Defined By | <<SOSA, SOSA>>
 | Expected Properties | <<sdo:value, value>>, <<sdo:unitCode, unit code>>, <<sdo:marginOfError, margin of error>>
 | Example
 a| [source,turtle]
@@ -119,7 +119,7 @@ ex:result-d
 | Name | Sample
 | Definition | Samples are typically subsets or extracts from the feature of interest of an observation
 | Scope Note | Use this class to model the thing for which properties are being determined by geochemical analysis
-| Is Defined By | <<SOSA>>
+| Is Defined By | <<SOSA, SOSA>>
 | Expected Properties | <<sosa:isSampleOf, is sample of>>
 | Example
 a| [source,turtle]
@@ -199,9 +199,9 @@ ex:obscol-a
 | Subclass Of | <<skos:Concept, Concept>>
 | Name | Procedure
 | Definition | A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation
-| Scope Note | Use <<SKOS>>`Concept` instances from vocabularies of methods to indicate the `Procedure` used for a particular `Observation`
-| Is Defined By | <<SOSA>>
-| Expected Properties | <<SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
+| Scope Note | Use <<SKOS, SKOS>> `Concept` instances from vocabularies of methods to indicate the `Procedure` used for a particular `Observation`
+| Is Defined By | <<SOSA, SOSA>>
+| Expected Properties | <<SKOS, SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
 | Example
 a| [source,turtle]
 ----
@@ -235,9 +235,9 @@ ex:procedure-b
 | Subclass Of | <<skos:Concept, Concept>>
 | Name | Observable Property
 | Definition | An observable quality (property, characteristic) of a FeatureOfInterest
-| Scope Note | Use <<SKOS>>`Concept` instances from vocabularies of observable properties to indicate the `Observable Property` observed by a particular `Observation`
-| Is Defined By | <<SOSA>>
-| Expected Properties | <<SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
+| Scope Note | Use <<SKOS, SKOS>>`Concept` instances from vocabularies of observable properties to indicate the `Observable Property` observed by a particular `Observation`
+| Is Defined By | <<SOSA, SOSA>>
+| Expected Properties | <<SKOS, SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
 | Example
 a| [source,turtle]
 ----
@@ -272,9 +272,9 @@ op:amount-of-gold
 | Subclass Of | <<skos:Concept, Concept>>
 | Name | Sensor
 | Definition | Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure
-| Scope Note | Use <<SKOS>>`Concept` instances from vocabularies of observable properties to indicate the equipment conducting the a particular `Observation`
-| Is Defined By | <<SOSA>>
-| Expected Properties | <<SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
+| Scope Note | Use <<SKOS, SKOS>>`Concept` instances from vocabularies of observable properties to indicate the equipment conducting the a particular `Observation`
+| Is Defined By | <<SOSA, SOSA>>
+| Expected Properties | <<SKOS, SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
 | Example
 a| [source,turtle]
 ----
@@ -309,7 +309,7 @@ ex:sensor-f
 | Name | Feature Of Interest
 | Definition | The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result
 | Scope Note | Use this class to indicate not the direct object whose properties are observed by an `Observation` if that thing is a sample - use `Sample`. Use only if the thing whose properties are observed is the object of ultimate interest, e.g. a rock unit. Expected use is to indicate an FoI in an existing dataset, such as a geological unit in the https://linked.data.gov.au/dataset/qldgeofeatures[Queensland Geological Features Dataset]
-| Is Defined By | <<SOSA>>
+| Is Defined By | <<SOSA, SOSA>>
 | Expected Properties | Location and other properties relevant to the specific kind of Feature that this Feature of Interest it. Properties other than location are out of scope for geochemistry modelling
 | Example
 a| [source,turtle]
@@ -340,7 +340,7 @@ ex:sample-c
 |===
 
 [[geosparql-classes]]
-==== GeoSPARQL
+==== GSP
 
 [[geo:Feature]]
 ===== Feature
@@ -353,7 +353,7 @@ ex:sample-c
 | Name | Feature
 | Definition | A discrete spatial phenomenon in a universe of discourse
 | Scope Note | See the Scope Note for <<sosa:FeatureOfInterest, Feature Of Interest>>
-| Is Defined By | <<GSP>>
+| Is Defined By | <<GSP, GSP>>
 | Expected Properties |  See the Expected Properties for <<sosa:FeatureOfInterest, Feature Of Interest>>
 | Example | See the Example for <<sosa:FeatureOfInterest, Feature Of Interest>>
 |===
@@ -369,7 +369,7 @@ ex:sample-c
 | Name | Geometry
 | Definition | A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS)
 | Scope Note | To be used to indicate geospatial coordinates for a <<geo:Feature, Feature>>
-| Is Defined By | <<GSP>>
+| Is Defined By | <<GSP, GSP>>
 | Expected Properties | <<geo:asWKT, as WKT>>
 | Example | See the Example for <<sosa:FeatureOfInterest, Feature Of Interest>>
 |===
@@ -388,14 +388,15 @@ ex:sample-c
 | Name | Dataset
 | Definition | A collection of data, published or curated by a single agent, and available for access or download in one or more representations
 | Scope Note | Use this class to describe a package of data that contains one or more <<sosa:ObservationCollection, Observation Collection>> objects.
-| Is Defined By | <<SOSA>>
-| Expected Properties | At least <<sdo:name, name>>, <<sdo:description, description>>, <<sdo:dateCreated, data created>>, <<sdo:dateModified, data modified>>, and <<prov:qualifiedAttribution, qualified attribution>>, but potentially any other <<DCAT>> and <<SDO>> predicates thought relevant to well describe the dataset. <<sdo:keywords, keyword>> predicate values may be calculated from contained data and need not be supplied.
+| Is Defined By | <<SOSA, SOSA>>
+| Expected Properties | At least <<sdo:name, name>>, <<sdo:description, description>>, <<sdo:dateCreated, data created>>, <<sdo:dateModified, data modified>>, and <<prov:qualifiedAttribution, qualified attribution>>, but potentially any other <<DCAT, DCAT>> and <<SDO, SDO>> predicates thought relevant to well describe the dataset. <<sdo:keywords, keyword>> predicate values may be calculated from contained data and need not be supplied.
 | Example
 a| [source,turtle]
 ----
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX gch: <https://linked.data.gov.au/def/geochem/>
 PREFIX ex: <http://example.com/>
+PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX rc: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
 PREFIX sdo: <https://schema.org/>
@@ -415,6 +416,7 @@ ex:dataset-n
         ] ;
         prov:hadRole rc:originator ;  # SKOS Concept used as a PROV Role
     ] ;
+    sdo:keywords op:amount-of-gold ;
     sdo:hasPart ex:obscol-a ;
 .
 
@@ -438,7 +440,7 @@ ex:obscol-a
 | Name | Attribution
 | Definition | The ascribing of an entity to an agent
 | Scope Note | Use objects of this class to link <<dcat:Dataset, Dataset>> objects to <<prov:Agent, Agent>> objects and the roles they played with respect to the dataset
-| Is Defined By | <<PROV>>
+| Is Defined By | <<PROV, PROV>>
 | Expected Properties | <<prov:agent, agent>>, <<prov:hadRole, had role>>
 | Example | See the Example for <<dcat:Dataset, Dataset>>
 |===
@@ -454,7 +456,7 @@ ex:obscol-a
 | Name | Agent
 | Definition | Something that bears some form of responsibility for an activity taking place
 | Scope Note | Do not use this class directly but, instead, use either <<sdo:Organization, Organisation>> or <<sdo:Person, Person>> which are subclasses of this class. This class is retained for model completeness
-| Is Defined By | <<PROV>>
+| Is Defined By | <<PROV, PROV>>
 |===
 
 [[prov:Role]]
@@ -467,9 +469,9 @@ ex:obscol-a
 | IRI | `prov:Role`
 | Name | Role
 | Definition | 
-| Scope Note | Use <<SKOS>>`Concept` instances from vocabularies of methods to indicate the `Role` played by an <<prov:Agent, Agent>> object with respect to a <<dcat:Dataset, Dataset>> object
-| Is Defined By | <<PROV>>
-| Expected Properties | <<SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
+| Scope Note | Use <<SKOS, SKOS>>`Concept` instances from vocabularies of methods to indicate the `Role` played by an <<prov:Agent, Agent>> object with respect to a <<dcat:Dataset, Dataset>> object
+| Is Defined By | <<PROV, PROV>>
+| Expected Properties | <<SKOS, SKOS>> `Concept` properties, e.g. annotations (label & definition) and relations to other `Concept` objects
 | Example | See the Example given for <<dcat:Dataset, Dataset>>
 |===
 
@@ -495,7 +497,7 @@ ex:obscol-a
 | Name | Concept Scheme
 | Definition | An aggregation of one or more <<skos:Concept, Concept>> objects
 | Scope Note | Use this class only if declaring whole vocabularies of <<skos:Concept, Concept>> objects
-| Is Defined By | <<SKOS>>
+| Is Defined By | <<SKOS, SKOS>>
 | Expected Properties | Properties for `ConceptScheme` mandated by the https://w3id.org/profile/vocpub[VocPub] profile of SKOS
 | Example
 a| [source,turtle]
@@ -533,7 +535,7 @@ op:amount-of-gold
 | Name | Concept 
 | Definition | An idea or notion; a unit of thought
 | Scope Note | Use this class to model the elements in vocabularies of terms for <<sosa:Procedure, Procedure>>, <<sosa:ObservableProperty, Observable Property>>, <<sosa:Sensor, Sensor>> & <<prov:Role, Role>>
-| Is Defined By | <<SKOS>>
+| Is Defined By | <<SKOS, SKOS>>
 | Expected Properties | Properties for `Concept` mandated by the https://w3id.org/profile/vocpub[VocPub] profile of SKOS
 | Example | See the Example for <<skos:ConceptScheme, Concept Scheme>>
 |===
@@ -657,7 +659,7 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 ==== Predicate Index
 
 |===
-| SOSA | GeoSPARQL | PROV | SDO
+| SOSA | GSP | PROV | SDO
 
 | <<sosa:usedProcedure, used procedure>>                    | <<geo:asWKT, as WKT>>             | <<prov:qualifiedAttribution, qualified attribution>>  | <<sdo:name, name>>
 | <<sosa:madeBySensor, made by sensor>>                     | <<geo:hasGeometry, has geometry>> | <<prov:agent, agent>>                                 | <<sdo:description, description>>
@@ -684,7 +686,7 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 | Name | used procedure
 | Definition | A relation to link to a re-usable Procedure used in making an Observation
 | Scope Note | Use this property to indicate a <<sosa:Procedure, Procedure>> used to obtain an <<sosa:Observation, Observation>> but indicate <<skos:Concept, Concept>> objects taken from vocabularies
-| Is Defined By | <<SOSA>>
+| Is Defined By | <<SOSA, SOSA>>
 | Example | See the Example for <<sosa:Procedure, Procedure>>
 |===
 
@@ -699,7 +701,7 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 | Name | made by sensor
 | Definition | Relation between an Observation and the Sensor which made the Observations
 | Scope Note | Use this property to indicate a <<sosa:Sensor, Sensor>> used to obtain an <<sosa:Observation, Observation>> but indicate <<skos:Concept, Concept>> objects taken from vocabularies
-| Is Defined By | <<SOSA>>
+| Is Defined By | <<SOSA, SOSA>>
 | Example | See the Example for <<sosa:Sensor, Sensor>>
 |===
 
@@ -712,9 +714,9 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 
 | IRI | `sosa:observedProperty`
 | Name | observed property
-| Definition | Relation between an Observation and the Sensor which made the Observations
+| Definition | Relation linking an Observation to the property that was observed. The Observable Property should be a property of the Feature Of Interest
 | Scope Note | Use this property to indicate an <<sosa:ObservableProperty, Observable Property>> observed by an <<sosa:Observation, Observation>> but indicate <<skos:Concept, Concept>> objects taken from vocabularies
-| Is Defined By | <<SOSA>>
+| Is Defined By | <<SOSA, SOSA>>
 | Example | See the Example for <<sosa:ObservableProperty, Observable Property>>
 |===
 
@@ -729,7 +731,7 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 | Name | has feature of interest
 | Definition | Relation between an Observation and the entity whose quality was observed
 | Scope Note | Use this property to indicate a <<sosa:FeatureOfInterest, Feature Of Interest>> whose properties were observed by an <<sosa:Observation, Observation>> but indicate <<geo:Feature, Feature>> objects taken from lists of spatial objects
-| Is Defined By | <<SOSA>>
+| Is Defined By | <<SOSA, SOSA>>
 | Example | See the Example for <<sosa:FeatureOfInterest, Feature Of Interest>>
 |===
 
@@ -744,30 +746,87 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 | Name | phenomenon time
 | Definition | The time that the Result of an Observation applies to the FeatureOfInterest
 | Scope Note | Use this property to indicate the date and time of the production of a <<sosa:Result, Result>> by an <<sosa:Observation, Observation>>. Indicate a literal <<xsd:dateTime, date time>> or <<xsd:date, date>> value
-| Is Defined By | <<SOSA>>
+| Is Defined By | <<SOSA, SOSA>>
 | Example | See the Example for <<sosa:Observation, Observation>>
 |===
 
 [[sosa:hasResult]]
 ===== has result
 
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:hasResult`
+| Name | has result
+| Definition |Relation linking an Observation and a Result, which contains a value representing the value associated with the observed Property
+| Scope Note | Use this property to indicate the <<sosa:Result, Result>>, or multiple Results, produced by an <<sosa:Observation, Observation>>
+| Is Defined By | <<SOSA, SOSA>>
+| Example | See the Example for <<sosa:Observation, Observation>>
+|===
+
 [[sosa:isSampleOf]]
 ===== is sample of
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sosa:isSampleOf`
+| Name | is sample of
+| Definition | Relation from a Sample to the FeatureOfInterest that it is intended to be representative of
+| Scope Note | Use this property to indicate the <<sosa:FeatureOfInterest, Feature Of Interest>> that a <<sosa:Sample, Sample>> is a sample of
+| Is Defined By | <<SOSA, SOSA>>
+| Example | See the Example of <<sosa:FeatureOfInterest, Feature Of Interest>>
+|===
 
 [[sosa:hasMember]]
 ===== has member
 
-[[geosparql-predicates]]
-==== GeoSPARQL
+[cols="2,6"]
+|===
+| Property | Value
 
-[[geo:asWKT]]
-===== as WKT
+| IRI | `sosa:hasMember`
+| Name | has member
+| Definition | Link to a member of a collection of observations that share the same value for one or more of the characteristic properties
+| Scope Note | Use this property to link the <<sosa:ObservationCollection, Observation Collection>> objects to <<sosa:Observation, Observation>>
+| Is Defined By | <<SOSA, SOSA>>
+| Example | See the Example for <<sosa:ObservationCollection, Observation Collection>>
+|===
+
+[[geosparql-predicates]]
+==== GSP
 
 [[geo:hasGeometry]]
 ===== has geometry
 
-[[dcat-predicates]]
-==== DCAT
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `geo:hasGeometry`
+| Name | has geometry
+| Definition | A spatial representation for a given Feature
+| Scope Note | Use this property to link a <<geo:Feature, Feature>> to a <<geo:Geometry, Geometry>>
+| Is Defined By | <<GSP, GSP>>
+| Example | See the Example for <<sosa:FeatureOfInterest, Feature Of Interest>>
+|===
+
+[[geo:asWKT]]
+===== as WKT
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `geo:asWKT`
+| Name | as WKT
+| Definition | The WKT serialization of a Geometry
+| Scope Note | Use this property to indicate a https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry[Well-Known Text] representation of a <<geo:Geometry, Geometry>>
+| Is Defined By | <<GSP, GSP>>
+| Example | See the Example for <<sosa:FeatureOfInterest, Feature Of Interest>>
+|===
 
 [[prov-predicates]]
 ==== PROV
@@ -775,11 +834,47 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 [[prov:qualifiedAttribution]]
 ===== qualified attribution
 
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `prov:qualifiedAttribution`
+| Name | qualified attribution
+| Definition | The ascribing of an entity to an agent
+| Scope Note | Use this predicate to link a <<dcat:Dataset, Dataset>> to a <<prov:Attribution, Attribution>> which then links to an <<prov:Agent, Agent>>, which is likely to be either a <<sdo:Organization, Organization>> or a <<sdo:Person, Person>>, and a <<prov:Role, Role>>
+| Is Defined By | <<PROV, PROV>>
+| Example | See the Example for <<dcat:Dataset, Dataset>>
+|===
+
 [[prov:agent]]
 ===== agent
 
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `prov:agent`
+| Name | agent
+| Definition | References an <<prov:Agent, Agent>> which influenced a resource
+| Scope Note | Use this predicate to link an <<prov:Attribution, Attribution>> to an <<prov:Agent, Agent>>, which is likely to be either a <<sdo:Organization, Organization>> or a <<sdo:Person, Person>>
+| Is Defined By | <<PROV, PROV>>
+| Example | See the Example for <<dcat:Dataset, Dataset>>
+|===
+
 [[prov:hadRole]]
 ===== had role
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `prov:hadRole`
+| Name | had role
+| Definition | A role is the function of an entity or agent with respect to an activity
+| Scope Note | Use this predicate to link an <<prov:Attribution, Attribution>> to a <<prov:Role, Role>>
+| Is Defined By | <<PROV, PROV>>
+| Example | See the Example for <<dcat:Dataset, Dataset>>
+|===
 
 [[sdo-predicates]]
 ==== SDO
@@ -787,27 +882,134 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 [[sdo:name]]
 ===== name
 
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:name`
+| Name | name
+| Definition | The name of the item
+| Scope Note | Use this predicate to indicate a textual name for something
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<dcat:Dataset, Dataset>>
+|===
+
 [[sdo:description]]
 ===== description
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:description`
+| Name | description
+| Definition | A description of the item
+| Scope Note | Use this predicate to indicate a textual description for something
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<dcat:Dataset, Dataset>>
+|===
 
 [[sdo:dateCreated]]
 ===== date created
 
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:dateCreated`
+| Name | date created
+| Definition | The date on which the CreativeWork was created
+| Scope Note | Use this predicate to indicate a <<xsd:date, date>> or <<xsd:dateTime, date time>>
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<dcat:Dataset, Dataset>>
+|===
+
 [[sdo:dateModified]]
 ===== date modified
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:dateModified`
+| Name | date modified
+| Definition | The date on which the CreativeWork was most recently modified
+| Scope Note | Use this predicate to indicate a <<xsd:date, date>> or <<xsd:dateTime, date time>>
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<dcat:Dataset, Dataset>>
+|===
 
 [[sdo:keywords]]
 ===== keywords
 
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:dateModified`
+| Name | date modified
+| Definition | Keywords or tags used to describe some item
+| Scope Note | Use this predicate to indicate <<skos:Concept, Concept>> objects from vocabularies that the object for which this predicate is set, likely a <<dcat:Dataset, Dataset>> is related to. This property is likely to be automatically calculated for datasets, based on the <<sosa:ObservableProperty, Observable Properties>>, <<sosa:Sensor, Sensors>> and other things that the data within it references
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<dcat:Dataset, Dataset>>
+|===
+
 [[sdo:location]]
 ===== location
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:location`
+| Name | location
+| Definition | The location of, for example, where an event is happening, where an organization is located, or where an action takes place
+| Scope Note | Use this predicate to indicate either a <<geo:Feature, Feature>> or a textual description of a location that is being indicated for something, like a <<sosa:Sample, Sample>>. Note, The best use of this property is to indicate <<geo:Feature, Feature>> objects in managed feature collections, but this property should also be used to indicate a location description in text when that is better that indicating it with a <<geo:Geometry, Geometry>>, as per the Example for <<sosa:Sample, Sample>>
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<sosa:Sample, Sample>>
+|===
 
 [[sdo:unitCode]]
 ===== unit code
 
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:unitCode`
+| Name | unit code
+| Definition | The unit of measurement given using a URL
+| Scope Note | Use this predicate to indicate a <<skos:Concept, Concept>> in a vocabulary of units of measure
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<sosa:Result, Result>>
+|===
+
 [[sdo:value]]
 ===== value
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:value`
+| Name | value
+| Definition | The simple data type - text, number, date etc. - representation of a quantity
+| Scope Note | Use this predicate to indicate a literal value within the <<sosa:Result, Result>> of an <<sosa:Observation, Observation>>
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<sosa:Result, Result>>
+|===
 
 [[sdo:marginOfError]]
 ===== margin of error
 
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:marginOfError`
+| Name | margin of error
+| Definition | A margin of error for an Observation
+| Scope Note | Use this predicate to indicate a numerical or categorical margin of error within the <<sosa:Result, Result>> of an <<sosa:Observation, Observation>>
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<sosa:Result, Result>>
+|===

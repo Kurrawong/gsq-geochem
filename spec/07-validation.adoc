@@ -1,2 +1,72 @@
 == Validation
 
+Validation is the process of testing whether data conforms to a (profile of) a model. "profile of" is inserted as usually validators test for specific values in data where perhaps a general model might allow a range of values. For example, this model requires units of measure to be <<skos:Concept, Concept>> objects in vocabularies but the GSP profile of this model requires that values come from GSQ's https://linked.data.gov.au/def/geou[Geoscience Profile of QUDT Units  vocabulary], specifically.
+
+While many profiles of, and thus validators for, this model may be created, so far only one profile and validator have been created: the GSQ Profile, described below.
+
+NOTE: All the resources needed for online validation of data according to all known profiles of this model are available at the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal
+].
+
+=== Method
+
+The method used to validate data claiming conformance to profiles of this model is to use the Shapes Constraint Language (<<SHACL, SHACL>>) to define validation rules, called 'Shapes', that are expressed in RDF data. These shapes can then be used by a SHACL validation tool to validate given data.
+
+A partial and simplified example Shape from the _GSQ Profile_ is given here in <<TURTLE, Turtle>>:
+
+[source,turtle]
+----
+PREFIX gsq-shapes: <https://linked.data.gov.au/def/geochem/gsq/>
+PREFIX sdo: <https://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+gsq-shapes:DatasetMandatoryPredicates
+    a sh:NodeShape ;
+    sdo:name "Dataset's Mandatory Predicates" ;
+    sh:property [
+        sh:description "A Dataset must have one and only one name predicate indicating a text value." ;
+        sh:path sdo:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+.
+----
+
+The shape above tests that all presented <<dcat:Dataset, Dataset>> objects indicate one and only one <<sdo:name, name>> predicate which, in turn, must indicate a text (string) value.
+
+SHACL validation tooling will report whether all Shapes are respected by the data or, if not, which ones failed and how (for which data element and values) they failed.
+
+=== Validators
+
+==== GSQ Profile
+
+The GSQ profile of this model provides restrictions for on which vocabularies may be used to supply values for the predicates in this model that can indicate concepts, as described in the <<Vocabularies, Vocabularies section>> above.
+
+This GSQ Profile has a separate identity to this specification so that data can indicate conformance specifically to it. This profile's IRI is:
+
+* https://linked.data.gov.au/def/geochem/gsq
+
+The validator for this profile is available as a data file directly for download at https://linked.data.gov.au/def/geochem/gsq as well as being pre-loaded in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal].
+
+=== Tools
+
+All the resources needed for online validation of data according to all known profiles of this model are available at the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal], however any other SHACL validation tooling can be used to perform data validation, given the data to be validated and the desired profile's validator.
+
+The GSQ Profile's validator is linked to in the above section.
+
+Here is a list of independent SHACL validation tooling:
+
+[cols="2,3,4"]
+|===
+| Name | Location | Description
+
+| pySHACL | https://pypi.org/project/pyshacl/ | An open source, pure-Python implementation of a SHACL validator
+| notNetRDF | http://dotnetrdf.org | An open source, .NET RDF manipulation library that contains a SHACL validator
+| Jena | https://jena.apache.org | An open source, Java RDF manipulation library that contains a SHACL validator
+| SHACL Play | https://shacl-play.sparna.fr/play/ | A free, online, SHACL validator
+| SHACL Playground | https://shacl.org/playground/ | A free, online, SHACL validator
+| RDFTools | http://rdftools.kurrawong.net/validate | A free, online, SHACL validator that uses pySHACL
+|===

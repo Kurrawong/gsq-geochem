@@ -6,12 +6,12 @@ This section introduces the general domain of information modelling that we use 
 
 ==== Observations & Measurements
 
-Geochemistry data - results of chemical and other analyses of geological samples - is a type of _observations_ data: observations of the natural world that result in measured properties. The general-purpose standard we use for modelling _observations_ data is the ISO's _Observations & Measurements_ (O&M) <<ISO19156>>.
+Geochemistry data - results of chemical and other analyses of geological samples - is a type of _observations_ data: observations of the natural world that result in measured properties. The general-purpose standard we use for modelling _observations_ data is the ISO's _Observations & Measurements_ (O&M) <<ISO19156, ISO19156>>.
 
 O&M separates aspects of an _observations_ scenario into distinct information elements in order to ditinguish between the thing observed, the act of observing and outputs from the observing act. An informal, high-level, view of the conceptual elements of O&M is given in <<om-high-level>>.
 
 [#om-high-level]
-.An informal, high-level, view of the conceptual elements of _Observations & Measurements_ (O&M) <<ISO19156>>.
+.An informal, high-level, view of the conceptual elements of _Observations & Measurements_ (O&M) <<ISO19156, ISO19156>>.
 image::../img/om-high-level.svg[O&M high-level,align="center"]
 
 In <<om-high-level>>, an _Observation_, an event, _observes_ a _Property_ of a _Sample_ (could be a chunk of rock, or a soil sample) which is a sample of a _Feature_ (could be a rock unit) and _produces_ a _Result_ according to a _Procedure_ which is implemented by/in a Sensor. Detailed representations of the sub-elements of _Observation_, _Feature_, _Property_ and so on are all specified by the use of other models, such as the _Quantities Units Dimensions & Types_ model for _Result_ elements which include the actual value measured, the measurement units and so on.
@@ -20,7 +20,7 @@ In <<om-high-level>>, an _Observation_, an event, _observes_ a _Property_ of a _
 
 ==== SOSA
 
-There are many implementations of the O&M conceptual model and the one used here is the _SOSA (Sensor, Observation, Sample, and Actuator)_ ontology <<SOSA>> which realises the elements and relations of O&M as <<OWL2, OWL>> _Classes_ and _Properties_. Using an OWL logical model allows for the exchange of data in the <<RDF, RDF>> format (a physical model).
+There are many implementations of the O&M conceptual model and the one used here is the _SOSA (Sensor, Observation, Sample, and Actuator)_ ontology <<SOSA, SOSA>> which realises the elements and relations of O&M as <<OWL2, OWL>> _Classes_ and _Properties_. Using an OWL logical model allows for the exchange of data in the <<RDF, RDF>> format (a physical model).
 
 SOSA's _Classes_ and _Properties_ for the elements in <<om-high-level>> are given in <<sosa-overview>>.
 
@@ -64,10 +64,10 @@ There are other physical implementations of this model available that are conver
 
 ==== RDF
 
-RDF data can be serialised in multiple formats. The format we use here for definitions and examples is Turtle <<TURTLE>>. The <<turtle-eg, turtle format example>> below shows a dummy geochemistry _Observation_ represented according to SOSA and serialised in RDF's Turtle format.
+RDF data can be serialised in multiple formats. The format we use here for definitions and examples is <<TURTLE, Turtle>>. The <<turtle-eg, turtle format example>> below shows a dummy geochemistry _Observation_ represented according to SOSA and serialised in RDF's Turtle format.
 
 [#turtle-eg]
-.Example SOSA data in RDF's Turtle format, for a single geochemistry `Observation` according to the SOSA Ontology <<SOSA>>
+.Example SOSA data in RDF's Turtle format, for a single geochemistry `Observation` according to the SOSA Ontology <<SOSA, SOSA>>
 [source,turtle]
 ----
 PREFIX ex: <http://example.com/>

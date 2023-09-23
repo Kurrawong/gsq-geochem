@@ -1,2 +1,56 @@
 == Vocabularies
 
+=== Vocabs & Classes
+
+The model defined here depends on the use of multiple vocabularies to supply values for particular predicates. For example, the values for the predicate <<sosa:observedProperty, observed property>> which link an <<sosa:Observation, Observation>> to an <<sosa:ObservableProperty, Observable Property>> should be used to indicate <<skos:Concept, Concept>> objects within an observable property vocabulary such as the Geological Survey of Queensland's general-purpose Observable Properties vocabulary (detailed below).
+
+When predicates indicate <<skos:Concept, Concept>> objects within vocabularies where the model expects a particular class of object, such as <<sosa:ObservableProperty, Observable Property>> in the example above, or <<sosa:Procedure, Procedure>> which indicated by <<sosa:usedProcedure, used procedure>>, the reference to the object indicated just needs to be the object's IRI - persistent web identifier.
+
+The following code shows an <<sosa:Observation, Observation>> indicating both an <<sosa:ObservableProperty, Observable Property>> using the <<sosa:observedProperty, observed property>> predicate and <<sosa:Procedure, Procedure>> using the <<sosa:usedProcedure, used procedure>> predicate. The Observable Property really exists in a public, published vocabulary whereas the Procedure used here is fictitious, just to exemplify full IRIs and prefixed versions:
+
+[source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-a
+    a sosa:Observation ;
+    sosa:observedProperty <https://linked.data.gov.au/def/observable-properties/amount-of-gold> ;
+    sosa:usedProcedure ex:procedure-b ;
+.
+----
+
+In the example above, no further details of the Observable Property or the Procedure are given: all of their details are assumed to be contained within the vocabularies that define them.
+
+=== Where
+
+Vocabularies of Concepts are used for the values indicated by the following predicates in this model:
+
+* <<sosa:usedProcedure, used procedure>>
+* <<sosa:madeBySensor, made by sensor>>
+* <<sosa:observedProperty, observed property>>
+* <<sdo:unitCode, unit code>>
+* <<sdo:keywords, keywords>>
+* <<prov:hadRole, had role>>
+
+=== Which
+
+Use of this model to make data that must validate according to the Geological Survey of Queensland, for example for automated data submission, must use particular vocabularies for the predicates listed above. See the <<Validation, Validation section>> for specifics.
+
+=== Modelling
+
+All vocabularies used with this model are expected to be <<SKOS, SKOS>> vocabularies, that is vocabularies formulated according to the SKOS model, which is one of the background models of this model.
+
+SKOS vocabs allow concepts within them to:
+
+* have a range of annotation properties - labels, definitions etc.
+* relations to other concepts within that and other vocabs - they may be _broader_ or _narrower_ concepts than some others
+* be sources from other vocabs, not just defined within the vocab listing them
+
+SKOS vocabularies are published by many geological organisations, including the Geological survey of Queensland, who deliver their list of vocabularies online at:
+
+* https://vocabs.gsq.digital
+
+Vocabs can typically be extended via some governed mechanism and those of GSQ certainly can be.
+
+The features of vocabs and the management of them mean that much information about procedures, observed properties etc. can be stored in the vocabs listing the individual concepts and thus not much need be stored in data referencing their concepts. Usually, only quoting the IRI of a concepts is all that is needed, as per the example above in <<Vocabs & Classes, Vocabs & Classes>> and in the <<sosa:Observation, Observation class example>>.

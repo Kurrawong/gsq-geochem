@@ -126,7 +126,7 @@ A common issue for data modelling where data generation is distributed across or
 
 Specialised roles for the owners of intellectual predicate (_rights holder_), data processors (_processor_) and other things exist too.
 
-Due to these multiple roles existing, the specific role that an agent plays is to be taken from a vocabulary and this specification provides the vocabulary that must be used - see the <<Vocabularies>> section. However, note that this vocabulary is extensible, so new roles may be added.
+Due to these multiple roles existing, the specific role that an agent plays is to be taken from a vocabulary and this specification provides the vocabulary that must be used - see the <<Vocabularies, Vocabularies section>>. However, note that this vocabulary is extensible, so new roles may be added.
 
 [#roles]
 .Attribution: linking Datasets to Agents with Roles
