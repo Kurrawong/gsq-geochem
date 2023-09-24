@@ -738,9 +738,13 @@ pre.rouge {
 </li>
 <li><a href="#_profiles_2">7. Profiles</a>
 <ul class="sectlevel2">
-<li><a href="#_gsq_profile">7.1. GSQ Profile</a></li>
-<li><a href="#_predicate_mandates">7.2. Predicate Mandates</a></li>
-<li><a href="#_vocab_restrictions">7.3. Vocab Restrictions</a></li>
+<li><a href="#_gsq_profile">7.1. GSQ Profile</a>
+<ul class="sectlevel3">
+<li><a href="#_predicate_mandates">7.1.1. Predicate Mandates</a></li>
+<li><a href="#_vocab_restrictions">7.1.2. Vocab Restrictions</a></li>
+<li><a href="#_examples">7.1.3. Examples</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_validation">8. Validation</a>
@@ -793,6 +797,18 @@ pre.rouge {
 <p><a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a></p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+If you want to find the Geological Survey of Queensland&#8217;s rules for geochemistry data submission, see the <a href="#_gsq_profile">GSQ Profile</a> section.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -3434,7 +3450,7 @@ All the resources needed for online validation of data according to all known pr
 <div class="sect2">
 <h3 id="_gsq_profile"><a class="anchor" href="#_gsq_profile"></a>7.1. GSQ Profile</h3>
 <div class="paragraph">
-<p>The GSQ Profile of this model mandates certain predicates for classes of object and restricts which vocabularies may be used to supply values for the predicates in this model that indicate concepts, as described in the <a href="#_where">Vocabularies: Where section</a> above.</p>
+<p>The GSQ Profile of this model mandates certain predicates for classes of object and restricts which vocabularies may be used to supply values for predicates that indicate concepts, as described in the <a href="#_where">Vocabularies: Where</a> section above.</p>
 </div>
 <div class="paragraph">
 <p>This profile&#8217;s IRI is:</p>
@@ -3447,11 +3463,14 @@ All the resources needed for online validation of data according to all known pr
 </ul>
 </div>
 <div class="paragraph">
-<p>The validator for this profile is available as a data file directly for download at <a href="https://linked.data.gov.au/def/geochem/gsq" class="bare">https://linked.data.gov.au/def/geochem/gsq</a> as well as being pre-loaded in the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a>.</p>
+<p>The validator for this profile is available as a data file directly for download at:
+* <a href="https://linked.data.gov.au/def/geochem/gsq" class="bare">https://linked.data.gov.au/def/geochem/gsq</a></p>
 </div>
+<div class="paragraph">
+<p>This validator is also pre-loaded in the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a>.</p>
 </div>
-<div class="sect2">
-<h3 id="_predicate_mandates"><a class="anchor" href="#_predicate_mandates"></a>7.2. Predicate Mandates</h3>
+<div class="sect3">
+<h4 id="_predicate_mandates"><a class="anchor" href="#_predicate_mandates"></a>7.1.1. Predicate Mandates</h4>
 <div class="paragraph">
 <p>The following table lists classes of this model and gives the cardinality of predicates. Only classes that must be used are listed.</p>
 </div>
@@ -3535,7 +3554,7 @@ All the resources needed for online validation of data according to all known pr
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:Sample">Sample</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:isSampleOf">is sample of</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0+</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -3545,7 +3564,7 @@ All the resources needed for online validation of data according to all known pr
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:ObservationCollection">Observation Collection</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasMember">has member</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1+</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -3625,8 +3644,8 @@ All the resources needed for online validation of data according to all known pr
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_vocab_restrictions"><a class="anchor" href="#_vocab_restrictions"></a>7.3. Vocab Restrictions</h3>
+<div class="sect3">
+<h4 id="_vocab_restrictions"><a class="anchor" href="#_vocab_restrictions"></a>7.1.2. Vocab Restrictions</h4>
 <div class="paragraph">
 <p>This profile requires that Concepts indicated by certain predicates come from specific vocabularies. The predicates and their required vocabularies are:</p>
 </div>
@@ -3672,6 +3691,82 @@ All the resources needed for online validation of data according to all known pr
 <p>Note that this profile does <em>NOT</em> require that the predicate <a href="#sosa:madeBySensor">made by sensor</a> is used on the <a href="#sosa:Observation">Observation</a> class, thus no vocabulary is mandated for its use. It may be used but, if it is, the user may choose any vocabulary of Concepts to draw from useful to them.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_examples"><a class="anchor" href="#_examples"></a>7.1.3. Examples</h4>
+<div class="paragraph">
+<p>The following example show <em>VALID</em> and <em>INVALID</em> data according to this GSQ Profile:</p>
+</div>
+<div class="sect4">
+<h5 id="_eg_1_valid"><a class="anchor" href="#_eg_1_valid"></a>7.1.3.1. Eg 1: Valid</h5>
+<div class="paragraph">
+<p>It contains all the required properties.</p>
+</div>
+<div id="gsqp-eg-01" class="listingblock">
+<div class="title">Valid data according to the GSQ Profile of this model</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">geo:</span><span class="w"> </span><span class="nl">&lt;http://www.opengis.net/ont/geosparql#&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">op:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/observable-properties/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">skos:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sosa:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/sosa/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">obs-1
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Observation</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">usedProcedure</span><span class="w"> </span><span class="nn">ex:</span><span class="n">procedure-b</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">madeBySensor</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sensor-c</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">observedProperty</span><span class="w"> </span><span class="nn">op:</span><span class="n">amount-of-gold</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">hasFeatureOfInterest</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sample-d</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">hadPhenomenonTime</span><span class="w"> </span><span class="s">"2023-05-11"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">date</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">hasResult
+</span><span class="w">        </span><span class="nn">ex:</span><span class="n">result-e</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="nn">ex:</span><span class="n">result-f</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">procedure-b
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">Concept</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"Procedure B"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"A method for assessing the amount of gold in a sample"</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">sensor-c
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">Concept</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"Sensor C"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"A particular machine for assessing gold content in rock samples"</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">sample-d
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Sample</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="s">"Sample C"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">soil-sample</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">description</span><span class="w"> </span><span class="s">"A soil sample from Sandy Creek"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">location</span><span class="w"> </span><span class="s">"Zillmere Rock Store: Zone 4, Shelf N, Box 3"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">isSampleOf</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">result-e
+</span><span class="w">    </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="mf">0.0</span><span class="mi">27</span><span class="w">  </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">unitCode</span><span class="w"> </span><span class="nl">&lt;https://qudt.org/vocab/unit/PPM&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">result-f
+</span><span class="w">    </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="mf">27.0</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">unitCode</span><span class="w"> </span><span class="nl">&lt;https://qudt.org/vocab/unit/PPB&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nl">&lt;https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince&gt;</span><span class="w">
+    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">FeatureOfInterest</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">geo:</span><span class="n">Feature</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">geo:</span><span class="n">hasGeometry</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="k">a</span><span class="w"> </span><span class="nn">geo:</span><span class="n">Geometry</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">geo:</span><span class="n">asWKT</span><span class="w"> </span><span class="s">"POLYGON((146.850699 -23.704934,146.850699 -20.863771,148.028386 -20.863771,148.028386 -23.704934,146.850699 -23.704934))"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3690,22 +3785,69 @@ All the resources needed for online validation of data according to all known pr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">gsq-shapes:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/geochem/gsq/&gt;</span><span class="w">
+<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">dcat:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/dcat#&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">geo:</span><span class="w"> </span><span class="nl">&lt;http://www.opengis.net/ont/geosparql#&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">op:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/observable-properties/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sh:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/shacl#&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">skos:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sosa:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/sosa/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w">
 
-</span><span class="nn">gsq-shapes:</span><span class="n">DatasetMandatoryPredicates
-</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sh:</span><span class="n">NodeShape</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="s">"Dataset's Mandatory Predicates"</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sh:</span><span class="n">property</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="nn">sh:</span><span class="n">description</span><span class="w"> </span><span class="s">"A Dataset must have one and only one name predicate indicating a text value."</span><span class="w"> </span><span class="p">;</span><span class="w">
-        </span><span class="nn">sh:</span><span class="n">path</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="p">;</span><span class="w">
-        </span><span class="nn">sh:</span><span class="n">datatype</span><span class="w"> </span><span class="nn">xsd:</span><span class="n">string</span><span class="w"> </span><span class="p">;</span><span class="w">
-        </span><span class="nn">sh:</span><span class="n">minCount</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w">
-        </span><span class="nn">sh:</span><span class="n">maxCount</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="nn">ex:</span><span class="n">dataset-x
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">dcat:</span><span class="n">Dataset</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="s">"Dataset X"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">description</span><span class="w"> </span><span class="s">"A demonstration dataset"</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">obs-1
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Observation</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">usedProcedure</span><span class="w"> </span><span class="nn">ex:</span><span class="n">procedure-b</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">madeBySensor</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sensor-c</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">observedProperty</span><span class="w"> </span><span class="nn">op:</span><span class="n">amount-of-gold</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">hasFeatureOfInterest</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sample-d</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">hadPhenomenonTime</span><span class="w"> </span><span class="s">"2023-05-11"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">date</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">hasResult
+</span><span class="w">        </span><span class="nn">ex:</span><span class="n">result-e</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="nn">ex:</span><span class="n">result-f</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">procedure-b
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">Concept</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"Procedure B"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"A method for assessing the amount of gold in a sample"</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">sensor-c
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">Concept</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"Sensor C"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"A particular machine for assessing gold content in rock samples"</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">sample-d
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Sample</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="s">"Sample C"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">soil-sample</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">description</span><span class="w"> </span><span class="s">"A soil sample from Sandy Creek"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">location</span><span class="w"> </span><span class="s">"Zillmere Rock Store: Zone 4, Shelf N, Box 3"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">isSampleOf</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">result-e
+</span><span class="w">    </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="mf">0.0</span><span class="mi">27</span><span class="w">  </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">unitCode</span><span class="w"> </span><span class="nl">&lt;https://qudt.org/vocab/unit/PPM&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">result-f
+</span><span class="w">    </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="mf">27.0</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">unitCode</span><span class="w"> </span><span class="nl">&lt;https://qudt.org/vocab/unit/PPB&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nl">&lt;https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince&gt;</span><span class="w">
+    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">FeatureOfInterest</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">geo:</span><span class="n">Feature</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">geo:</span><span class="n">hasGeometry</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="k">a</span><span class="w"> </span><span class="nn">geo:</span><span class="n">Geometry</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">geo:</span><span class="n">asWKT</span><span class="w"> </span><span class="s">"POLYGON((146.850699 -23.704934,146.850699 -20.863771,148.028386 -20.863771,148.028386 -23.704934,146.850699 -23.704934))"</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span></code></pre>
 </div>
@@ -3867,7 +4009,7 @@ All the resources needed for online validation of data according to all known pr
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-24 15:11:22 UTC
+Last updated 2023-09-24 23:56:15 UTC
 </div>
 </div>
 </body>
