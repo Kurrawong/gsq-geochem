@@ -1,0 +1,34 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX gsq-shapes: <https://linked.data.gov.au/def/geochem/gsq/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sdo: <https://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+gsq-shapes:DatasetMandatoryPredicates
+    a sh:NodeShape ;
+    sdo:name "Dataset's Mandatory Predicates" ;
+    sh:targetClass dcat:Dataset ;
+    sh:property [
+        sh:path sdo:name ;
+        sh:message "A Dataset must have one and only one name predicate, sdo:name, indicating a text value." ;
+        sh:or (
+            [ sh:datatype xsd:string ]
+            [ sh:datatype rdf:langString ]
+        ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sdo:description ;
+        sh:message "A Dataset must have one and only one description predicate, sdo:description, indicating a text value." ;
+        sh:or (
+            [ sh:datatype xsd:string ]
+            [ sh:datatype rdf:langString ]
+        ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+.

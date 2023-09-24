@@ -12,3 +12,4 @@ This Specification is issued alongside online testing facilities that allow geoc
 
 * https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal]
 
+NOTE: If you want to find the Geological Survey of Queensland's rules for geochemistry data submission, see the <<GSQ Profile, GSQ Profile>> section.

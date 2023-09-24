@@ -8,15 +8,18 @@ NOTE: All the resources needed for online validation of data according to all kn
 
 === GSQ Profile
 
-The GSQ Profile of this model mandates certain predicates for classes of object and restricts which vocabularies may be used to supply values for the predicates in this model that indicate concepts, as described in the <<Where, Vocabularies: Where section>> above.
+The GSQ Profile of this model mandates certain predicates for classes of object and restricts which vocabularies may be used to supply values for predicates that indicate concepts, as described in the <<Where, Vocabularies: Where>> section above.
 
 This profile's IRI is:
 
 * https://linked.data.gov.au/def/geochem/gsq
 
-The validator for this profile is available as a data file directly for download at https://linked.data.gov.au/def/geochem/gsq as well as being pre-loaded in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal].
+The validator for this profile is available as a data file directly for download at:
+* https://linked.data.gov.au/def/geochem/gsq
 
-=== Predicate Mandates
+This validator is also pre-loaded in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal].
+
+==== Predicate Mandates
 
 The following table lists classes of this model and gives the cardinality of predicates. Only classes that must be used are listed.
 
@@ -38,9 +41,9 @@ A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1
 |                                                           | <<sdo:value, value>>    | `1`
 |                                                           | <<sdo:marginOfError, margin of error>> | `0-1`
 |||
-| <<sosa:Sample, Sample>>                                   | <<sosa:isSampleOf, is sample of>> |
+| <<sosa:Sample, Sample>>                                   | <<sosa:isSampleOf, is sample of>> | `0+`
 |||
-| <<sosa:ObservationCollection, Observation Collection>>    | <<sosa:hasMember, has member>> |
+| <<sosa:ObservationCollection, Observation Collection>>    | <<sosa:hasMember, has member>> | `1+`
 |                                                           | _...and any properties of <<sosa:Observation, Observation>>_ |
 |||
 | <<sosa:FeatureOfInterest, Feature Of Interest>>           | <<geo:hasGeometry, has geometry>> | `0-1`
@@ -58,7 +61,7 @@ A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1
 |                                                           | <<prov:hadRole, had role>> | `1`
 |===
 
-=== Vocab Restrictions
+==== Vocab Restrictions
 
 This profile requires that Concepts indicated by certain predicates come from specific vocabularies. The predicates and their required vocabularies are:
 
@@ -74,3 +77,75 @@ This profile requires that Concepts indicated by certain predicates come from sp
 |===
 
 Note that this profile does _NOT_ require that the predicate <<sosa:madeBySensor, made by sensor>> is used on the <<sosa:Observation, Observation>> class, thus no vocabulary is mandated for its use. It may be used but, if it is, the user may choose any vocabulary of Concepts to draw from useful to them.
+
+==== Examples
+
+The following example show _VALID_ and _INVALID_ data according to this GSQ Profile:
+
+===== Eg 1: Valid
+
+It contains all the required properties.
+
+[#gsqp-eg-01]
+.Valid data according to the GSQ Profile of this model
+[source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
+PREFIX sdo: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:usedProcedure ex:procedure-b ;
+    sosa:madeBySensor ex:sensor-c ;
+    sosa:observedProperty op:amount-of-gold ;
+    sosa:hasFeatureOfInterest ex:sample-d ;
+    sosa:hadPhenomenonTime "2023-05-11"^^xsd:date ;
+    sosa:hasResult
+        ex:result-e ,
+        ex:result-f ;
+.
+
+ex:procedure-b
+    a skos:Concept ;
+    skos:prefLabel "Procedure B" ;
+    skos:definition "A method for assessing the amount of gold in a sample" ;
+.
+
+ex:sensor-c
+    a skos:Concept ;
+    skos:prefLabel "Sensor C" ;
+    skos:definition "A particular machine for assessing gold content in rock samples" ;
+.
+
+ex:sample-d
+    a sosa:Sample ;
+    sdo:name "Sample C" ;
+    sdo:additionalType ex:soil-sample ;
+    sdo:description "A soil sample from Sandy Creek" ;
+    sdo:location "Zillmere Rock Store: Zone 4, Shelf N, Box 3" ;
+    sosa:isSampleOf <https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince> ;
+.
+
+ex:result-e
+    sdo:value 0.027  ;
+    sdo:unitCode <https://qudt.org/vocab/unit/PPM> ;
+.
+
+ex:result-f
+    sdo:value 27.0 ;
+    sdo:unitCode <https://qudt.org/vocab/unit/PPB> ;
+.
+
+<https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince>
+    a sosa:FeatureOfInterest , geo:Feature ;
+    geo:hasGeometry [
+        a geo:Geometry ;
+        geo:asWKT "POLYGON((146.850699 -23.704934,146.850699 -20.863771,148.028386 -20.863771,148.028386 -23.704934,146.850699 -23.704934))" ;
+    ] ;
+.
+----
