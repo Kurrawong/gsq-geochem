@@ -711,10 +711,9 @@ pre.rouge {
 <li><a href="#geosparql-classes">5.1.3. GSP</a></li>
 <li><a href="#dcat-classes">5.1.4. DCAT</a></li>
 <li><a href="#prov-classes">5.1.5. PROV</a></li>
-<li><a href="#_sdo">5.1.6. SDO</a></li>
-<li><a href="#skos-classes">5.1.7. SKOS</a></li>
-<li><a href="#_rdfs_2">5.1.8. RDFS</a></li>
-<li><a href="#_xsd_datatypes">5.1.9. XSD Datatypes</a></li>
+<li><a href="#skos-classes">5.1.6. SKOS</a></li>
+<li><a href="#_rdfs_2">5.1.7. RDFS</a></li>
+<li><a href="#_xsd_datatypes">5.1.8. XSD Datatypes</a></li>
 </ul>
 </li>
 <li><a href="#_predicates">5.2. Predicates</a>
@@ -730,25 +729,28 @@ pre.rouge {
 </li>
 <li><a href="#_vocabularies">6. Vocabularies</a>
 <ul class="sectlevel2">
-<li><a href="#_vocabs_classes">6.1. Vocabs &amp; Classes</a></li>
-<li><a href="#_where">6.2. Where</a></li>
-<li><a href="#_which">6.3. Which</a></li>
-<li><a href="#_modelling">6.4. Modelling</a></li>
+<li><a href="#_referencing">6.1. Referencing</a></li>
+<li><a href="#_classes_concepts">6.2. Classes &amp; Concepts</a></li>
+<li><a href="#_where">6.3. Where</a></li>
+<li><a href="#_which">6.4. Which</a></li>
+<li><a href="#_modelling">6.5. Modelling</a></li>
 </ul>
 </li>
-<li><a href="#_validation">7. Validation</a>
+<li><a href="#_profiles_2">7. Profiles</a>
 <ul class="sectlevel2">
-<li><a href="#_method">7.1. Method</a></li>
-<li><a href="#_validators">7.2. Validators</a>
-<ul class="sectlevel3">
-<li><a href="#_gsq_profile">7.2.1. GSQ Profile</a></li>
+<li><a href="#_gsq_profile">7.1. GSQ Profile</a></li>
+<li><a href="#_predicate_mandates">7.2. Predicate Mandates</a></li>
+<li><a href="#_vocab_restrictions">7.3. Vocab Restrictions</a></li>
 </ul>
 </li>
-<li><a href="#_tools">7.3. Tools</a></li>
+<li><a href="#_validation">8. Validation</a>
+<ul class="sectlevel2">
+<li><a href="#_method">8.1. Method</a></li>
+<li><a href="#_tools">8.2. Tools</a></li>
 </ul>
 </li>
-<li><a href="#_data_formats">8. Data Formats</a></li>
-<li><a href="#_references">9. References</a></li>
+<li><a href="#_data_formats">9. Data Formats</a></li>
+<li><a href="#_references">10. References</a></li>
 </ul>
 </div>
 </div>
@@ -1010,10 +1012,10 @@ pre.rouge {
 <p>The canonical "physical" implementations of this model - a specific file format for data storage or exchange - is the Resource Description Framework [<a href="#_rdf">RDF</a>]. RDF used for the foreground model, all the background models and thus this model too.</p>
 </div>
 <div class="paragraph">
-<p>RDF is the only form of data that can be directly validated against this model, thus any conformance claims to this model must be substantiated by applying this specificaiton&#8217;s validators to RDF data. See <a href="#_validation">Chapter 7</a> form more information.</p>
+<p>RDF is the only form of data that can be directly validated against this model, thus any conformance claims to this model must be substantiated by applying this specificaiton&#8217;s validators to RDF data. See <a href="#_validation">Chapter 8</a> form more information.</p>
 </div>
 <div class="paragraph">
-<p>There are other physical implementations of this model available that are convertable to RDF that may be used for geochemistry data exchange. See <a href="#_data_formats">Chapter 8</a>.</p>
+<p>There are other physical implementations of this model available that are convertable to RDF that may be used for geochemistry data exchange. See <a href="#_data_formats">Chapter 9</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_rdf_2"><a class="anchor" href="#_rdf_2"></a>3.3.1. RDF</h4>
@@ -1024,53 +1026,62 @@ pre.rouge {
 <div class="title">Example SOSA data in RDF&#8217;s Turtle format, for a single geochemistry <code>Observation</code> according to the SOSA Ontology <a href="#SOSA">SOSA</a></div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">geo:</span><span class="w"> </span><span class="nl">&lt;http://www.opengis.net/ont/geosparql#&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">op:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/observable-properties/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">qudt:</span><span class="w"> </span><span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">rdf:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">skos:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sosa:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/sosa/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w">
 
-</span><span class="nn">ex:</span><span class="n">obs-a
+</span><span class="nn">ex:</span><span class="n">obs-1
 </span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Observation</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">usedProcedure</span><span class="w"> </span><span class="nn">ex:</span><span class="n">procedure-b</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">madeBySensor</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sensor-c</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">observedProperty</span><span class="w"> </span><span class="nn">op:</span><span class="n">amount-of-gold</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sosa:</span><span class="n">hasFeatureOfInterest</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sample-c</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">hasFeatureOfInterest</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sample-d</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">hadPhenomenonTime</span><span class="w"> </span><span class="s">"2023-05-11"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">date</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">hasResult
-</span><span class="w">        </span><span class="nn">ex:</span><span class="n">result-d</span><span class="w"> </span><span class="p">,</span><span class="w">
-        </span><span class="nn">ex:</span><span class="n">result-e</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sosa:</span><span class="n">madeBySensor</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sensor-f</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="nn">ex:</span><span class="n">result-e</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="nn">ex:</span><span class="n">result-f</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span><span class="w">
 
 </span><span class="nn">ex:</span><span class="n">procedure-b
 </span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">Concept</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"Procedure B"</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"A method for assessing the amount of gold in a sample."</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"A method for assessing the amount of gold in a sample"</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span><span class="w">
 
-</span><span class="nn">ex:</span><span class="n">sample-c
+</span><span class="nn">ex:</span><span class="n">sensor-c
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">Concept</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"Sensor C"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"A particular machine for assessing gold content in rock samples"</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">sample-d
 </span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Sample</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="s">"Sample C"</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">soil-sample</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">description</span><span class="w"> </span><span class="s">"A soil sample from Sandy Creek"</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">location</span><span class="w"> </span><span class="s">"Zillmere Rock Store: Zone 4, Shelf N, Box 3"</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sosa:</span><span class="n">isSampleOf</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sandy-creek</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span><span class="w">
-
-</span><span class="nn">ex:</span><span class="n">result-d
-</span><span class="w">    </span><span class="nn">rdf:</span><span class="n">value</span><span class="w"> </span><span class="mf">0.0</span><span class="mi">27</span><span class="w">  </span><span class="p">;</span><span class="w">
-    </span><span class="nn">qudt:</span><span class="n">units</span><span class="w"> </span><span class="nl">&lt;https://qudt.org/vocab/unit/PPM&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">isSampleOf</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span><span class="w">
 
 </span><span class="nn">ex:</span><span class="n">result-e
-</span><span class="w">    </span><span class="nn">qudt:</span><span class="n">numericValue</span><span class="w"> </span><span class="mf">27.0</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">qudt:</span><span class="n">units</span><span class="w"> </span><span class="nl">&lt;https://qudt.org/vocab/unit/PPB&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="mf">0.0</span><span class="mi">27</span><span class="w">  </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">unitCode</span><span class="w"> </span><span class="nl">&lt;https://qudt.org/vocab/unit/PPM&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span><span class="w">
 
-</span><span class="nn">ex:</span><span class="n">sandy-creek
-</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">FeatureOfInterest</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="nn">ex:</span><span class="n">result-f
+</span><span class="w">    </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="mf">27.0</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">unitCode</span><span class="w"> </span><span class="nl">&lt;https://qudt.org/vocab/unit/PPB&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nl">&lt;https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince&gt;</span><span class="w">
+    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">FeatureOfInterest</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">geo:</span><span class="n">Feature</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">geo:</span><span class="n">hasGeometry</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="k">a</span><span class="w"> </span><span class="nn">geo:</span><span class="n">Geometry</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">geo:</span><span class="n">asWKT</span><span class="w"> </span><span class="s">"POLYGON((146.850699 -23.704934,146.850699 -20.863771,148.028386 -20.863771,148.028386 -23.704934,146.850699 -23.704934))"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span></code></pre>
 </div>
 </div>
@@ -1085,7 +1096,7 @@ pre.rouge {
 <p>Not all classes and predicates must be implemented to make valid data according to this model. For example, the <code>Result</code> of an <code>Observation</code> may have a <code>margin of error</code> indicated, but it need not and a dataset may indicate a <code>Feature Of Interest</code> with geospatial location but need not.</p>
 </div>
 <div class="paragraph">
-<p>To know if data is valid according to this model, you need to apply a validator, given in the <a href="#_validation">Chapter 7</a> to it. That section describes what the validators are, what they look for and tools that you can use to apply them.</p>
+<p>To know if data is valid according to this model, you need to apply a validator, given in the <a href="#_validation">Chapter 8</a> to it. That section describes what the validators are, what they look for and tools that you can use to apply them.</p>
 </div>
 </div>
 </div>
@@ -1135,10 +1146,10 @@ pre.rouge {
 <div class="sect2">
 <h3 id="_location"><a class="anchor" href="#_location"></a>4.3. Location</h3>
 <div class="paragraph">
-<p>SOSA, and OWL modelling generally, allows for the assignment of location to many things, so we need to be careful and select particlar patterns to ensuer consistent modelling.</p>
+<p>SOSA, and OWL modelling generally, allows for the assignment of location to many things, so we need to be careful and select particular patterns to ensure consistent modelling.</p>
 </div>
 <div class="paragraph">
-<p>The location of a sample&#8217;s origin, or the ultimate feature of interest&#8217;s location, is important to know: where are these geochemistry results for? However, the location of the sample now, may or may not be important to know - perhaps it&#8217;s in Shed A, Shelf 5, Box 3c but perhaps it&#8217;s unknown.</p>
+<p>The location of a sample&#8217;s origin, or the ultimate feature of interest&#8217;s location, is important to know: where are these geochemistry results for? However, the location of the sample now, may or may not be important to know - perhaps it&#8217;s in Shed A, Shelf 5, Box 3c, but perhaps it&#8217;s unknown.</p>
 </div>
 <div class="paragraph">
 <p>In a similar way, we don&#8217;t necessarily need to know where the observation took place - perhaps in some geochemistry laboratory, somewhere.</p>
@@ -1172,13 +1183,19 @@ pre.rouge {
 </div>
 </div>
 <div class="paragraph">
-<p>If you specifically want to indicate the location of a <em>Sample</em>, <em>now</em>, you should use the <a href="#sdo:location">location</a> to indicate a named or unnamed <a href="#geo:Feature">Feature</a> for which you then give the location in coordinates or by description:</p>
+<p>If you specifically want to indicate the location of a <em>Sample</em>, <em>now</em>, you should use the <a href="#sdo:location">location</a> predicate for which you then indicate some located object, give the location in coordinates or by description:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;https://example.com/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">geo:</span><span class="w"> </span><span class="nl">&lt;http://www.opengis.net/ont/geosparql#&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">sample-a
+</span><span class="w">    </span><span class="nn">sdo:</span><span class="n">location</span><span class="w"> </span><span class="nl">&lt;http://something.com/gsq-rock-shed&gt;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="c1"># or</span><span class="w">
 
 </span><span class="nn">ex:</span><span class="n">sample-a
 </span><span class="w">    </span><span class="nn">sdo:</span><span class="n">location</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1253,7 +1270,7 @@ Sample A    153.08, -27.33  ...</code></pre>
 <p>A common issue for data modelling where data generation is distributed across organisations is to indicate different roles that <em>Agents</em> - Organisations &amp; People - play with respect to data. For example, for geochemistry data, there may be an organisation, a company, that generated the geochemical results and thus is the <em>originator</em> of the data and a different organisation, perhaps a government department, that is the <em>publisher</em> of that data.</p>
 </div>
 <div class="paragraph">
-<p>Specialised roles for the owners of intellectual predicate (<em>rights holder</em>), data processors (<em>processor</em>) and other things exist too.</p>
+<p>Specialised roles for the owners of intellectual property (<em>rights holder</em>), data processors (<em>processor</em>) and other things exist too.</p>
 </div>
 <div class="paragraph">
 <p>Due to these multiple roles existing, the specific role that an agent plays is to be taken from a vocabulary and this specification provides the vocabulary that must be used - see the <a href="#_vocabularies">Vocabularies section</a>. However, note that this vocabulary is extensible, so new roles may be added.</p>
@@ -1300,11 +1317,10 @@ Models such as this are extensible so what you see here is the minimum informati
 <h4 id="_class_index"><a class="anchor" href="#_class_index"></a>5.1.1. Class Index</h4>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
@@ -1312,30 +1328,38 @@ Models such as this are extensible so what you see here is the minimum informati
 <th class="tableblock halign-left valign-top">GSP</th>
 <th class="tableblock halign-left valign-top">DCAT</th>
 <th class="tableblock halign-left valign-top">PROV</th>
-<th class="tableblock halign-left valign-top">SDO</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:Observation">Observation</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:Feature">Feature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:Geometry">Geometry</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#dcat:Dataset">Dataset</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:Attribution">Attribution</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:Organization">Organization</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:Result">Result</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:Geometry">Geometry</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:Agent">Agent</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:Person">Person</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:Sample">Sample</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:Role">Role</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:ObservationCollection">Observation Collection</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:FeatureOfInterest">Feature Of Interest</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -1354,12 +1378,12 @@ Models such as this are extensible so what you see here is the minimum informati
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#skos:ConceptScheme">Concept Scheme</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#skos:Concept">Concept</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rdfs:Literal">Literal</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#xsd:string">string</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#skos:Concept">Concept</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#xsd:float">float</a></p></td>
 </tr>
@@ -1431,12 +1455,13 @@ Models such as this are extensible so what you see here is the minimum informati
 </span><span class="nn">ex:</span><span class="n">obs-1
 </span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Observation</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">usedProcedure</span><span class="w"> </span><span class="nn">ex:</span><span class="n">procedure-b</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">madeBySensor</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sensor-c</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">observedProperty</span><span class="w"> </span><span class="nn">op:</span><span class="n">amount-of-gold</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sosa:</span><span class="n">hasFeatureOfInterest</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sample-c</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">hasFeatureOfInterest</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sample-d</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">hadPhenomenonTime</span><span class="w"> </span><span class="s">"2023-05-11"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">date</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">hasResult
-</span><span class="w">        </span><span class="nn">ex:</span><span class="n">result-d</span><span class="w"> </span><span class="p">,</span><span class="w">
-        </span><span class="nn">ex:</span><span class="n">result-e</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="nn">ex:</span><span class="n">result-e</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="nn">ex:</span><span class="n">result-f</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span></code></pre>
 </div>
 </div></div></td>
@@ -1607,7 +1632,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasMember">Section 5.2.2.8</a>, predicates for Observation objects pertaining to all members of the collection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasMember">has member</a> and predicates for <a href="#sosa:Observation">Observation</a> objects pertaining to all members of the collection</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -1628,15 +1653,16 @@ Models such as this are extensible so what you see here is the minimum informati
 </span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Observation</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span><span class="w">
 
-</span><span class="c1"># it is inferred that each of the member Observation objects of this Observation Collection object</span><span class="w">
-</span><span class="c1"># have the same Feature Of Interest - `ex:samplec`</span><span class="w">
+</span><span class="c1"># it is inferred that each of the member Observation objects of this</span><span class="w">
+</span><span class="c1"># Observation Collection object have the same Feature Of Interest</span><span class="w">
+</span><span class="c1">#- `ex:sample-d`</span><span class="w">
 </span><span class="nn">ex:</span><span class="n">obscol-a
 </span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">ObservationCollection</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">hasMember
 </span><span class="w">        </span><span class="nn">ex:</span><span class="n">obs-1</span><span class="w"> </span><span class="p">,</span><span class="w">
         </span><span class="nn">ex:</span><span class="n">obs-2</span><span class="w"> </span><span class="p">,</span><span class="w">
         </span><span class="nn">ex:</span><span class="n">obs-3</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sosa:</span><span class="n">hasFeatureOfInterest</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sample-c</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">hasFeatureOfInterest</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sample-d</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span></code></pre>
 </div>
 </div></div></td>
@@ -1645,212 +1671,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="sosa:Procedure"><a class="anchor" href="#sosa:Procedure"></a>5.1.2.5. Procedure</h5>
-<table class="tableblock frame-all grid-all stripes-odd stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sosa:Procedure</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Subclass Of</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#skos:Concept">Concept</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Procedure</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="#SKOS">SKOS</a> <code>Concept</code> instances from vocabularies of methods to indicate the <code>Procedure</code> used for a particular <code>Observation</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SOSA">SOSA</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SKOS">SKOS</a> <code>Concept</code> properties, e.g. annotations (label &amp; definition) and relations to other <code>Concept</code> objects</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">skos:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sosa:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/sosa/&gt;</span><span class="w">
-
-</span><span class="nn">ex:</span><span class="n">obs-1
-</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Observation</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sosa:</span><span class="n">usedProcedure</span><span class="w"> </span><span class="nn">ex:</span><span class="n">procedure-b</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span><span class="w">
-
-</span><span class="c1"># While this Concept is understood to be a sosa:Procedure, it is only declared to be</span><span class="w">
-</span><span class="c1"># a skos:Concept - the standard vocabulary element. This is fine and expected</span><span class="w">
-</span><span class="nn">ex:</span><span class="n">procedure-b
-</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">Concept</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"Procedure B"</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"A method for assessing the amount of gold in a sample."</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span></code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="sosa:ObservableProperty"><a class="anchor" href="#sosa:ObservableProperty"></a>5.1.2.6. Observable Property</h5>
-<table class="tableblock frame-all grid-all stripes-odd stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sosa:ObservableProperty</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Subclass Of</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#skos:Concept">Concept</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Observable Property</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An observable quality (property, characteristic) of a FeatureOfInterest</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="#SKOS">SKOS</a>`Concept` instances from vocabularies of observable properties to indicate the <code>Observable Property</code> observed by a particular <code>Observation</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SOSA">SOSA</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SKOS">SKOS</a> <code>Concept</code> properties, e.g. annotations (label &amp; definition) and relations to other <code>Concept</code> objects</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">op:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/observable-properties/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">skos:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sosa:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/sosa/&gt;</span><span class="w">
-
-</span><span class="nn">ex:</span><span class="n">obs-1
-</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Observation</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sosa:</span><span class="n">observedProperty</span><span class="w"> </span><span class="nn">op:</span><span class="n">amount-of-gold</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span><span class="w">
-
-</span><span class="c1"># While this Concept is understood to be a sosa:ObservableProperty, it is only declared to be</span><span class="w">
-</span><span class="c1"># a skos:Concept - the standard vocabulary element. This is fine and expected</span><span class="w">
-</span><span class="nn">op:</span><span class="n">amount-of-gold
-</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">Concept</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"Amount of Gold"</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"The amount of gold in a matrix"</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span></code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="sosa:Sensor"><a class="anchor" href="#sosa:Sensor"></a>5.1.2.7. Sensor</h5>
-<table class="tableblock frame-all grid-all stripes-odd stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sosa:Sensor</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Subclass Of</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#skos:Concept">Concept</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sensor</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="#SKOS">SKOS</a>`Concept` instances from vocabularies of observable properties to indicate the equipment conducting the a particular <code>Observation</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SOSA">SOSA</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SKOS">SKOS</a> <code>Concept</code> properties, e.g. annotations (label &amp; definition) and relations to other <code>Concept</code> objects</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">skos:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sosa:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/sosa/&gt;</span><span class="w">
-
-</span><span class="nn">ex:</span><span class="n">obs-1
-</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Observation</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sosa:</span><span class="n">madeBySensor</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sensor-f</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span><span class="w">
-
-</span><span class="c1"># While this Concept is understood to be a sosa:Sensor, it is only declared to be</span><span class="w">
-</span><span class="c1"># a skos:Concept - the standard vocabulary element. This is fine and expected</span><span class="w">
-</span><span class="nn">ex:</span><span class="n">sensor-f
-</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">Concept</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"System X"</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"System X by company Y, Version Z"</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span></code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="sosa:FeatureOfInterest"><a class="anchor" href="#sosa:FeatureOfInterest"></a>5.1.2.8. Feature Of Interest</h5>
+<h5 id="sosa:FeatureOfInterest"><a class="anchor" href="#sosa:FeatureOfInterest"></a>5.1.2.5. Feature Of Interest</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1869,7 +1690,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Subclass of</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:Feature">Feature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>geo:Feature</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
@@ -1927,52 +1748,7 @@ Models such as this are extensible so what you see here is the minimum informati
 <div class="sect3">
 <h4 id="geosparql-classes"><a class="anchor" href="#geosparql-classes"></a>5.1.3. GSP</h4>
 <div class="sect4">
-<h5 id="geo:Feature"><a class="anchor" href="#geo:Feature"></a>5.1.3.1. Feature</h5>
-<table class="tableblock frame-all grid-all stripes-odd stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>geo:Feature</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Feature</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A discrete spatial phenomenon in a universe of discourse</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See the Scope Note for <a href="#sosa:FeatureOfInterest">Feature Of Interest</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#GSP">GSP</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See the Expected Properties for <a href="#sosa:FeatureOfInterest">Feature Of Interest</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See the Example for <a href="#sosa:FeatureOfInterest">Feature Of Interest</a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="geo:Geometry"><a class="anchor" href="#geo:Geometry"></a>5.1.3.2. Geometry</h5>
+<h5 id="geo:Geometry"><a class="anchor" href="#geo:Geometry"></a>5.1.3.1. Geometry</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1999,7 +1775,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To be used to indicate geospatial coordinates for a <a href="#geo:Feature">Feature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">To be used to indicate geospatial coordinates for a <a href="#sosa:FeatureOfInterest">Feature Of Interest</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -2082,7 +1858,7 @@ Models such as this are extensible so what you see here is the minimum informati
             </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="s">"ACME Pty Ltd"</span><span class="w"> </span><span class="p">;</span><span class="w">
             </span><span class="nn">sdo:</span><span class="n">identifier</span><span class="w"> </span><span class="s">"31 353 542 036"</span><span class="p">^^</span><span class="nn">gch:</span><span class="n">ABN</span><span class="w"> </span><span class="p">;</span><span class="w">
         </span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w">
-        </span><span class="nn">prov:</span><span class="n">hadRole</span><span class="w"> </span><span class="nn">rc:</span><span class="n">originator</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># SKOS Concept used as a PROV Role</span><span class="w">
+        </span><span class="nn">prov:</span><span class="n">hadRole</span><span class="w"> </span><span class="nn">rc:</span><span class="n">originator</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># SKOS Concept for a role</span><span class="w">
     </span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">keywords</span><span class="w"> </span><span class="nn">op:</span><span class="n">amount-of-gold</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">hasPart</span><span class="w"> </span><span class="nn">ex:</span><span class="n">obscol-a</span><span class="w"> </span><span class="p">;</span><span class="w">
@@ -2146,44 +1922,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="prov:Agent"><a class="anchor" href="#prov:Agent"></a>5.1.5.2. Agent</h5>
-<table class="tableblock frame-all grid-all stripes-odd stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>prov:Agent</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Agent</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Something that bears some form of responsibility for an activity taking place</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Do not use this class directly but, instead, use either <a href="#sdo:Organization">Organisation</a> or <a href="#sdo:Person">Person</a> which are subclasses of this class. This class is retained for model completeness</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#PROV">PROV</a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="prov:Role"><a class="anchor" href="#prov:Role"></a>5.1.5.3. Role</h5>
+<h5 id="prov:Role"><a class="anchor" href="#prov:Role"></a>5.1.5.2. Role</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2210,7 +1949,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="#SKOS">SKOS</a>`Concept` instances from vocabularies of methods to indicate the <code>Role</code> played by an <a href="#prov:Agent">Agent</a> object with respect to a <a href="#dcat:Dataset">Dataset</a> object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="#SKOS">SKOS</a>`Concept` instances from vocabularies of methods to indicate the <code>Role</code> played by an <code>Agent</code> with respect to a <a href="#dcat:Dataset">Dataset</a> object</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -2229,87 +1968,9 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sdo"><a class="anchor" href="#_sdo"></a>5.1.6. SDO</h4>
+<h4 id="skos-classes"><a class="anchor" href="#skos-classes"></a>5.1.6. SKOS</h4>
 <div class="sect4">
-<h5 id="sdo:Organization"><a class="anchor" href="#sdo:Organization"></a>5.1.6.1. Organization</h5>
-
-</div>
-<div class="sect4">
-<h5 id="sdo:Person"><a class="anchor" href="#sdo:Person"></a>5.1.6.2. Person</h5>
-
-</div>
-</div>
-<div class="sect3">
-<h4 id="skos-classes"><a class="anchor" href="#skos-classes"></a>5.1.7. SKOS</h4>
-<div class="sect4">
-<h5 id="skos:ConceptScheme"><a class="anchor" href="#skos:ConceptScheme"></a>5.1.7.1. Concept Scheme</h5>
-<table class="tableblock frame-all grid-all stripes-odd stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>skos:ConceptScheme</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Concept Scheme</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An aggregation of one or more <a href="#skos:Concept">Concept</a> objects</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this class only if declaring whole vocabularies of <a href="#skos:Concept">Concept</a> objects</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SKOS">SKOS</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Properties for <code>ConceptScheme</code> mandated by the <a href="https://w3id.org/profile/vocpub">VocPub</a> profile of SKOS</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">cs:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/observable-properties&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">skos:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">op:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/observable-properties/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w">
-
-</span><span class="nn">cs:</span><span class="w">
-    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">ConceptScheme</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sdo:</span><span class="n">dateCreated</span><span class="w"> </span><span class="s">"2023-06-16"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">date</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"Observable quality (property, characteristic) of a Feature Of Interest"</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"Observable Properties"</span><span class="na">@en</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span><span class="w">
-
-</span><span class="nn">op:</span><span class="n">amount-of-gold
-</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">skos:</span><span class="n">Concept</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">definition</span><span class="w"> </span><span class="s">"The rate of presence of elemental gold within another substance"</span><span class="na">@en</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">inScheme</span><span class="w"> </span><span class="nn">cs:</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">skos:</span><span class="n">prefLabel</span><span class="w"> </span><span class="s">"Amount of Gold Per Unit Mass"</span><span class="na">@en</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span></code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="skos:Concept"><a class="anchor" href="#skos:Concept"></a>5.1.7.2. Concept</h5>
+<h5 id="skos:Concept"><a class="anchor" href="#skos:Concept"></a>5.1.6.1. Concept</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2336,7 +1997,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this class to model the elements in vocabularies of terms for <a href="#sosa:Procedure">Procedure</a>, <a href="#sosa:ObservableProperty">Observable Property</a>, <a href="#sosa:Sensor">Sensor</a> &amp; <a href="#prov:Role">Role</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">While this class is to be used to model the objects indicated by the properties listed in the <a href="#_where">Vocabularies: Where</a> section, Concepts are not expected to be explicitly defined instead, as the objects indicated by predicates such as <a href="#prov:hadRole">had role</a> are understood to be Concepts, use of this class is implied only</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -2344,20 +2005,16 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Properties for <code>Concept</code> mandated by the <a href="https://w3id.org/profile/vocpub">VocPub</a> profile of SKOS</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See the Example for <a href="#skos:ConceptScheme">Concept Scheme</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rdfs_2"><a class="anchor" href="#_rdfs_2"></a>5.1.8. RDFS</h4>
+<h4 id="_rdfs_2"><a class="anchor" href="#_rdfs_2"></a>5.1.7. RDFS</h4>
 <div class="sect4">
-<h5 id="rdfs:Literal"><a class="anchor" href="#rdfs:Literal"></a>5.1.8.1. Literal</h5>
+<h5 id="rdfs:Literal"><a class="anchor" href="#rdfs:Literal"></a>5.1.7.1. Literal</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2395,9 +2052,9 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 </div>
 <div class="sect3">
-<h4 id="_xsd_datatypes"><a class="anchor" href="#_xsd_datatypes"></a>5.1.9. XSD Datatypes</h4>
+<h4 id="_xsd_datatypes"><a class="anchor" href="#_xsd_datatypes"></a>5.1.8. XSD Datatypes</h4>
 <div class="sect4">
-<h5 id="xsd:string"><a class="anchor" href="#xsd:string"></a>5.1.9.1. string</h5>
+<h5 id="xsd:string"><a class="anchor" href="#xsd:string"></a>5.1.8.1. string</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2448,7 +2105,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="xsd:float"><a class="anchor" href="#xsd:float"></a>5.1.9.2. float</h5>
+<h5 id="xsd:float"><a class="anchor" href="#xsd:float"></a>5.1.8.2. float</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2502,7 +2159,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="xsd:date"><a class="anchor" href="#xsd:date"></a>5.1.9.3. date</h5>
+<h5 id="xsd:date"><a class="anchor" href="#xsd:date"></a>5.1.8.3. date</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2543,7 +2200,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </table>
 </div>
 <div class="sect4">
-<h5 id="xsd:dateTime"><a class="anchor" href="#xsd:dateTime"></a>5.1.9.4. date time</h5>
+<h5 id="xsd:dateTime"><a class="anchor" href="#xsd:dateTime"></a>5.1.8.4. date time</h5>
 <table class="tableblock frame-all grid-all stripes-odd stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2673,6 +2330,12 @@ Models such as this are extensible so what you see here is the minimum informati
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:marginOfError">margin of error</a></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:additionalType">additional type</a></p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2706,7 +2369,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this property to indicate a <a href="#sosa:Procedure">Procedure</a> used to obtain an <a href="#sosa:Observation">Observation</a> but indicate <a href="#skos:Concept">Concept</a> objects taken from vocabularies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this property to indicate a <code>Procedure</code> used to obtain an <a href="#sosa:Observation">Observation</a> but indicate <a href="#skos:Concept">Concept</a> objects taken from vocabularies</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -2714,7 +2377,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See the Example for <a href="#sosa:Procedure">Procedure</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See the Example for <a href="#sosa:Observation">Observation</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -2747,7 +2410,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this property to indicate a <a href="#sosa:Sensor">Sensor</a> used to obtain an <a href="#sosa:Observation">Observation</a> but indicate <a href="#skos:Concept">Concept</a> objects taken from vocabularies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this property to indicate a <code>Sensor</code> used to obtain an <a href="#sosa:Observation">Observation</a> but indicate <a href="#skos:Concept">Concept</a> objects taken from vocabularies</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -2755,7 +2418,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See the Example for <a href="#sosa:Sensor">Sensor</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See the Example for <a href="#sosa:Observation">Observation</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -2788,7 +2451,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this property to indicate an <a href="#sosa:ObservableProperty">Observable Property</a> observed by an <a href="#sosa:Observation">Observation</a> but indicate <a href="#skos:Concept">Concept</a> objects taken from vocabularies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this property to indicate an <code>ObservableProperty</code> observed by an <a href="#sosa:Observation">Observation</a> but indicate <a href="#skos:Concept">Concept</a> objects taken from vocabularies</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -2796,7 +2459,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See the Example for <a href="#sosa:ObservableProperty">Observable Property</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See the Example for <a href="#sosa:Observation">Observation</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -2829,7 +2492,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this property to indicate a <a href="#sosa:FeatureOfInterest">Feature Of Interest</a> whose properties were observed by an <a href="#sosa:Observation">Observation</a> but indicate <a href="#geo:Feature">Feature</a> objects taken from lists of spatial objects</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this property to indicate a <a href="#sosa:FeatureOfInterest">Feature Of Interest</a> whose properties were observed by an <a href="#sosa:Observation">Observation</a> and expect to indicate objects taken from lists of spatial objects</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -3412,7 +3075,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this predicate to indicate <a href="#skos:Concept">Concept</a> objects from vocabularies that the object for which this predicate is set, likely a <a href="#dcat:Dataset">Dataset</a> is related to. This property is likely to be automatically calculated for datasets, based on the <a href="#sosa:ObservableProperty">Observable Properties</a>, <a href="#sosa:Sensor">Sensors</a> and other things that the data within it references</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this predicate to indicate <a href="#skos:Concept">Concept</a> objects from vocabularies that the object for which this predicate is set, likely a <a href="#dcat:Dataset">Dataset</a> is related to. This property is likely to be automatically calculated for datasets, based on the objects indicated by predicates such as <a href="#sosa:observedProperty">observed property</a> and other things that the data within it references</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -3453,7 +3116,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this predicate to indicate either a <a href="#geo:Feature">Feature</a> or a textual description of a location that is being indicated for something, like a <a href="#sosa:Sample">Sample</a>. Note, The best use of this property is to indicate <a href="#geo:Feature">Feature</a> objects in managed feature collections, but this property should also be used to indicate a location description in text when that is better that indicating it with a <a href="#geo:Geometry">Geometry</a>, as per the Example for <a href="#sosa:Sample">Sample</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this predicate to indicate either a located objects supplied externally or a textual description of a location that is being indicated for something, like a <a href="#sosa:Sample">Sample</a>. Note, The best use of this property is to indicate objects in managed spatial object collections, but this property should also be used to indicate a location description in text when that is better that indicating it with a <a href="#geo:Geometry">Geometry</a>, as per the Example for <a href="#sosa:Sample">Sample</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -3589,6 +3252,47 @@ Models such as this are extensible so what you see here is the minimum informati
 </tbody>
 </table>
 </div>
+<div class="sect4">
+<h5 id="sdo:additionalType"><a class="anchor" href="#sdo:additionalType"></a>5.2.5.10. additional type</h5>
+<table class="tableblock frame-all grid-all stripes-odd stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdo:additionalType</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">additional type</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An additional type for the item, typically used for adding more specific types from external vocabularies</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this predicate to indicate a <a href="#skos:Concept">Concept</a> from a vocabulary containing specialised types of the object that this predicates is used on, e.g. values from a <em>Sample Types</em> vocabulary if the object using this is a <a href="#sosa:Sample">Sample</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SDO">SDO</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See the Example for <a href="#sosa:Sample">Sample</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -3596,16 +3300,13 @@ Models such as this are extensible so what you see here is the minimum informati
 <div class="sect1">
 <h2 id="_vocabularies"><a class="anchor" href="#_vocabularies"></a>6. Vocabularies</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The model defined here depends on the use of multiple vocabularies to supply values for particular predicates. For example the objects indicated by <a href="#sosa:observedProperty">observed property</a> and <a href="#sosa:usedProcedure">used procedure</a> predicates should both be taken from vocabularies.</p>
+</div>
 <div class="sect2">
-<h3 id="_vocabs_classes"><a class="anchor" href="#_vocabs_classes"></a>6.1. Vocabs &amp; Classes</h3>
+<h3 id="_referencing"><a class="anchor" href="#_referencing"></a>6.1. Referencing</h3>
 <div class="paragraph">
-<p>The model defined here depends on the use of multiple vocabularies to supply values for particular predicates. For example, the values for the predicate <a href="#sosa:observedProperty">observed property</a> which link an <a href="#sosa:Observation">Observation</a> to an <a href="#sosa:ObservableProperty">Observable Property</a> should be used to indicate <a href="#skos:Concept">Concept</a> objects within an observable property vocabulary such as the Geological Survey of Queensland&#8217;s general-purpose Observable Properties vocabulary (detailed below).</p>
-</div>
-<div class="paragraph">
-<p>When predicates indicate <a href="#skos:Concept">Concept</a> objects within vocabularies where the model expects a particular class of object, such as <a href="#sosa:ObservableProperty">Observable Property</a> in the example above, or <a href="#sosa:Procedure">Procedure</a> which indicated by <a href="#sosa:usedProcedure">used procedure</a>, the reference to the object indicated just needs to be the object&#8217;s IRI - persistent web identifier.</p>
-</div>
-<div class="paragraph">
-<p>The following code shows an <a href="#sosa:Observation">Observation</a> indicating both an <a href="#sosa:ObservableProperty">Observable Property</a> using the <a href="#sosa:observedProperty">observed property</a> predicate and <a href="#sosa:Procedure">Procedure</a> using the <a href="#sosa:usedProcedure">used procedure</a> predicate. The Observable Property really exists in a public, published vocabulary whereas the Procedure used here is fictitious, just to exemplify full IRIs and prefixed versions:</p>
+<p>When predicates indicate an object in a vocabulary, the reference is made by just quoting the IRI of the relevant <a href="#skos:Concept">Concept</a>, like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3620,11 +3321,17 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 </div>
 <div class="paragraph">
-<p>In the example above, no further details of the Observable Property or the Procedure are given: all of their details are assumed to be contained within the vocabularies that define them.</p>
+<p>The Concept indicated by  <code>sosa:observedProperty</code> is one that already exists whereas the one indicated by <code>sosa:usedProcedure</code> does not: it&#8217;s a dummy. The first Concept is indicated by its full IRI, the second by a namespace prefix-shortened form of its IRI.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_where"><a class="anchor" href="#_where"></a>6.2. Where</h3>
+<h3 id="_classes_concepts"><a class="anchor" href="#_classes_concepts"></a>6.2. Classes &amp; Concepts</h3>
+<div class="paragraph">
+<p>From this model&#8217;s point of view, an object indicated by the <a href="#sosa:usedProcedure">used procedure</a> predicate is understood to be a <code>Procedure</code> object which may have special properties of its own, as indicated by <a href="#SOSA">SOSA</a>, such as <code>implementedBy</code> which tells a user which <code>Sensor</code> (s) actually use that Procedure. However, since this model requires no further information about objects indicated by <code>used procedure</code> etc. they are thought of as just  <a href="#skos:Concept">Concept</a> objects here.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_where"><a class="anchor" href="#_where"></a>6.3. Where</h3>
 <div class="paragraph">
 <p>Vocabularies of Concepts are used for the values indicated by the following predicates in this model:</p>
 </div>
@@ -3648,17 +3355,26 @@ Models such as this are extensible so what you see here is the minimum informati
 <li>
 <p><a href="#prov:hadRole">had role</a></p>
 </li>
+<li>
+<p><a href="#prov:agent">agent</a></p>
+</li>
+<li>
+<p><a href="#sdo:additionalType">additional type</a></p>
+</li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_which"><a class="anchor" href="#_which"></a>6.3. Which</h3>
+<h3 id="_which"><a class="anchor" href="#_which"></a>6.4. Which</h3>
 <div class="paragraph">
-<p>Use of this model to make data that must validate according to the Geological Survey of Queensland, for example for automated data submission, must use particular vocabularies for the predicates listed above. See the <a href="#_validation">Validation section</a> for specifics.</p>
+<p>The particular vocabularies that must be used for the predicates listed above depend on which profile of this specification is used. Specific profiles require specific vocabularies and validate data according to them</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="#_validation">Validation section</a> for specifics.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_modelling"><a class="anchor" href="#_modelling"></a>6.4. Modelling</h3>
+<h3 id="_modelling"><a class="anchor" href="#_modelling"></a>6.5. Modelling</h3>
 <div class="paragraph">
 <p>All vocabularies used with this model are expected to be <a href="#SKOS">SKOS</a> vocabularies, that is vocabularies formulated according to the SKOS model, which is one of the background models of this model.</p>
 </div>
@@ -3691,20 +3407,17 @@ Models such as this are extensible so what you see here is the minimum informati
 <div class="paragraph">
 <p>Vocabs can typically be extended via some governed mechanism and those of GSQ certainly can be.</p>
 </div>
-<div class="paragraph">
-<p>The features of vocabs and the management of them mean that much information about procedures, observed properties etc. can be stored in the vocabs listing the individual concepts and thus not much need be stored in data referencing their concepts. Usually, only quoting the IRI of a concepts is all that is needed, as per the example above in <a href="#_vocabs_classes">Vocabs &amp; Classes</a> and in the <a href="#sosa:Observation">Observation class example</a>.</p>
-</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_validation"><a class="anchor" href="#_validation"></a>7. Validation</h2>
+<h2 id="_profiles_2"><a class="anchor" href="#_profiles_2"></a>7. Profiles</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Validation is the process of testing whether data conforms to a (profile of) a model. "profile of" is inserted as usually validators test for specific values in data where perhaps a general model might allow a range of values. For example, this model requires units of measure to be <a href="#skos:Concept">Concept</a> objects in vocabularies but the GSP profile of this model requires that values come from GSQ&#8217;s <a href="https://linked.data.gov.au/def/geou">Geoscience Profile of QUDT Units  vocabulary</a>, specifically.</p>
+<p>While many profiles of, and thus validators for, this model may be created, so far only one profile and validator have been created: the <em>GSQ Profile</em>, described below.</p>
 </div>
 <div class="paragraph">
-<p>While many profiles of, and thus validators for, this model may be created, so far only one profile and validator have been created: the GSQ Profile, described below.</p>
+<p>Profiles have separate identity to this specification so that data can indicate conformance specifically to them.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3713,19 +3426,267 @@ Models such as this are extensible so what you see here is the minimum informati
 <div class="title">Note</div>
 </td>
 <td class="content">
-All the resources needed for online validation of data according to all known profiles of this model are available at the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal
-</a>.
+All the resources needed for online validation of data according to all known profiles of this model are available at the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a>.
 </td>
 </tr>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_method"><a class="anchor" href="#_method"></a>7.1. Method</h3>
+<h3 id="_gsq_profile"><a class="anchor" href="#_gsq_profile"></a>7.1. GSQ Profile</h3>
 <div class="paragraph">
-<p>The method used to validate data claiming conformance to profiles of this model is to use the Shapes Constraint Language (<a href="#SHACL">SHACL</a>) to define validation rules, called 'Shapes', that are expressed in RDF data. These shapes can then be used by a SHACL validation tool to validate given data.</p>
+<p>The GSQ Profile of this model mandates certain predicates for classes of object and restricts which vocabularies may be used to supply values for the predicates in this model that indicate concepts, as described in the <a href="#_where">Vocabularies: Where section</a> above.</p>
 </div>
 <div class="paragraph">
-<p>A partial and simplified example Shape from the <em>GSQ Profile</em> is given here in <a href="#TURTLE">Turtle</a>:</p>
+<p>This profile&#8217;s IRI is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://linked.data.gov.au/def/geochem/gsq" class="bare">https://linked.data.gov.au/def/geochem/gsq</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The validator for this profile is available as a data file directly for download at <a href="https://linked.data.gov.au/def/geochem/gsq" class="bare">https://linked.data.gov.au/def/geochem/gsq</a> as well as being pre-loaded in the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_predicate_mandates"><a class="anchor" href="#_predicate_mandates"></a>7.2. Predicate Mandates</h3>
+<div class="paragraph">
+<p>The following table lists classes of this model and gives the cardinality of predicates. Only classes that must be used are listed.</p>
+</div>
+<div class="paragraph">
+<p>A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1 means zero or one.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-odd stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 37.5%;">
+<col style="width: 37.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Class</th>
+<th class="tableblock halign-left valign-top">Predicate</th>
+<th class="tableblock halign-left valign-top">Cardinality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:Observation">Observation</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:usedProcedure">used procedure</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code> unless in <a href="#sosa:ObservationCollection">Observation Collection</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:madeBySensor">made by sensor</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code> unless in <a href="#sosa:ObservationCollection">Observation Collection</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:observedProperty">observed property</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code> unless in <a href="#sosa:ObservationCollection">Observation Collection</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasFeatureOfInterest">has feature of interest</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code> unless in <a href="#sosa:ObservationCollection">Observation Collection</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:phenomenonTime">phenomenon time</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code> unless in <a href="#sosa:ObservationCollection">Observation Collection</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasResult">has result</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:marginOfError">margin of error</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0-1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:Result">Result</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:unitCode">unit code</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0-1</code> - not needed if <code>value</code> is a categorisation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:value">value</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:marginOfError">margin of error</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0-1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:Sample">Sample</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:isSampleOf">is sample of</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:ObservationCollection">Observation Collection</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:hasMember">has member</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&#8230;&#8203;and any properties of <a href="#sosa:Observation">Observation</a></em></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:FeatureOfInterest">Feature Of Interest</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:hasGeometry">has geometry</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0-1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:Geometry">Geometry</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#geo:asWKT">as WKT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#dcat:Dataset">Dataset</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:name">name</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:description">description</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:dateCreated">date created</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:dateModified">dateModified</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:keywords">keywords</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0+</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:qualifiedAttribution">qualified attribution</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code> per agent to be related to this Dataset</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:Attribution">Attribution</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:agent">agent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:hadRole">had role</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_vocab_restrictions"><a class="anchor" href="#_vocab_restrictions"></a>7.3. Vocab Restrictions</h3>
+<div class="paragraph">
+<p>This profile requires that Concepts indicated by certain predicates come from specific vocabularies. The predicates and their required vocabularies are:</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-odd stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Predicate</th>
+<th class="tableblock halign-left valign-top">Vocabulary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:usedProcedure">used procedure</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem-methods">Analytical methods for geochemistry</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sosa:observedProperty">observed property</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/observable-properties">Observable Properties</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:unitCode">unit code</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geou">Geoscience Profile of QUDT Units</a>, Geochemistry collection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:hadRole">had role</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://data.idnau.org/pid/vocab/idn-role-codes">IDN Role Codes</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:agent">agent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">To be supplied by GSQ via the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:additionalType">additional type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When used on <a href="#sosa:Sample">Sample</a> objects: <a href="https://linked.data.gov.au/def/sample-type">Sample Types</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Note that this profile does <em>NOT</em> require that the predicate <a href="#sosa:madeBySensor">made by sensor</a> is used on the <a href="#sosa:Observation">Observation</a> class, thus no vocabulary is mandated for its use. It may be used but, if it is, the user may choose any vocabulary of Concepts to draw from useful to them.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_validation"><a class="anchor" href="#_validation"></a>8. Validation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Validation is the process of testing whether data conforms to a (profile of) a model. "profile of" is inserted as often validators test for specific values in data required by profiles where perhaps a general model might allow a range of values. For example, this model requires units of measure to be <a href="#skos:Concept">Concept</a> objects in vocabularies but the <a href="#_gsq_profile">GSQ Profile</a> requires that values come from GSQ&#8217;s <a href="https://linked.data.gov.au/def/geou">Geoscience Profile of QUDT Units vocabulary</a>, specifically.</p>
+</div>
+<div class="sect2">
+<h3 id="_method"><a class="anchor" href="#_method"></a>8.1. Method</h3>
+<div class="paragraph">
+<p>The method used to validate data claiming conformance to (profiles of) this model is execution of Shapes Constraint Language (<a href="#SHACL">SHACL</a>) rules, called 'Shapes', by a SHACL validation tool. SHACL Shapes are defined in RDF "validator" files which are then applied to data also expressed in RDF data. Validators for this model are supplied per profile, see the <a href="#_profiles">Profiles section</a>.</p>
+</div>
+<div class="paragraph">
+<p>A partial, and simplified, example Shape from the <a href="#_gsq_profile">GSQ Profile</a> is given here in <a href="#TURTLE">Turtle</a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3757,29 +3718,7 @@ All the resources needed for online validation of data according to all known pr
 </div>
 </div>
 <div class="sect2">
-<h3 id="_validators"><a class="anchor" href="#_validators"></a>7.2. Validators</h3>
-<div class="sect3">
-<h4 id="_gsq_profile"><a class="anchor" href="#_gsq_profile"></a>7.2.1. GSQ Profile</h4>
-<div class="paragraph">
-<p>The GSQ profile of this model provides restrictions for on which vocabularies may be used to supply values for the predicates in this model that can indicate concepts, as described in the <a href="#_vocabularies">Vocabularies section</a> above.</p>
-</div>
-<div class="paragraph">
-<p>This GSQ Profile has a separate identity to this specification so that data can indicate conformance specifically to it. This profile&#8217;s IRI is:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://linked.data.gov.au/def/geochem/gsq" class="bare">https://linked.data.gov.au/def/geochem/gsq</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The validator for this profile is available as a data file directly for download at <a href="https://linked.data.gov.au/def/geochem/gsq" class="bare">https://linked.data.gov.au/def/geochem/gsq</a> as well as being pre-loaded in the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_tools"><a class="anchor" href="#_tools"></a>7.3. Tools</h3>
+<h3 id="_tools"><a class="anchor" href="#_tools"></a>8.2. Tools</h3>
 <div class="paragraph">
 <p>All the resources needed for online validation of data according to all known profiles of this model are available at the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a>, however any other SHACL validation tooling can be used to perform data validation, given the data to be validated and the desired profile&#8217;s validator.</p>
 </div>
@@ -3839,13 +3778,13 @@ All the resources needed for online validation of data according to all known pr
 </div>
 </div>
 <div class="sect1">
-<h2 id="_data_formats"><a class="anchor" href="#_data_formats"></a>8. Data Formats</h2>
+<h2 id="_data_formats"><a class="anchor" href="#_data_formats"></a>9. Data Formats</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_references"><a class="anchor" href="#_references"></a>9. References</h2>
+<h2 id="_references"><a class="anchor" href="#_references"></a>10. References</h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
@@ -3855,7 +3794,7 @@ All the resources needed for online validation of data according to all known pr
 </dd>
 <dt class="hdlist1"><a id="GSP"></a> [GSP]</dt>
 <dd>
-<p>Open Geospatial Consortium, <em>OGC GeoSPARQL - A Geographic Query Language for RDF Data</em>, OGC Implementation Standard. Car, N. J., &amp; Homburg, T. (eds.) (2011)  (2011). <a href="http://www.opengis.net/doc/IS/geosparql/1.1" class="bare">http://www.opengis.net/doc/IS/geosparql/1.1</a></p>
+<p>Open Geospatial Consortium, <em>OGC GeoSPARQL - A Geographic Query Language for RDF Data</em>, OGC Implementation Standard. Car, N. J., &amp; Homburg, T. (eds.) (2011). <a href="http://www.opengis.net/doc/IS/geosparql/1.1" class="bare">http://www.opengis.net/doc/IS/geosparql/1.1</a></p>
 </dd>
 <dt class="hdlist1"><a id="ISO19105"></a> [ISO19105]</dt>
 <dd>
@@ -3928,7 +3867,7 @@ All the resources needed for online validation of data according to all known pr
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-23 13:57:42 UTC
+Last updated 2023-09-24 15:08:51 UTC
 </div>
 </div>
 </body>
