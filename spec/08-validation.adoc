@@ -1,17 +1,12 @@
 == Validation
 
-Validation is the process of testing whether data conforms to a (profile of) a model. "profile of" is inserted as usually validators test for specific values in data where perhaps a general model might allow a range of values. For example, this model requires units of measure to be <<skos:Concept, Concept>> objects in vocabularies but the GSP profile of this model requires that values come from GSQ's https://linked.data.gov.au/def/geou[Geoscience Profile of QUDT Units  vocabulary], specifically.
-
-While many profiles of, and thus validators for, this model may be created, so far only one profile and validator have been created: the GSQ Profile, described below.
-
-NOTE: All the resources needed for online validation of data according to all known profiles of this model are available at the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal
-].
+Validation is the process of testing whether data conforms to a (profile of) a model. "profile of" is inserted as often validators test for specific values in data required by profiles where perhaps a general model might allow a range of values. For example, this model requires units of measure to be <<skos:Concept, Concept>> objects in vocabularies but the <<GSQ Profile, GSQ Profile>> requires that values come from GSQ's https://linked.data.gov.au/def/geou[Geoscience Profile of QUDT Units vocabulary], specifically.
 
 === Method
 
-The method used to validate data claiming conformance to profiles of this model is to use the Shapes Constraint Language (<<SHACL, SHACL>>) to define validation rules, called 'Shapes', that are expressed in RDF data. These shapes can then be used by a SHACL validation tool to validate given data.
+The method used to validate data claiming conformance to (profiles of) this model is execution of Shapes Constraint Language (<<SHACL, SHACL>>) rules, called 'Shapes', by a SHACL validation tool. SHACL Shapes are defined in RDF "validator" files which are then applied to data also expressed in RDF data. Validators for this model are supplied per profile, see the <<Profiles, Profiles section>>.
 
-A partial and simplified example Shape from the _GSQ Profile_ is given here in <<TURTLE, Turtle>>:
+A partial, and simplified, example Shape from the <<GSQ Profile, GSQ Profile>> is given here in <<TURTLE, Turtle>>:
 
 [source,turtle]
 ----
@@ -38,18 +33,6 @@ gsq-shapes:DatasetMandatoryPredicates
 The shape above tests that all presented <<dcat:Dataset, Dataset>> objects indicate one and only one <<sdo:name, name>> predicate which, in turn, must indicate a text (string) value.
 
 SHACL validation tooling will report whether all Shapes are respected by the data or, if not, which ones failed and how (for which data element and values) they failed.
-
-=== Validators
-
-==== GSQ Profile
-
-The GSQ profile of this model provides restrictions for on which vocabularies may be used to supply values for the predicates in this model that can indicate concepts, as described in the <<Vocabularies, Vocabularies section>> above.
-
-This GSQ Profile has a separate identity to this specification so that data can indicate conformance specifically to it. This profile's IRI is:
-
-* https://linked.data.gov.au/def/geochem/gsq
-
-The validator for this profile is available as a data file directly for download at https://linked.data.gov.au/def/geochem/gsq as well as being pre-loaded in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal].
 
 === Tools
 

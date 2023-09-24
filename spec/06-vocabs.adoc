@@ -1,12 +1,10 @@
 == Vocabularies
 
-=== Vocabs & Classes
+The model defined here depends on the use of multiple vocabularies to supply values for particular predicates. For example the objects indicated by <<sosa:observedProperty, observed property>> and <<sosa:usedProcedure, used procedure>> predicates should both be taken from vocabularies.
 
-The model defined here depends on the use of multiple vocabularies to supply values for particular predicates. For example, the values for the predicate <<sosa:observedProperty, observed property>> which link an <<sosa:Observation, Observation>> to an <<sosa:ObservableProperty, Observable Property>> should be used to indicate <<skos:Concept, Concept>> objects within an observable property vocabulary such as the Geological Survey of Queensland's general-purpose Observable Properties vocabulary (detailed below).
+=== Referencing
 
-When predicates indicate <<skos:Concept, Concept>> objects within vocabularies where the model expects a particular class of object, such as <<sosa:ObservableProperty, Observable Property>> in the example above, or <<sosa:Procedure, Procedure>> which indicated by <<sosa:usedProcedure, used procedure>>, the reference to the object indicated just needs to be the object's IRI - persistent web identifier.
-
-The following code shows an <<sosa:Observation, Observation>> indicating both an <<sosa:ObservableProperty, Observable Property>> using the <<sosa:observedProperty, observed property>> predicate and <<sosa:Procedure, Procedure>> using the <<sosa:usedProcedure, used procedure>> predicate. The Observable Property really exists in a public, published vocabulary whereas the Procedure used here is fictitious, just to exemplify full IRIs and prefixed versions:
+When predicates indicate an object in a vocabulary, the reference is made by just quoting the IRI of the relevant <<skos:Concept, Concept>>, like this:
 
 [source,turtle]
 ----
@@ -20,7 +18,11 @@ ex:obs-a
 .
 ----
 
-In the example above, no further details of the Observable Property or the Procedure are given: all of their details are assumed to be contained within the vocabularies that define them.
+The Concept indicated by  `sosa:observedProperty` is one that already exists whereas the one indicated by `sosa:usedProcedure` does not: it's a dummy. The first Concept is indicated by its full IRI, the second by a namespace prefix-shortened form of its IRI.
+
+=== Classes & Concepts
+
+From this model's point of view, an object indicated by the <<sosa:usedProcedure, used procedure>> predicate is understood to be a `Procedure` object which may have special properties of its own, as indicated by <<SOSA, SOSA>>, such as `implementedBy` which tells a user which `Sensor` (s) actually use that Procedure. However, since this model requires no further information about objects indicated by `used procedure` etc. they are thought of as just  <<skos:Concept, Concept>> objects here.
 
 === Where
 
@@ -32,10 +34,14 @@ Vocabularies of Concepts are used for the values indicated by the following pred
 * <<sdo:unitCode, unit code>>
 * <<sdo:keywords, keywords>>
 * <<prov:hadRole, had role>>
+* <<prov:agent, agent>>
+* <<sdo:additionalType, additional type>>
 
 === Which
 
-Use of this model to make data that must validate according to the Geological Survey of Queensland, for example for automated data submission, must use particular vocabularies for the predicates listed above. See the <<Validation, Validation section>> for specifics.
+The particular vocabularies that must be used for the predicates listed above depend on which profile of this specification is used. Specific profiles require specific vocabularies and validate data according to them
+
+See the <<Validation, Validation section>> for specifics.
 
 === Modelling
 
@@ -52,5 +58,3 @@ SKOS vocabularies are published by many geological organisations, including the 
 * https://vocabs.gsq.digital
 
 Vocabs can typically be extended via some governed mechanism and those of GSQ certainly can be.
-
-The features of vocabs and the management of them mean that much information about procedures, observed properties etc. can be stored in the vocabs listing the individual concepts and thus not much need be stored in data referencing their concepts. Usually, only quoting the IRI of a concepts is all that is needed, as per the example above in <<Vocabs & Classes, Vocabs & Classes>> and in the <<sosa:Observation, Observation class example>>.

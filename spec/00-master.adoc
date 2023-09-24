@@ -35,8 +35,10 @@ include::05-model.adoc[]
 
 include::06-vocabs.adoc[]
 
-include::07-validation.adoc[]
+include::07-profiles.adoc[]
 
-include::08-data-formats.adoc[]
+include::08-validation.adoc[]
 
-include::09-references.adoc[]
+include::09-data-formats.adoc[]
+
+include::99-references.adoc[]

@@ -1,0 +1,76 @@
+== Profiles
+
+While many profiles of, and thus validators for, this model may be created, so far only one profile and validator have been created: the _GSQ Profile_, described below.
+
+Profiles have separate identity to this specification so that data can indicate conformance specifically to them.
+
+NOTE: All the resources needed for online validation of data according to all known profiles of this model are available at the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal].
+
+=== GSQ Profile
+
+The GSQ Profile of this model mandates certain predicates for classes of object and restricts which vocabularies may be used to supply values for the predicates in this model that indicate concepts, as described in the <<Where, Vocabularies: Where section>> above.
+
+This profile's IRI is:
+
+* https://linked.data.gov.au/def/geochem/gsq
+
+The validator for this profile is available as a data file directly for download at https://linked.data.gov.au/def/geochem/gsq as well as being pre-loaded in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal].
+
+=== Predicate Mandates
+
+The following table lists classes of this model and gives the cardinality of predicates. Only classes that must be used are listed.
+
+A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1 means zero or one.
+
+[cols="2,3,3"]
+|===
+| Class | Predicate | Cardinality
+
+| <<sosa:Observation, Observation>>                         | <<sosa:usedProcedure, used procedure>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
+|                                                           | <<sosa:madeBySensor, made by sensor>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
+|                                                           | <<sosa:observedProperty, observed property>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
+|                                                           | <<sosa:hasFeatureOfInterest, has feature of interest>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
+|                                                           | <<sosa:phenomenonTime, phenomenon time>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
+|                                                           | <<sosa:hasResult, has result>> | `1`
+|                                                           | <<sdo:marginOfError, margin of error>> | `0-1`
+|||
+| <<sosa:Result, Result>>                                   | <<sdo:unitCode, unit code>> | `0-1` - not needed if `value` is a categorisation
+|                                                           | <<sdo:value, value>>    | `1`
+|                                                           | <<sdo:marginOfError, margin of error>> | `0-1`
+|||
+| <<sosa:Sample, Sample>>                                   | <<sosa:isSampleOf, is sample of>> |
+|||
+| <<sosa:ObservationCollection, Observation Collection>>    | <<sosa:hasMember, has member>> |
+|                                                           | _...and any properties of <<sosa:Observation, Observation>>_ |
+|||
+| <<sosa:FeatureOfInterest, Feature Of Interest>>           | <<geo:hasGeometry, has geometry>> | `0-1`
+|||
+| <<geo:Geometry, Geometry>>                                | <<geo:asWKT, as WKT>> | `1`
+|||
+| <<dcat:Dataset, Dataset>>                                 | <<sdo:name, name>> | `1`
+|                                                           | <<sdo:description, description>> | `1`
+|                                                           | <<sdo:dateCreated, date created>> | `1`
+|                                                           | <<sdo:dateModified, dateModified>> | `1`
+|                                                           | <<sdo:keywords, keywords>> | `0+`
+|                                                           | <<prov:qualifiedAttribution, qualified attribution>> | `1` per agent to be related to this Dataset
+|||
+| <<prov:Attribution, Attribution>>                         | <<prov:agent, agent>> | `1`
+|                                                           | <<prov:hadRole, had role>> | `1`
+|===
+
+=== Vocab Restrictions
+
+This profile requires that Concepts indicated by certain predicates come from specific vocabularies. The predicates and their required vocabularies are:
+
+|===
+| Predicate | Vocabulary
+
+| <<sosa:usedProcedure, used procedure>>        | https://linked.data.gov.au/def/geochem-methods[Analytical methods for geochemistry]
+| <<sosa:observedProperty, observed property>>  | https://linked.data.gov.au/def/observable-properties[Observable Properties]
+| <<sdo:unitCode, unit code>>                   | https://linked.data.gov.au/def/geou[Geoscience Profile of QUDT Units], Geochemistry collection
+| <<prov:hadRole, had role>>                    | https://data.idnau.org/pid/vocab/idn-role-codes[IDN Role Codes]
+| <<prov:agent, agent>>                         | To be supplied by GSQ via the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal]
+| <<sdo:additionalType, additional type>>       | When used on <<sosa:Sample, Sample>> objects: https://linked.data.gov.au/def/sample-type[Sample Types]
+|===
+
+Note that this profile does _NOT_ require that the predicate <<sosa:madeBySensor, made by sensor>> is used on the <<sosa:Observation, Observation>> class, thus no vocabulary is mandated for its use. It may be used but, if it is, the user may choose any vocabulary of Concepts to draw from useful to them.
