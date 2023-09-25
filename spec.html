@@ -657,18 +657,18 @@ pre.rouge {
 <li><a href="#_abstract">1. Abstract</a></li>
 <li><a href="#_preamble">2. Preamble</a>
 <ul class="sectlevel2">
-<li><a href="#_class">2.1. Class</a></li>
-<li><a href="#_conformance">2.2. Conformance</a></li>
-<li><a href="#_terms_definitions">2.3. Terms &amp; Definitions</a>
+<li><a href="#_conformance">2.1. Conformance</a></li>
+<li><a href="#_terms_definitions">2.2. Terms &amp; Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_rdf">2.3.1. RDF</a></li>
-<li><a href="#_rdfs">2.3.2. RDFS</a></li>
-<li><a href="#_owl">2.3.3. OWL</a></li>
-<li><a href="#_predicate">2.3.4. Predicate</a></li>
-<li><a href="#_sparql">2.3.5. SPARQL</a></li>
+<li><a href="#_class">2.2.1. Class</a></li>
+<li><a href="#_owl">2.2.2. OWL</a></li>
+<li><a href="#_predicate">2.2.3. Predicate</a></li>
+<li><a href="#_rdf">2.2.4. RDF</a></li>
+<li><a href="#_rdfs">2.2.5. RDFS</a></li>
+<li><a href="#_sparql">2.2.6. SPARQL</a></li>
 </ul>
 </li>
-<li><a href="#_namespaces">2.4. Namespaces</a></li>
+<li><a href="#_namespaces">2.3. Namespaces</a></li>
 </ul>
 </li>
 <li><a href="#_introduction">3. Introduction</a>
@@ -816,55 +816,55 @@ If you want to find the Geological Survey of Queensland&#8217;s rules for geoche
 <h2 id="_preamble"><a class="anchor" href="#_preamble"></a>2. Preamble</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_class"><a class="anchor" href="#_class"></a>2.1. Class</h3>
-<div class="paragraph">
-<p>Within formal <a href="#_owl">OWL</a> modelling a class is a set of objects exhibiting common properties. For example, the set of all people who are studying could be defined as being within a <em>Student</em> class.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_conformance"><a class="anchor" href="#_conformance"></a>2.2. Conformance</h3>
+<h3 id="_conformance"><a class="anchor" href="#_conformance"></a>2.1. Conformance</h3>
 <div class="paragraph">
 <p>The conformance imperatives of data to this Specification use terms from <em>RFC 2119: Key words for use in RFCs to Indicate Requirement Levels</em> <a href="#RFC2119">RFC2119</a> which defines terms such as <strong><em>MUST</em></strong>, <strong><em>SHALL</em></strong> and <strong><em>MAY</em></strong>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_terms_definitions"><a class="anchor" href="#_terms_definitions"></a>2.3. Terms &amp; Definitions</h3>
+<h3 id="_terms_definitions"><a class="anchor" href="#_terms_definitions"></a>2.2. Terms &amp; Definitions</h3>
 <div class="sect3">
-<h4 id="_rdf"><a class="anchor" href="#_rdf"></a>2.3.1. RDF</h4>
+<h4 id="_class"><a class="anchor" href="#_class"></a>2.2.1. Class</h4>
 <div class="paragraph">
-<p>The Resource Description Framework (RDF) is a framework for representing information in the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, blank nodes, or datatyped literals. They are used to express descriptions of resources. <a href="#RDFSPEC">RDFSPEC</a></p>
+<p>Within formal <a href="#_owl">OWL</a> modelling a class is a set of objects exhibiting common properties. For example, the set of all people who are studying could be defined as being within a <em>Student</em> class.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rdfs"><a class="anchor" href="#_rdfs"></a>2.3.2. RDFS</h4>
-<div class="paragraph">
-<p>RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary. <a href="#_rdfs">RDFS</a></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_owl"><a class="anchor" href="#_owl"></a>2.3.3. OWL</h4>
+<h4 id="_owl"><a class="anchor" href="#_owl"></a>2.2.2. OWL</h4>
 <div class="paragraph">
 <p>The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as Semantic Web documents. OWL 2 ontologies can be used along with information written in RDF, and OWL 2 ontologies themselves are primarily exchanged as RDF documents. <a href="#OWL2">OWL</a></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_predicate"><a class="anchor" href="#_predicate"></a>2.3.4. Predicate</h4>
+<h4 id="_predicate"><a class="anchor" href="#_predicate"></a>2.2.3. Predicate</h4>
 <div class="paragraph">
-<p>Predicates, within formal <a href="#_owl">OWL</a> modelling, are the defined relations between objects of different classes (see <a href="#_class">Section 2.1</a>) and also between objects and simple data values such as numbers and dates. For example, if <em>Person X</em> "knows" <em>Person Y</em>, then we can use a predicate of <code>knows</code> to relate them.</p>
+<p>Predicates, within formal <a href="#_owl">OWL</a> modelling, are the defined relations between objects of different classes (see <a href="#_class">Section 2.2.1</a>) and also between objects and simple data values such as numbers and dates. For example, if <em>Person X</em> "knows" <em>Person Y</em>, then we can use a predicate of <code>knows</code> to relate them.</p>
 </div>
 <div class="paragraph">
 <p>Frequently we use predicates already defined in existing ontologies. "knows", for example, is defined in the schema.org ontology <a href="#SDO">SDO</a> to be "The most generic bi-directional social/work relation".</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sparql"><a class="anchor" href="#_sparql"></a>2.3.5. SPARQL</h4>
+<h4 id="_rdf"><a class="anchor" href="#_rdf"></a>2.2.4. RDF</h4>
+<div class="paragraph">
+<p>The Resource Description Framework (RDF) is a framework for representing information in the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, blank nodes, or datatyped literals. They are used to express descriptions of resources. <a href="#RDFSPEC">RDFSPEC</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rdfs"><a class="anchor" href="#_rdfs"></a>2.2.5. RDFS</h4>
+<div class="paragraph">
+<p>RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary. <a href="#_rdfs">RDFS</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sparql"><a class="anchor" href="#_sparql"></a>2.2.6. SPARQL</h4>
 <div class="paragraph">
 <p>SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <a href="#_sparql">SPARQL</a></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_namespaces"><a class="anchor" href="#_namespaces"></a>2.4. Namespaces</h3>
+<h3 id="_namespaces"><a class="anchor" href="#_namespaces"></a>2.3. Namespaces</h3>
 <div class="paragraph">
 <p>Namespaces for model, vocabulary and validator elements are assigned the following prefixes:</p>
 </div>
@@ -2061,7 +2061,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_rdfs">Section 2.3.2</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_rdfs">Section 2.2.5</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -3624,7 +3624,7 @@ All the resources needed for online validation of data according to all known pr
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#prov:qualifiedAttribution">qualified attribution</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code> per agent to be related to this Dataset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1+</code> - <code>1</code> per agent to be related to this Dataset and at least one - the creator/owner of the data</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -4009,7 +4009,7 @@ All the resources needed for online validation of data according to all known pr
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-24 23:56:15 UTC
+Last updated 2023-09-25 14:40:38 UTC
 </div>
 </div>
 </body>
