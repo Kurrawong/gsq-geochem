@@ -2,6 +2,8 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX ex: <http://example.com/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rc: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
 PREFIX sdo: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
@@ -11,6 +13,13 @@ ex:dataset-x
     a dcat:Dataset ;
     sdo:name "Dataset X" ;
     sdo:description "A demonstration dataset" ;
+    sdo:dateCreated "2023-09-26"^^xsd:date ;
+    sdo:dateModified "2023-09-27T14:30"^^xsd:dateTime ;
+    prov:qualifiedAttribution [
+        a prov:Attribution ;
+        prov:agent ex:a-company ;
+        prov:hadRole rc:originator ;
+    ] ;
 .
 
 ex:obs-1
@@ -60,7 +69,7 @@ ex:result-f
     a sosa:FeatureOfInterest , geo:Feature ;
     geo:hasGeometry [
         a geo:Geometry ;
-        geo:asWKT "POLYGON((146.850699 -23.704934,146.850699 -20.863771,148.028386 -20.863771,148.028386 -23.704934,146.850699 -23.704934))" ;
+        geo:asWKT "POLYGON((146.850699 -23.704934,146.850699 -20.863771,148.028386 -20.863771,148.028386 -23.704934,146.850699 -23.704934))"^^geo:wktLiteral ;
     ] ;
 .
 

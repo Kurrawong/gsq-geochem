@@ -1,0 +1,30 @@
+PREFIX ex: <http://example.com/>
+PREFIX sdo: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-1
+    a sosa:Observation ;
+.
+
+ex:obs-2
+    a sosa:Observation ;
+.
+
+ex:obs-3
+    a sosa:Observation ;
+.
+
+# Tt is inferred that each of the member Observation objects within this
+# Observation Collection object have the same has feature of interest
+# - `ex:sample-d` and observed property - ex:op-e - values but not the
+# name - "OC A"
+ex:obscol-a
+    a sosa:ObservationCollection ;
+    sosa:hasMember
+        ex:obs-1 ,
+        ex:obs-2 ,
+        ex:obs-3 ;
+    sosa:hasFeatureOfInterest ex:sample-d ;
+    sosa:observedProperty ex:op-e ;
+    sdo:name "OC A" ;
+.

@@ -55,7 +55,7 @@ A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1
 |                                                           | <<sdo:dateCreated, date created>> | `1`
 |                                                           | <<sdo:dateModified, dateModified>> | `1`
 |                                                           | <<sdo:keywords, keywords>> | `0+`
-|                                                           | <<prov:qualifiedAttribution, qualified attribution>> | `1` per agent to be related to this Dataset
+|                                                           | <<prov:qualifiedAttribution, qualified attribution>> | `1+` - `1` per agent to be related to this Dataset and at least one - the creator/owner of the data
 |||
 | <<prov:Attribution, Attribution>>                         | <<prov:agent, agent>> | `1`
 |                                                           | <<prov:hadRole, had role>> | `1`
