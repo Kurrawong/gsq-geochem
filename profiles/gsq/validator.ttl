@@ -1,13 +1,35 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX gsq-shapes: <https://linked.data.gov.au/def/geochem/gsq/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rc: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sdo: <https://schema.org/>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+<https://linked.data.gov.au/def/geochem/gsq>
+    a owl:Ontology ;
+    sdo:name "Validator for GSQ Profile of the GSQ Geochemistry Data Exchange Model" ;
+    sdo:description "A SHACL validator for the GSQ Geochemistry Data Exchange Model implementing the constraints of the GSP Profile" ;
+    prov:qualifiedAttribution [
+        a prov:Attribution ;
+        prov:agent <https://orcid.org/0000-0002-8742-7730> ;
+        prov:hadRole rc:author ;
+    ] ,
+    [
+        a prov:Attribution ;
+        prov:agent <https://linked.data.gov.au/org/gsq> ;
+        prov:hadRole rc:publisher ;
+    ] ;
+    sdo:dateCreated "2023-09-25"^^xsd:date ;
+    sdo:dateModified "2023-09-27"^^xsd:date ;
+    sdo:version "0.0.1" ;
+    owl:versionIRI <https://linked.data.gov.au/def/geochem/gsq/0.0.1> ;
+.
 
 gsq-shapes:DatasetMandatoryPredicates
     a sh:NodeShape ;
