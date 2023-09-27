@@ -11,6 +11,9 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
+#
+#   Predicate Mandates
+#
 <https://linked.data.gov.au/def/geochem/gsq>
     a owl:Ontology ;
     sdo:name "Validator for GSQ Profile of the GSQ Geochemistry Data Exchange Model" ;
@@ -27,8 +30,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     ] ;
     sdo:dateCreated "2023-09-25"^^xsd:date ;
     sdo:dateModified "2023-09-27"^^xsd:date ;
-    sdo:version "0.0.1" ;
-    owl:versionIRI <https://linked.data.gov.au/def/geochem/gsq/0.0.1> ;
+    sdo:version "0.0.2" ;
+    owl:versionIRI <https://linked.data.gov.au/def/geochem/gsq/0.0.2> ;
+    owl:versionInfo "0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout"
 .
 
 gsq-shapes:DatasetMandatoryPredicates
@@ -127,8 +131,9 @@ gsq-shapes:ObservationMandatoryPredicates
     ] ,
     [
         sh:path sosa:observedProperty ;
-        sh:message "An Observation may have a maximum of one sosa:observedProperty predicate, indicating an IRI of a Concept in a vocabulary" ;
+        sh:message "An Observation must have exactly one sosa:observedProperty predicate, indicating an IRI of a Concept in a vocabulary. This predicate may be obtained from a containing Observation Collection" ;
         sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ,
     [
@@ -214,5 +219,32 @@ gsq-shapes:GeometryMandatoryPredicates
         sh:datatype geo:wktLiteral ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
+    ] ;
+.
+
+#
+#   Vocab Restrictions
+#
+gsq-shapes:UsedProcedureValue
+    a sh:NodeShape ;
+    sh:targetObjectsOf sosa:usedProcedure ;
+    sh:property [
+        sh:path skos:inScheme ;
+        sh:class skos:ConceptScheme ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "sosa:usedProcedure must indicate a Concept within GSQ's extended version of OneGeochemistry's Analytical Methods for Geochemistry vocabulary" ;
+    ] ;
+.
+
+gsq-shapes:UsedProcedureValue
+    a sh:NodeShape ;
+    sh:targetObjectsOf sosa:observedProperty ;
+    sh:property [
+        sh:path skos:inScheme ;
+        sh:class skos:ConceptScheme ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "sosa:observedProperty must indicate a Concept within GSQ's Observable Properties vocabulary" ;
     ] ;
 .

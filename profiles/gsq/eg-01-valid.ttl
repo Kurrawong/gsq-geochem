@@ -24,9 +24,9 @@ ex:dataset-x
 
 ex:obs-1
     a sosa:Observation ;
-    sosa:usedProcedure ex:procedure-b ;
+    sosa:usedProcedure <https://w3id.org/geochem/1.0/analyticalmethod/chromatographyanalysis> ;
     sosa:madeBySensor ex:sensor-c ;
-    sosa:observedProperty op:amount-of-gold ;
+    sosa:observedProperty <https://linked.data.gov.au/def/observable-properties/amount-of-gold> ;
     sosa:hasFeatureOfInterest ex:sample-d ;
     sosa:phenomenonTime "2023-05-11"^^xsd:date ;
     sosa:hasResult
