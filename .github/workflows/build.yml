@@ -22,18 +22,27 @@ jobs:
         sudo apt-get install asciidoctor ruby -y
         echo "Making deployment dir - docs/"
         mkdir docs
+
         echo "Add README to docs/"
         asciidoctor README.adoc -o docs/index.html
         echo "Add spec to docs/"
         asciidoctor spec/00-master.adoc -o docs/spec.html
         sed -i 's#../img/#img/#g' docs/spec.html
+
         echo "Add overview to docs/"
         asciidoctor overview/00-master.adoc -o docs/overview.html
         sed -i 's#../img/#img/#g' docs/overview.html
+
         # echo "Add images to docs/"
         cp -r img docs/
-        # echo "Add RDF files to docs/"
-        cp *.ttl docs/
+
+        # echo "Add model RDF file to docs/"
+        cp model.ttl docs/model.ttl
+
+        # echo "Add GSQ Profile files to docs/"
+        mkdir -p docs/profiles/gsq/vocabs
+        cp profiles/gsq/validator.ttl docs/profiles/gsq/validator.ttl
+        cp profiles/gsq/vocabs/*.ttl docs/profiles/gsq/vocabs/
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:

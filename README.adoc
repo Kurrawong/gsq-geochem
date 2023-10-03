@@ -1,16 +1,54 @@
 = GSQ Geochemistry Data Exchange Model
 
-== Specification
+This repository contains the content of the https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq[Geological Survey of Queensland's] Geochemistry Data Exchange Model: an Overview, it's Specification, the machine-readable Schema, Vocabularies specific model values and Validators for testing data claiming conformance to profiles of the model.
 
-This repository contains the content of the https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq[Geological Survey of Queensland's] Geochemistry Data Exchange Model: it's Specification, the technical model (schema) as well as validators for testing data according to the model.
+To get started, we recommend you visit the:
+
+* https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal]
+
+The Portal contains links to all the content here as well as online tools to perform validation.
+
+== Overview
+
+An overview document for this model is delivered online at here:
+
+* https://kurrawong.github.io/gsq-geochem/overview.html[GSQ Geochem Overview]
+
+== Specification
 
 This specification document is delivered online at here:
 
-* https://kurrawong.github.io/gsq-geochem-spec/spec.html[GSQ GeoChem Spec]
+* https://kurrawong.github.io/gsq-geochem/spec.html[GSQ Geochem Spec]
 
-To get started, to test data against this Specification and to access data examples, use the:
+== Schema
 
-* https://geochem.dev.kurrawong.ai/[Demo GSQ Geochemistry Data Portal]
+The Schema is an https://www.w3.org/OWL/[OWL Ontology] that is described in human-readable form in the Specification and stored in machine-readable form in this repository and delivered online at:
+
+* https://kurrawong.github.io/gsq-geochem/model.ttl[GSQ Geochem Model Schema]
+
+== Vocabularies
+
+The vocabularies required for use with this model are profile-dependent, that is regimes implementing this model pick their own specific vocabularies.
+
+See the https://kurrawong.github.io/gsq-geochem/spec.html#_gsq_profile[GSQ Profile of this model] within the Specification for GSQ's Profiles' vocabularies.
+
+The vocabs mandated for use by the GSQ Profile are also stored in this repository - synchronised to their point-of-truth publication points - in the folder:
+
+* `profiles/gsq/vocabs/`
+
+== Validators
+
+Validators for use with this model are also profile-dependent, as per the vocabs.
+
+The validator for the GSQ Profile is stored in this repository at:
+
+* `profiles/gsq/vocabs/`
+
+It is also available online at:
+
+* https://kurrawong.github.io/gsq-geochem/model.ttl[GSQ GeoChem Model Schema]
+
+NOTE: All known profiles' validators are pre-loaded and available for online use at the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal]
 
 == License & Rights
 
@@ -33,4 +71,8 @@ geological_info@resources.qld.gov.au
 
 Technical model designer:
 
-Nicholas Car of *KurrawongAI*, specialist IT company: https://kurrawong.ai
+Nicholas Car +
+*KurrawongAI* +
+_Specialist IT company_ +
+https://kurrawong.ai +
+nick@kurrawong.ai
