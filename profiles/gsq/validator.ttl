@@ -1,0 +1,250 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX gsq-shapes: <https://linked.data.gov.au/def/geochem/gsq/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rc: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sdo: <https://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+#
+#   Predicate Mandates
+#
+<https://linked.data.gov.au/def/geochem/gsq>
+    a owl:Ontology ;
+    sdo:name "Validator for GSQ Profile of the GSQ Geochemistry Data Exchange Model" ;
+    sdo:description "A SHACL validator for the GSQ Geochemistry Data Exchange Model implementing the constraints of the GSP Profile" ;
+    prov:qualifiedAttribution [
+        a prov:Attribution ;
+        prov:agent <https://orcid.org/0000-0002-8742-7730> ;
+        prov:hadRole rc:author ;
+    ] ,
+    [
+        a prov:Attribution ;
+        prov:agent <https://linked.data.gov.au/org/gsq> ;
+        prov:hadRole rc:publisher ;
+    ] ;
+    sdo:dateCreated "2023-09-25"^^xsd:date ;
+    sdo:dateModified "2023-09-27"^^xsd:date ;
+    sdo:version "0.0.2" ;
+    owl:versionIRI <https://linked.data.gov.au/def/geochem/gsq/0.0.2> ;
+    owl:versionInfo "0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout"
+.
+
+gsq-shapes:DatasetMandatoryPredicates
+    a sh:NodeShape ;
+    sdo:name "Dataset's Mandatory Predicates" ;
+    sh:targetClass dcat:Dataset ;
+    sh:property [
+        sh:path sdo:name ;
+        sh:message "A Dataset must have exactly one sdo:name predicate, indicating a text value" ;
+        sh:or (
+            [ sh:datatype xsd:string ]
+            [ sh:datatype rdf:langString ]
+        ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sdo:description ;
+        sh:message "A Dataset must have exactly one sdo:description predicate, indicating a text value" ;
+        sh:or (
+            [ sh:datatype xsd:string ]
+            [ sh:datatype rdf:langString ]
+        ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sdo:dateCreated ;
+        sh:message "A Dataset must have exactly one sdo:dateCreated predicate, indicating a date or date time value" ;
+        sh:or (
+            [ sh:datatype xsd:date ]
+            [ sh:datatype xsd:dateTime ]
+        ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sdo:dateModified ;
+        sh:message "A Dataset must have exactly one sdo:dateModified predicate, indicating a date or date time value" ;
+        sh:or (
+            [ sh:datatype xsd:date ]
+            [ sh:datatype xsd:dateTime ]
+        ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sdo:keywords ;
+        sh:message "A Dataset does not have to have sdo:keywords predicates but, if it does, they must indicate IRIs" ;
+        sh:nodeKind sh:IRI ;
+    ] ,
+    [
+        sh:path prov:qualifiedAttribution ;
+        sh:message "A Dataset must have at least one prov:qualifiedAttribution predicate, indicating a prov:agent and a prov:hadRole value" ;
+        sh:class prov:Attribution ;
+        sh:minCount 1 ;
+    ] ;
+.
+
+gsq-shapes:AttributionMandatoryPredicates
+    a sh:NodeShape ;
+    sdo:name "Attribution's Mandatory Predicates" ;
+    sh:targetClass prov:Attribution ;
+    sh:property [
+        sh:path prov:agent ;
+        sh:message "An Attribution must have exactly one prov:agent predicate, indicating an IRI" ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path prov:hadRole ;
+        sh:message "An Attribution must have exactly one prov:hadRole predicate, indicating an IRI" ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+gsq-shapes:ObservationMandatoryPredicates
+    a sh:NodeShape ;
+    sdo:name "Observation's Mandatory Predicates" ;
+    sh:targetClass sosa:Observation ;
+    sh:property [
+        sh:path sosa:usedProcedure ;
+        sh:message "An Observation must have exactly one sosa:usedProcedure predicate, indicating an IRI of a Concept in a vocabulary" ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sosa:madeBySensor ;
+        sh:message "An Observation may have exactly one sosa:madeBySensor predicate, indicating an IRI of a Concept in a vocabulary" ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sosa:observedProperty ;
+        sh:message "An Observation must have exactly one sosa:observedProperty predicate, indicating an IRI of a Concept in a vocabulary. This predicate may be obtained from a containing Observation Collection" ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sosa:hasFeatureOfInterest ;
+        sh:message "An Observation must have exactly one sosa:hasFeatureOfInterest predicate, indicating an IRI of a Sample or a Feature Of Interest" ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sosa:phenomenonTime ;
+        sh:message "An Observation may have a maximum of one sosa:phenomenonTime predicate, indicating a date or date time value" ;
+        sh:or (
+            [ sh:datatype xsd:date ]
+            [ sh:datatype xsd:dateTime ]
+        ) ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sosa:hasResult ;
+        sh:message "An Observation must have at least one sosa:hasResult predicate, indicating an IRI of a Result" ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+    ] ,
+    [
+        sh:path sdo:marginOfError ;
+        sh:message "An Observation may have one sdo:marginOfError predicate, indicating an floating point number" ;
+        sh:datatype xsd:float ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+gsq-shapes:ResultMandatoryPredicates
+    a sh:NodeShape ;
+    sdo:name "Result's Mandatory Predicates" ;
+    sh:targetClass sosa:Result ;
+    sh:property [
+        sh:path sdo:value ;
+        sh:message "An Result must have exactly one sdo:value predicate, indicating any kind of value" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path sdo:unitCode ;
+        sh:message "An Result must have exactly one sdo:unitCode predicate, indicating an IRI of a Concept in a vocabulary" ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+gsq-shapes:SampleMandatoryPredicates
+    a sh:NodeShape ;
+    sdo:name "Sample's Mandatory Predicates" ;
+    sh:targetClass sosa:Sample ;
+    sh:property [
+        sh:path sosa:isSampleOf ;
+        sh:message "An Sample may have one sosa:isSampleOf predicate, indicating an IRI of another Sample or a Feature Of Interest" ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+gsq-shapes:ObservationCollectionMandatoryPredicates
+    a sh:NodeShape ;
+    sdo:name "ObservationCollection's Mandatory Predicates" ;
+    sh:targetClass sosa:ObservationCollection ;
+    sh:property [
+        sh:path sosa:hasMember ;
+        sh:message "An ObservationCollection must have at least one sosa:hasMember predicate, indicating an Observation" ;
+        sh:class sosa:Observation ;
+        sh:minCount 1 ;
+    ] ;
+.
+
+gsq-shapes:GeometryMandatoryPredicates
+    a sh:NodeShape ;
+    sdo:name "Geometry's Mandatory Predicates" ;
+    sh:targetClass geo:Geometry ;
+    sh:property [
+        sh:path geo:asWKT ;
+        sh:message "A Geometry must have exactly one least geo:asWKT predicate, indicating a geo:wktLiteral object" ;
+        sh:datatype geo:wktLiteral ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+#
+#   Vocab Restrictions
+#
+gsq-shapes:UsedProcedureValue
+    a sh:NodeShape ;
+    sh:targetObjectsOf sosa:usedProcedure ;
+    sh:property [
+        sh:path skos:inScheme ;
+        sh:class skos:ConceptScheme ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "sosa:usedProcedure must indicate a Concept within GSQ's extended version of OneGeochemistry's Analytical Methods for Geochemistry vocabulary" ;
+    ] ;
+.
+
+gsq-shapes:UsedProcedureValue
+    a sh:NodeShape ;
+    sh:targetObjectsOf sosa:observedProperty ;
+    sh:property [
+        sh:path skos:inScheme ;
+        sh:class skos:ConceptScheme ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "sosa:observedProperty must indicate a Concept within GSQ's Observable Properties vocabulary" ;
+    ] ;
+.

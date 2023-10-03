@@ -442,31 +442,129 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>GSQ Geochemistry Data Exchange Model</h1>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This repository contains the content of the <a href="https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq">Geological Survey of Queensland&#8217;s</a> Geochemistry Data Exchange Model: an Overview, it&#8217;s Specification, the machine-readable Schema, Vocabularies specific model values and Validators for testing data claiming conformance to profiles of the model.</p>
+</div>
+<div class="paragraph">
+<p>To get started, we recommend you visit the:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Portal contains links to all the content here as well as online tools to perform validation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview">Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An overview document for this model is delivered online at here:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://kurrawong.github.io/gsq-geochem/overview.html">GSQ Geochem Overview</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_specification">Specification</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>This repository contains the content of the <a href="https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq">Geological Survey of Queensland&#8217;s</a> Geochemistry Data Exchange Model: it&#8217;s Specification, the technical model (schema) as well as validators for testing data according to the model.</p>
-</div>
 <div class="paragraph">
 <p>This specification document is delivered online at here:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://kurrawong.github.io/gsq-geochem-spec/spec.html">GSQ GeoChem Spec</a></p>
+<p><a href="https://kurrawong.github.io/gsq-geochem/spec.html">GSQ Geochem Spec</a></p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_schema">Schema</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>To get started, to test data against this Specification and to access data examples, use the:</p>
+<p>The Schema is an <a href="https://www.w3.org/OWL/">OWL Ontology</a> that is described in human-readable form in the Specification and stored in machine-readable form in this repository and delivered online at:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://geochem.dev.kurrawong.ai/">Demo GSQ Geochemistry Data Portal</a></p>
+<p><a href="https://kurrawong.github.io/gsq-geochem/model.ttl">GSQ Geochem Model Schema</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vocabularies">Vocabularies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The vocabularies required for use with this model are profile-dependent, that is regimes implementing this model pick their own specific vocabularies.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://kurrawong.github.io/gsq-geochem/spec.html#_gsq_profile">GSQ Profile of this model</a> within the Specification for GSQ&#8217;s Profiles' vocabularies.</p>
+</div>
+<div class="paragraph">
+<p>The vocabs mandated for use by the GSQ Profile are also stored in this repository - synchronised to their point-of-truth publication points - in the folder:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>profiles/gsq/vocabs/</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_validators">Validators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Validators for use with this model are also profile-dependent, as per the vocabs.</p>
+</div>
+<div class="paragraph">
+<p>The validator for the GSQ Profile is stored in this repository at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>profiles/gsq/vocabs/</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is also available online at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://kurrawong.github.io/gsq-geochem/model.ttl">GSQ GeoChem Model Schema</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+All known profiles' validators are pre-loaded and available for online use at the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -502,14 +600,18 @@ Brisbane, QLD, Australia<br>
 <p>Technical model designer:</p>
 </div>
 <div class="paragraph">
-<p>Nicholas Car of <strong>KurrawongAI</strong>, specialist IT company: <a href="https://kurrawong.ai" class="bare">https://kurrawong.ai</a></p>
+<p>Nicholas Car<br>
+<strong>KurrawongAI</strong><br>
+<em>Specialist IT company</em><br>
+<a href="https://kurrawong.ai" class="bare">https://kurrawong.ai</a><br>
+<a href="mailto:nick@kurrawong.ai">nick@kurrawong.ai</a></p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-27 21:59:24 UTC
+Last updated 2023-10-03 01:05:59 UTC
 </div>
 </div>
 </body>
