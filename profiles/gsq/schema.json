@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://linked.data.gov.au/def/geochem/gsq/jschema.json",
   "title": "Product",
-  "description": "A product in the catalog",
+  "description": "Version 1.0.0",
   "type": "array",
   "items": {
     "type": "object",

@@ -4,7 +4,7 @@
 :doctype: book
 :encoding: utf-8
 :lang: en
-:table-stripes: odd
+:table-stripes: even
 :toc: left
 :toclevels: 3
 :chapter-label:
@@ -22,6 +22,16 @@
 [#overview]
 .An informal overview diagram of the main part of the data model in this Specification
 image::../img/sosa-overview.svg[GSQ Geochemistry SOSA Model Overview,align="center"]
+
+== Metadata
+
+[width="50%", cols="1,2"]
+|===
+| Property | Value
+
+| IRI | https://linked.data.gov.au/def/geochem
+| Version | 1.0.0
+|===
 
 include::01-abstract.adoc[]
 

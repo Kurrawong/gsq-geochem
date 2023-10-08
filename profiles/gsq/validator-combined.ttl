@@ -13,8 +13,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <https://linked.data.gov.au/def/geochem/gsq>
     a owl:Ontology ;
-    owl:versionIRI gsq-shapes:0.0.2 ;
-    owl:versionInfo "0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout" ;
+    owl:versionIRI gsq-shapes:1.0.0 ;
+    owl:versionInfo """1.0.0: NJC: JSONSchema validator added and partially aligned with SHACL validator
+
+0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout""" ;
     prov:qualifiedAttribution
         [
             a prov:Attribution ;
@@ -27,10 +29,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             prov:hadRole rc:publisher
         ] ;
     sdo:dateCreated "2023-09-25"^^xsd:date ;
-    sdo:dateModified "2023-09-27"^^xsd:date ;
+    sdo:dateModified "2023-10-08"^^xsd:date ;
     sdo:description "A SHACL validator for the GSQ Geochemistry Data Exchange Model implementing the constraints of the GSP Profile" ;
     sdo:name "Validator for GSQ Profile of the GSQ Geochemistry Data Exchange Model" ;
-    sdo:version "0.0.2" ;
+    sdo:version "1.0.0" ;
 .
 
 gsq-shapes:AttributionMandatoryPredicates

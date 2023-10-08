@@ -16,14 +16,17 @@ NOTE: All the resources needed for online validation of data according to all kn
 
 The GSQ Profile of this model mandates certain classes and predicates be present in data and which vocabularies must be used to supply values for predicates that indicate concepts, as described in the <<Where, Vocabularies: Where>> section above.
 
+The current version of this Profile is 1.0.0.
+
 ==== Resources
 
-The resources within this profile are listed below. The roles given for each are taken from the _The Profiles Vocabulary_ <<PROF>>.
+The resources within this profile are listed below. The roles given for each are taken from _The Profiles Vocabulary_ <<PROF>>.
 
 [cols="1,1,1,2"]
 |===
 | Resource | Role | IRI | Description
 
+| Specification | https://www.w3.org/TR/dx-prof/#Role:specification[Specification] | https://linked.data.gov.au/def/geochem/gsq | This section of the Geochemistry Data Model that defines this GSQ Profile
 | Machine-Readable Profile Definition | https://www.w3.org/TR/dx-prof/#Role:profile-definition[Profile Definition] | https://linked.data.gov.au/def/geochem/gsq.ttl | The definition of this Profile, as per this text, but in RDF, according to <<PROF, The Profiles Vocabulary>>
 | Specification | https://www.w3.org/TR/dx-prof/#Role:guidance[Guidance] | https://linked.data.gov.au/def/geochem/gsq | The writeup of this Profile, here
 | SHACL Validator | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator.ttl | A <<SHACL, SHACL>> data file able to be used to validate RDF data according to this profile's rules
