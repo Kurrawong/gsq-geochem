@@ -29,10 +29,12 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         prov:hadRole rc:publisher ;
     ] ;
     sdo:dateCreated "2023-09-25"^^xsd:date ;
-    sdo:dateModified "2023-09-27"^^xsd:date ;
-    sdo:version "0.0.2" ;
-    owl:versionIRI <https://linked.data.gov.au/def/geochem/gsq/0.0.2> ;
-    owl:versionInfo "0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout"
+    sdo:dateModified "2023-10-08"^^xsd:date ;
+    sdo:version "1.0.0" ;
+    owl:versionIRI <https://linked.data.gov.au/def/geochem/gsq/1.0.0> ;
+    owl:versionInfo """1.0.0: NJC: JSONSchema validator added and partially aligned with SHACL validator
+
+0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout"""
 .
 
 gsq-shapes:DatasetMandatoryPredicates
@@ -144,8 +146,8 @@ gsq-shapes:ObservationMandatoryPredicates
         sh:maxCount 1 ;
     ] ,
     [
-        sh:path sosa:phenomenonTime ;
-        sh:message "An Observation may have a maximum of one sosa:phenomenonTime predicate, indicating a date or date time value" ;
+        sh:path sosa:resultTime ;
+        sh:message "An Observation may have a maximum of one sosa:resultTime predicate, indicating a date or date time value" ;
         sh:or (
             [ sh:datatype xsd:date ]
             [ sh:datatype xsd:dateTime ]
