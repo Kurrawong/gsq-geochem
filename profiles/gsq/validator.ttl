@@ -144,8 +144,8 @@ gsq-shapes:ObservationMandatoryPredicates
         sh:maxCount 1 ;
     ] ,
     [
-        sh:path sosa:phenomenonTime ;
-        sh:message "An Observation may have a maximum of one sosa:phenomenonTime predicate, indicating a date or date time value" ;
+        sh:path sosa:resultTime ;
+        sh:message "An Observation may have a maximum of one sosa:resultTime predicate, indicating a date or date time value" ;
         sh:or (
             [ sh:datatype xsd:date ]
             [ sh:datatype xsd:dateTime ]

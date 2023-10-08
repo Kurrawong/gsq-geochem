@@ -1,25 +1,43 @@
 == Profiles
 
-While many profiles of, and thus validators for, this model may be created, so far only one profile and validator have been created: the _GSQ Profile_, described below.
+A Profile (capital 'P') is "A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications"<<PROF>>. In the context of this geochemistry specification, Profiles mandate that certain classes and properties be present in data and that specific vocabularies are used for concept references.
 
-Profiles have separate identity to this specification so that data can indicate conformance specifically to them.
+Profiles have separate identity to this specification so that data can indicate conformance specifically to them. Profiles usually provide a series of resources, such as their own textual description of their constraints, supporting vocabularies, validators and examples.
+
+All known profiles of this specification are listed in this section. So far, only one profile, the _GSQ Profile_, is known.
 
 NOTE: All the resources needed for online validation of data according to all known profiles of this model are available at the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal].
 
+=== Profiles Index
+
+* <<GSQ Profile>>
+
 === GSQ Profile
 
-The GSQ Profile of this model mandates certain predicates for classes of object and restricts which vocabularies may be used to supply values for predicates that indicate concepts, as described in the <<Where, Vocabularies: Where>> section above.
+The GSQ Profile of this model mandates certain classes and predicates be present in data and which vocabularies must be used to supply values for predicates that indicate concepts, as described in the <<Where, Vocabularies: Where>> section above.
 
-This profile's IRI is:
+==== Resources
 
-* https://linked.data.gov.au/def/geochem/gsq
+The resources within this profile are listed below. The roles given for each are taken from the _The Profiles Vocabulary_ <<PROF>>.
 
-The validator for this profile is available as a data file directly for download at:
-* https://linked.data.gov.au/def/geochem/gsq
+[cols="1,1,1,2"]
+|===
+| Resource | Role | IRI | Description
 
-This validator is also pre-loaded in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal].
+| Machine-Readable Profile Definition | https://www.w3.org/TR/dx-prof/#Role:profile-definition[Profile Definition] | https://linked.data.gov.au/def/geochem/gsq.ttl | The definition of this Profile, as per this text, but in RDF, according to <<PROF, The Profiles Vocabulary>>
+| Specification | https://www.w3.org/TR/dx-prof/#Role:guidance[Guidance] | https://linked.data.gov.au/def/geochem/gsq | The writeup of this Profile, here
+| SHACL Validator | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator.ttl | A <<SHACL, SHACL>> data file able to be used to validate RDF data according to this profile's rules
+| JSON Schema | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator.json | A https://json-schema.org[JSON Schema] file able to be used to validate JSON data according to this profile's rules
+| Examples | https://www.w3.org/TR/dx-prof/#Role:example[Example] | https://linked.data.gov.au/def/geochem/gsq/examples | A series of RDF (<<TURTLE, Turtle>> & <<JSON-LD, JSON-LD>>), https://en.wikipedia.org/wiki/JSON[JSON] and https://www.microsoft.com/en-us/microsoft-365/excel[Excel] files of data: both valid and invalid forms
+|===
 
-==== Predicate Mandates
+NOTE: This Profile's validators and example data files are pre-loaded in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal] for online use.
+
+==== Specification
+
+The following subsections contain the rules of this Profile and form this Profile's normative specification.
+
+===== Predicate Mandates
 
 The following table lists classes of this model and gives the cardinality of predicates. Only classes that must be used are listed.
 
@@ -29,11 +47,21 @@ A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1
 |===
 | Class | Predicate | Cardinality
 
+| <<dcat:Dataset, Dataset>>                                 | <<sdo:name, name>> | `1`
+|                                                           | <<sdo:description, description>> | `1`
+|                                                           | <<sdo:dateCreated, date created>> | `1`
+|                                                           | <<sdo:dateModified, dateModified>> | `1`
+|                                                           | <<sdo:keywords, keywords>> | `0+`
+|                                                           | <<prov:qualifiedAttribution, qualified attribution>> | `1+` - `1` per agent to be related to this Dataset and at least one - the creator/owner of the data
+|||
+| <<prov:Attribution, Attribution>>                         | <<prov:agent, agent>> | `1`
+|                                                           | <<prov:hadRole, had role>> | `1`
+|||
 | <<sosa:Observation, Observation>>                         | <<sosa:usedProcedure, used procedure>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
 |                                                           | <<sosa:madeBySensor, made by sensor>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
 |                                                           | <<sosa:observedProperty, observed property>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
 |                                                           | <<sosa:hasFeatureOfInterest, has feature of interest>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
-|                                                           | <<sosa:phenomenonTime, phenomenon time>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
+|                                                           | <<sosa:resultTime, result time>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
 |                                                           | <<sosa:hasResult, has result>> | `1`
 |                                                           | <<sdo:marginOfError, margin of error>> | `0-1`
 |||
@@ -49,19 +77,9 @@ A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1
 | <<sosa:FeatureOfInterest, Feature Of Interest>>           | <<geo:hasGeometry, has geometry>> | `0-1`
 |||
 | <<geo:Geometry, Geometry>>                                | <<geo:asWKT, as WKT>> | `1`
-|||
-| <<dcat:Dataset, Dataset>>                                 | <<sdo:name, name>> | `1`
-|                                                           | <<sdo:description, description>> | `1`
-|                                                           | <<sdo:dateCreated, date created>> | `1`
-|                                                           | <<sdo:dateModified, dateModified>> | `1`
-|                                                           | <<sdo:keywords, keywords>> | `0+`
-|                                                           | <<prov:qualifiedAttribution, qualified attribution>> | `1+` - `1` per agent to be related to this Dataset and at least one - the creator/owner of the data
-|||
-| <<prov:Attribution, Attribution>>                         | <<prov:agent, agent>> | `1`
-|                                                           | <<prov:hadRole, had role>> | `1`
 |===
 
-==== Vocab Restrictions
+===== Vocab Restrictions
 
 This profile requires that Concepts indicated by certain predicates come from specific vocabularies. The predicates and their required vocabularies are:
 
@@ -78,13 +96,53 @@ This profile requires that Concepts indicated by certain predicates come from sp
 
 Note that this profile does _NOT_ require that the predicate <<sosa:madeBySensor, made by sensor>> is used on the <<sosa:Observation, Observation>> class, thus no vocabulary is mandated for its use. It may be used but, if it is, the user may choose any vocabulary of Concepts to draw from useful to them.
 
+==== Validators
+
+===== Data Forms
+
+Data aiming to be valid according to this Profile can be delivered in one of three forms:
+
+1. Resource Description Framework (*RDF*)
+    * as per <<RDF>>
+    * in any of the following RDF triples formats: Turtle <<TURTLE>>, RDF/XML, JSON-LD, N-Triples. See https://rdflib.readthedocs.io/en/stable/intro_to_parsing.html[RDFLib's information on RDF parsing]
+2. *JSON*
+    *
+
+===== Validators per Form
+
+This profile provides for the validation of data presented in any of the forms listed above.
+
+====== RDF Form
+
+Validation of RDF data - any format such as Turtle or JSON-LD - can be validated directly using the https://linked.data.gov.au/def/geochem/gsq/validator.ttl[SHACL Validator] given in the Resources listing above.
+
+====== JSON Form
+
+JSON data that is not JSON-LD data will need to go through a three-step validation process:
+
+1. Validation of JSON data via JSON Schema validation
+** Using the https://linked.data.gov.au/def/geochem/gsq/validator.json[JSON Schema Validator], given in the Resources listing above
+2. Conversion of JSON data to RDF data via JSON->JSON-LD enhancement
+** JSON->JSON-LD enhancement is undertaken by applying the https://linked.data.gov.au/def/geochem/context.json[JSON-LD Context] file within the data specification to the JSON data
+3. Validation of the JSON-LD data as RDF data
+** As per RDF Form validation
+
+====== Excel Form
+
+Excel data will need to go through a two-step validation process:
+
+1. Correct template use confirmation and conversion to RDF
+** This is undertaken by the _Geochem Template Converter_ software package
+2. Validation of the JSON-LD data as RDF data
+** As per RDF Form validation
+
 ==== Examples
 
-The following example show _VALID_ and _INVALID_ data according to this GSQ Profile:
+Example data for this Profile, in all three forms described above and both valida nd invalid examples, is given online at:
 
-===== Eg 1: Valid
+* https://linked.data.gov.au/def/geochem/gsq/examples
 
-It contains all the required properties.
+Additionally, the following is one of the invalid Turtle form examples presented here with an explanatory description.
 
 [#gsqp-eg-01]
 .Valid data according to the GSQ Profile of this model
@@ -104,7 +162,7 @@ ex:obs-1
     sosa:madeBySensor ex:sensor-c ;
     sosa:observedProperty op:amount-of-gold ;
     sosa:hasFeatureOfInterest ex:sample-d ;
-    sosa:hadPhenomenonTime "2023-05-11"^^xsd:date ;
+    sosa:resultTime "2023-05-11"^^xsd:date ;
     sosa:hasResult
         ex:result-e ,
         ex:result-f ;

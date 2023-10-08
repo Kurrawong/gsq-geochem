@@ -1,10 +1,12 @@
 == Validation
 
-Validation is the process of testing whether data conforms to a (profile of) a model. "profile of" is inserted as often validators test for specific values in data required by profiles where perhaps a general model might allow a range of values. For example, this model requires units of measure to be <<skos:Concept, Concept>> objects in vocabularies but the <<GSQ Profile, GSQ Profile>> requires that values come from GSQ's https://linked.data.gov.au/def/geou[Geoscience Profile of QUDT Units vocabulary], specifically.
+Validation is the process of testing whether data conforms to a (Profile of) a model. This model contains no direct validators so the validation of any data aiming for conformance to this model will need to use validators supplied by a particular Profile, for exampl the <<GSQ Profile, GSQ Profile>>.
 
 === Method
 
-The method used to validate data claiming conformance to (profiles of) this model is execution of Shapes Constraint Language (<<SHACL, SHACL>>) rules, called 'Shapes', by a SHACL validation tool. SHACL Shapes are defined in RDF "validator" files which are then applied to data also expressed in RDF data. Validators for this model are supplied per profile, see the <<Profiles, Profiles section>>.
+The canonical validation method used to validate canonical data (RDF) is the execution of Shapes Constraint Language (<<SHACL, SHACL>>) rules, called 'Shapes', by a SHACL validation tool. Other forms of data, such as Excel spreadsheets may be supported by individual Profiles. See the Profiles' definitions for options.
+
+SHACL Shapes are defined in RDF "validator" files which are then applied to data also expressed in RDF data. Validators for this model are supplied per profile, see the <<Profiles, Profiles section>>.
 
 A partial, and simplified, example Shape from the <<GSQ Profile, GSQ Profile>> is given here in <<TURTLE, Turtle>>:
 
@@ -31,7 +33,7 @@ ex:obs-1
     sosa:madeBySensor ex:sensor-c ;
     sosa:observedProperty op:amount-of-gold ;
     sosa:hasFeatureOfInterest ex:sample-d ;
-    sosa:hadPhenomenonTime "2023-05-11"^^xsd:date ;
+    sosa:resultTime "2023-05-11"^^xsd:date ;
     sosa:hasResult
         ex:result-e ,
         ex:result-f ;

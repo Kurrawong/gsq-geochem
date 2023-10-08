@@ -1,9 +1,3 @@
-# Dataset missing 1+ prov:qualifiedAttribution
-#
-# Observation missing 1 sosa:hasResult
-#
-# Observation refers to an unknown Observed Property value
-#
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX ex: <http://example.com/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
@@ -21,23 +15,23 @@ ex:dataset-x
     sdo:description "A demonstration dataset" ;
     sdo:dateCreated "2023-09-26"^^xsd:date ;
     sdo:dateModified "2023-09-27T14:30"^^xsd:dateTime ;
-    # prov:qualifiedAttribution [
-    #     a prov:Attribution ;
-    #     prov:agent ex:a-company ;
-    #     prov:hadRole rc:originator ;
-    # ] ;
+    prov:qualifiedAttribution [
+        a prov:Attribution ;
+        prov:agent ex:a-company ;
+        prov:hadRole rc:originator ;
+    ] ;
 .
 
 ex:obs-1
     a sosa:Observation ;
     sosa:usedProcedure <https://w3id.org/geochem/1.0/analyticalmethod/chromatographyanalysis> ;
     sosa:madeBySensor ex:sensor-c ;
-    # sosa:observedProperty <http://unknown-vocab.org/amount-of-gold> ;
+    sosa:observedProperty <https://linked.data.gov.au/def/observable-properties/amount-of-gold> ;
     sosa:hasFeatureOfInterest ex:sample-d ;
-    sosa:phenomenonTime "2023-05-11"^^xsd:date ;
-    # sosa:hasResult
-    #     ex:result-e ,
-    #     ex:result-f ;
+    sosa:resultTime "2023-05-11"^^xsd:date ;
+    sosa:hasResult
+        ex:result-e ,
+        ex:result-f ;
 .
 
 ex:procedure-b

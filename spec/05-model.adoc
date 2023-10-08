@@ -50,7 +50,7 @@ _Observation_ is the central class of geochemistry data, according to this speci
 | Definition | Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest
 | Scope Note | Use this class to represent a single event  of observation of a property of a Feature Of Interest (Sample)
 | Is Defined By | <<SOSA, SOSA>>
-| Expected Properties | <<sosa:usedProcedure, used procedure>>, <<sosa:madeBySensor, made by sensor>>, <<sosa:observedProperty, observed property>>, <<sosa:hasFeatureOfInterest, has feature of interest>>, <<sosa:phenomenonTime, phenomenon time>>, <<sosa:hasResult, has result>>, <<sdo:marginOfError, margin of error>>
+| Expected Properties | <<sosa:usedProcedure, used procedure>>, <<sosa:madeBySensor, made by sensor>>, <<sosa:observedProperty, observed property>>, <<sosa:hasFeatureOfInterest, has feature of interest>>, <<sosa:resultTime, result time>>, <<sosa:hasResult, has result>>, <<sdo:marginOfError, margin of error>>
 | Example
 a| [source,turtle]
 ----
@@ -65,7 +65,7 @@ ex:obs-1
     sosa:madeBySensor ex:sensor-c ;
     sosa:observedProperty op:amount-of-gold ;
     sosa:hasFeatureOfInterest ex:sample-d ;
-    sosa:hadPhenomenonTime "2023-05-11"^^xsd:date ;
+    sosa:resultTime "2023-05-11"^^xsd:date ;
     sosa:hasResult
         ex:result-e ,
         ex:result-f ;
@@ -382,16 +382,17 @@ ex:obscol-a
 | Name | string
 | Definition | A literal datatype that may contain characters, line feeds, carriage returns, and tab characters
 | Scope Note | This class is used whenever literal values are enclosed in quotes and not further qualified with another specialised datatype
-| Is Defined By | <XSD2>>
+| Is Defined By | <<XSD2>>
 | Example
 a| [source,turtle]
 ----
 PREFIX ex: <http://example.com/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sdo: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
 
-ex:procedure-b
-    a skos:Concept ;
-    skos:prefLabel "Procedure B" ;  # a string value
+<https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince>
+    a sosa:FeatureOfInterest ;
+    sdo:name "Anakie Province" ;  # a string value
 .
 ----
 |===
@@ -407,7 +408,7 @@ ex:procedure-b
 | Name | float
 | Definition | A literal datatype representing a floating point number
 | Scope Note | This class is used whenever literal values are numerical and contain a decimal point
-| Is Defined By | <XSD2>>
+| Is Defined By | <<XSD2>>
 | Example
 a| [source,turtle]
 ----
@@ -460,7 +461,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 ex:obs-a
     a sosa:Observation ;
-    sosa:phenomenonTime "2023-09-22T17:35:22"^^xsd:dateTime ;
+    sosa:resultTime "2023-09-22T17:35:22"^^xsd:dateTime ;
 .
 ----
 |===
@@ -478,7 +479,7 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 | <<sosa:madeBySensor, made by sensor>>                     | <<geo:hasGeometry, has geometry>> | <<prov:agent, agent>>                                 | <<sdo:description, description>>
 | <<sosa:observedProperty, observed property>>              |                                   | <<prov:hadRole, had role>>                            | <<sdo:dateCreated, date created>>
 | <<sosa:hasFeatureOfInterest, has feature of interest>>    |                                   |                                                       | <<sdo:dateModified, date modified>>
-| <<sosa:phenomenonTime, phenomenon time>>                  |                                   |                                                       | <<sdo:keywords, keywords>>
+| <<sosa:resultTime, result time>>                          |                                   |                                                       | <<sdo:keywords, keywords>>
 | <<sosa:hasResult, has result>>                            |                                   |                                                       | <<sdo:location, location>>
 | <<sosa:isSampleOf, is sample of>>                         |                                   |                                                       | <<sdo:unitCode, unitCode>>
 | <<sosa:hasMember, has member>>                            |                                   |                                                       | <<sdo:value, value>>
@@ -549,16 +550,16 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 | Example | See the Example for <<sosa:FeatureOfInterest, Feature Of Interest>>
 |===
 
-[[sosa:phenomenonTime]]
-===== phenomenon time
+[[sosa:resultTime]]
+===== result time
 
 [cols="2,6"]
 |===
 | Property | Value
 
-| IRI | `sosa:phenomenonTime`
-| Name | phenomenon time
-| Definition | The time that the Result of an Observation applies to the FeatureOfInterest
+| IRI | `sosa:resultTime`
+| Name | result time
+| Definition | The instant of time when the Observation activity was completed
 | Scope Note | Use this property to indicate the date and time of the production of a <<sosa:Result, Result>> by an <<sosa:Observation, Observation>>. Indicate a literal <<xsd:dateTime, date time>> or <<xsd:date, date>> value
 | Is Defined By | <<SOSA, SOSA>>
 | Example | See the Example for <<sosa:Observation, Observation>>

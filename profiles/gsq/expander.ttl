@@ -1,0 +1,44 @@
+PREFIX gsq-shapes: <https://linked.data.gov.au/def/geochem/gsq/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX sdo: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+gsq-shapes:oc-to-o
+	a sh:NodeShape ;
+	sh:targetClass sosa:ObservationCollection ;
+	sh:order 1 ;
+	sh:rule [
+		a sh:SPARQLRule ;
+		sh:prefixes sdo: , sosa: ;
+		sh:construct """
+            CONSTRUCT {
+                ?o ?obs_pred ?obj
+            }
+            WHERE {
+                $this sosa:hasMember ?o .
+                {
+                    SELECT $this ?obs_pred ?obj
+                    WHERE {
+                        VALUES ?obs_pred {
+                            sdo:marginOfError
+                            sosa:hasFeatureOfInterest
+                            sosa:madeBySensor
+                            sosa:observedProperty
+                            sosa:resultTime
+                            sosa:usedProcedure
+                        }
+
+                        {
+                            $this
+                                a sosa:ObservationCollection ;
+                                ?obs_pred ?obj ;
+                            .
+                        }
+                    }
+                }
+            }
+			""" ;
+	] ;
+.

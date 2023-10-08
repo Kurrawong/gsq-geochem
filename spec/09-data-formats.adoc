@@ -1,2 +1,5 @@
 == Data Formats
 
+Data claiming to conform to Profiles of this specification may be able to be delivered in multiple data forms, not just RDF data as per the
+
+See individual Profile's specifications for their options, for example _GSQ Profile's_ specification in <<GSQ Profile>>.

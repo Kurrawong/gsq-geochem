@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://linked.data.gov.au/def/geochem/gsq/jschema.json",
+  "title": "Product",
+  "description": "A product in the catalog",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "@id": {
+        "type": "string"
+      },
+      "@type": {
+        "type": "string",
+        "enum": ["Dataset", "ObservationCollection", "Observation", "Sample", "Result", "FeatureOfInterest", "Attribution", "Agent", "Geometry"]
+      }
+    },
+    "required": [
+      "@id",
+      "@type"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "@type": {
+              "const": "Dataset"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "name",
+            "description",
+            "dateCreated",
+            "dateModified",
+            "qualifiedAttribution"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "@type": {
+              "const": "Observation"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "usedProcedure",
+            "madeBySensor",
+            "observedProperty",
+            "hasFeatureOfInterest",
+            "resultTime"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "@type": {
+              "const": "Result"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "value"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "@type": {
+              "const": "ObservationCollection"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "hasMember"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "@type": {
+              "const": "Geometry"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "asWKT"
+          ]
+        }
+      }
+    ]
+  }
+}

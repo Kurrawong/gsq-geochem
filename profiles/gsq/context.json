@@ -1,0 +1,55 @@
+{
+  "@context": {
+    "placeholder": "http://placeholder.com/",
+
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "Geometry": "geo:Geometry",
+    "asWKT": "geo:asWKT",
+    "hasGeometry": "geo:hasGeometry",
+
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "Dataset": "dcat:Dataset",
+
+    "op": "https://linked.data.gov.au/def/observable-properties/",
+
+    "prov": "http://www.w3.org/ns/prov#",
+    "Attribution": "prov:Attribution",
+    "qualifiedAttribution":"prov:qualifiedAttribution",
+    "agent":"prov:agent",
+    "hadRole":"prov:hadRole",
+
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "Literal": "rdfs:Literal",
+
+    "sdo": "https://schema.org/",
+    "name": "sdo:name",
+    "description": "sdo:description",
+    "dateCreated": "sdo:dateCreated",
+    "dateModified": "sdo:dateModified",
+    "keywords": "sdo:keywords",
+    "location": "sdo:location",
+    "unitCode": "sdo:unitCode",
+    "value": "sdo:value",
+    "marginOfError": "sdo:marginOfError",
+    "additionalType": "sdo:additionalType",
+
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "Observation": "sosa:Observation",
+    "Result": "sosa:Result",
+    "Sample": "sosa:Sample",
+    "ObservationCollection": "sosa:ObservationCollection",
+    "FeatureOfInterest": "sosa:FeatureOfInterest",
+    "usedProcedure": "sosa:usedProcedure",
+    "madeBySensor": "sosa:madeBySensor",
+    "observedProperty": "sosa:observedProperty",
+    "hasFeatureOfInterest": "sosa:hasFeatureOfInterest",
+    "resultTime": "sosa:resultTime",
+    "hasResult": "sosa:hasResult",
+    "isSampleOf": "sosa:isSampleOf",
+    "hasMember": "sosa:hasMember",
+
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "date": "xsd:date",
+    "decimal": "xsd:decimal"
+  }
+}

@@ -134,9 +134,7 @@ cs:
     dcterms:creator <https://linked.data.gov.au/org/gswa> ;
     dcterms:modified "2023-06-16"^^xsd:date ;
     dcterms:creator <https://orcid.org/0000-0002-8742-7730> ;
-    dcterms:publisher
-        <https://linked.data.gov.au/org/gsq> ,
-        <https://linked.data.gov.au/org/gwa> ;
+    dcterms:publisher <https://linked.data.gov.au/org/gsq> ;
     skos:definition "Observable quality (property, characteristic) of a Feature Of Interest" ;
     skos:hasTopConcept qk:AmountOfSubstancePerUnitMass ;
     skos:prefLabel "Observable Properties"@en ;

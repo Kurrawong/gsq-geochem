@@ -11,7 +11,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 ex:dataset-x
     a dcat:Dataset ;
-    sdo:name "Dataset X" ;
+    # sdo:name "Dataset X" ;
     sdo:description "A demonstration dataset" ;
     sdo:dateCreated "2023-09-26"^^xsd:date ;
     sdo:dateModified "2023-09-27T14:30"^^xsd:dateTime ;
@@ -28,7 +28,7 @@ ex:obs-1
     sosa:madeBySensor ex:sensor-c ;
     sosa:observedProperty <https://linked.data.gov.au/def/observable-properties/amount-of-gold> ;
     sosa:hasFeatureOfInterest ex:sample-d ;
-    sosa:phenomenonTime "2023-05-11"^^xsd:date ;
+    sosa:resultTime "2023-05-11"^^xsd:date ;
     sosa:hasResult
         ex:result-e ,
         ex:result-f ;
