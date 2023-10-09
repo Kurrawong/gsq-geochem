@@ -30,6 +30,7 @@ image::../img/sosa-overview.svg[GSQ Geochemistry SOSA Model Overview,align="cent
 | Property | Value
 
 | IRI | https://linked.data.gov.au/def/geochem
+| Name | GSQ Geochemistry Data Exchange Model - Specification
 | Version | 1.0.0
 |===
 

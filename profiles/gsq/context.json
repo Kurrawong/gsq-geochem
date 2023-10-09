@@ -7,9 +7,6 @@
     "asWKT": "geo:asWKT",
     "hasGeometry": "geo:hasGeometry",
 
-    "dcat": "http://www.w3.org/ns/dcat#",
-    "Dataset": "dcat:Dataset",
-
     "op": "https://linked.data.gov.au/def/observable-properties/",
 
     "prov": "http://www.w3.org/ns/prov#",
@@ -22,12 +19,14 @@
     "Literal": "rdfs:Literal",
 
     "sdo": "https://schema.org/",
+    "Dataset": "sdo:Dataset",
     "name": "sdo:name",
     "description": "sdo:description",
     "dateCreated": "sdo:dateCreated",
     "dateModified": "sdo:dateModified",
     "keywords": "sdo:keywords",
     "location": "sdo:location",
+    "hasPart": "sdo:hasPart",
     "unitCode": "sdo:unitCode",
     "value": "sdo:value",
     "marginOfError": "sdo:marginOfError",

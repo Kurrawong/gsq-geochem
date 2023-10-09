@@ -2,14 +2,16 @@
 
 This Specification is the formal expression of a data model for the exchange of geochemistry data. It is intended for use by organisations supplying geochemistry results to the Geological Survey of Queensland.
 
-This Specification is made of several parts: an introduction, a data model, a listing of support vocabularies, validators to check the conformance of data to the model and templates that can be used to record data according to the model. This Specification is _not_ an overview of the GSQ Geochemistry data exchange regime or a first glance at the model used but instead a formal modelling document.
+This Specification is made of several parts: an introduction, a data model, a listing of support vocabularies and a listing of Profiles of the model.
 
-For an overview of the GSQ Geochemistry data exchange regime, see:
+This Specification is _not_ an overview of the GSQ Geochemistry data exchange regime or a first glance at the model used but instead a formal modelling document. For an overview of the GSQ Geochemistry data exchange regime, see:
 
 * https://kurrawong.github.io/gsq-geochem-spec/overview.html[GSQ Geochemistry Overview]
+
+It is _Profiles_ of this model that provide specific criteria for data validation, see the <<Profiles, Profiles>> section.
+
+NOTE: If you want to find the Geological Survey of Queensland's rules for geochemistry data submission, see the <<GSQ Profile, GSQ Profile>> section.
 
 This Specification is issued alongside online testing facilities that allow geochemistry data supply organisations to see example data, validate their data and to read all supporting resources.
 
 * https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal]
-
-NOTE: If you want to find the Geological Survey of Queensland's rules for geochemistry data submission, see the <<GSQ Profile, GSQ Profile>> section.

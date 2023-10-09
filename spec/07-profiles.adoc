@@ -29,58 +29,117 @@ The resources within this profile are listed below. The roles given for each are
 | Specification | https://www.w3.org/TR/dx-prof/#Role:specification[Specification] | https://linked.data.gov.au/def/geochem/gsq | This section of the Geochemistry Data Model that defines this GSQ Profile
 | Machine-Readable Profile Definition | https://www.w3.org/TR/dx-prof/#Role:profile-definition[Profile Definition] | https://linked.data.gov.au/def/geochem/gsq.ttl | The definition of this Profile, as per this text, but in RDF, according to <<PROF, The Profiles Vocabulary>>
 | Specification | https://www.w3.org/TR/dx-prof/#Role:guidance[Guidance] | https://linked.data.gov.au/def/geochem/gsq | The writeup of this Profile, here
-| SHACL Validator | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator.ttl | A <<SHACL, SHACL>> data file able to be used to validate RDF data according to this profile's rules
-| JSON Schema | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator.json | A https://json-schema.org[JSON Schema] file able to be used to validate JSON data according to this profile's rules
+| SHACL Validator | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator | A <<SHACL, SHACL>> data file used to validate RDF data according to <<#gsq-profile-specification, this Profile's rules>>
+| SHACL Data Expander | https://www.w3.org/TR/dx-prof/#Role:script[Script] | https://linked.data.gov.au/def/geochem/gsq/expander | A <<SHACL, SHACL>> data used to expand RDF data according to this Specification's rules
+| SHACL Validator Combined | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator-combined | The combined validator and data expander
+| JSON Schema | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/schema.json | A https://json-schema.org[JSON Schema] file able to be used to validate JSON data according to this profile's rules
+| Excel to RDF Converter | https://www.w3.org/TR/dx-prof/#Role:script[Script] https://linked.data.gov.au/def/geochem/gsq/excel-to-rdf | A Python software library to convert geocehmistry data created using the Excel Templates for this Profile into RDF data |
+| Excel Templates | https://www.w3.org/TR/dx-prof/#Role:schema[Schema] | https://linked.data.gov.au/def/geochem/gsq/excel-templates | Excel Workbook templates to be used to supply data in Excel form to be validated according to this Profile
 | Examples | https://www.w3.org/TR/dx-prof/#Role:example[Example] | https://linked.data.gov.au/def/geochem/gsq/examples | A series of RDF (<<TURTLE, Turtle>> & <<JSON-LD, JSON-LD>>), https://en.wikipedia.org/wiki/JSON[JSON] and https://www.microsoft.com/en-us/microsoft-365/excel[Excel] files of data: both valid and invalid forms
+| Python Validate Script | https://www.w3.org/TR/dx-prof/#Role:guidance[Guidance] | Python software that implements validation for all three data forms. Provided to show how validation occurs and ot be used in applications
 |===
 
 NOTE: This Profile's validators and example data files are pre-loaded in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal] for online use.
 
+[#gsq-profile-specification]
 ==== Specification
 
 The following subsections contain the rules of this Profile and form this Profile's normative specification.
 
-===== Predicate Mandates
+===== Model Element Mandates
 
-The following table lists classes of this model and gives the cardinality of predicates. Only classes that must be used are listed.
+The following table lists the requirements for the presence of classes and predicates assigned to classes in data supplied according to this Profile.
 
 A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1 means zero or one.
 
-[cols="2,3,3"]
+[cols="2,3,3,2"]
 |===
-| Class | Predicate | Cardinality
+| Class | Predicate | Cardinality | Notes
 
-| <<dcat:Dataset, Dataset>>                                 | <<sdo:name, name>> | `1`
-|                                                           | <<sdo:description, description>> | `1`
-|                                                           | <<sdo:dateCreated, date created>> | `1`
-|                                                           | <<sdo:dateModified, dateModified>> | `1`
-|                                                           | <<sdo:keywords, keywords>> | `0+`
-|                                                           | <<prov:qualifiedAttribution, qualified attribution>> | `1+` - `1` per agent to be related to this Dataset and at least one - the creator/owner of the data
-|||
-| <<prov:Attribution, Attribution>>                         | <<prov:agent, agent>> | `1`
-|                                                           | <<prov:hadRole, had role>> | `1`
-|||
-| <<sosa:Observation, Observation>>                         | <<sosa:usedProcedure, used procedure>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
-|                                                           | <<sosa:madeBySensor, made by sensor>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
-|                                                           | <<sosa:observedProperty, observed property>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
-|                                                           | <<sosa:hasFeatureOfInterest, has feature of interest>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
-|                                                           | <<sosa:resultTime, result time>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>>
-|                                                           | <<sosa:hasResult, has result>> | `1`
-|                                                           | <<sdo:marginOfError, margin of error>> | `0-1`
-|||
-| <<sosa:Result, Result>>                                   | <<sdo:unitCode, unit code>> | `0-1` - not needed if `value` is a categorisation
-|                                                           | <<sdo:value, value>>    | `1`
-|                                                           | <<sdo:marginOfError, margin of error>> | `0-1`
-|||
-| <<sosa:Sample, Sample>>                                   | <<sosa:isSampleOf, is sample of>> | `0+`
-|||
-| <<sosa:ObservationCollection, Observation Collection>>    | <<sosa:hasMember, has member>> | `1+`
-|                                                           | _...and any properties of <<sosa:Observation, Observation>>_ |
-|||
-| <<sosa:FeatureOfInterest, Feature Of Interest>>           | <<geo:hasGeometry, has geometry>> | `0-1`
-|||
-| <<geo:Geometry, Geometry>>                                | <<geo:asWKT, as WKT>> | `1`
+| <<sdo:Dataset, Dataset>>                                  | | `1` | Must be present in each "chunk" of data validated, even if common across many "chunks"
+|                                                           | <<sdo:name, name>> | `1` |
+|                                                           | <<sdo:description, description>> | `1` |
+|                                                           | <<sdo:dateCreated, date created>> | `1` |
+|                                                           | <<sdo:dateModified, dateModified>> | `1` |
+|                                                           | <<sdo:keywords, keywords>> | `0+` |
+|                                                           | <<prov:qualifiedAttribution, qualified attribution>> | `1+` | `1` per agent to be related to this Dataset and at least one - the creator/owner of the data
+|                                                           | <<sdo:hasPart, has part>> | `1+` |
+||||
+| <<prov:Attribution, Attribution>>                         | | `1+` | As indicated by <<prov:qualifiedAttribution, qualified attribution>>
+|                                                           | <<prov:agent, agent>> | `1` |
+|                                                           | <<prov:hadRole, had role>> | `1` |
+||||
+| <<sosa:ObservationCollection, Observation Collection>>    | | `1+` |
+|                                                           | <<sosa:hasMember, has member>> | `1+` |
+|                                                           | _...and any properties of <<sosa:Observation, Observation>>_ | |
+||||
+| <<sosa:Observation, Observation>>                         |  | `1+` |
+|                                                           | <<sosa:usedProcedure, used procedure>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>> |
+|                                                           | <<sosa:madeBySensor, made by sensor>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>> |
+|                                                           | <<sosa:observedProperty, observed property>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>> |
+|                                                           | <<sosa:hasFeatureOfInterest, has feature of interest>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>> |
+|                                                           | <<sosa:resultTime, result time>> | `1` unless in <<sosa:ObservationCollection, Observation Collection>> |
+|                                                           | <<sosa:hasResult, has result>> | `1` |
+|                                                           | <<sdo:marginOfError, margin of error>> | `0-1` |
+||||
+| <<sosa:Result, Result>>                                   | | `1+` | At least one per Observation
+|                                                           | <<sdo:unitCode, unit code>> | `0-1` - not needed if `value` is a categorisation |
+|                                                           | <<sdo:value, value>>    | `1` |
+|                                                           | <<sdo:marginOfError, margin of error>> | `0-1` |
+||||
+| <<sosa:Sample, Sample>>                                   | | `0+` |
+|                                                           | <<sosa:isSampleOf, is sample of>> | `0+` |
+||||
+| <<sosa:FeatureOfInterest, Feature Of Interest>>           | | `0+` |
+|                                                           | <<geo:hasGeometry, has geometry>> | `0-1` |
+||||
+| <<geo:Geometry, Geometry>>                                | | `0+` | No more than one per <<sosa:FeatureOfInterest, Feature Of Interest>>
+|                                                           | <<geo:asWKT, as WKT>> | `1` |
 |===
+
+===== Model Element Identifiers
+
+Objects in data supplied claiming conformance to this Profile _MUST_ use a particular forms of <<IRI, IRI>> identifiers, as follows:
+
+|===
+| Element                                                   | Identifier Type
+
+| <<sdo:Dataset, Dataset>>                                  | <<Data Supplier Namespaced IRIs, Data Supplier Namespaced IRIs>> or <<External Reference IRIs, External Reference IRIs>>
+| <<prov:Attribution, Attribution>>                         | Not needed
+| <<prov:Agent, Agent>>                                     | <<GSQ Registered IRIs, GSQ Registered IRIs>>
+| <<sosa:ObservationCollection, Observation Collection>>    | <<Data Supplier Namespaced IRIs, Data Supplier Namespaced IRIs>>
+| <<sosa:Observation, Observation>>                         | <<Data Supplier Namespaced IRIs, Data Supplier Namespaced IRIs>>
+| <<sosa:Result, Result>>                                   | Not needed
+| <<sosa:Sample, Sample>>                                   | <<Data Supplier Namespaced IRIs, Data Supplier Namespaced IRIs>> or <<External Reference IRIs, External Reference IRIs>>
+| <<sosa:FeatureOfInterest, Feature Of Interest>>           | <<Data Supplier Namespaced IRIs, Data Supplier Namespaced IRIs>> or <<External Reference IRIs, External Reference IRIs>>
+| <<geo:Geometry, Geometry>>                                | Not needed
+|===
+
+====== Data Supplier Namespaced IRIs
+
+Each Data Supplier will be allocated an IRI identifier namespace to use. For example _ACME Corp._ might be allocated the namespace `+https://linked.data.gov.au/dataset/qgc/agme-corp/+` and will be able to created identifiers such as this for 'Dataset X': `+https://linked.data.gov.au/dataset/qgc/agme-corp/dataset-x+`.
+
+The only rules for Data Supplier Namespace use are:
+
+1. The IRIs created must be valid IRI
+** This means no spaces or unusual characters that break IRIs (URLs)
+2. Unique IRIs must always be formed
+** If a Data Supplier creates `+https://linked.data.gov.au/dataset/qgc/agme-corp/obs-00103+` for an <<sosa:Observation, Observation>>, they can not use that identifier again, at any later stage. This entails keeping track of the ID bit of the identifier - `obs-00103`.
+** Data deemed valid but with duplicate IRIs will be returned to Data Suppliers for updating
+
+NOTE: For test data, use the "Data Supplier Namespaced" namespace of `+https://placeholder.com/+`, e.g. for 'Dataset X': `+https://placeholder.com/dataset-x+`
+
+====== GSQ Registered IRIs
+
+Agents will need IRIs registered
+
+====== External Reference ID
+
+If a <<sdo:Dataset, Dataset>>, <<sosa:Sample, Sample>> or a
+
+===== External Reference IRIs
+
+TODO
 
 ===== Vocab Restrictions
 
@@ -99,114 +158,49 @@ This profile requires that Concepts indicated by certain predicates come from sp
 
 Note that this profile does _NOT_ require that the predicate <<sosa:madeBySensor, made by sensor>> is used on the <<sosa:Observation, Observation>> class, thus no vocabulary is mandated for its use. It may be used but, if it is, the user may choose any vocabulary of Concepts to draw from useful to them.
 
+===== Data Expansion Rules
+
+Data either in or converted to RDF may be expanded according to the following rules:
+
+[cols="1,4"]
+|===
+| Rule | Description
+
+| ObservationCollection properties | Any predicates assigned to an Observation Collection will be applied to individual Observations within the Collection, unless the Observation already has the same predicates give
+| Margin of Error propagation | Any `sdo:marginOfError` predicates assigned to an Observation will propagate to any Results from that Observation, unless the Result already has the `sdo:marginOfError` predicate given
+|===
+
+These rules are implemented as <<SHACL, SHACL>> functions in the _SHACL Data Expander_ resource of this profile, see the section above.
+
 ==== Validators
+
+Four resources supplied by this Profile assist with the validation of data: the _SHACL Validator_, the _SHACL Combined Validator_, the _JSON Schema_ and the _Excel to RDF Converter_. All are listed in the <<Resources, Resources>> section above. Depending on the form of data you are supplying (see next section), different validators will apply.
 
 ===== Data Forms
 
 Data aiming to be valid according to this Profile can be delivered in one of three forms:
 
 1. Resource Description Framework (*RDF*)
-    * as per <<RDF>>
-    * in any of the following RDF triples formats: Turtle <<TURTLE>>, RDF/XML, JSON-LD, N-Triples. See https://rdflib.readthedocs.io/en/stable/intro_to_parsing.html[RDFLib's information on RDF parsing]
+    * must be validated using the _SHACL Validator Combined_ validator, listed in the <<Resources, Resources>> section above
+    * the canonical form of data for this Profile, as per the Geochem Data Model
+    * RDF is defined in <<RDF, RDF>>
+    * in any of the following RDF triples formats: <<TURTLE, Turtle>>, RDF/XML, JSON-LD, N-Triples. See https://rdflib.readthedocs.io/en/stable/intro_to_parsing.html[RDFLib's information on RDF parsing]
 2. *JSON*
-    *
+    * must be validated according to the JSON Schema listed in the <<Resources, Resources>> section above and the _SHACL Validator Combined_ validator, after converting to RDF
+    * the JSON Schema emulates the SHACL Validator's rules and is provided for assistance in forming JSON data
+3. *Excel*
+    * must use the Excel templates provided with this Profile, see the <<Resources, Resources>> section
+    * will be converted to RDF using the Excel-to-RDF program also supplied with this Profile
+    * then validated according to the _SHACL Validator Combined_ validator, listed in the <<Resources, Resources>> section above
 
-===== Validators per Form
+Example implementations of the full conversion & validation processes are provided in the _Python Validate Script_ listed in the <<Resources, Resources>> section above.
 
-This profile provides for the validation of data presented in any of the forms listed above.
-
-====== RDF Form
-
-Validation of RDF data - any format such as Turtle or JSON-LD - can be validated directly using the https://linked.data.gov.au/def/geochem/gsq/validator.ttl[SHACL Validator] given in the Resources listing above.
-
-====== JSON Form
-
-JSON data that is not JSON-LD data will need to go through a three-step validation process:
-
-1. Validation of JSON data via JSON Schema validation
-** Using the https://linked.data.gov.au/def/geochem/gsq/validator.json[JSON Schema Validator], given in the Resources listing above
-2. Conversion of JSON data to RDF data via JSON->JSON-LD enhancement
-** JSON->JSON-LD enhancement is undertaken by applying the https://linked.data.gov.au/def/geochem/context.json[JSON-LD Context] file within the data specification to the JSON data
-3. Validation of the JSON-LD data as RDF data
-** As per RDF Form validation
-
-====== Excel Form
-
-Excel data will need to go through a two-step validation process:
-
-1. Correct template use confirmation and conversion to RDF
-** This is undertaken by the _Geochem Template Converter_ software package
-2. Validation of the JSON-LD data as RDF data
-** As per RDF Form validation
+NOTE: All three forms of data can be supplied to and validated in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal] online
 
 ==== Examples
 
-Example data for this Profile, in all three forms described above and both valida nd invalid examples, is given online at:
+Example data for this Profile, in all three data forms described above and which is both valid and invalid, is given online at:
 
 * https://linked.data.gov.au/def/geochem/gsq/examples
 
-Additionally, the following is one of the invalid Turtle form examples presented here with an explanatory description.
-
-[#gsqp-eg-01]
-.Valid data according to the GSQ Profile of this model
-[source,turtle]
-----
-PREFIX ex: <http://example.com/>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
-PREFIX sdo: <https://schema.org/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-ex:obs-1
-    a sosa:Observation ;
-    sosa:usedProcedure ex:procedure-b ;
-    sosa:madeBySensor ex:sensor-c ;
-    sosa:observedProperty op:amount-of-gold ;
-    sosa:hasFeatureOfInterest ex:sample-d ;
-    sosa:resultTime "2023-05-11"^^xsd:date ;
-    sosa:hasResult
-        ex:result-e ,
-        ex:result-f ;
-.
-
-ex:procedure-b
-    a skos:Concept ;
-    skos:prefLabel "Procedure B" ;
-    skos:definition "A method for assessing the amount of gold in a sample" ;
-.
-
-ex:sensor-c
-    a skos:Concept ;
-    skos:prefLabel "Sensor C" ;
-    skos:definition "A particular machine for assessing gold content in rock samples" ;
-.
-
-ex:sample-d
-    a sosa:Sample ;
-    sdo:name "Sample C" ;
-    sdo:additionalType ex:soil-sample ;
-    sdo:description "A soil sample from Sandy Creek" ;
-    sdo:location "Zillmere Rock Store: Zone 4, Shelf N, Box 3" ;
-    sosa:isSampleOf <https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince> ;
-.
-
-ex:result-e
-    sdo:value 0.027  ;
-    sdo:unitCode <https://qudt.org/vocab/unit/PPM> ;
-.
-
-ex:result-f
-    sdo:value 27.0 ;
-    sdo:unitCode <https://qudt.org/vocab/unit/PPB> ;
-.
-
-<https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince>
-    a sosa:FeatureOfInterest , geo:Feature ;
-    geo:hasGeometry [
-        a geo:Geometry ;
-        geo:asWKT "POLYGON((146.850699 -23.704934,146.850699 -20.863771,148.028386 -20.863771,148.028386 -23.704934,146.850699 -23.704934))" ;
-    ] ;
-.
-----
+Each RDF example contains comments at the top of the file indicating what it is demonstrating and/or how it is invalid. Excel files contain comments on a 'Comments' worksheet. Since JSON does not allow comments, see the RDF file with the similar file name for the same information.

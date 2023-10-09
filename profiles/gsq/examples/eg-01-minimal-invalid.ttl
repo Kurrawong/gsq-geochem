@@ -1,4 +1,6 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
+# The minimal example 01 invalid in the following 4 ways:
+
+
 PREFIX ex: <http://example.com/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
@@ -10,8 +12,8 @@ PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 ex:dataset-x
-    a dcat:Dataset ;
-    # sdo:name "Dataset X" ;
+    a sdo:Dataset ;
+    sdo:name "Dataset X" ;
     sdo:description "A demonstration dataset" ;
     sdo:dateCreated "2023-09-26"^^xsd:date ;
     sdo:dateModified "2023-09-27T14:30"^^xsd:dateTime ;
@@ -72,4 +74,3 @@ ex:result-f
         geo:asWKT "POLYGON((146.850699 -23.704934,146.850699 -20.863771,148.028386 -20.863771,148.028386 -23.704934,146.850699 -23.704934))"^^geo:wktLiteral ;
     ] ;
 .
-

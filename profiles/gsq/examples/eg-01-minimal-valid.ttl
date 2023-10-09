@@ -1,4 +1,5 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
+# A minimal valid example: one Dataset & one Observation with two Results only
+
 PREFIX ex: <http://example.com/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
@@ -10,7 +11,7 @@ PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 ex:dataset-x
-    a dcat:Dataset ;
+    a sdo:Dataset ;
     sdo:name "Dataset X" ;
     sdo:description "A demonstration dataset" ;
     sdo:dateCreated "2023-09-26"^^xsd:date ;

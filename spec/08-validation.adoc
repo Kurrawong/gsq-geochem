@@ -12,7 +12,6 @@ A partial, and simplified, example Shape from the <<GSQ Profile, GSQ Profile>> i
 
 [source,turtle]
 ----
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX ex: <http://example.com/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
@@ -22,7 +21,7 @@ PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 ex:dataset-x
-    a dcat:Dataset ;
+    a sdo:Dataset ;
     sdo:name "Dataset X" ;
     sdo:description "A demonstration dataset" ;
 .
@@ -79,7 +78,7 @@ ex:result-f
 .
 ----
 
-The shape above tests that all presented <<dcat:Dataset, Dataset>> objects indicate one and only one <<sdo:name, name>> predicate which, in turn, must indicate a text (string) value.
+The shape above tests that all presented <<sdo:Dataset, Dataset>> objects indicate one and only one <<sdo:name, name>> predicate which, in turn, must indicate a text (string) value.
 
 SHACL validation tooling will report whether all Shapes are respected by the data or, if not, which ones failed and how (for which data element and values) they failed.
 

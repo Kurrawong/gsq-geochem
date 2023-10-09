@@ -6,6 +6,12 @@ The conformance imperatives of data to this Specification use terms from _RFC 21
 
 === Terms & Definitions
 
+==== IRI
+
+An _Internationalized Resource Identifier_ is a web address-style URL that is used as an identifier for something. It may be for a real-world object, e.g. `https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince` identifies the Queensland Geological Feature _Anakie Province_ or for data only, e.g. `+https://linked.data.gov.au/dataset/qgc/dataset-x+` which is for a (fictitious) dataset of geochemistry observations.
+
+IRIs do not have to resolve - go somewhere online when clicked - but they do have to follow ll the rules for URLs such as no spaces.
+
 ==== Class
 
 Within formal <<OWL, OWL>> modelling a class is a set of objects exhibiting common properties. For example, the set of all people who are studying could be defined as being within a _Student_ class.
@@ -40,7 +46,7 @@ Namespaces for model, vocabulary and validator elements are assigned the followi
 |===
 | `dcat` | http://www.w3.org/ns/dcat# | <<DCAT, DCAT>> ontology
 | `ex`: | http://example.com/ | A non-resolving namespace for examples
-| `geo`: | http://www.opengis.net/ont/geosparql# | GeoSPARQL Ontology
+| `geo`: | http://www.opengis.net/ont/geosparql# | https://opengeospatial.github.io/ogc-geosparql/geosparql11/spec.html[GeoSPARQL Ontology]
 | `owl`: | http://www.w3.org/2002/07/owl# | <<OWL2, OWL>> ontology
 | `prov`: | http://www.w3.org/ns/prov# | <<PROV, PROV>> ontology
 | `rdfs`: | http://www.w3.org/2000/01/rdf-schema# | <<RDFS, RDFS>> ontology
