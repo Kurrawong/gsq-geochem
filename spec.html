@@ -923,11 +923,6 @@ If you want to find the Geological Survey of Queensland&#8217;s rules for geoche
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dcat</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/ns/dcat#" class="bare">http://www.w3.org/ns/dcat#</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DCAT">DCAT</a> ontology</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ex</code>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://example.com/" class="bare">http://example.com/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A non-resolving namespace for examples</p></td>
@@ -1351,7 +1346,7 @@ Sample A    153.08, -27.33  ...</code></pre>
 <h2 id="_model"><a class="anchor" href="#_model"></a>6. Model</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section describes the elements of the model of this specification in detail: lists of the Classes and Predicates of the model which are all taken from the Classes and Properties of the SOSA foreground model <a href="#SOSA">SOSA</a> and the background models (<a href="#DCAT">DCAT</a>, <a href="#GSP">GSP</a>, <a href="#PROV">PROV</a>, <a href="#SDO">SDO</a>). All the Classes and Predicates described here are shown in <a href="#whole-model">Figure 8</a>.</p>
+<p>This section describes the elements of the model of this specification in detail: lists of the Classes and Predicates of the model which are all taken from the Classes and Properties of the SOSA foreground model <a href="#SOSA">SOSA</a> and the background models (<a href="#GSP">GSP</a>, <a href="#PROV">PROV</a>, <a href="#SDO">SDO</a>). All the Classes and Predicates described here are shown in <a href="#whole-model">Figure 8</a>.</p>
 </div>
 <div id="whole-model" class="imageblock text-center">
 <div class="content">
@@ -1662,7 +1657,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this class to represent batches of geochemistry observations. Additional metadata for batches, such as run numbers, may be added to the Observation Collection using scheme.org, DCAT or custom predicates</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this class to represent batches of geochemistry observations. Additional metadata for batches, such as run numbers, may be added to the Observation Collection using custom predicates. Other predicates defined in <a href="#SDO">SDO</a> may also be used</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -4387,10 +4382,6 @@ All three forms of data can be supplied to and validated in the <a href="https:/
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><a id="DCAT"></a> [DCAT]</dt>
-<dd>
-<p>World Wide Web Consortium, <em>Data Catalog Vocabulary (DCAT)</em>, W3C Recommendation (04 February 2020). <a href="https://www.w3.org/TR/vocab-dcat/" class="bare">https://www.w3.org/TR/vocab-dcat/</a></p>
-</dd>
 <dt class="hdlist1"><a id="GSP"></a> [GSP]</dt>
 <dd>
 <p>Open Geospatial Consortium, <em>OGC GeoSPARQL - A Geographic Query Language for RDF Data</em>, OGC Implementation Standard. Car, N. J., &amp; Homburg, T. (eds.) (2011). <a href="http://www.opengis.net/doc/IS/geosparql/1.1" class="bare">http://www.opengis.net/doc/IS/geosparql/1.1</a></p>
@@ -4466,7 +4457,7 @@ All three forms of data can be supplied to and validated in the <a href="https:/
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-10-09 01:00:44 UTC
+Last updated 2023-10-12 14:30:35 UTC
 </div>
 </div>
 </body>
