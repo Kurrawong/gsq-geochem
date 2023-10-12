@@ -1,2 +1,5 @@
 pyshacl
 jsonschema
+openpyxl
+pydantic
+colorama

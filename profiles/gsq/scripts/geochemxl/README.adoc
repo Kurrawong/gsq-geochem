@@ -1,0 +1,5 @@
+= geochemxl
+
+```
+~$ python -W ignore -m geochemxl {PATH_TO_EXCEL_FILE}
+```
