@@ -44,7 +44,6 @@ Namespaces for model, vocabulary and validator elements are assigned the followi
 
 [frame=none, grid=none, cols="1, 4, 4"]
 |===
-| `dcat` | http://www.w3.org/ns/dcat# | <<DCAT, DCAT>> ontology
 | `ex`: | http://example.com/ | A non-resolving namespace for examples
 | `geo`: | http://www.opengis.net/ont/geosparql# | https://opengeospatial.github.io/ogc-geosparql/geosparql11/spec.html[GeoSPARQL Ontology]
 | `owl`: | http://www.w3.org/2002/07/owl# | <<OWL2, OWL>> ontology

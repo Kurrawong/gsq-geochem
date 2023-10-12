@@ -1,6 +1,6 @@
 == Model
 
-This section describes the elements of the model of this specification in detail: lists of the Classes and Predicates of the model which are all taken from the Classes and Properties of the SOSA foreground model <<SOSA, SOSA>> and the background models (<<DCAT, DCAT>>, <<GSP, GSP>>, <<PROV, PROV>>, <<SDO, SDO>>). All the Classes and Predicates described here are shown in <<whole-model>>.
+This section describes the elements of the model of this specification in detail: lists of the Classes and Predicates of the model which are all taken from the Classes and Properties of the SOSA foreground model <<SOSA, SOSA>> and the background models (<<GSP, GSP>>, <<PROV, PROV>>, <<SDO, SDO>>). All the Classes and Predicates described here are shown in <<whole-model>>.
 
 [#whole-model]
 .An OWL diagram with foreground and background model groupings used for geochemistry data modelling. _Click it to zoom._
@@ -128,7 +128,7 @@ ex:obscol-a
 | IRI | `sosa:ObservationCollection`
 | Name | Observation Collection
 | Definition | Collection of one or more observations, whose members share a common value for one or more predicate
-| Scope Note | Use this class to represent batches of geochemistry observations. Additional metadata for batches, such as run numbers, may be added to the Observation Collection using scheme.org, DCAT or custom predicates
+| Scope Note | Use this class to represent batches of geochemistry observations. Additional metadata for batches, such as run numbers, may be added to the Observation Collection using custom predicates. Other predicates defined in <<SDO, SDO>> may also be used
 | Is Defined By | https://www.w3.org/TR/vocab-ssn-ext/[Extension to SSN]
 | Expected Properties | <<sosa:hasMember, has member>> and predicates for <<sosa:Observation, Observation>> objects pertaining to all members of the collection
 | Example
