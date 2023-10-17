@@ -1,19 +1,14 @@
 import datetime
 from itertools import chain
-from typing import List, Union
-
+from typing import List, Union, Optional
+from pathlib import Path
 from openpyxl import Workbook
 from pydantic import BaseModel, field_validator
-from rdflib import Graph, Literal, URIRef
+from pydantic import ValidationError
+from rdflib import Graph, Literal, URIRef, BNode
 from rdflib.namespace import GEO, OWL, PROV, RDF, RDFS, SDO, SKOS, SOSA, XSD
-
-try:
-    from utils import all_strings_in_list_are_iris, string_is_http_iri
-except ImportError:
-    import sys
-
-    sys.path.append("..")
-    from geochemxl.utils import all_strings_in_list_are_iris, string_is_http_iri
+from .defined_namespaces import BORE, FOIS, SAMPLES
+from .utils import *
 
 ORGANISATIONS = {
     "CGI": URIRef("https://linked.data.gov.au/org/cgi"),
@@ -33,11 +28,39 @@ ORGANISATIONS_INVERSE = {uref: name for name, uref in ORGANISATIONS.items()}
 class Agent(BaseModel):
     iri: str
 
+    @field_validator("iri")
+    def iri_must_be_for_known_agent(cls, v):
+        g = Graph().parse(Path(__file__).parent.resolve() / "reference-data" / "agents.ttl")
+        for iri in g.subjects(RDF.type, None):
+            if v == str(iri):
+                return v
+        for id in g.objects(None, SDO.identifier):
+            if v == str(id):
+                return g.value(predicate=SDO.identifier, object=id)
+        raise ValueError(
+            "The IRI of the Agent must be for a known Agent. See the Geochem Portal "
+            f"(https://geochem.dev.kurrawong.ai) for the list of known Agents. You supplied {v.iri}"
+        )
+
+    def to_graph(self) -> Graph:
+        g = Graph(bind_namespaces="rdflib")
+        v = URIRef(self.iri)
+        g.add((v, RDF.type, PROV.Agent))
+
+        return g
+
 
 class Attribution(BaseModel):
     iri: str
     agent: Agent
     had_role: str
+
+    def to_graph(self) -> Graph:
+        g = Graph(bind_namespaces="rdflib")
+        v = URIRef(self.iri)
+        g.add((v, RDF.type, PROV.Agent))
+
+        return g
 
 
 class Concept(BaseModel):
@@ -50,6 +73,13 @@ class Result(BaseModel):
     value: Union[Concept, str]
     margin_of_error: float
 
+    def to_graph(self) -> Graph:
+        g = Graph(bind_namespaces="rdflib")
+        v = URIRef(self.iri)
+        g.add((v, RDF.type, PROV.Agent))
+
+        return g
+
 
 class Observation(BaseModel):
     iri: str
@@ -61,6 +91,13 @@ class Observation(BaseModel):
     has_result: Result
     margin_of_error: float
 
+    def to_graph(self) -> Graph:
+        g = Graph(bind_namespaces="rdflib")
+        v = URIRef(self.iri)
+        g.add((v, RDF.type, PROV.Agent))
+
+        return g
+
 
 class ObservationCollection(BaseModel):
     iri: str
@@ -69,17 +106,34 @@ class ObservationCollection(BaseModel):
 
 class Dataset(BaseModel):
     iri: str
-    # title: str
-    # description: str
-    # date_created: datetime.date
-    # date_modified: datetime.date
-    # keywords: list
+    name: str
+    description: str
+    date_created: datetime.date
+    date_modified: datetime.date
+    author: object
+    keywords: list = []
     # qualified_attribution: Attribution
     # has_part: ObservationCollection
 
-    def to_graph(self):
+    @field_validator("author", mode="before")
+    def report_agent_in_dataset_error(cls, v):
+        try:
+            return Agent(iri=v)
+        except ValidationError as e:
+            raise ValueError(f"Within the creation of a Dataset, the input Agent for 'author' is invalid: \n{e}")
+
+    def to_graph(self) -> Graph:
         g = Graph(bind_namespaces="rdflib")
         v = URIRef(self.iri)
+        g.add((v, RDF.type, SDO.Dataset))
+        g.add((v, SDO.name, Literal(self.name)))
+        g.add((v, SDO.description, Literal(self.description)))
+        g.add((v, SDO.dateCreated, Literal(self.date_created, datatype=XSD.date)))
+        g.add((v, SDO.dateModified, Literal(self.date_modified, datatype=XSD.date)))
+        qa = BNode()
+        g.add((v, PROV.qualifiedAttribution, qa))
+        g.add((qa, PROV.agent, URIRef(self.author.iri)))
+        g.add((qa, PROV.hadRole, URIRef("http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/author")))
 
         return g
 
@@ -87,14 +141,105 @@ class Dataset(BaseModel):
 class Geometry(BaseModel):
     as_wkt: str
 
+    def to_graph(self) -> Graph:
+        g = Graph(bind_namespaces="rdflib")
+        geom = BNode()
+        g.add((geom, RDF.type, GEO.Geometry))
+        g.add((geom, GEO.asWKT, Literal(self.as_wkt, datatype=GEO.wktLiteral)))
+
+        return g
+
 
 class FeatureOfInterest(BaseModel):
     iri: str
     has_geometry: Geometry
 
+    def to_graph(self) -> Graph:
+        g = Graph(bind_namespaces="rdflib")
+
+        v = URIRef(self.iri)
+        geom = self.has_geometry.to_graph()
+        g += geom
+        g.add((v, GEO.hasGeometry, geom.value(predicate=RDF.type, object=GEO.Geometry)))
+
+        return g
+
+
+class DrillHole(FeatureOfInterest):
+    def to_graph(self) -> Graph:
+        g = super().to_graph()
+        g.bind("bore", BORE)
+        v = URIRef(self.iri)
+        g.add((v, SDO.additionalType, BORE.Bore))
+        g.add((v, RDF.type, SOSA.FeatureOfInterest))
+
+        return g
+
 
 class Sample(BaseModel):
     iri: str
-    is_sample_of: FeatureOfInterest
+    collection_date: datetime.date
+    dispatch_date: datetime.date
+    specific_gravity: Optional[float]
+    magnetic_susceptibility: Optional[float]
+    remarks: Optional[str] = None
+
+    def to_graph(self) -> Graph:
+        g = Graph(bind_namespaces="rdflib")
+        g.bind("sample", SAMPLES)
+        v = URIRef(self.iri)
+        g.add((v, RDF.type, SOSA.Sample))
+        sampling = BNode()
+        g.add((sampling, RDF.type, SOSA.Sampling))
+        g.add((v, SOSA.isResultOf, sampling))
+        g.add((sampling, SOSA.resultTime, Literal(self.collection_date)))
+        if self.specific_gravity is not None:
+            obs1 = BNode()
+            g.add((v, SOSA.isFeatureOfInterestOf, obs1))
+            g.add((obs1, RDF.type, SOSA.Observation))
+            g.add((obs1, SOSA.hasFeatureOfInterest, v))
+            g.add((obs1, SOSA.observedProperty, URIRef("http://qudt.org/vocab/quantitykind/Density")))
+            res1 = BNode()
+            g.add((res1, RDF.type, SOSA.Result))
+            g.add((obs1, SOSA.hasResult, res1))
+            g.add((res1, SDO.value, Literal(self.specific_gravity)))
+            g.add((res1, SDO.unitCode, URIRef("http://qudt.org/vocab/unit/GM-PER-CentiM3")))
+
+        if self.magnetic_susceptibility is not None:
+            obs2 = BNode()
+            g.add((v, SOSA.isFeatureOfInterestOf, obs2))
+            g.add((obs2, RDF.type, SOSA.Observation))
+            g.add((obs2, SOSA.hasFeatureOfInterest, v))
+            g.add((obs2, SOSA.observedProperty, URIRef("http://qudt.org/vocab/quantitykind/MagneticSusceptability")))
+            res2 = BNode()
+            g.add((res2, RDF.type, SOSA.Result))
+            g.add((obs2, SOSA.hasResult, res2))
+            g.add((res2, SDO.value, Literal(self.magnetic_susceptibility)))
+
+        return g
 
 
+class DrillHoleSample(Sample):
+    is_sample_of: str
+    sample_type: str
+    depth_from: float
+    depth_to: float
+
+    @field_validator("sample_type")
+    def known_sample_type(cls, v):
+        c = is_a_concept_in(v, Path(__file__).parent.parent.resolve().parent / "vocabs" / "sample-types.ttl")
+        if c[0]:
+            return v
+        else:
+            raise ValueError(c[1])
+
+    def to_graph(self) -> Graph:
+        g = super().to_graph()
+        v = URIRef(self.iri)
+        foi = FOIS[self.is_sample_of]
+        g.add((v, SOSA.isSampleOf, URIRef(foi)))
+        g.add((v, SOSA.isSampleOf, URIRef(foi)))
+        g.add((v, SDO.depth, Literal(self.depth_from)))
+        g.add((v, SDO.depth, Literal(self.depth_to)))
+
+        return g

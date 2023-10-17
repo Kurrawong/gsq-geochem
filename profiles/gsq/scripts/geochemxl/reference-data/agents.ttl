@@ -1,0 +1,20 @@
+PREFIX sdo: <https://schema.org/>
+
+<http://example.org/org/acme-corp>
+    a sdo:Organization ;
+    sdo:identifier "ACME" ;
+    sdo:name "ACME Corp" ;
+.
+
+<https://linked.data.gov.au/org/gsq>
+    a sdo:Organization ;
+    sdo:identifier "GSQ" ;
+    sdo:name "Geological Survey of Queensland" ;
+.
+
+<https://kurrawong.ai>
+    a sdo:Organization ;
+    sdo:identifier "KURRAWONGAI" ;
+    sdo:name "KurrawongAI" ;
+.
+

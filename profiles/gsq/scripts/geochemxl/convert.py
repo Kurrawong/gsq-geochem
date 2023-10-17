@@ -1,41 +1,149 @@
 import argparse
-import logging
 import sys
-from pathlib import Path
-from typing import BinaryIO, Literal, Optional
+from typing import BinaryIO, Optional
+from uuid import uuid4
 
 import openpyxl
-import rdflib
-from pydantic import ValidationError
+from rdflib.namespace import RDF, SDO, SOSA
+
+from .models import Dataset, Agent, DrillHoleSample, FeatureOfInterest, DrillHole, Geometry
+from .utils import *
 
 
+def extract_dataset(wb: openpyxl.Workbook, template_version: float, external_metadata: str = None) -> Dataset:
+    def _extract_external_metadata():
+        g = Graph().parse(external_metadata)
+        iri = g.value(predicate=RDF.type, object=SDO.Dataset)
+        name = g.value(subject=iri, predicate=SDO.name)
+        description = g.value(subject=iri, predicate=SDO.description)
+        date_created = g.value(subject=iri, predicate=SDO.dateCreated)
+        date_modified = g.value(subject=iri, predicate=SDO.dateModified)
+        author = None
+        for o in g.objects(iri, PROV.qualifiedAttribution):
+            for p, o2 in g.predicate_objects(o):
+                if o2 == URIRef("http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/author"):
+                    author = g.value(o, PROV.agent)
+        keywords = []
+        for o in g.objects(subject=None, predicate=SDO.keywords):
+            keywords.append(str(o))
 
-from geochemxl.models import Dataset
-from geochemxl.profiles import PROFILES
-from geochemxl.utils import (
-    EXCEL_FILE_ENDINGS,
-    KNOWN_FILE_ENDINGS,
-    KNOWN_TEMPLATE_VERSIONS,
-    RDF_FILE_ENDINGS,
-    ConversionError,
-    get_template_version,
-    load_template,
-    load_workbook,
-    validate_with_profile,
-)
+        return Dataset(
+            iri=str(iri),
+            name=str(name),
+            description=str(description),
+            date_created=str(date_created),
+            date_modified=date_modified.toPython(),
+            author=Agent(iri=str(author)),
+            keywords=keywords
+        )
 
-TEMPLATE_VERSION = None
+    if template_version == 2.0:
+        # for v2.0, metadata must be supplied externally only
+        if not external_metadata:
+            raise ConversionError("If you are using an 2.0 version of the Geochem Excel template, you must supply Dataset metadata as external metadata")
+        else:
+            return _extract_external_metadata()
+
+    elif template_version == 3.0:
+        # for v3.0, you need not supply external metadata but, if you do, it will override metadata in the Workbook
+        if external_metadata:
+            return _extract_external_metadata()
+        else:
+            sheet = wb["DATASET_METADATA"]
+
+            return Dataset(
+                iri=sheet["B3"].value
+                if string_is_http_iri(sheet["B3"].value) else "http://example.com/dataset/" + str(uuid4()),
+                name=sheet["B4"].value,
+                description=sheet["B5"].value,
+                date_created=sheet["B6"].value,
+                date_modified=sheet["B7"].value,
+                author=sheet["B8"].value,
+            )
 
 
-def extract_workbook_contents(wb: openpyxl.Workbook, template_version: float) -> rdflib.Graph:
-    grf = Dataset().to_graph()
+def extract_drillholes(wb: openpyxl.Workbook, template_version: float) -> list[Graph]:
+    # only handle v 3.0
+    if not template_version == 3.0:
+        return []
 
-    return grf
+    sheet = wb["DRILLHOLE_LOCATION"]
+
+    drillholes = []
+
+    # only process example row if example data altered
+    if sheet["B9"].value != "DD12345":
+        row = 9
+    else:
+        row = 10
+
+    while True:
+        if sheet[f"B{row}"].value is not None:
+            geom = Geometry(as_wkt=convert_easting_northing_elevation_to_wkt(sheet[f"C{row}"].value, sheet[f"D{row}"].value, sheet[f"E{row}"].value))
+            drillholes.append(
+                DrillHole(
+                    iri=FOIS[sheet[f"B{row}"].value],
+                    has_geometry=geom
+                )
+            )
+
+            row += 1
+        else:
+            break
+
+    return drillholes
+
+
+def extract_samples(wb: openpyxl.Workbook, template_version: float, known_drillholes: []) -> list[Graph]:
+    # only handle v 3.0
+    if not template_version == 3.0:
+        return []
+
+    sheet = wb["DRILLHOLE_SAMPLE"]
+
+    samples = []
+
+    # only process example row if example data altered
+    if sheet["B9"].value != "DD12345":
+        row = 9
+    else:
+        row = 10
+
+    while True:
+        if sheet[f"B{row}"].value is not None:
+            foi_id = sheet[f"B{row}"].value
+            sample_id = sheet[f"C{row}"].value
+            if str(FOIS[foi_id]) not in known_drillholes:
+                raise ValueError(f"The given Drillhole ID {foi_id} for Sample {sample_id} is unknown. "
+                                 f"Must be present in the DRILLHOLE_LOCATION tab. "
+                                 f"Known Drillhole IDs are: {', '.join([x.split('/')[-1] for x in known_drillholes])}")
+
+            samples.append(
+                DrillHoleSample(
+                    is_sample_of=sheet[f"B{row}"].value,
+                    iri=SAMPLES[sample_id],
+                    sample_type=sheet[f"D{row}"].value,
+                    depth_from=sheet[f"E{row}"].value,
+                    depth_to=sheet[f"F{row}"].value,
+                    collection_date=sheet[f"G{row}"].value,
+                    dispatch_date=sheet[f"H{row}"].value,
+                    specific_gravity=sheet[f"F{row}"].value,
+                    magnetic_susceptibility=sheet[f"F{row}"].value,
+                    remarks=str(sheet[f"F{row}"].value)
+                )
+            )
+
+            row += 1
+        else:
+            break
+
+    return samples
 
 
 def excel_to_rdf(
     file_to_convert_path: Path | BinaryIO,
     output_file_path: Optional[Path] = None,
+    external_metadata: Optional[Union[Path, str]] = None
 ):
     """Converts a sheet within an Excel workbook to an RDF file"""
     wb = load_workbook(file_to_convert_path)
@@ -48,7 +156,29 @@ def excel_to_rdf(
             f" you supplied {template_version}"
         )
 
-    grf = extract_workbook_contents(wb, template_version)
+    tv = float(template_version)
+
+    grf = extract_dataset(wb, tv, external_metadata).to_graph()
+
+    for drillhole in extract_drillholes(wb, tv):
+        grf += drillhole.to_graph()
+
+    known_drillholes = []
+    for foi in grf.subjects(RDF.type, SOSA.FeatureOfInterest):
+        known_drillholes.append(str(foi))
+
+    for sample in extract_samples(wb, tv, known_drillholes):
+        grf += sample.to_graph()
+
+    # link Drillholes to Dataset
+    for s in grf.subjects(RDF.type, SDO.Dataset):
+        for s2 in grf.subjects(RDF.type, SOSA.FeatureOfInterest):
+            grf.add((s, SDO.hasPart, s2))
+
+    grf.bind("qk", Namespace("http://qudt.org/vocab/quantitykind/"))
+    grf.bind("unit", Namespace("http://qudt.org/vocab/unit/"))
+    grf.bind("foi", FOIS)
+    grf.bind("samples", SAMPLES)
 
     if output_file_path is not None:
         grf.serialize(destination=str(output_file_path), format="longturtle")
@@ -113,6 +243,15 @@ def main(args=None):
         required=False,
     )
 
+    parser.add_argument(
+        "-e",
+        "--external_metadata",
+        help="Metadata for the Dataset object that is supplied outside the Excel file",
+        type=Path,
+        required=False,
+        default=None
+    )
+
     args = parser.parse_args(args)
 
     if not args:
@@ -135,46 +274,21 @@ def main(args=None):
             f"Known template versions: {', '.join(sorted(KNOWN_TEMPLATE_VERSIONS, reverse=True))}"
         )
     elif args.file_to_convert:
-        if not args.file_to_convert.suffix.lower().endswith(tuple(KNOWN_FILE_ENDINGS)):
-            print(
-                "Files for conversion must either end with .xlsx (Excel) or one of the known RDF file endings, '{}'".format(
-                    "', '".join(RDF_FILE_ENDINGS.keys())
-                )
-            )
-            parser.exit()
-
         print(f"Processing file {args.file_to_convert}")
 
         # input file looks like an Excel file, so convert Excel -> RDF
-        if args.file_to_convert.suffix.lower().endswith(tuple(EXCEL_FILE_ENDINGS)):
+        if not args.file_to_convert.suffix.lower().endswith(tuple(EXCEL_FILE_ENDINGS)):
+            raise ConversionError("Only Excel files can be converted")
+        else:
             try:
                 o = excel_to_rdf(
                     args.file_to_convert,
-                    output_file_path=args.outputfile
+                    output_file_path=args.outputfile,
+                    external_metadata=args.external_metadata
                 )
                 if args.outputfile is None:
                     print(o)
             except ConversionError as err:
                 logging.error("{0}".format(err))
                 return 1
-
-        # RDF file ending, so convert RDF -> Excel
-        else:
-            try:
-                o = rdf_to_excel(
-                    args.file_to_convert,
-                    profile=args.profile,
-                    output_file_path=args.outputfile,
-                    template_file_path=args.templatefile,
-                    error_level=int(args.errorlevel),
-                    message_level=int(args.messagelevel),
-                    log_file=args.logfile,
-                )
-                if args.outputfile is None:
-                    print(o)
-            except ConversionError as err:
-                logging.error(f"{err}")
-                return 1
-
-
 

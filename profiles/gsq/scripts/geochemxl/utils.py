@@ -3,6 +3,7 @@ import re
 from pathlib import Path
 from tempfile import SpooledTemporaryFile
 from typing import Dict, Tuple, Union
+from typing import Literal as TypeLiteral
 
 import pyshacl
 from colorama import Fore, Style
@@ -11,8 +12,8 @@ from openpyxl.workbook.workbook import Workbook
 from pyshacl.pytypes import GraphLike
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import DCAT, DCTERMS, PROV, RDF, RDFS, SKOS, XSD
-
-
+from .defined_namespaces import BORE, FOIS, SAMPLES
+import utm
 
 EXCEL_FILE_ENDINGS = ["xlsx"]
 RDF_FILE_ENDINGS = {
@@ -26,6 +27,7 @@ RDF_FILE_ENDINGS = {
 }
 KNOWN_FILE_ENDINGS = [str(x) for x in RDF_FILE_ENDINGS.keys()] + EXCEL_FILE_ENDINGS
 KNOWN_TEMPLATE_VERSIONS = [
+    "3.0",
     "2.0",
 ]
 LATEST_TEMPLATE = KNOWN_TEMPLATE_VERSIONS[-1]
@@ -86,6 +88,9 @@ def split_and_tidy_to_iris(s: str, prefixes):
 def string_is_http_iri(s: str) -> Tuple[bool, str]:
     # returns (True, None) if the string (sort of) is an IRI
     # returns (False, message) otherwise
+    if s is None:
+        return None
+
     messages = []
     if not s.startswith("http"):
         messages.append(
@@ -289,3 +294,24 @@ def log_msg(result: Dict, log_file: str) -> str:
             else Fore.RED + "VIOLATION: " + Style.RESET_ALL + message
         )
     return formatted_msg
+
+
+def is_a_concept_in(s: str, vocab_file: Path):
+    g = Graph().parse(vocab_file)
+    # try IRI & notation ID
+    for iri in g.subjects(RDF.type, SKOS.Concept):
+        if s == str(iri) or s == str(g.value(iri, SKOS.notation)):
+            return [True]
+
+    lbl = vocab_file.name
+    for cs in g.subjects(RDF.type, SKOS.ConceptScheme):
+        for label in g.objects(cs, SKOS.prefLabel):
+            lbl = label
+
+    return [False, f"IRI {s} is not a Concept in {lbl}"]
+
+
+def convert_easting_northing_elevation_to_wkt(easting, northing, elevation) -> str:
+    lat, lon = utm.to_latlon(easting, northing, 55, "E")
+
+    return f"POINTZ({lon} {lat} {elevation})"

@@ -16,7 +16,7 @@ sampty:hcore
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
     skos:broader sampty:core ;
-    skos:definition "A core sample that has been cut in half parallel to its length."@en ;
+    skos:definition "A core sample that has been cut in half parallel to its length"@en ;
     skos:inScheme cs: ;
     skos:notation "HCORE" ;
     skos:prefLabel "Half Core"@en ;
@@ -26,7 +26,7 @@ sampty:hydraulic-fracturing-fluid
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A sample of the fluid used in the hydraulic fracturing process."@en ;
+    skos:definition "A sample of the fluid used in the hydraulic fracturing process"@en ;
     skos:inScheme cs: ;
     skos:prefLabel "Hydraulic Fracturing Fluid"@en ;
     skos:topConceptOf cs: ;
@@ -37,7 +37,7 @@ sampty:image-log
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
     skos:broader sampty:petrophysical-log ;
-    skos:definition "A petrophysical log comprised of multiple directional measurements around the circumference of a wellbore to create an image detailing variation of properties around the borehole."@en ;
+    skos:definition "A petrophysical log comprised of multiple directional measurements around the circumference of a wellbore to create an image detailing variation of properties around the borehole"@en ;
     skos:inScheme cs: ;
     skos:notation "IMLG" ;
     skos:prefLabel "Image Log"@en ;
@@ -48,7 +48,7 @@ sampty:qcore
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
     skos:broader sampty:core ;
-    skos:definition "A core sample that has been cut in quarters parallel to its length."@en ;
+    skos:definition "A core sample that has been cut in quarters parallel to its length"@en ;
     skos:inScheme cs: ;
     skos:notation "QCORE" ;
     skos:prefLabel "Quarter Core"@en ;
@@ -69,7 +69,7 @@ sampty:borehole-cement
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "The cement used to bind casing to the wall of a well or bore, for borehole integrity."@en ;
+    skos:definition "The cement used to bind casing to the wall of a well or bore, for borehole integrity"@en ;
     skos:inScheme cs: ;
     skos:notation "BHCM" ;
     skos:prefLabel "Borehole Cement"@en ;
@@ -83,7 +83,7 @@ sampty:boxed-core
     skos:altLabel
         "Core Box"@en ,
         "Core Tray"@en ;
-    skos:definition "A part of a core sample which has been broken into shorter lengths and placed into boxes or trays for ease of storage."@en ;
+    skos:definition "A part of a core sample which has been broken into shorter lengths and placed into boxes or trays for ease of storage"@en ;
     skos:inScheme cs: ;
     skos:notation "BOXCORE" ;
     skos:prefLabel "Boxed Core"@en ;
@@ -105,7 +105,7 @@ sampty:channel-sample
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A sample composed of pieces of vein or mineral deposit that have been cut out of a small trench or channel, usually about 10 cm wide and 2 cm deep."@en ;
+    skos:definition "A sample composed of pieces of vein or mineral deposit that have been cut out of a small trench or channel, usually about 10 cm wide and 2 cm deep"@en ;
     skos:inScheme cs: ;
     skos:notation "CSAMP" ;
     skos:prefLabel "Channel Sample"@en ;
@@ -116,7 +116,7 @@ sampty:composited-core
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Core combined from various sources to create a representative sample."@en ;
+    skos:definition "Core combined from various sources to create a representative sample"@en ;
     skos:inScheme cs: ;
     skos:notation "CCO" ;
     skos:prefLabel "Composited Core"@en ;
@@ -127,7 +127,7 @@ sampty:composited-cuttings
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Cuttings combined from various sources to create a representative sample."@en ;
+    skos:definition "Cuttings combined from various sources to create a representative sample"@en ;
     skos:inScheme cs: ;
     skos:notation "CCU" ;
     skos:prefLabel "Composited Cuttings"@en ;
@@ -138,7 +138,7 @@ sampty:continuous-channel-sample
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A composite channel sample taken from multiple points within a channel."@en ;
+    skos:definition "A composite channel sample taken from multiple points within a channel"@en ;
     skos:inScheme cs: ;
     skos:notation "CCSAMP" ;
     skos:prefLabel "Continuous Channel Sample"@en ;
@@ -149,7 +149,7 @@ sampty:core-plug
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A plug, or sample, taken from a core sample for analysis."@en ;
+    skos:definition "A plug, or sample, taken from a core sample for analysis"@en ;
     skos:inScheme cs: ;
     skos:notation "PLUG" ;
     skos:prefLabel "Core Plug"@en ;
@@ -163,7 +163,7 @@ sampty:crushed-rock
     skos:altLabel
         "Ground Rock"@en ,
         "Milled rock"@en ;
-    skos:definition "A sample of rock that has been artificially crushed, milled, or ground."@en ;
+    skos:definition "A sample of rock that has been artificially crushed, milled, or ground"@en ;
     skos:inScheme cs: ;
     skos:notation "CRUSH" ;
     skos:prefLabel "Crushed Rock"@en ;
@@ -174,7 +174,7 @@ sampty:cuttings
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Cuttings are the small pieces of rock that are chipped away by the bit while a well is being drilled."@en ;
+    skos:definition "Cuttings are the small pieces of rock that are chipped away by the bit while a well is being drilled"@en ;
     skos:inScheme cs: ;
     skos:notation "CUT" ;
     skos:prefLabel "Cuttings"@en ;
@@ -185,7 +185,7 @@ sampty:deviation-log
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A file containing information such as aziumth and inclination or positional offset to describe the downhole geometry of a borehole."@en ;
+    skos:definition "A file containing information such as aziumth and inclination or positional offset to describe the downhole geometry of a borehole"@en ;
     skos:inScheme cs: ;
     skos:notation "DVLG" ;
     skos:prefLabel "Deviation Log"@en ;
@@ -200,7 +200,7 @@ sampty:drill-fluid
         "Drill Mud"@en ,
         "Drilling Fluid"@en ,
         "Drilling Mud"@en ;
-    skos:definition "Fluid used for drill bit lubrication and return of ground rock material from the drill bit."@en ;
+    skos:definition "Fluid used for drill bit lubrication and return of ground rock material from the drill bit"@en ;
     skos:inScheme cs: ;
     skos:notation "DLFD" ;
     skos:prefLabel "Drill Fluid"@en ;
@@ -211,7 +211,7 @@ sampty:drill-spoil
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Undifferentiated material generated during drilling."@en ;
+    skos:definition "Undifferentiated material generated during drilling"@en ;
     skos:inScheme cs: ;
     skos:notation "DSPOIN" ;
     skos:prefLabel "Drill Spoil"@en ;
@@ -233,7 +233,7 @@ sampty:feather-and-wedge-sample
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Sample collected by drilling and feathers and wedges."@en ;
+    skos:definition "Sample collected by drilling and feathers and wedges"@en ;
     skos:inScheme cs: ;
     skos:notation "FWSAMP" ;
     skos:prefLabel "Feather & Wedge Sample"@en ;
@@ -256,7 +256,7 @@ sampty:georesource-process-input
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
     skos:altLabel "Mine Process Stock"@en ;
-    skos:definition "Material feed for a mine processing plant or other refining facility that produced benefacted products. Feed may as mined or a blend of input materials with different attributes."@en ;
+    skos:definition "Material feed for a mine processing plant or other refining facility that produced benefacted products. Feed may as mined or a blend of input materials with different attributes"@en ;
     skos:inScheme cs: ;
     skos:notation "GPM" ;
     skos:prefLabel "Georesource Process Material"@en ;
@@ -267,7 +267,7 @@ sampty:georesource-product
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "The resource mined or material produced via a mine processing plant or other refining facility that is the final product."@en ;
+    skos:definition "The resource mined or material produced via a mine processing plant or other refining facility that is the final product"@en ;
     skos:inScheme cs: ;
     skos:notation "GP" ;
     skos:prefLabel "Georesource Product"@en ;
@@ -278,7 +278,7 @@ sampty:georesource-raw-material
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "The raw resource of interest in mining or processing."@en ;
+    skos:definition "The raw resource of interest in mining or processing"@en ;
     skos:inScheme cs: ;
     skos:notation "GRM" ;
     skos:prefLabel "Georesource Raw Material"@en ;
@@ -300,7 +300,7 @@ sampty:hyperspectral-scan
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A composite image comprised of multiple wavelength bands across the electromagnetic spectrum."@en ;
+    skos:definition "A composite image comprised of multiple wavelength bands across the electromagnetic spectrum"@en ;
     skos:inScheme cs: ;
     skos:notation "HYSN" ;
     skos:prefLabel "Hyperspectral Scan"@en ;
@@ -344,7 +344,7 @@ sampty:oriented-or-orientation-sample
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A sample collected as a known reference for the orientation of other samples."@en ;
+    skos:definition "A sample collected as a known reference for the orientation of other samples"@en ;
     skos:inScheme cs: ;
     skos:notation "ORIENT" ;
     skos:prefLabel "Oriented Or Orientation Sample"@en ;
@@ -381,7 +381,7 @@ sampty:pallet-core
     skos:altLabel
         "Core Pallet"@en ,
         "Pallet Core"@en ;
-    skos:definition "A collection of core samples, typically boxed, placed on a pallet for the purpose of movement, storage, and logistics."@en ;
+    skos:definition "A collection of core samples, typically boxed, placed on a pallet for the purpose of movement, storage, and logistics"@en ;
     skos:inScheme cs: ;
     skos:notation "PALCORE" ;
     skos:prefLabel "Palletised Core"@en ;
@@ -403,7 +403,7 @@ sampty:photograph
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "An image created by light falling on a photosensitive surface, usually photographic film or an electronic image sensor, such as a CCD or a CMOS chip."@en ;
+    skos:definition "An image created by light falling on a photosensitive surface, usually photographic film or an electronic image sensor, such as a CCD or a CMOS chip"@en ;
     skos:inScheme cs: ;
     skos:notation "PHGR" ;
     skos:prefLabel "Photograph"@en ;
@@ -414,7 +414,7 @@ sampty:polished-block
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Rock samples that are bonded in epoxy and polished as small round blocks for reflected light microscopy."@en ;
+    skos:definition "Rock samples that are bonded in epoxy and polished as small round blocks for reflected light microscopy"@en ;
     skos:inScheme cs: ;
     skos:notation "PBLK" ;
     skos:prefLabel "Polished Block"@en ;
@@ -425,7 +425,7 @@ sampty:powdered-chip
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A rock chip sample that has subsequently been powdered."@en ;
+    skos:definition "A rock chip sample that has subsequently been powdered"@en ;
     skos:inScheme cs: ;
     skos:notation "PCHIP" ;
     skos:prefLabel "Powdered Chip"@en ;
@@ -513,7 +513,7 @@ sampty:side-wall-core
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A core taken from the side of the borehole, usually by a wireline tool."@en ;
+    skos:definition "A core taken from the side of the borehole, usually by a wireline tool"@en ;
     skos:inScheme cs: ;
     skos:notation "SWC" ;
     skos:prefLabel "Side Wall Core"@en ;
@@ -601,7 +601,7 @@ sampty:trench-spoil
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Undifferentiated material generated from sampling within a trench or pit."@en ;
+    skos:definition "Undifferentiated material generated from sampling within a trench or pit"@en ;
     skos:inScheme cs: ;
     skos:notation "TSPOIL" ;
     skos:prefLabel "Trench Spoil"@en ;
@@ -623,7 +623,7 @@ sampty:video
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "An moving image created by light falling on a series of photosensitive surfaces, usually videographic film or an electronic image sensor, such as a CCD or a CMOS chip."@en ;
+    skos:definition "An moving image created by light falling on a series of photosensitive surfaces, usually videographic film or an electronic image sensor, such as a CCD or a CMOS chip"@en ;
     skos:inScheme cs: ;
     skos:notation "VIDO" ;
     skos:prefLabel "video"@en ;
@@ -635,7 +635,7 @@ sampty:waste-rock
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
     skos:altLabel "Overburden"@en ;
-    skos:definition "The rock removed during mining to reach resource."@en ;
+    skos:definition "The rock removed during mining to reach resource"@en ;
     skos:inScheme cs: ;
     skos:notation "WR" ;
     skos:prefLabel "Waste Rock"@en ;
@@ -646,7 +646,7 @@ sampty:water-specimen
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A generic specimen of water of any type. Includes water specimen types collected by any method."@en ;
+    skos:definition "A generic specimen of water of any type. Includes water specimen types collected by any method"@en ;
     skos:inScheme cs: ;
     skos:notation "WTRS" ;
     skos:prefLabel "Water specimen"@en ;
@@ -668,7 +668,7 @@ sampty:petrophysical-log
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A digital file or image containing physical and chemical measurements from the logging of a borehole."@en ;
+    skos:definition "A digital file or image containing physical and chemical measurements from the logging of a borehole"@en ;
     skos:inScheme cs: ;
     skos:notation "PETL" ;
     skos:prefLabel "Petrophysical Log"@en ;
@@ -685,7 +685,7 @@ sampty:core
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "A core sample is a cylindrical section of (usually) a naturally occurring substance."@en ;
+    skos:definition "A core sample is a cylindrical section of (usually) a naturally occurring substance"@en ;
     skos:inScheme cs: ;
     skos:notation "CORE" ;
     skos:prefLabel "Core"@en ;
@@ -702,7 +702,7 @@ cs:
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     dcterms:publisher <https://linked.data.gov.au/org/gsq> ;
     reg:status agldwgstatus:stable ;
-    skos:definition "Types of sample used in Geoscience."@en ;
+    skos:definition "Types of sample used in Geoscience"@en ;
     skos:historyNote "Created by GSQ staff from own knowledege" ;
     skos:hasTopConcept
         sampty:blasted-sample ,
