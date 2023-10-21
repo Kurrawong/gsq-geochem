@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.16">
-<title>GSQ Geochemistry Data Exchange Model</title>
+<title>Geochemistry Data Model - Specification</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -650,7 +650,7 @@ pre.rouge {
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>GSQ Geochemistry Data Exchange Model - Specification</h1>
+<h1>Geochemistry Data Model - Specification</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -741,12 +741,22 @@ pre.rouge {
 <li><a href="#_profiles_2">8. Profiles</a>
 <ul class="sectlevel2">
 <li><a href="#_profiles_index">8.1. Profiles Index</a></li>
-<li><a href="#_gsq_profile">8.2. GSQ Profile</a>
+<li><a href="#_core_profile">8.2. Core Profile</a>
 <ul class="sectlevel3">
 <li><a href="#_resources">8.2.1. Resources</a></li>
-<li><a href="#gsq-profile-specification">8.2.2. Specification</a></li>
+<li><a href="#core-profile-specification">8.2.2. Specification</a></li>
 <li><a href="#_validators">8.2.3. Validators</a></li>
-<li><a href="#_examples">8.2.4. Examples</a></li>
+<li><a href="#_data_forms">8.2.4. Data Forms</a></li>
+<li><a href="#_examples">8.2.5. Examples</a></li>
+</ul>
+</li>
+<li><a href="#_gsq_profile">8.3. GSQ Profile</a>
+<ul class="sectlevel3">
+<li><a href="#_resources_2">8.3.1. Resources</a></li>
+<li><a href="#gsq-profile-specification">8.3.2. Specification</a></li>
+<li><a href="#_validators_2">8.3.3. Validators</a></li>
+<li><a href="#_data_forms_2">8.3.4. Data Forms</a></li>
+<li><a href="#_examples_2">8.3.5. Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -767,9 +777,9 @@ pre.rouge {
 <div class="sectionbody">
 <div id="overview" class="imageblock text-center">
 <div class="content">
-<img src="img/sosa-overview.svg" alt="GSQ Geochemistry SOSA Model Overview">
+<img src="img/sosa-overview.svg" alt="Model Overview">
 </div>
-<div class="title">Figure 1. An informal overview diagram of the main part of the data model in this Specification</div>
+<div class="title">Figure 1. An informal overview diagram of the main part of this Data Model</div>
 </div>
 </div>
 </div>
@@ -794,7 +804,7 @@ pre.rouge {
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GSQ Geochemistry Data Exchange Model - Specification</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Geochemistry Data Model - Specification</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Version</p></td>
@@ -3521,7 +3531,7 @@ Models such as this are extensible so what you see here is the minimum informati
 <p>Profiles have separate identity to this specification so that data can indicate conformance specifically to them. Profiles usually provide a series of resources, such as their own textual description of their constraints, supporting vocabularies, validators and examples.</p>
 </div>
 <div class="paragraph">
-<p>All known profiles of this specification are listed in this section. So far, only one profile, the <em>GSQ Profile</em>, is known.</p>
+<p>All known profiles of this specification are listed in this section. So far, only two profiles, the <em>Core</em> and the <em>GSQ</em> Profiles, are known.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3540,15 +3550,18 @@ All the resources needed for online validation of data according to all known pr
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#_gsq_profile">Section 8.2</a></p>
+<p><a href="#_core_profile">Core Profile</a></p>
+</li>
+<li>
+<p><a href="#_gsq_profile">GSQ Profile</a></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gsq_profile"><a class="anchor" href="#_gsq_profile"></a>8.2. GSQ Profile</h3>
+<h3 id="_core_profile"><a class="anchor" href="#_core_profile"></a>8.2. Core Profile</h3>
 <div class="paragraph">
-<p>The GSQ Profile of this model mandates certain classes and predicates be present in data and which vocabularies must be used to supply values for predicates that indicate concepts, as described in the <a href="#_where">Vocabularies: Where</a> section above.</p>
+<p>The Core Profile states the minimum requirements that must be met in order for data to claim conformance to this data model.</p>
 </div>
 <div class="paragraph">
 <p>The current version of this Profile is 1.0.0.</p>
@@ -3577,62 +3590,56 @@ All the resources needed for online validation of data according to all known pr
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specification</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:specification">Specification</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq" class="bare">https://linked.data.gov.au/def/geochem/gsq</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This section of the Geochemistry Data Model that defines this GSQ Profile</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/core" class="bare">https://linked.data.gov.au/def/geochem/core</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This section of the Geochemistry Data Model that defines this Core Profile</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Machine-Readable Profile Definition</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:profile-definition">Profile Definition</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq.ttl" class="bare">https://linked.data.gov.au/def/geochem/gsq.ttl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/core.ttl" class="bare">https://linked.data.gov.au/def/geochem/core.ttl</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The definition of this Profile, as per this text, but in RDF, according to <a href="#PROF">The Profiles Vocabulary</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specification</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:guidance">Guidance</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq" class="bare">https://linked.data.gov.au/def/geochem/gsq</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The writeup of this Profile, here</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SHACL Validator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validator</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:validation">Validation</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/validator" class="bare">https://linked.data.gov.au/def/geochem/gsq/validator</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A <a href="#SHACL">SHACL</a> data file used to validate RDF data according to <a href="#gsq-profile-specification">this Profile&#8217;s rules</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/core/validator" class="bare">https://linked.data.gov.au/def/geochem/core/validator</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A <a href="#SHACL">SHACL</a> data file used to validate RDF data according to <a href="#core-profile-specification">this Profile&#8217;s rules</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SHACL Data Expander</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data Expander</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:script">Script</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/expander" class="bare">https://linked.data.gov.au/def/geochem/gsq/expander</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/core/expander" class="bare">https://linked.data.gov.au/def/geochem/core/expander</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A <a href="#SHACL">SHACL</a> data used to expand RDF data according to this Specification&#8217;s rules</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SHACL Validator Combined</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Combined Validator &amp; Expander</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:validation">Validation</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/validator-combined" class="bare">https://linked.data.gov.au/def/geochem/gsq/validator-combined</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/core/validator-combined" class="bare">https://linked.data.gov.au/def/geochem/core/validator-combined</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The combined validator and data expander</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JSON Schema</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON Schema Validator</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:validation">Validation</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/schema.json" class="bare">https://linked.data.gov.au/def/geochem/gsq/schema.json</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/core/schema.json" class="bare">https://linked.data.gov.au/def/geochem/core/schema.json</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A <a href="https://json-schema.org">JSON Schema</a> file able to be used to validate JSON data according to this profile&#8217;s rules</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Excel to RDF Converter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:script">Script</a> <a href="https://linked.data.gov.au/def/geochem/gsq/excel-to-rdf" class="bare">https://linked.data.gov.au/def/geochem/gsq/excel-to-rdf</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A Python software library to convert geocehmistry data created using the Excel Templates for this Profile into RDF data</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Excel Templates</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:schema">Schema</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/excel-templates" class="bare">https://linked.data.gov.au/def/geochem/gsq/excel-templates</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Excel Workbook templates to be used to supply data in Excel form to be validated according to this Profile</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Examples</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:example">Example</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/examples" class="bare">https://linked.data.gov.au/def/geochem/gsq/examples</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A series of RDF (<a href="#TURTLE">Turtle</a> &amp; <a href="#JSON-LD">JSON-LD</a>), <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> and <a href="https://www.microsoft.com/en-us/microsoft-365/excel">Excel</a> files of data: both valid and invalid forms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/core/examples" class="bare">https://linked.data.gov.au/def/geochem/core/examples</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A series of RDF (<a href="#TURTLE">Turtle</a> &amp; <a href="#JSON-LD">JSON-LD</a>) and <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> files of data: both valid and invalid forms</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Python Validate Script</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:guidance">Guidance</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/core/validation-script" class="bare">https://linked.data.gov.au/def/geochem/core/validation-script</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Python software that implements validation for both RDF &amp; JSON data forms. Provided to show how validation occurs and to be used in applications</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD Context File</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:schema">Schema</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/core/contect.json" class="bare">https://linked.data.gov.au/def/geochem/core/contect.json</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A JSON file containing a <code>contect</code> object as used by <a href="#JSON-LD">JSON-LD</a> to apply namespaces to JSON objects and keys</p></td>
 </tr>
 </tbody>
 </table>
@@ -3650,7 +3657,7 @@ This Profile&#8217;s validators and example data files are pre-loaded in the <a 
 </div>
 </div>
 <div class="sect3">
-<h4 id="gsq-profile-specification"><a class="anchor" href="#gsq-profile-specification"></a>8.2.2. Specification</h4>
+<h4 id="core-profile-specification"><a class="anchor" href="#core-profile-specification"></a>8.2.2. Specification</h4>
 <div class="paragraph">
 <p>The following subsections contain the rules of this Profile and form this Profile&#8217;s normative specification.</p>
 </div>
@@ -3660,7 +3667,7 @@ This Profile&#8217;s validators and example data files are pre-loaded in the <a 
 <p>The following table lists the requirements for the presence of classes and predicates assigned to classes in data supplied according to this Profile.</p>
 </div>
 <div class="paragraph">
-<p>A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1 means zero or one.</p>
+<p>A cardinality of <code>1</code> means mandatory. <code>0+</code> means zero or more, <code>1+</code> one more, etc. <code>0-1</code> means zero or one only.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
@@ -3916,7 +3923,218 @@ This Profile&#8217;s validators and example data files are pre-loaded in the <a 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_model_element_identifiers"><a class="anchor" href="#_model_element_identifiers"></a>8.2.2.2. Model Element Identifiers</h5>
+<h5 id="_data_expansion_rules"><a class="anchor" href="#_data_expansion_rules"></a>8.2.2.2. Data Expansion Rules</h5>
+<div class="paragraph">
+<p>Data either in or converted to RDF will be expanded according to the following rules:</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Rule</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ObservationCollection properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any predicates assigned to an Observation Collection will be applied to individual Observations within the Collection, unless the Observation already has the same predicates assigned to it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Margin of Error propagation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any <code>sdo:marginOfError</code> predicates assigned to an Observation will propagate to any Results from that Observation, unless the Result already has the <code>sdo:marginOfError</code> predicate assigned to it</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>These rules are implemented as <a href="#SHACL">SHACL</a> functions in the <em>Data Expander</em> resource of this profile, see the section above.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_validators"><a class="anchor" href="#_validators"></a>8.2.3. Validators</h4>
+<div class="paragraph">
+<p>Three resources supplied by this Profile assist with the validation of data: the <em>Validator</em>, the <em>Combined Validator &amp; Expander</em> and the <em>JSON Schema</em>. All are listed in the <a href="#_resources">Resources</a> section above. Depending on the form of data you are supplying (see next section), different validators will apply.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_data_forms"><a class="anchor" href="#_data_forms"></a>8.2.4. Data Forms</h4>
+<div class="paragraph">
+<p>Data aiming to be valid according to this Profile can be delivered in one of two forms:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Resource Description Framework (<strong>RDF</strong>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>must be validated using the <em>SHACL Validator Combined</em> validator, listed in the <a href="#_resources">Resources</a> section above</p>
+</li>
+<li>
+<p>the canonical form of data for this Profile, as per the Geochem Data Model</p>
+</li>
+<li>
+<p>RDF is defined in <a href="#_rdf">RDF</a></p>
+</li>
+<li>
+<p>in any of the following RDF triples formats: <a href="#TURTLE">Turtle</a>, RDF/XML, JSON-LD, N-Triples. See <a href="https://rdflib.readthedocs.io/en/stable/intro_to_parsing.html">RDFLib&#8217;s information on RDF parsing</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>JavaScript Object Notation (<strong>JSON</strong>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>must be validated according to the JSON Schema listed in the <a href="#_resources">Resources</a> section above and the <em>Combined Validator &amp; Expander</em> validator, after converting to RDF</p>
+</li>
+<li>
+<p>the JSON Schema emulates the SHACL Validator&#8217;s rules and is provided for assistance in forming JSON data</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Example implementations of the full conversion &amp; validation processes are provided in the <em>Python Validate Script</em> listed in the <a href="#_resources">Resources</a> section above.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Both forms of data can be supplied to and validated in the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a> online
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_examples"><a class="anchor" href="#_examples"></a>8.2.5. Examples</h4>
+<div class="paragraph">
+<p>See the online directory of example data files for this Profile at <a href="https://linked.data.gov.au/def/geochem/core/examples" class="bare">https://linked.data.gov.au/def/geochem/core/examples</a>.</p>
+</div>
+<div class="paragraph">
+<p>Each RDF example contains comments at the top of the file indicating what it is demonstrating and/or how it is invalid. Since JSON does not allow comments, see the RDF file with the similar file name for the same information.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gsq_profile"><a class="anchor" href="#_gsq_profile"></a>8.3. GSQ Profile</h3>
+<div class="paragraph">
+<p>The GSQ Profile of this model mandates certain classes and predicates be present in data and which vocabularies must be used to supply values for predicates that indicate concepts, as described in the <a href="#_where">Vocabularies: Where</a> section above.</p>
+</div>
+<div class="paragraph">
+<p>This Profile is dependent on the Core Profile, thus all data wising to be conformant with this Profile must also be conformant with the Core Profile.</p>
+</div>
+<div class="paragraph">
+<p>The current version of this Profile is 1.0.0.</p>
+</div>
+<div class="sect3">
+<h4 id="_resources_2"><a class="anchor" href="#_resources_2"></a>8.3.1. Resources</h4>
+<div class="paragraph">
+<p>The resources within this profile are listed below. The roles given for each are taken from <em>The Profiles Vocabulary</em> <a href="#PROF">[PROF]</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Resource</th>
+<th class="tableblock halign-left valign-top">Role</th>
+<th class="tableblock halign-left valign-top">IRI</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specification</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:specification">Specification</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq" class="bare">https://linked.data.gov.au/def/geochem/gsq</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This section of the Geochemistry Data Model that defines this GSQ Profile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Machine-Readable Profile Definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:profile-definition">Profile Definition</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq.ttl" class="bare">https://linked.data.gov.au/def/geochem/gsq.ttl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The definition of this Profile, as per this text, but in RDF, according to <a href="#PROF">The Profiles Vocabulary</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:validation">Validation</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/validator" class="bare">https://linked.data.gov.au/def/geochem/gsq/validator</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A <a href="#SHACL">SHACL</a> data file used to validate RDF data according to <a href="#gsq-profile-specification">this Profile&#8217;s rules</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validator Compounded</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:validation">Validation</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/validator-combined" class="bare">https://linked.data.gov.au/def/geochem/gsq/validator-combined</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A validator that includes this Profile&#8217;s rules and also those of the Core Profile&#8217;s validator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON Schema Validator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:validation">Validation</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/schema.json" class="bare">https://linked.data.gov.au/def/geochem/gsq/schema.json</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A <a href="https://json-schema.org">JSON Schema</a> file able to be used to validate JSON data according to this Profile&#8217;s rules. This includes the schema from the Core Profile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Python Validate Script</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:guidance">Guidance</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/validation-script" class="bare">https://linked.data.gov.au/def/geochem/gsq/validation-script</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Python software that implements validation for all three data forms. Provided to show how validation occurs and to be used in applications</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Excel to RDF Converter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:script">Script</a> <a href="https://linked.data.gov.au/def/geochem/gsq/excel-to-rdf" class="bare">https://linked.data.gov.au/def/geochem/gsq/excel-to-rdf</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Python software library to convert geocehmistry data created using the Excel Templates for this Profile into RDF data</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Excel Templates</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:schema">Schema</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/excel-templates" class="bare">https://linked.data.gov.au/def/geochem/gsq/excel-templates</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Excel Workbook templates to be used to supply data in Excel form to be validated according to this Profile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Examples</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/dx-prof/#Role:example">Example</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/gsq/examples" class="bare">https://linked.data.gov.au/def/geochem/gsq/examples</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A series of RDF (<a href="#TURTLE">Turtle</a> &amp; <a href="#JSON-LD">JSON-LD</a>), <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> and <a href="https://www.microsoft.com/en-us/microsoft-365/excel">Excel</a> files of data: both valid and invalid forms</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This Profile&#8217;s validators and example data files are pre-loaded in the <a href="https://geochem.dev.kurrawong.ai/">GSQ Geochemistry Data Portal</a> for online use.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gsq-profile-specification"><a class="anchor" href="#gsq-profile-specification"></a>8.3.2. Specification</h4>
+<div class="paragraph">
+<p>The following subsections contain the rules of this Profile and form this Profile&#8217;s normative specification. These rules are to be used only in addition to the rules of the Core Profile, no in isolation.</p>
+</div>
+<div class="sect4">
+<h5 id="_model_element_identifiers"><a class="anchor" href="#_model_element_identifiers"></a>8.3.2.1. Model Element Identifiers</h5>
 <div class="paragraph">
 <p>Objects in data supplied claiming conformance to this Profile <em>MUST</em> use a particular forms of <a href="#_iri">IRI</a> identifiers, as follows:</p>
 </div>
@@ -3981,11 +4199,11 @@ This Profile&#8217;s validators and example data files are pre-loaded in the <a 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The IRIs created must be valid IRI</p>
+<p>The IRIs created must be valid according to <a href="#RFC3986">RFC3986</a></p>
 <div class="ulist">
 <ul>
 <li>
-<p>This means no spaces or unusual characters that break IRIs (URLs)</p>
+<p>This generally means no spaces or unusual characters that break IRIs (URLs)</p>
 </li>
 </ul>
 </div>
@@ -4030,15 +4248,15 @@ For test data, use the "Data Supplier Namespaced" namespace of <code>https://pla
 <p>If a <a href="#sdo:Dataset">Dataset</a>, <a href="#sosa:Sample">Sample</a> or a</p>
 </div>
 </div>
-</div>
-<div class="sect4">
-<h5 id="_external_reference_iris"><a class="anchor" href="#_external_reference_iris"></a>8.2.2.3. External Reference IRIs</h5>
+<div class="sect5">
+<h6 id="_external_reference_iris"><a class="anchor" href="#_external_reference_iris"></a>External Reference IRIs</h6>
 <div class="paragraph">
 <p>TODO</p>
 </div>
 </div>
+</div>
 <div class="sect4">
-<h5 id="_vocab_restrictions"><a class="anchor" href="#_vocab_restrictions"></a>8.2.2.4. Vocab Restrictions</h5>
+<h5 id="_vocabulary_restrictions"><a class="anchor" href="#_vocabulary_restrictions"></a>8.3.2.2. Vocabulary Restrictions</h5>
 <div class="paragraph">
 <p>This profile requires that Concepts indicated by certain predicates come from specific vocabularies. The predicates and their required vocabularies are:</p>
 </div>
@@ -4084,65 +4302,26 @@ For test data, use the "Data Supplier Namespaced" namespace of <code>https://pla
 <p>Note that this profile does <em>NOT</em> require that the predicate <a href="#sosa:madeBySensor">made by sensor</a> is used on the <a href="#sosa:Observation">Observation</a> class, thus no vocabulary is mandated for its use. It may be used but, if it is, the user may choose any vocabulary of Concepts to draw from useful to them.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_data_expansion_rules"><a class="anchor" href="#_data_expansion_rules"></a>8.2.2.5. Data Expansion Rules</h5>
-<div class="paragraph">
-<p>Data either in or converted to RDF may be expanded according to the following rules:</p>
-</div>
-<table class="tableblock frame-all grid-all stripes-even stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Rule</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ObservationCollection properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Any predicates assigned to an Observation Collection will be applied to individual Observations within the Collection, unless the Observation already has the same predicates give</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Margin of Error propagation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Any <code>sdo:marginOfError</code> predicates assigned to an Observation will propagate to any Results from that Observation, unless the Result already has the <code>sdo:marginOfError</code> predicate given</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>These rules are implemented as <a href="#SHACL">SHACL</a> functions in the <em>SHACL Data Expander</em> resource of this profile, see the section above.</p>
-</div>
-</div>
 </div>
 <div class="sect3">
-<h4 id="_validators"><a class="anchor" href="#_validators"></a>8.2.3. Validators</h4>
+<h4 id="_validators_2"><a class="anchor" href="#_validators_2"></a>8.3.3. Validators</h4>
 <div class="paragraph">
 <p>Four resources supplied by this Profile assist with the validation of data: the <em>SHACL Validator</em>, the <em>SHACL Combined Validator</em>, the <em>JSON Schema</em> and the <em>Excel to RDF Converter</em>. All are listed in the <a href="#_resources">Resources</a> section above. Depending on the form of data you are supplying (see next section), different validators will apply.</p>
 </div>
-<div class="sect4">
-<h5 id="_data_forms"><a class="anchor" href="#_data_forms"></a>8.2.3.1. Data Forms</h5>
+</div>
+<div class="sect3">
+<h4 id="_data_forms_2"><a class="anchor" href="#_data_forms_2"></a>8.3.4. Data Forms</h4>
 <div class="paragraph">
-<p>Data aiming to be valid according to this Profile can be delivered in one of three forms:</p>
+<p>Data aiming to be valid according to this Profile can be delivered in one of three forms: the same two as the Core profile above, RDF &amp; JSON, and also:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Resource Description Framework (<strong>RDF</strong>)</p>
+<p><strong>RDF</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>must be validated using the <em>SHACL Validator Combined</em> validator, listed in the <a href="#_resources">Resources</a> section above</p>
-</li>
-<li>
-<p>the canonical form of data for this Profile, as per the Geochem Data Model</p>
-</li>
-<li>
-<p>RDF is defined in <a href="#_rdf">RDF</a></p>
-</li>
-<li>
-<p>in any of the following RDF triples formats: <a href="#TURTLE">Turtle</a>, RDF/XML, JSON-LD, N-Triples. See <a href="https://rdflib.readthedocs.io/en/stable/intro_to_parsing.html">RDFLib&#8217;s information on RDF parsing</a></p>
+<p>See the Core Profile</p>
 </li>
 </ul>
 </div>
@@ -4152,10 +4331,7 @@ For test data, use the "Data Supplier Namespaced" namespace of <code>https://pla
 <div class="ulist">
 <ul>
 <li>
-<p>must be validated according to the JSON Schema listed in the <a href="#_resources">Resources</a> section above and the <em>SHACL Validator Combined</em> validator, after converting to RDF</p>
-</li>
-<li>
-<p>the JSON Schema emulates the SHACL Validator&#8217;s rules and is provided for assistance in forming JSON data</p>
+<p>See the Core Profile</p>
 </li>
 </ul>
 </div>
@@ -4194,21 +4370,13 @@ All three forms of data can be supplied to and validated in the <a href="https:/
 </table>
 </div>
 </div>
-</div>
 <div class="sect3">
-<h4 id="_examples"><a class="anchor" href="#_examples"></a>8.2.4. Examples</h4>
+<h4 id="_examples_2"><a class="anchor" href="#_examples_2"></a>8.3.5. Examples</h4>
 <div class="paragraph">
-<p>Example data for this Profile, in all three data forms described above and which is both valid and invalid, is given online at:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://linked.data.gov.au/def/geochem/gsq/examples" class="bare">https://linked.data.gov.au/def/geochem/gsq/examples</a></p>
-</li>
-</ul>
+<p>See the online directory of example data files for this Profile at <a href="https://linked.data.gov.au/def/geochem/gsq/examples" class="bare">https://linked.data.gov.au/def/geochem/gsq/examples</a>.</p>
 </div>
 <div class="paragraph">
-<p>Each RDF example contains comments at the top of the file indicating what it is demonstrating and/or how it is invalid. Excel files contain comments on a 'Comments' worksheet. Since JSON does not allow comments, see the RDF file with the similar file name for the same information.</p>
+<p>Each RDF example contains comments at the top of the file indicating what it is demonstrating and/or how it is invalid. Excel files contain comments in a 'Comments' worksheet. Since JSON does not allow comments, see the RDF file with the similar file name for the same information.</p>
 </div>
 </div>
 </div>
@@ -4373,7 +4541,7 @@ All three forms of data can be supplied to and validated in the <a href="https:/
 <p>Data claiming to conform to Profiles of this specification may be able to be delivered in multiple data forms, not just RDF data as per the</p>
 </div>
 <div class="paragraph">
-<p>See individual Profile&#8217;s specifications for their options, for example <em>GSQ Profile&#8217;s</em> specification in <a href="#_gsq_profile">Section 8.2</a>.</p>
+<p>See individual Profile&#8217;s specifications for their options, for example <em>GSQ Profile&#8217;s</em> specification in <a href="#_gsq_profile">Section 8.3</a>.</p>
 </div>
 </div>
 </div>
@@ -4406,9 +4574,13 @@ All three forms of data can be supplied to and validated in the <a href="https:/
 <dd>
 <p>World Wide Web Consortium, <em>RDF 1.1 Concepts and Abstract Syntax</em>, W3C Recommendation (25 February 2014). <a href="https://www.w3.org/TR/rdf11-concepts/" class="bare">https://www.w3.org/TR/rdf11-concepts/</a></p>
 </dd>
-<dt class="hdlist1"><a id="RFC2119"></a> [RDF2119]</dt>
+<dt class="hdlist1"><a id="RFC2119"></a> [RFC2119]</dt>
 <dd>
-<p>RFC 2119: Key words for use in RFCs to Indicate Requirement Levels_, Internet Engineering Taskforce_ (March 1997). <a href="https://www.rfc-editor.org/info/rfc2119" class="bare">https://www.rfc-editor.org/info/rfc2119</a>, DOI: <a href="https://doi.org/10.17487/RFC2119">10.17487/RFC2119</a></p>
+<p>RFC 2119: <em>Key words for use in RFCs to Indicate Requirement Levels</em>, Internet Engineering Taskforce_ (March 1997). <a href="https://www.rfc-editor.org/info/rfc2119" class="bare">https://www.rfc-editor.org/info/rfc2119</a>, DOI: <a href="https://doi.org/10.17487/RFC2119">10.17487/RFC2119</a></p>
+</dd>
+<dt class="hdlist1"><a id="RFC3986"></a> [RFC3986]</dt>
+<dd>
+<p>RFC 3986: <em>Uniform Resource Identifier (URI): Generic Syntax</em>, Internet Engineering Taskforce_ (January 2005). <a href="https://www.rfc-editor.org/info/rfc3986" class="bare">https://www.rfc-editor.org/info/rfc3986</a>, DOI: <a href="https://doi.org/10.17487/RFC3986">10.17487/RFC3986</a></p>
 </dd>
 <dt class="hdlist1"><a id="PROF"></a> [PROF]</dt>
 <dd>
@@ -4457,7 +4629,7 @@ All three forms of data can be supplied to and validated in the <a href="https:/
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-10-17 17:27:31 UTC
+Last updated 2023-10-21 05:06:17 UTC
 </div>
 </div>
 </body>
