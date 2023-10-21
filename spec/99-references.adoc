@@ -12,7 +12,9 @@
 
 [[RDFSPEC]] [RDFSPEC]:: World Wide Web Consortium, _RDF 1.1 Concepts and Abstract Syntax_, W3C Recommendation (25 February 2014). https://www.w3.org/TR/rdf11-concepts/
 
-[[RFC2119]] [RDF2119]:: RFC 2119: Key words for use in RFCs to Indicate Requirement Levels_, Internet Engineering Taskforce_ (March 1997). https://www.rfc-editor.org/info/rfc2119, DOI: https://doi.org/10.17487/RFC2119[10.17487/RFC2119]
+[[RFC2119]] [RFC2119]:: RFC 2119: _Key words for use in RFCs to Indicate Requirement Levels_, Internet Engineering Taskforce_ (March 1997). https://www.rfc-editor.org/info/rfc2119, DOI: https://doi.org/10.17487/RFC2119[10.17487/RFC2119]
+
+[[RFC3986]] [RFC3986]:: RFC 3986: _Uniform Resource Identifier (URI): Generic Syntax_, Internet Engineering Taskforce_ (January 2005). https://www.rfc-editor.org/info/rfc3986, DOI: https://doi.org/10.17487/RFC3986[10.17487/RFC3986]
 
 [[PROF]] [PROF]:: World Wide Web Consortium, _The Profiles Vocabulary_, W3C Working Group Note (18 December 2019). https://www.w3.org/TR/dx-prof/
 

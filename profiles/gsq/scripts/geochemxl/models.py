@@ -89,7 +89,7 @@ class Observation(BaseModel):
     has_feature_of_interest: Concept
     result_time: Union[datetime.date, datetime.datetime]
     has_result: Result
-    margin_of_error: float
+    margin_of_error: Optional[float]
 
     def to_graph(self) -> Graph:
         g = Graph(bind_namespaces="rdflib")
@@ -110,7 +110,7 @@ class Dataset(BaseModel):
     description: str
     date_created: datetime.date
     date_modified: datetime.date
-    author: object
+    author: Agent
     keywords: list = []
     # qualified_attribution: Attribution
     # has_part: ObservationCollection

@@ -4,17 +4,18 @@ A Profile (capital 'P') is "A specification that constrains, extends, combines, 
 
 Profiles have separate identity to this specification so that data can indicate conformance specifically to them. Profiles usually provide a series of resources, such as their own textual description of their constraints, supporting vocabularies, validators and examples.
 
-All known profiles of this specification are listed in this section. So far, only one profile, the _GSQ Profile_, is known.
+All known profiles of this specification are listed in this section. So far, only two profiles, the _Core_ and the _GSQ_ Profiles, are known.
 
 NOTE: All the resources needed for online validation of data according to all known profiles of this model are available at the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal].
 
 === Profiles Index
 
-* <<GSQ Profile>>
+* <<Core Profile, Core Profile>>
+* <<GSQ Profile, GSQ Profile>>
 
-=== GSQ Profile
+=== Core Profile
 
-The GSQ Profile of this model mandates certain classes and predicates be present in data and which vocabularies must be used to supply values for predicates that indicate concepts, as described in the <<Where, Vocabularies: Where>> section above.
+The Core Profile states the minimum requirements that must be met in order for data to claim conformance to this data model.
 
 The current version of this Profile is 1.0.0.
 
@@ -26,22 +27,20 @@ The resources within this profile are listed below. The roles given for each are
 |===
 | Resource | Role | IRI | Description
 
-| Specification | https://www.w3.org/TR/dx-prof/#Role:specification[Specification] | https://linked.data.gov.au/def/geochem/gsq | This section of the Geochemistry Data Model that defines this GSQ Profile
-| Machine-Readable Profile Definition | https://www.w3.org/TR/dx-prof/#Role:profile-definition[Profile Definition] | https://linked.data.gov.au/def/geochem/gsq.ttl | The definition of this Profile, as per this text, but in RDF, according to <<PROF, The Profiles Vocabulary>>
-| Specification | https://www.w3.org/TR/dx-prof/#Role:guidance[Guidance] | https://linked.data.gov.au/def/geochem/gsq | The writeup of this Profile, here
-| SHACL Validator | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator | A <<SHACL, SHACL>> data file used to validate RDF data according to <<#gsq-profile-specification, this Profile's rules>>
-| SHACL Data Expander | https://www.w3.org/TR/dx-prof/#Role:script[Script] | https://linked.data.gov.au/def/geochem/gsq/expander | A <<SHACL, SHACL>> data used to expand RDF data according to this Specification's rules
-| SHACL Validator Combined | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator-combined | The combined validator and data expander
-| JSON Schema | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/schema.json | A https://json-schema.org[JSON Schema] file able to be used to validate JSON data according to this profile's rules
-| Excel to RDF Converter | https://www.w3.org/TR/dx-prof/#Role:script[Script] https://linked.data.gov.au/def/geochem/gsq/excel-to-rdf | A Python software library to convert geocehmistry data created using the Excel Templates for this Profile into RDF data |
-| Excel Templates | https://www.w3.org/TR/dx-prof/#Role:schema[Schema] | https://linked.data.gov.au/def/geochem/gsq/excel-templates | Excel Workbook templates to be used to supply data in Excel form to be validated according to this Profile
-| Examples | https://www.w3.org/TR/dx-prof/#Role:example[Example] | https://linked.data.gov.au/def/geochem/gsq/examples | A series of RDF (<<TURTLE, Turtle>> & <<JSON-LD, JSON-LD>>), https://en.wikipedia.org/wiki/JSON[JSON] and https://www.microsoft.com/en-us/microsoft-365/excel[Excel] files of data: both valid and invalid forms
-| Python Validate Script | https://www.w3.org/TR/dx-prof/#Role:guidance[Guidance] | Python software that implements validation for all three data forms. Provided to show how validation occurs and ot be used in applications
+| Specification | https://www.w3.org/TR/dx-prof/#Role:specification[Specification] | https://linked.data.gov.au/def/geochem/core | This section of the Geochemistry Data Model that defines this Core Profile
+| Machine-Readable Profile Definition | https://www.w3.org/TR/dx-prof/#Role:profile-definition[Profile Definition] | https://linked.data.gov.au/def/geochem/core.ttl | The definition of this Profile, as per this text, but in RDF, according to <<PROF, The Profiles Vocabulary>>
+| Validator | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/core/validator | A <<SHACL, SHACL>> data file used to validate RDF data according to <<#core-profile-specification, this Profile's rules>>
+| Data Expander | https://www.w3.org/TR/dx-prof/#Role:script[Script] | https://linked.data.gov.au/def/geochem/core/expander | A <<SHACL, SHACL>> data used to expand RDF data according to this Specification's rules
+| Combined Validator & Expander | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/core/validator-combined | The combined validator and data expander
+| JSON Schema Validator | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/core/schema.json | A https://json-schema.org[JSON Schema] file able to be used to validate JSON data according to this profile's rules
+| Examples | https://www.w3.org/TR/dx-prof/#Role:example[Example] | https://linked.data.gov.au/def/geochem/core/examples | A series of RDF (<<TURTLE, Turtle>> & <<JSON-LD, JSON-LD>>) and https://en.wikipedia.org/wiki/JSON[JSON] files of data: both valid and invalid forms
+| Python Validate Script | https://www.w3.org/TR/dx-prof/#Role:guidance[Guidance] | https://linked.data.gov.au/def/geochem/core/validation-script | Python software that implements validation for both RDF & JSON data forms. Provided to show how validation occurs and to be used in applications
+| JSON-LD Context File | https://www.w3.org/TR/dx-prof/#Role:schema[Schema] | https://linked.data.gov.au/def/geochem/core/contect.json | A JSON file containing a `contect` object as used by <<JSON-LD, JSON-LD>> to apply namespaces to JSON objects and keys
 |===
 
 NOTE: This Profile's validators and example data files are pre-loaded in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal] for online use.
 
-[#gsq-profile-specification]
+[#core-profile-specification]
 ==== Specification
 
 The following subsections contain the rules of this Profile and form this Profile's normative specification.
@@ -50,7 +49,7 @@ The following subsections contain the rules of this Profile and form this Profil
 
 The following table lists the requirements for the presence of classes and predicates assigned to classes in data supplied according to this Profile.
 
-A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1 means zero or one.
+A cardinality of `1` means mandatory. `0+` means zero or more, `1+` one more, etc. `0-1` means zero or one only.
 
 [cols="2,3,3,2"]
 |===
@@ -97,6 +96,81 @@ A cardinality of 1 means mandatory. 0+ means zero or more, 1+ one more, etc. 0-1
 |                                                           | <<geo:asWKT, as WKT>> | `1` |
 |===
 
+===== Data Expansion Rules
+
+Data either in or converted to RDF will be expanded according to the following rules:
+
+[cols="1,4"]
+|===
+| Rule | Description
+
+| ObservationCollection properties | Any predicates assigned to an Observation Collection will be applied to individual Observations within the Collection, unless the Observation already has the same predicates assigned to it
+| Margin of Error propagation | Any `sdo:marginOfError` predicates assigned to an Observation will propagate to any Results from that Observation, unless the Result already has the `sdo:marginOfError` predicate assigned to it
+|===
+
+These rules are implemented as <<SHACL, SHACL>> functions in the _Data Expander_ resource of this profile, see the section above.
+
+==== Validators
+
+Three resources supplied by this Profile assist with the validation of data: the _Validator_, the _Combined Validator & Expander_ and the _JSON Schema_. All are listed in the <<Resources, Resources>> section above. Depending on the form of data you are supplying (see next section), different validators will apply.
+
+==== Data Forms
+
+Data aiming to be valid according to this Profile can be delivered in one of two forms:
+
+1. Resource Description Framework (*RDF*)
+    * must be validated using the _SHACL Validator Combined_ validator, listed in the <<Resources, Resources>> section above
+    * the canonical form of data for this Profile, as per the Geochem Data Model
+    * RDF is defined in <<RDF, RDF>>
+    * in any of the following RDF triples formats: <<TURTLE, Turtle>>, RDF/XML, JSON-LD, N-Triples. See https://rdflib.readthedocs.io/en/stable/intro_to_parsing.html[RDFLib's information on RDF parsing]
+2. JavaScript Object Notation (*JSON*)
+    * must be validated according to the JSON Schema listed in the <<Resources, Resources>> section above and the _Combined Validator & Expander_ validator, after converting to RDF
+    * the JSON Schema emulates the SHACL Validator's rules and is provided for assistance in forming JSON data
+
+Example implementations of the full conversion & validation processes are provided in the _Python Validate Script_ listed in the <<Resources, Resources>> section above.
+
+NOTE: Both forms of data can be supplied to and validated in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal] online
+
+==== Examples
+
+See the online directory of example data files for this Profile at https://linked.data.gov.au/def/geochem/core/examples.
+
+Each RDF example contains comments at the top of the file indicating what it is demonstrating and/or how it is invalid. Since JSON does not allow comments, see the RDF file with the similar file name for the same information.
+
+=== GSQ Profile
+
+The GSQ Profile of this model mandates certain classes and predicates be present in data and which vocabularies must be used to supply values for predicates that indicate concepts, as described in the <<Where, Vocabularies: Where>> section above.
+
+This Profile is dependent on the Core Profile, thus all data wising to be conformant with this Profile must also be conformant with the Core Profile.
+
+The current version of this Profile is 1.0.0.
+
+==== Resources
+
+The resources within this profile are listed below. The roles given for each are taken from _The Profiles Vocabulary_ <<PROF>>.
+
+[cols="1,1,1,2"]
+|===
+| Resource | Role | IRI | Description
+
+| Specification | https://www.w3.org/TR/dx-prof/#Role:specification[Specification] | https://linked.data.gov.au/def/geochem/gsq | This section of the Geochemistry Data Model that defines this GSQ Profile
+| Machine-Readable Profile Definition | https://www.w3.org/TR/dx-prof/#Role:profile-definition[Profile Definition] | https://linked.data.gov.au/def/geochem/gsq.ttl | The definition of this Profile, as per this text, but in RDF, according to <<PROF, The Profiles Vocabulary>>
+| Validator | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator | A <<SHACL, SHACL>> data file used to validate RDF data according to <<#gsq-profile-specification, this Profile's rules>>
+| Validator Compounded | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/validator-combined | A validator that includes this Profile's rules and also those of the Core Profile's validator
+| JSON Schema Validator | https://www.w3.org/TR/dx-prof/#Role:validation[Validation] | https://linked.data.gov.au/def/geochem/gsq/schema.json | A https://json-schema.org[JSON Schema] file able to be used to validate JSON data according to this Profile's rules. This includes the schema from the Core Profile
+| Python Validate Script | https://www.w3.org/TR/dx-prof/#Role:guidance[Guidance] | https://linked.data.gov.au/def/geochem/gsq/validation-script | Python software that implements validation for all three data forms. Provided to show how validation occurs and to be used in applications
+| Excel to RDF Converter | https://www.w3.org/TR/dx-prof/#Role:script[Script] https://linked.data.gov.au/def/geochem/gsq/excel-to-rdf | A Python software library to convert geocehmistry data created using the Excel Templates for this Profile into RDF data |
+| Excel Templates | https://www.w3.org/TR/dx-prof/#Role:schema[Schema] | https://linked.data.gov.au/def/geochem/gsq/excel-templates | Excel Workbook templates to be used to supply data in Excel form to be validated according to this Profile
+| Examples | https://www.w3.org/TR/dx-prof/#Role:example[Example] | https://linked.data.gov.au/def/geochem/gsq/examples | A series of RDF (<<TURTLE, Turtle>> & <<JSON-LD, JSON-LD>>), https://en.wikipedia.org/wiki/JSON[JSON] and https://www.microsoft.com/en-us/microsoft-365/excel[Excel] files of data: both valid and invalid forms
+|===
+
+NOTE: This Profile's validators and example data files are pre-loaded in the https://geochem.dev.kurrawong.ai/[GSQ Geochemistry Data Portal] for online use.
+
+[#gsq-profile-specification]
+==== Specification
+
+The following subsections contain the rules of this Profile and form this Profile's normative specification. These rules are to be used only in addition to the rules of the Core Profile, no in isolation.
+
 ===== Model Element Identifiers
 
 Objects in data supplied claiming conformance to this Profile _MUST_ use a particular forms of <<IRI, IRI>> identifiers, as follows:
@@ -121,8 +195,8 @@ Each Data Supplier will be allocated an IRI identifier namespace to use. For exa
 
 The only rules for Data Supplier Namespace use are:
 
-1. The IRIs created must be valid IRI
-** This means no spaces or unusual characters that break IRIs (URLs)
+1. The IRIs created must be valid according to <<RFC3986, RFC3986>>
+** This generally means no spaces or unusual characters that break IRIs (URLs)
 2. Unique IRIs must always be formed
 ** If a Data Supplier creates `+https://linked.data.gov.au/dataset/qgc/agme-corp/obs-00103+` for an <<sosa:Observation, Observation>>, they can not use that identifier again, at any later stage. This entails keeping track of the ID bit of the identifier - `obs-00103`.
 ** Data deemed valid but with duplicate IRIs will be returned to Data Suppliers for updating
@@ -137,11 +211,11 @@ Agents will need IRIs registered
 
 If a <<sdo:Dataset, Dataset>>, <<sosa:Sample, Sample>> or a
 
-===== External Reference IRIs
+====== External Reference IRIs
 
 TODO
 
-===== Vocab Restrictions
+===== Vocabulary Restrictions
 
 This profile requires that Concepts indicated by certain predicates come from specific vocabularies. The predicates and their required vocabularies are:
 
@@ -158,36 +232,18 @@ This profile requires that Concepts indicated by certain predicates come from sp
 
 Note that this profile does _NOT_ require that the predicate <<sosa:madeBySensor, made by sensor>> is used on the <<sosa:Observation, Observation>> class, thus no vocabulary is mandated for its use. It may be used but, if it is, the user may choose any vocabulary of Concepts to draw from useful to them.
 
-===== Data Expansion Rules
-
-Data either in or converted to RDF may be expanded according to the following rules:
-
-[cols="1,4"]
-|===
-| Rule | Description
-
-| ObservationCollection properties | Any predicates assigned to an Observation Collection will be applied to individual Observations within the Collection, unless the Observation already has the same predicates give
-| Margin of Error propagation | Any `sdo:marginOfError` predicates assigned to an Observation will propagate to any Results from that Observation, unless the Result already has the `sdo:marginOfError` predicate given
-|===
-
-These rules are implemented as <<SHACL, SHACL>> functions in the _SHACL Data Expander_ resource of this profile, see the section above.
-
 ==== Validators
 
 Four resources supplied by this Profile assist with the validation of data: the _SHACL Validator_, the _SHACL Combined Validator_, the _JSON Schema_ and the _Excel to RDF Converter_. All are listed in the <<Resources, Resources>> section above. Depending on the form of data you are supplying (see next section), different validators will apply.
 
-===== Data Forms
+==== Data Forms
 
-Data aiming to be valid according to this Profile can be delivered in one of three forms:
+Data aiming to be valid according to this Profile can be delivered in one of three forms: the same two as the Core profile above, RDF & JSON, and also:
 
-1. Resource Description Framework (*RDF*)
-    * must be validated using the _SHACL Validator Combined_ validator, listed in the <<Resources, Resources>> section above
-    * the canonical form of data for this Profile, as per the Geochem Data Model
-    * RDF is defined in <<RDF, RDF>>
-    * in any of the following RDF triples formats: <<TURTLE, Turtle>>, RDF/XML, JSON-LD, N-Triples. See https://rdflib.readthedocs.io/en/stable/intro_to_parsing.html[RDFLib's information on RDF parsing]
+1. *RDF*
+    * See the Core Profile
 2. *JSON*
-    * must be validated according to the JSON Schema listed in the <<Resources, Resources>> section above and the _SHACL Validator Combined_ validator, after converting to RDF
-    * the JSON Schema emulates the SHACL Validator's rules and is provided for assistance in forming JSON data
+    * See the Core Profile
 3. *Excel*
     * must use the Excel templates provided with this Profile, see the <<Resources, Resources>> section
     * will be converted to RDF using the Excel-to-RDF program also supplied with this Profile
@@ -199,8 +255,6 @@ NOTE: All three forms of data can be supplied to and validated in the https://ge
 
 ==== Examples
 
-Example data for this Profile, in all three data forms described above and which is both valid and invalid, is given online at:
+See the online directory of example data files for this Profile at https://linked.data.gov.au/def/geochem/gsq/examples.
 
-* https://linked.data.gov.au/def/geochem/gsq/examples
-
-Each RDF example contains comments at the top of the file indicating what it is demonstrating and/or how it is invalid. Excel files contain comments on a 'Comments' worksheet. Since JSON does not allow comments, see the RDF file with the similar file name for the same information.
+Each RDF example contains comments at the top of the file indicating what it is demonstrating and/or how it is invalid. Excel files contain comments in a 'Comments' worksheet. Since JSON does not allow comments, see the RDF file with the similar file name for the same information.

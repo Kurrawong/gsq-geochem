@@ -1,5 +1,5 @@
-= GSQ Geochemistry Data Exchange Model - Specification
-:Title: GSQ Geochemistry Data Exchange Model
+= Geochemistry Data Model - Specification
+:Title: Geochemistry Data Model - Specification
 :titletext: {title}
 :doctype: book
 :encoding: utf-8
@@ -20,8 +20,8 @@
 :source-highlighter: rouge
 
 [#overview]
-.An informal overview diagram of the main part of the data model in this Specification
-image::../img/sosa-overview.svg[GSQ Geochemistry SOSA Model Overview,align="center"]
+.An informal overview diagram of the main part of this Data Model
+image::../img/sosa-overview.svg[Model Overview,align="center"]
 
 == Metadata
 
@@ -30,7 +30,7 @@ image::../img/sosa-overview.svg[GSQ Geochemistry SOSA Model Overview,align="cent
 | Property | Value
 
 | IRI | https://linked.data.gov.au/def/geochem
-| Name | GSQ Geochemistry Data Exchange Model - Specification
+| Name | Geochemistry Data Model - Specification
 | Version | 1.0.0
 |===
 
