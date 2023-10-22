@@ -854,3 +854,49 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 | Is Defined By | <<SDO, SDO>>
 | Example | See the Example for <<sosa:Sample, Sample>>
 |===
+
+[[sdo:color]]
+===== colour
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:color`
+| Name | colour
+| Definition | The color of the thing
+| Scope Note | Use this predicate to indicate a <<skos:Concept, Concept>> from a vocabulary of colour codes
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<sosa:Sample, Sample>>
+|===
+
+[[sdo:material]]
+===== material
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:material`
+| Name | material
+| Definition | A material that something is made from, e.g. leather, wool, cotton, paper
+| Scope Note | Use this predicate to indicate a <<skos:Concept, Concept>> from materials relevant to the subject ype, e.g. <<sosa:Sample, Sample>>
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<sosa:Sample, Sample>>
+|===
+
+
+[[sdo:depth]]
+===== depth
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `sdo:depth`
+| Name | depth
+| Definition | The depth of the thing
+| Scope Note | Use this predicate to indicate the depth of a <<sosa:Sample, Sample>>, given as a float value. If the Sample is sensible described with a depth interval, use this property twoce for the top and bottom values
+| Is Defined By | <<SDO, SDO>>
+| Example | See the Example for <<sosa:Sample, Sample>>
+|===
