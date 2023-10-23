@@ -6,7 +6,7 @@ from uuid import uuid4
 import openpyxl
 from rdflib.namespace import RDF, SDO, SOSA
 
-from .models import Dataset, Agent, DrillHoleSample, FeatureOfInterest, DrillHole, Geometry
+from .models import Dataset, Agent, DrillHole, DrillHoleSample, SurfaceSample, Geometry
 from .utils import *
 
 
@@ -99,9 +99,9 @@ def extract_samples(wb: openpyxl.Workbook, template_version: float, known_drillh
     if not template_version == 3.0:
         return []
 
-    sheet = wb["DRILLHOLE_SAMPLE"]
-
     samples = []
+
+    sheet = wb["DRILLHOLE_SAMPLE"]
 
     # only process example row if example data altered
     if sheet["B9"].value != "DD12345":
@@ -110,13 +110,15 @@ def extract_samples(wb: openpyxl.Workbook, template_version: float, known_drillh
         row = 10
 
     while True:
-        if sheet[f"B{row}"].value is not None:
+        if sheet[f"C{row}"].value is not None:
             foi_id = sheet[f"B{row}"].value
             sample_id = sheet[f"C{row}"].value
             if str(FOIS[foi_id]) not in known_drillholes:
-                raise ValueError(f"The given Drillhole ID {foi_id} for Sample {sample_id} is unknown. "
-                                 f"Must be present in the DRILLHOLE_LOCATION tab. "
-                                 f"Known Drillhole IDs are: {', '.join([x.split('/')[-1] for x in known_drillholes])}")
+                raise ConversionError(
+                    f"The given Drillhole ID {foi_id} for Sample {sample_id} is unknown. "
+                    f"Must be present in the DRILLHOLE_LOCATION tab. "
+                    f"Known Drillhole IDs are: {', '.join([x.split('/')[-1] for x in known_drillholes])}"
+                )
 
             samples.append(
                 DrillHoleSample(
@@ -127,15 +129,56 @@ def extract_samples(wb: openpyxl.Workbook, template_version: float, known_drillh
                     depth_to=sheet[f"F{row}"].value,
                     collection_date=sheet[f"G{row}"].value,
                     dispatch_date=sheet[f"H{row}"].value,
-                    specific_gravity=sheet[f"F{row}"].value,
-                    magnetic_susceptibility=sheet[f"F{row}"].value,
-                    remarks=str(sheet[f"F{row}"].value)
+                    instrument_type=sheet[f"I{row}"].value,
+                    specific_gravity=sheet[f"J{row}"].value,
+                    magnetic_susceptibility=float(sheet[f"K{row}"].value),
+                    remarks=sheet[f"L{row}"].value
                 )
             )
 
             row += 1
         else:
             break
+
+    sheet = wb["SURFACE_SAMPLE"]
+
+    # only process example row if example data altered
+    row = 12
+    if sheet["B9"].value != "DD12345":
+        row = 9
+
+    if sheet["B10"].value != "DD12346":
+        row = 10
+
+    if sheet["B11"].value != "DD12347":
+        row = 11
+
+    while True:
+        if sheet[f"B{row}"].value is not None:
+            sample_id = sheet[f"B{row}"].value
+            geom = Geometry(
+                as_wkt=convert_easting_northing_elevation_to_wkt(sheet[f"C{row}"].value, sheet[f"D{row}"].value,
+                                                                 sheet[f"E{row}"].value))
+            samples.append(
+                SurfaceSample(
+                    iri=SAMPLES[sample_id],
+                    sample_material=sheet[f"C{row}"].value,
+                    sample_type_surface=sheet[f"D{row}"].value,
+                    mesh_size=sheet[f"E{row}"].value,
+                    soil_sample_depth=sheet[f"F{row}"].value,
+                    soil_colour=sheet[f"G{row}"].value,
+                    soil_ph=sheet[f"H{row}"].value,
+                    has_geometry=geom,
+                    location_survey_type=sheet[f"L{row}"].value,
+                    collection_date=sheet[f"M{row}"].value,
+                    dispatch_date=sheet[f"N{row}"].value,
+                    instrument_type=sheet[f"O{row}"].value,
+                    specific_gravity=sheet[f"P{row}"].value,
+                    magnetic_susceptibility=sheet[f"Q{row}"].value,
+                    remarks=sheet[f"R{row}"].value,
+                )
+            )
+
 
     return samples
 

@@ -9,6 +9,7 @@ from rdflib import Graph, Literal, URIRef, BNode
 from rdflib.namespace import GEO, OWL, PROV, RDF, RDFS, SDO, SKOS, SOSA, XSD
 from .defined_namespaces import BORE, FOIS, SAMPLES
 from .utils import *
+EX = Namespace("http://example.com/")
 
 ORGANISATIONS = {
     "CGI": URIRef("https://linked.data.gov.au/org/cgi"),
@@ -231,7 +232,7 @@ class DrillHoleSample(Sample):
         if c[0]:
             return v
         else:
-            raise ValueError(c[1])
+            raise ConversionError(c[1])
 
     def to_graph(self) -> Graph:
         g = super().to_graph()
@@ -241,5 +242,58 @@ class DrillHoleSample(Sample):
         g.add((v, SOSA.isSampleOf, URIRef(foi)))
         g.add((v, SDO.depth, Literal(self.depth_from)))
         g.add((v, SDO.depth, Literal(self.depth_to)))
+
+        return g
+
+
+class SurfaceSample(Sample):
+    sample_material: str
+    sample_type_surface: str
+    mesh_size: str
+    soil_sample_depth: str
+    soil_colour: str
+    soil_ph: str
+    has_geometry: Geometry
+    location_survey_type: str
+
+    # @field_validator("sample_material")
+    # def known_sample_material(cls, v):
+    #     c = is_a_concept_in(v, FIELD_VOCABS["sample_material"])
+    #     if c[0]:
+    #         return v
+    #     else:
+    #         raise ConversionError(c[1])
+
+    # @field_validator("sample_type_surface")
+    # def known_sample_type_surface(cls, v):
+    #     c = is_a_concept_in(v, FIELD_VOCABS["sample_type_surface"])
+    #     if c[0]:
+    #         return v
+    #     else:
+    #         raise ConversionError(c[1])
+
+    @field_validator("mesh_size")
+    def known_mesh_size(cls, v):
+        c = is_a_concept_in(v, FIELD_VOCABS["mesh_size"])
+        if c[0]:
+            return v
+        else:
+            raise ConversionError(c[1])
+
+    # @field_validator("soil_colour")
+    # def known_soil_colour(cls, v):
+    #     c = is_a_concept_in(v, FIELD_VOCABS["soil_colour"])
+    #     if c[0]:
+    #         return v
+    #     else:
+    #         raise ConversionError(c[1])
+
+    def to_graph(self) -> Graph:
+        g = super().to_graph()
+        v = URIRef(self.iri)
+        g.add((v, SDO.material, URIRef(self.sample_material)))
+        g.add((v, EX.sampleTypeSurface, URIRef(self.sample_type_surface)))
+        g.add((v, EX.meshSize, URIRef(self.mesh_size)))
+        g.add((v, SDO.color, URIRef(self.soil_colour)))
 
         return g

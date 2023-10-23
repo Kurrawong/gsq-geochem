@@ -31,6 +31,12 @@ KNOWN_TEMPLATE_VERSIONS = [
     "2.0",
 ]
 LATEST_TEMPLATE = KNOWN_TEMPLATE_VERSIONS[-1]
+FIELD_VOCABS = {
+    "sample_material": Path(__file__).parent.parent.resolve().parent / "vocabs" / "gsq-sample-materials.ttl",
+    "sample_type_surface": Path(__file__).parent.parent.resolve().parent / "vocabs" / "sample-type-surfaces.ttl",
+    "mesh_size": Path(__file__).parent.parent.resolve().parent / "vocabs" / "sample-mesh-sizes.ttl",
+    "soil_colour": Path(__file__).parent.parent.resolve().parent / "vocabs" / "soil-colour.ttl",
+}
 
 
 class ConversionError(Exception):
@@ -314,4 +320,4 @@ def is_a_concept_in(s: str, vocab_file: Path):
 def convert_easting_northing_elevation_to_wkt(easting, northing, elevation) -> str:
     lat, lon = utm.to_latlon(easting, northing, 55, "E")
 
-    return f"POINTZ({lon} {lat} {elevation})"
+    return f"POINTZ({lon:.6f} {lat:.6f} {elevation})"
