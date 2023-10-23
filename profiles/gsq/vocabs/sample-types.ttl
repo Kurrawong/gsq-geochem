@@ -703,7 +703,7 @@ cs:
     dcterms:publisher <https://linked.data.gov.au/org/gsq> ;
     reg:status agldwgstatus:stable ;
     skos:definition "Types of sample used in Geoscience"@en ;
-    skos:historyNote "Created by GSQ staff from own knowledege" ;
+    skos:historyNote "Created by GSQ staff from own knowledge" ;
     skos:hasTopConcept
         sampty:blasted-sample ,
         sampty:borehole-cement ,

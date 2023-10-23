@@ -3,6 +3,7 @@ PREFIX ns1: <http://purl.org/linked-data/registry#>
 PREFIX ns2: <http://schema.org/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX schema: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -191,7 +192,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
     skos:broader <https://linked.data.gov.au/def/sample-type/core> ;
-    skos:definition "A core sample that has been cut in half parallel to its length."@en ;
+    skos:definition "A core sample that has been cut in half parallel to its length"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "HCORE" ;
     skos:prefLabel "Half Core"@en ;
@@ -201,7 +202,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A sample of the fluid used in the hydraulic fracturing process."@en ;
+    skos:definition "A sample of the fluid used in the hydraulic fracturing process"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:prefLabel "Hydraulic Fracturing Fluid"@en ;
     skos:topConceptOf <http://linked.data.gov.au/def/sample-type> ;
@@ -212,7 +213,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
     skos:broader <https://linked.data.gov.au/def/sample-type/petrophysical-log> ;
-    skos:definition "A petrophysical log comprised of multiple directional measurements around the circumference of a wellbore to create an image detailing variation of properties around the borehole."@en ;
+    skos:definition "A petrophysical log comprised of multiple directional measurements around the circumference of a wellbore to create an image detailing variation of properties around the borehole"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "IMLG" ;
     skos:prefLabel "Image Log"@en ;
@@ -223,7 +224,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
     skos:broader <https://linked.data.gov.au/def/sample-type/core> ;
-    skos:definition "A core sample that has been cut in quarters parallel to its length."@en ;
+    skos:definition "A core sample that has been cut in quarters parallel to its length"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "QCORE" ;
     skos:prefLabel "Quarter Core"@en ;
@@ -2927,6 +2928,432 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf <http://linked.data.gov.au/def/geou> ;
 .
 
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/adsorbed_phase>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "An ion attached to the surface of a mineral"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "adsorbed phase"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/air>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/inorganic_gas> ;
+    skos:definition "The composite gas comprising the Earth's atmosphere."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "air"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/animal_tissue>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/animal_material> ;
+    skos:definition "Material of an animal's body"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "animal tissue"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/atmospheric_dust>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "Fine-grained solid material collected or filtered from the atmosphere"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "atmospheric dust"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/bark>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/vegetation> ;
+    skos:definition "Outermost layers of stems and roots of woody plants"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "bark"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/bitumen>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_material> ;
+    skos:definition "Solid organic material that forms part of a rock. It can usually be extracted from the rock with organic solvent."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "bitumen"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/coal>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/organic_material> ;
+    skos:definition "A readily combustible organic rock containing more than 50% by weight and more than 70% by volume of carbonaceous material."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "coal"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/coke>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/organic_material> ;
+    skos:definition "A solid of carbonaceous material derived from the destructive distillation of low-ash, low-sulphur bituminous coal."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "coke"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/condensate>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid_hydrocarbon> ;
+    skos:definition "A material that exists as gas in the subsurface but condenses into liquid at the surface."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "condensate"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/coral>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/rock> ;
+    skos:definition "Hard stony substance secreted by certain marine coelenterates as an external skeleton, typically forming large reefs in warm seas"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "coral"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/crude_oil_with_water>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid_hydrocarbon> ;
+    skos:definition "A mixture of oil and water where oil is the main phase."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "crude oil with water"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/drilling_fluid>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid> ;
+    skos:definition "Fluid used for drill bit lubrication and return of ground rock material from the drill bit, e.g. mud."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "drilling fluid"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/estuarine_water>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/water> ;
+    skos:definition "Water from an estuary. Depending on the nature of the estuary, the salinity may vary spatially and temporally and range from fresh, brackish, seawater or hypersaline."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "estuarine water"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/faeces>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/animal_material> ;
+    skos:definition "Waste material excreted from an animal"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "faeces"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/foliage>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/vegetation> ;
+    skos:definition "Plant leaves, especially tree leaves, considered as a group"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "foliage"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/gas_in_solution>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_gas> ;
+    skos:definition "A gas that that is exsolved from a liquid, such as water or oil, at the surface or under experimental conditions."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "gas in solution"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/groundwater_with_oil>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/groundwater> ;
+    skos:definition "A sample containing a mixture of water and oil and may be an immulsion. Water is the main phase and hydrocarbons (e.g. benzene, toluene) are dissolved within the water. Synonym: formation water with oil"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "groundwater with oil"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/hair>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/animal_material> ;
+    skos:definition "Hair or fur from an animal"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "hair"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/ice>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "Frozen, solid water."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "ice"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/kerogen>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_material> ;
+    skos:definition "Immobile organic matter that forms part of a rock. Kerogen cannot be extracted from the rock with organic solvents. Kerogen is concentrated in a pure form by removal of the mineral matter with strong acids (HCl, HF)."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "kerogen"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/lag>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/regolith> ;
+    skos:definition "Deposit, commonly thin, or fragments of larger than sand size, spread over the land surface.  Its most common origin is as the coarse material left behind after fine material has been transported away by wind, or less commonly, sheet flow."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "lag"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/lake_sediment>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/sediment> ;
+    skos:definition "A sediment deposited in a body of standing fresh water"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "lake sediment"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/marine_sediment_and_overlying_seawater>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/marine_sediment> ;
+    skos:definition "A marine sediment core that is collected together with the overlying water, as in a core incubation experiment, or a known area of seafloor and overlying water column, as in a chamber incubation experiment."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "marine sediment and overlying seawater"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/meteorite>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/rock> ;
+    skos:definition "A rock that landed on Earth from an extraterrestrial source"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "meteorite"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/mineral>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "A naturally occurring inorganic, crystalline, element or compound"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "mineral"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/mixed_rock_and_sediment>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/regolith> ;
+    skos:definition "A sample containing a mixture of rock and unconsolidated sediment."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "mixed rock and sediment"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/overbank_sediment>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/sediment> ;
+    skos:definition "Alluvium that is deposited outside an alluvial channel from flowing water which has overflowed from the channel.  It includes levees and back swamp deposits."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "overbank sediment"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/pitch>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_material> ;
+    skos:definition "Any of the various dark heavy viscous and resinous substances obtained as a residue from the distillation of coal-tar or crude oil."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "pitch"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/plant_stem>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/vegetation> ;
+    skos:definition "Stem, trunk, branch and twig material from a plant"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "plant stem"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/porewater>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/water> ;
+    skos:definition "Subsurface water in an interstice between grains in a marine sediment."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "porewater"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/rain_water>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/water> ;
+    skos:definition "Rain water, collected before it hits the Earth's surface."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "rain water"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/refined_oil>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid_hydrocarbon> ;
+    skos:definition "Oil that has been processed in an oil refinery."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "refined oil"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/resin>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_material> ;
+    skos:definition "Solid organic material that forms part of a rock. It is usually associated with coal and derived from the resinous material exuded from land plants."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "resin"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/root>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/vegetation> ;
+    skos:definition "The part of a plant that bears no leaves and typically, but not always, lies below the surface of the soil and is used for absorption of water and inorganic nutrients"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "root"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/sea_water>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:altLabel
+        "ocean water"@en ,
+        "seawater"@en ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/water> ;
+    skos:definition "Saline water from the Earth's seas and oceans"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "sea water"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/seep_gas>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_gas> ;
+    skos:definition "Gas that seeps at the Earths surface and recovered without the need for drilling."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "seep gas"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/seep_oil>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/crude_oil> ;
+    skos:definition "Crude oil that seeps at the Earths surface and recovered without the need for drilling."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "seep oil"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/seep_oil_and_gas>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid_hydrocarbon> ;
+    skos:definition "Crude oil and gas that seeps at the Earths surface and recovered without the need for drilling."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "seep oil and gas"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/snow>
+    a skos:Concept ;
+    dcterms:source "https://en.oxforddictionaries.com/definition/snow"^^xsd:anyURI ;
+    skos:definition "Atmospheric water vapour frozen into ice crystals and falling in light white flakes or lying on the ground as a white layer."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "snow"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/soil>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/regolith> ;
+    skos:definition "Unconsolidated mineral or organic material on the Earth's surface that serves as a natural medium for the growth of land plants."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "soil"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/solid_phase>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/marine_sediment> ;
+    skos:definition "The solid material left over after the pore water has been extracted from a sediment sample."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "solid phase"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/stream_sediment>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/sediment> ;
+    skos:definition "A sediment deposited in the bed of an active or perennial stream"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "stream sediment"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/surface_water>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/water> ;
+    skos:definition "Fresh or brackish water which occurs on the surface of a land mass (eg, rivers, creeks, lakes)"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "surface water"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/suspended_solids>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "Sediment and biological particles collected from a water column that are separated by filtration and are not dissolved."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "suspended solids"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/unknown>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "Material type is unknown"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "unknown"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/unspecified_seabed_materials>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "A sample that contains a mixture of materials from the seabed, possibly animal, vegetable, and mineral material."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "unspecified seabed materials"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/wax>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_material> ;
+    skos:definition "A light coloured solid precipitated from either a hydrocarbon gas or oil"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:prefLabel "wax"@en ;
+.
+
 <http://qudt.org/vocab/unit/ARCMIN>
     a skos:Concept ;
     rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> ;
@@ -4045,6 +4472,13 @@ Under the International System of Units (via the International Committee for Wei
     skos:topConceptOf <http://linked.data.gov.au/def/geou> ;
 .
 
+skos:broader
+    a
+        rdf:Property ,
+        rdfs:Resource ;
+    rdfs:subPropertyOf skos:broader ;
+.
+
 <https://data.idnau.org/pid/vocab/idn-role-codes/subjectAgent>
     a skos:Concept ;
     dcterms:provenance "Created for the IDN project, 2022"@en ;
@@ -4082,7 +4516,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "The cement used to bind casing to the wall of a well or bore, for borehole integrity."@en ;
+    skos:definition "The cement used to bind casing to the wall of a well or bore, for borehole integrity"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "BHCM" ;
     skos:prefLabel "Borehole Cement"@en ;
@@ -4096,7 +4530,7 @@ Under the International System of Units (via the International Committee for Wei
     skos:altLabel
         "Core Box"@en ,
         "Core Tray"@en ;
-    skos:definition "A part of a core sample which has been broken into shorter lengths and placed into boxes or trays for ease of storage."@en ;
+    skos:definition "A part of a core sample which has been broken into shorter lengths and placed into boxes or trays for ease of storage"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "BOXCORE" ;
     skos:prefLabel "Boxed Core"@en ;
@@ -4118,7 +4552,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A sample composed of pieces of vein or mineral deposit that have been cut out of a small trench or channel, usually about 10 cm wide and 2 cm deep."@en ;
+    skos:definition "A sample composed of pieces of vein or mineral deposit that have been cut out of a small trench or channel, usually about 10 cm wide and 2 cm deep"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "CSAMP" ;
     skos:prefLabel "Channel Sample"@en ;
@@ -4129,7 +4563,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "Core combined from various sources to create a representative sample."@en ;
+    skos:definition "Core combined from various sources to create a representative sample"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "CCO" ;
     skos:prefLabel "Composited Core"@en ;
@@ -4140,7 +4574,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "Cuttings combined from various sources to create a representative sample."@en ;
+    skos:definition "Cuttings combined from various sources to create a representative sample"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "CCU" ;
     skos:prefLabel "Composited Cuttings"@en ;
@@ -4151,7 +4585,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A composite channel sample taken from multiple points within a channel."@en ;
+    skos:definition "A composite channel sample taken from multiple points within a channel"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "CCSAMP" ;
     skos:prefLabel "Continuous Channel Sample"@en ;
@@ -4162,7 +4596,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A plug, or sample, taken from a core sample for analysis."@en ;
+    skos:definition "A plug, or sample, taken from a core sample for analysis"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "PLUG" ;
     skos:prefLabel "Core Plug"@en ;
@@ -4176,7 +4610,7 @@ Under the International System of Units (via the International Committee for Wei
     skos:altLabel
         "Ground Rock"@en ,
         "Milled rock"@en ;
-    skos:definition "A sample of rock that has been artificially crushed, milled, or ground."@en ;
+    skos:definition "A sample of rock that has been artificially crushed, milled, or ground"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "CRUSH" ;
     skos:prefLabel "Crushed Rock"@en ;
@@ -4187,7 +4621,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "Cuttings are the small pieces of rock that are chipped away by the bit while a well is being drilled."@en ;
+    skos:definition "Cuttings are the small pieces of rock that are chipped away by the bit while a well is being drilled"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "CUT" ;
     skos:prefLabel "Cuttings"@en ;
@@ -4198,7 +4632,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A file containing information such as aziumth and inclination or positional offset to describe the downhole geometry of a borehole."@en ;
+    skos:definition "A file containing information such as aziumth and inclination or positional offset to describe the downhole geometry of a borehole"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "DVLG" ;
     skos:prefLabel "Deviation Log"@en ;
@@ -4213,7 +4647,7 @@ Under the International System of Units (via the International Committee for Wei
         "Drill Mud"@en ,
         "Drilling Fluid"@en ,
         "Drilling Mud"@en ;
-    skos:definition "Fluid used for drill bit lubrication and return of ground rock material from the drill bit."@en ;
+    skos:definition "Fluid used for drill bit lubrication and return of ground rock material from the drill bit"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "DLFD" ;
     skos:prefLabel "Drill Fluid"@en ;
@@ -4224,7 +4658,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "Undifferentiated material generated during drilling."@en ;
+    skos:definition "Undifferentiated material generated during drilling"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "DSPOIN" ;
     skos:prefLabel "Drill Spoil"@en ;
@@ -4246,7 +4680,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "Sample collected by drilling and feathers and wedges."@en ;
+    skos:definition "Sample collected by drilling and feathers and wedges"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "FWSAMP" ;
     skos:prefLabel "Feather & Wedge Sample"@en ;
@@ -4269,7 +4703,7 @@ Under the International System of Units (via the International Committee for Wei
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
     skos:altLabel "Mine Process Stock"@en ;
-    skos:definition "Material feed for a mine processing plant or other refining facility that produced benefacted products. Feed may as mined or a blend of input materials with different attributes."@en ;
+    skos:definition "Material feed for a mine processing plant or other refining facility that produced benefacted products. Feed may as mined or a blend of input materials with different attributes"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "GPM" ;
     skos:prefLabel "Georesource Process Material"@en ;
@@ -4280,7 +4714,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "The resource mined or material produced via a mine processing plant or other refining facility that is the final product."@en ;
+    skos:definition "The resource mined or material produced via a mine processing plant or other refining facility that is the final product"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "GP" ;
     skos:prefLabel "Georesource Product"@en ;
@@ -4291,7 +4725,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "The raw resource of interest in mining or processing."@en ;
+    skos:definition "The raw resource of interest in mining or processing"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "GRM" ;
     skos:prefLabel "Georesource Raw Material"@en ;
@@ -4313,7 +4747,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A composite image comprised of multiple wavelength bands across the electromagnetic spectrum."@en ;
+    skos:definition "A composite image comprised of multiple wavelength bands across the electromagnetic spectrum"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "HYSN" ;
     skos:prefLabel "Hyperspectral Scan"@en ;
@@ -4357,7 +4791,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A sample collected as a known reference for the orientation of other samples."@en ;
+    skos:definition "A sample collected as a known reference for the orientation of other samples"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "ORIENT" ;
     skos:prefLabel "Oriented Or Orientation Sample"@en ;
@@ -4394,7 +4828,7 @@ Under the International System of Units (via the International Committee for Wei
     skos:altLabel
         "Core Pallet"@en ,
         "Pallet Core"@en ;
-    skos:definition "A collection of core samples, typically boxed, placed on a pallet for the purpose of movement, storage, and logistics."@en ;
+    skos:definition "A collection of core samples, typically boxed, placed on a pallet for the purpose of movement, storage, and logistics"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "PALCORE" ;
     skos:prefLabel "Palletised Core"@en ;
@@ -4416,7 +4850,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "An image created by light falling on a photosensitive surface, usually photographic film or an electronic image sensor, such as a CCD or a CMOS chip."@en ;
+    skos:definition "An image created by light falling on a photosensitive surface, usually photographic film or an electronic image sensor, such as a CCD or a CMOS chip"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "PHGR" ;
     skos:prefLabel "Photograph"@en ;
@@ -4427,7 +4861,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "Rock samples that are bonded in epoxy and polished as small round blocks for reflected light microscopy."@en ;
+    skos:definition "Rock samples that are bonded in epoxy and polished as small round blocks for reflected light microscopy"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "PBLK" ;
     skos:prefLabel "Polished Block"@en ;
@@ -4438,7 +4872,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A rock chip sample that has subsequently been powdered."@en ;
+    skos:definition "A rock chip sample that has subsequently been powdered"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "PCHIP" ;
     skos:prefLabel "Powdered Chip"@en ;
@@ -4526,7 +4960,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A core taken from the side of the borehole, usually by a wireline tool."@en ;
+    skos:definition "A core taken from the side of the borehole, usually by a wireline tool"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "SWC" ;
     skos:prefLabel "Side Wall Core"@en ;
@@ -4614,7 +5048,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "Undifferentiated material generated from sampling within a trench or pit."@en ;
+    skos:definition "Undifferentiated material generated from sampling within a trench or pit"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "TSPOIL" ;
     skos:prefLabel "Trench Spoil"@en ;
@@ -4636,7 +5070,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "An moving image created by light falling on a series of photosensitive surfaces, usually videographic film or an electronic image sensor, such as a CCD or a CMOS chip."@en ;
+    skos:definition "An moving image created by light falling on a series of photosensitive surfaces, usually videographic film or an electronic image sensor, such as a CCD or a CMOS chip"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "VIDO" ;
     skos:prefLabel "video"@en ;
@@ -4648,7 +5082,7 @@ Under the International System of Units (via the International Committee for Wei
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
     skos:altLabel "Overburden"@en ;
-    skos:definition "The rock removed during mining to reach resource."@en ;
+    skos:definition "The rock removed during mining to reach resource"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "WR" ;
     skos:prefLabel "Waste Rock"@en ;
@@ -4659,7 +5093,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A generic specimen of water of any type. Includes water specimen types collected by any method."@en ;
+    skos:definition "A generic specimen of water of any type. Includes water specimen types collected by any method"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "WTRS" ;
     skos:prefLabel "Water specimen"@en ;
@@ -5312,6 +5746,47 @@ Under the International System of Units (via the International Committee for Wei
     skos:topConceptOf <http://linked.data.gov.au/def/geou> ;
 .
 
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/crude_oil>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid_hydrocarbon> ;
+    skos:definition "A naturally occurring complex liquid hydrocarbon, typically found as part of drilling activity, which after distillation and removal of impurities yields a range of combustible fuels, petrochemicals and lubricants."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower <http://pid.geoscience.gov.au/def/voc/ga/materialtype/seep_oil> ;
+    skos:prefLabel "crude oil"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "Unspecified fluid material."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower <http://pid.geoscience.gov.au/def/voc/ga/materialtype/drilling_fluid> ;
+    skos:prefLabel "fluid"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/groundwater>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:altLabel "formation water"@en ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/water> ;
+    skos:definition "Synonym: formation water.  Part of the subsurface water that is in the zone of saturation, i.e., below the water table.  Can be located in one or several aquifers, aquicludes or aquitards."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower <http://pid.geoscience.gov.au/def/voc/ga/materialtype/groundwater_with_oil> ;
+    skos:prefLabel "groundwater"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/inorganic_gas>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "Any non-hydrocarbon-based gas."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower <http://pid.geoscience.gov.au/def/voc/ga/materialtype/air> ;
+    skos:prefLabel "inorganic gas"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
 <http://qudt.org/vocab/unit/CARAT>
     a skos:Concept ;
     rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> ;
@@ -5514,7 +5989,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A digital file or image containing physical and chemical measurements from the logging of a borehole."@en ;
+    skos:definition "A digital file or image containing physical and chemical measurements from the logging of a borehole"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "PETL" ;
     skos:prefLabel "Petrophysical Log"@en ;
@@ -5769,6 +6244,42 @@ Under the International System of Units (via the International Committee for Wei
     skos:topConceptOf <https://data.idnau.org/pid/vocab/idn-role-codes> ;
 .
 
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_gas>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid_hydrocarbon> ;
+    skos:definition "A fluid hydrocarbon that is a gas at the surface. In the subsurface this sample maybe be free of liquid hydrocarbons, contain dissolved liquid hydrocarbons, or be dissolved in oil."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/gas_in_solution> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/seep_gas> ;
+    skos:prefLabel "hydrocarbon gas"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/marine_sediment>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/sediment> ;
+    skos:definition "A sediment (including porewater) deposited in a submarine or coastal, brackish or saline environment."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/marine_sediment_and_overlying_seawater> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/solid_phase> ;
+    skos:prefLabel "marine sediment"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/rock>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "A consolidated aggregate of one or more minerals or other rocks"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/coral> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/meteorite> ;
+    skos:prefLabel "rock"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
 <http://qudt.org/vocab/quantitykind/AmountOfSubstancePerUnitMass>
     a skos:Concept ;
     rdfs:isDefinedBy <http://qudt.org/vocab/quantitykind> ;
@@ -5832,7 +6343,7 @@ Under the International System of Units (via the International Committee for Wei
     a skos:Concept ;
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     rdfs:isDefinedBy <http://linked.data.gov.au/def/sample-type> ;
-    skos:definition "A core sample is a cylindrical section of (usually) a naturally occurring substance."@en ;
+    skos:definition "A core sample is a cylindrical section of (usually) a naturally occurring substance"@en ;
     skos:inScheme <http://linked.data.gov.au/def/sample-type> ;
     skos:notation "CORE" ;
     skos:prefLabel "Core"@en ;
@@ -5991,6 +6502,20 @@ Under the International System of Units (via the International Committee for Wei
     skos:prefLabel "X-ray imaging"@en ;
 .
 
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/animal_material>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:altLabel "organism"@en ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/organic_material> ;
+    skos:definition "Any material of or excreted from an animal.  eg; animal tissue, faeces, hair"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/animal_tissue> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/faeces> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hair> ;
+    skos:prefLabel "animal material"@en ;
+.
+
 <https://w3id.org/geochem/1.0/analyticalmethod/benchchemistry>
     a skos:Concept ;
     dcterms:provenance <https://w3id.org/geochem/1.0/analyticalmethod/smraddgencategory> ;
@@ -6063,6 +6588,49 @@ Under the International System of Units (via the International Committee for Wei
     skos:prefLabel "X-ray fluorescence spectrometry"@en ;
 .
 
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/regolith>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "Typically unconsolidated or fragmental material, either transported or residual origin, which covers bedrock. Includes surficial duricrusts that cap bedrock."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/lag> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/mixed_rock_and_sediment> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/sediment> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/soil> ;
+    skos:prefLabel "regolith"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/sediment>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/regolith> ;
+    skos:definition "Unconsolidated sedimentary material."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/lake_sediment> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/marine_sediment> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/overbank_sediment> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/stream_sediment> ;
+    skos:prefLabel "sediment"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/vegetation>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:altLabel "plant material"@en ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/organic_material> ;
+    skos:definition "Any part of a plant whether it be moss, grass, sedge, or the roots, bark, twigs or leaves of trees and shrubs."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/bark> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/foliage> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/plant_stem> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/root> ;
+    skos:prefLabel "vegetation"@en ;
+.
+
 <https://w3id.org/geochem/1.0/analyticalmethod/emissionspectrometry>
     a skos:Concept ;
     dcterms:source "https://en.wikipedia.org/wiki/Atomic_emission_spectroscopy"^^xsd:anyURI ;
@@ -6131,6 +6699,21 @@ Under the International System of Units (via the International Committee for Wei
     skos:prefLabel "Particle beam excitation"@en ;
 .
 
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/organic_material>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "Any carbon-based material."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/animal_material> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/coal> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/coke> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_material> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/vegetation> ;
+    skos:prefLabel "organic material"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
+.
+
 <https://w3id.org/geochem/1.0/analyticalmethod/isotoperatiomassspectrometry>
     a skos:Concept ;
     dcterms:source "https://www.emsl.pnnl.gov/science/related-instrument/isotope-ratio-mass-spectrometry/1795"^^xsd:anyURI ;
@@ -6174,6 +6757,54 @@ Under the International System of Units (via the International Committee for Wei
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem-methods> ;
     skos:notation "XRS" ;
     skos:prefLabel "X-ray spectrometry"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid_hydrocarbon>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_material> ;
+    skos:definition "Any carbon-hydrogen fluid material"@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/condensate> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/crude_oil> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/crude_oil_with_water> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_gas> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/refined_oil> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/seep_oil_and_gas> ;
+    skos:prefLabel "fluid hydrocarbon"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/hydrocarbon_material>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:broader <http://pid.geoscience.gov.au/def/voc/ga/materialtype/organic_material> ;
+    skos:definition "Any carbon-hydrogen based material."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/bitumen> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid_hydrocarbon> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/kerogen> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/pitch> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/resin> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/wax> ;
+    skos:prefLabel "hydrocarbon material"@en ;
+.
+
+<http://pid.geoscience.gov.au/def/voc/ga/materialtype/water>
+    a skos:Concept ;
+    dcterms:source "https://linked.data.gov.au/org/ga"^^xsd:anyURI ;
+    skos:definition "Undivided saline, brackish, or fresh water."@en ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-sample-materials> ;
+    skos:narrower
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/estuarine_water> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/groundwater> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/porewater> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/rain_water> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/sea_water> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/surface_water> ;
+    skos:prefLabel "water"@en ;
+    skos:topConceptOf <https://linked.data.gov.au/def/gsq-sample-materials> ;
 .
 
 <https://linked.data.gov.au/org/gsq>
@@ -6363,6 +6994,35 @@ The Sensor, Observation, Sample, and Actuator (SOSA) Ontology which is a Semanti
     skos:prefLabel "IDN Role Codes"@en ;
 .
 
+<https://linked.data.gov.au/def/gsq-sample-materials>
+    a skos:ConceptScheme ;
+    dcterms:created "2017-11-16"^^xsd:date ;
+    dcterms:creator <https://linked.data.gov.au/org/gswa> ;
+    dcterms:modified "2023-06-09"^^xsd:date ;
+    skos:definition "Types of material which samples may consist of"@en ;
+    skos:hasTopConcept
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/adsorbed_phase> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/atmospheric_dust> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/fluid> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/ice> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/inorganic_gas> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/mineral> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/organic_material> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/regolith> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/rock> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/snow> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/suspended_solids> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/unknown> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/unspecified_seabed_materials> ,
+        <http://pid.geoscience.gov.au/def/voc/ga/materialtype/water> ;
+    skos:prefLabel "GSWA Sample Materials"@en ;
+    prov:qualifiedDerivation [
+            prov:entity <http://pid.geoscience.gov.au/def/voc/ga/materialtype> ;
+            prov:hadRole <https://linked.data.gov.au/def/vocdermods/direct>
+        ] ;
+    prov:wasDerivedFrom <http://pid.geoscience.gov.au/def/voc/ga/materialtype> ;
+.
+
 <http://linked.data.gov.au/def/sample-type>
     a
         owl:Ontology ,
@@ -6373,7 +7033,7 @@ The Sensor, Observation, Sample, and Actuator (SOSA) Ontology which is a Semanti
     dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
     dcterms:publisher <https://linked.data.gov.au/org/gsq> ;
     ns1:status <https://linked.data.gov.au/def/reg-statuses/stable> ;
-    skos:definition "Types of sample used in Geoscience."@en ;
+    skos:definition "Types of sample used in Geoscience"@en ;
     skos:hasTopConcept
         <https://linked.data.gov.au/def/sample-type/blasted-sample> ,
         <https://linked.data.gov.au/def/sample-type/borehole-cement> ,
@@ -6431,7 +7091,7 @@ The Sensor, Observation, Sample, and Actuator (SOSA) Ontology which is a Semanti
         <https://linked.data.gov.au/def/sample-type/waste-rock> ,
         <https://linked.data.gov.au/def/sample-type/water-specimen> ,
         <https://linked.data.gov.au/def/sample-type/wellhead> ;
-    skos:historyNote "Created by GSQ staff from own knowledege" ;
+    skos:historyNote "Created by GSQ staff from own knowledge" ;
     skos:prefLabel "Sample Type"@en ;
 .
 

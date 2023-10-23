@@ -1,0 +1,1168 @@
+PREFIX : <https://linked.data.gov.au/def/sample-mesh-sizes/>
+PREFIX agldwgstatus: <https://linked.data.gov.au/def/reg-statuses/>
+PREFIX cs: <https://linked.data.gov.au/def/sample-mesh-sizes>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX reg: <http://purl.org/linked-data/registry#>
+PREFIX sampty: <https://linked.data.gov.au/def/sample-type/>
+PREFIX sdo: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+:1in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1 in" ;
+    skos:prefLabel "1 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:7-8in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 7/8 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "7/8 in" ;
+    skos:prefLabel "7/8 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:3-4in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 3/4 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "3/4 in" ;
+    skos:prefLabel "3/4 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:5-8in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 5/8 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "5/8 in" ;
+    skos:prefLabel "5/8 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:0.530in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 0.530 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "0.530 in" ;
+    skos:prefLabel "0.530 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:1-2in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1/2 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1/2 in" ;
+    skos:prefLabel "1/2 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:7-16in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 7/16 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "7/16 in" ;
+    skos:prefLabel "7/16 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:3-8in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 3/8 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "3/8 in" ;
+    skos:prefLabel "3/8 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:5-16in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 5/16 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "5/16 in" ;
+    skos:prefLabel "5/16 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:0.265in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 0.265 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "0.265 in" ;
+    skos:prefLabel "0.265 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:1-4in
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1/4 in"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1/4 in" ;
+    skos:prefLabel "1/4 in"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No3.5
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #3.5"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#3.5" ;
+    skos:prefLabel "#3.5"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No4
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #4"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#4" ;
+    skos:prefLabel "#4"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No5
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #5"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#5" ;
+    skos:prefLabel "#5"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No6
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #6"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#6" ;
+    skos:prefLabel "#6"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No7
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #7"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#7" ;
+    skos:prefLabel "#7"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No8
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #8"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#8" ;
+    skos:prefLabel "#8"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No10
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #10"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#10" ;
+    skos:prefLabel "#10"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No12
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #12"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#12" ;
+    skos:prefLabel "#12"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No14
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #14"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#14" ;
+    skos:prefLabel "#14"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No16
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #16"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#16" ;
+    skos:prefLabel "#16"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No18
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #18"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#18" ;
+    skos:prefLabel "#18"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No20
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #20"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#20" ;
+    skos:prefLabel "#20"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No25
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #25"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#25" ;
+    skos:prefLabel "#25"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No30
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #30"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#30" ;
+    skos:prefLabel "#30"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No35
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #35"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#35" ;
+    skos:prefLabel "#35"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No40
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #40"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#40" ;
+    skos:prefLabel "#40"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No45
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #45"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#45" ;
+    skos:prefLabel "#45"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No50
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #50"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#50" ;
+    skos:prefLabel "#50"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No60
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #60"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#60" ;
+    skos:prefLabel "#60"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No70
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #70"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#70" ;
+    skos:prefLabel "#70"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No80
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #80"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#80" ;
+    skos:prefLabel "#80"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No100
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #100"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#100" ;
+    skos:prefLabel "#100"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No120
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #120"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#120" ;
+    skos:prefLabel "#120"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No140
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #140"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#140" ;
+    skos:prefLabel "#140"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No170
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #170"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#170" ;
+    skos:prefLabel "#170"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No200
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #200"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#200" ;
+    skos:prefLabel "#200"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No230
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #230"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#230" ;
+    skos:prefLabel "#230"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No270
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #270"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#270" ;
+    skos:prefLabel "#270"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No325
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #325"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#325" ;
+    skos:prefLabel "#325"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No400
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #400"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#400" ;
+    skos:prefLabel "#400"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No450
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #450"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#450" ;
+    skos:prefLabel "#450"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No500
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #500"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#500" ;
+    skos:prefLabel "#500"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:No635
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size #635"@en ;
+    skos:inScheme cs: ;
+    skos:notation "#635" ;
+    skos:prefLabel "#635"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:25.0mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 25.0 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "25.0 mm" ;
+    skos:prefLabel "25.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:22.4mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 22.4 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "22.4 mm" ;
+    skos:prefLabel "22.4 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:20.0mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 20.0 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "20.0 mm" ;
+    skos:prefLabel "20.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:19.0mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 19.0 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "19.0 mm" ;
+    skos:prefLabel "19.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:18.0mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 18.0 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "18.0 mm" ;
+    skos:prefLabel "18.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:16.0mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 16.0 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "16.0 mm" ;
+    skos:prefLabel "16.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:14.0mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 14.0 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "14.0 mm" ;
+    skos:prefLabel "14.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:10.0mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 10.0 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "10.0 mm" ;
+    skos:prefLabel "10.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:13.2mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 13.2 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "13.2 mm" ;
+    skos:prefLabel "13.2 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:12.5mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 12.5 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "12.5 mm" ;
+    skos:prefLabel "12.5 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:11.2mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 11.2 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "11.2 mm" ;
+    skos:prefLabel "11.2 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:9.5mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 9.5 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "9.5 mm" ;
+    skos:prefLabel "9.5 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:9.0mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 9.0 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "9.0 mm" ;
+    skos:prefLabel "9.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:8.0mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 8.0 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "8.0 mm" ;
+    skos:prefLabel "8.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:7.1mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 7.1 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "7.1 mm" ;
+    skos:prefLabel "7.1 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:6.7mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 6.7 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "6.7 mm" ;
+    skos:prefLabel "6.7 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:6.3mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 6.3 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "6.3 mm" ;
+    skos:prefLabel "6.3 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:5.6mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 5.6 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "5.6 mm" ;
+    skos:prefLabel "5.6 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:5.0mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 5.0 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "5.0 mm" ;
+    skos:prefLabel "5.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:4.75mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 4.75 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "4.75 mm" ;
+    skos:prefLabel "4.75 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:4.50mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 4.50 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "4.50 mm" ;
+    skos:prefLabel "4.50 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:4.00mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 4.00 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "4.00 mm" ;
+    skos:prefLabel "4.00 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:3.55mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 3.55 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "3.55 mm" ;
+    skos:prefLabel "3.55 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:3.35mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 3.35 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "3.35 mm" ;
+    skos:prefLabel "3.35 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:3.15mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 3.15 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "3.15 mm" ;
+    skos:prefLabel "3.15 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:2.80mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 2.80 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "2.80 mm" ;
+    skos:prefLabel "2.80 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:2.50mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 2.50 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "2.50 mm" ;
+    skos:prefLabel "2.50 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:2.36mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 2.36 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "2.36 mm" ;
+    skos:prefLabel "2.36 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:2.00mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 2.00 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "2.00 mm" ;
+    skos:prefLabel "2.00 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:1.80mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1.80 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1.80 mm" ;
+    skos:prefLabel "1.80 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:1.70mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1.70 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1.70 mm" ;
+    skos:prefLabel "1.70 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:1.60mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1.60 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1.60 mm" ;
+    skos:prefLabel "1.60 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:1.40mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1.40 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1.40 mm" ;
+    skos:prefLabel "1.40 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:1.25mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1.25 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1.25 mm" ;
+    skos:prefLabel "1.25 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:1.18mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1.18 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1.18 mm" ;
+    skos:prefLabel "1.18 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:1.12mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1.12 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1.12 mm" ;
+    skos:prefLabel "1.12 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:1.00mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 1.00 mm"@en ;
+    skos:inScheme cs: ;
+    skos:notation "1.00 mm" ;
+    skos:prefLabel "1.00 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:850micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 850 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "850 micron" ;
+    skos:prefLabel "850 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:710micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 710 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "710 micron" ;
+    skos:prefLabel "710 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:600micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 600 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "600 micron" ;
+    skos:prefLabel "600 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:500micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 500 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "500 micron" ;
+    skos:prefLabel "500 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:425micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 425 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "425 micron" ;
+    skos:prefLabel "425 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:355micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 355 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "355 micron" ;
+    skos:prefLabel "355 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:300micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 300 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "300 micron" ;
+    skos:prefLabel "300 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:250micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 250 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "250 micron" ;
+    skos:prefLabel "250 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:212micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 212 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "212 micron" ;
+    skos:prefLabel "212 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:180micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 180 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "180 micron" ;
+    skos:prefLabel "180 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:150micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 150 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "150 micron" ;
+    skos:prefLabel "150 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:125micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 125 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "125 micron" ;
+    skos:prefLabel "125 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:106micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 106 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "106 micron" ;
+    skos:prefLabel "106 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:90micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 90 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "90 micron" ;
+    skos:prefLabel "90 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:75micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 75 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "75 micron" ;
+    skos:prefLabel "75 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:63micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 63 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "63 micron" ;
+    skos:prefLabel "63 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:53micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 53 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "53 micron" ;
+    skos:prefLabel "53 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:45micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 45 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "45 micron" ;
+    skos:prefLabel "45 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:38micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 38 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "38 micron" ;
+    skos:prefLabel "38 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:32micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 32 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "32 micron" ;
+    skos:prefLabel "32 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:25micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 25 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "25 micron" ;
+    skos:prefLabel "25 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:20micron
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size 20 micron"@en ;
+    skos:inScheme cs: ;
+    skos:notation "20 micron" ;
+    skos:prefLabel "20 micron"@en ;
+    skos:topConceptOf cs: ;
+.
+
+<https://linked.data.gov.au/org/gsq>
+    a sdo:Organization ;
+    sdo:name "Geological Survey of Queensland" ;
+    sdo:url "https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq"^^xsd:anyURI ;
+.
+
+cs:
+    a
+        owl:Ontology ,
+        skos:ConceptScheme ;
+    sdo:dateCreated "2020-10-20"^^xsd:date ;
+    sdo:creator <https://linked.data.gov.au/org/gsq> ;
+    sdo:dateModified "2023-10-20"^^xsd:date ;
+    skos:historyNote "Compiled by the Geological Survey of Queensland" ;
+    sdo:publisher <https://linked.data.gov.au/org/gsq> ;
+    reg:status agldwgstatus:experimental ;
+    skos:definition "Sizes of meshes used to strain soil samples"@en ;
+    skos:historyNote "Created by GSQ staff from own knowledge" ;
+    skos:hasTopConcept
+        :1in ,
+        :7-8in ,
+        :3-4in ,
+        :5-8in ,
+        :0.530in ,
+        :1-2in ,
+        :7-16in ,
+        :3-8in ,
+        :5-16in ,
+        :0.265in ,
+        :1-4in ,
+        :No3.5 ,
+        :No4 ,
+        :No5 ,
+        :No6 ,
+        :No7 ,
+        :No8 ,
+        :No10 ,
+        :No12 ,
+        :No14 ,
+        :No16 ,
+        :No18 ,
+        :No20 ,
+        :No25 ,
+        :No30 ,
+        :No35 ,
+        :No40 ,
+        :No45 ,
+        :No50 ,
+        :No60 ,
+        :No70 ,
+        :No80 ,
+        :No100 ,
+        :No120 ,
+        :No140 ,
+        :No170 ,
+        :No200 ,
+        :No230 ,
+        :No270 ,
+        :No325 ,
+        :No400 ,
+        :No450 ,
+        :No500 ,
+        :No635 ,
+        :25.0mm ,
+        :22.4mm ,
+        :20.0mm ,
+        :19.0mm ,
+        :18.0mm ,
+        :16.0mm ,
+        :14.0mm ,
+        :10.0mm ,
+        :13.2mm ,
+        :12.5mm ,
+        :11.2mm ,
+        :9.5mm ,
+        :9.0mm ,
+        :8.0mm ,
+        :7.1mm ,
+        :6.7mm ,
+        :6.3mm ,
+        :5.6mm ,
+        :5.0mm ,
+        :4.75mm ,
+        :4.50mm ,
+        :4.00mm ,
+        :3.55mm ,
+        :3.35mm ,
+        :3.15mm ,
+        :2.80mm ,
+        :2.50mm ,
+        :2.36mm ,
+        :2.00mm ,
+        :1.80mm ,
+        :1.70mm ,
+        :1.60mm ,
+        :1.40mm ,
+        :1.25mm ,
+        :1.18mm ,
+        :1.12mm ,
+        :1.00mm ,
+        :850micron ,
+        :710micron ,
+        :600micron ,
+        :500micron ,
+        :425micron ,
+        :355micron ,
+        :300micron ,
+        :250micron ,
+        :212micron ,
+        :180micron ,
+        :150micron ,
+        :125micron ,
+        :106micron ,
+        :90micron ,
+        :75micron ,
+        :63micron ,
+        :53micron ,
+        :45micron ,
+        :38micron ,
+        :32micron ,
+        :25micron ,
+        :20micron ;
+    skos:prefLabel "Sample Mesh Sizes"@en ;
+.

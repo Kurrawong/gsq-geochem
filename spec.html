@@ -659,17 +659,7 @@ pre.rouge {
 <li><a href="#_preamble">3. Preamble</a>
 <ul class="sectlevel2">
 <li><a href="#_conformance">3.1. Conformance</a></li>
-<li><a href="#_terms_definitions">3.2. Terms &amp; Definitions</a>
-<ul class="sectlevel3">
-<li><a href="#_iri">3.2.1. IRI</a></li>
-<li><a href="#_class">3.2.2. Class</a></li>
-<li><a href="#_owl">3.2.3. OWL</a></li>
-<li><a href="#_predicate">3.2.4. Predicate</a></li>
-<li><a href="#_rdf">3.2.5. RDF</a></li>
-<li><a href="#_rdfs">3.2.6. RDFS</a></li>
-<li><a href="#_sparql">3.2.7. SPARQL</a></li>
-</ul>
-</li>
+<li><a href="#_terms_definitions">3.2. Terms &amp; Definitions</a></li>
 <li><a href="#_namespaces">3.3. Namespaces</a></li>
 </ul>
 </li>
@@ -871,53 +861,39 @@ If you want to find the Geological Survey of Queensland&#8217;s rules for geoche
 </div>
 <div class="sect2">
 <h3 id="_terms_definitions"><a class="anchor" href="#_terms_definitions"></a>3.2. Terms &amp; Definitions</h3>
-<div class="sect3">
-<h4 id="_iri"><a class="anchor" href="#_iri"></a>3.2.1. IRI</h4>
+<h4 id="_iri" class="discrete">IRI</h4>
 <div class="paragraph">
 <p>An <em>Internationalized Resource Identifier</em> is a web address-style URL that is used as an identifier for something. It may be for a real-world object, e.g. <code><a href="https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince" class="bare">https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince</a></code> identifies the Queensland Geological Feature <em>Anakie Province</em> or for data only, e.g. <code>https://linked.data.gov.au/dataset/qgc/dataset-x</code> which is for a (fictitious) dataset of geochemistry observations.</p>
 </div>
 <div class="paragraph">
 <p>IRIs do not have to resolve - go somewhere online when clicked - but they do have to follow ll the rules for URLs such as no spaces.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_class"><a class="anchor" href="#_class"></a>3.2.2. Class</h4>
+<h4 id="_class" class="discrete">Class</h4>
 <div class="paragraph">
 <p>Within formal <a href="#_owl">OWL</a> modelling a class is a set of objects exhibiting common properties. For example, the set of all people who are studying could be defined as being within a <em>Student</em> class.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_owl"><a class="anchor" href="#_owl"></a>3.2.3. OWL</h4>
+<h4 id="_owl" class="discrete">OWL</h4>
 <div class="paragraph">
 <p>The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as Semantic Web documents. OWL 2 ontologies can be used along with information written in RDF, and OWL 2 ontologies themselves are primarily exchanged as RDF documents. <a href="#OWL2">OWL</a></p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_predicate"><a class="anchor" href="#_predicate"></a>3.2.4. Predicate</h4>
+<h4 id="_predicate" class="discrete">Predicate</h4>
 <div class="paragraph">
-<p>Predicates, within formal <a href="#_owl">OWL</a> modelling, are the defined relations between objects of different classes (see <a href="#_class">Section 3.2.2</a>) and also between objects and simple data values such as numbers and dates. For example, if <em>Person X</em> "knows" <em>Person Y</em>, then we can use a predicate of <code>knows</code> to relate them.</p>
+<p>Predicates, within formal <a href="#_owl">OWL</a> modelling, are the defined relations between objects of different classes (see <a href="#_class">Class</a>) and also between objects and simple data values such as numbers and dates. For example, if <em>Person X</em> "knows" <em>Person Y</em>, then we can use a predicate of <code>knows</code> to relate them.</p>
 </div>
 <div class="paragraph">
 <p>Frequently we use predicates already defined in existing ontologies. "knows", for example, is defined in the schema.org ontology <a href="#SDO">SDO</a> to be "The most generic bi-directional social/work relation".</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_rdf"><a class="anchor" href="#_rdf"></a>3.2.5. RDF</h4>
+<h4 id="_rdf" class="discrete">RDF</h4>
 <div class="paragraph">
 <p>The Resource Description Framework (RDF) is a framework for representing information in the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, blank nodes, or datatyped literals. They are used to express descriptions of resources. <a href="#RDFSPEC">RDFSPEC</a></p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_rdfs"><a class="anchor" href="#_rdfs"></a>3.2.6. RDFS</h4>
+<h4 id="_rdfs" class="discrete">RDFS</h4>
 <div class="paragraph">
 <p>RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary. <a href="#_rdfs">RDFS</a></p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_sparql"><a class="anchor" href="#_sparql"></a>3.2.7. SPARQL</h4>
+<h4 id="_sparql" class="discrete">SPARQL</h4>
 <div class="paragraph">
 <p>SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <a href="#_sparql">SPARQL</a></p>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -2108,7 +2084,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_rdfs">Section 3.2.6</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_rdfs">RDFS</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -4752,7 +4728,7 @@ All three forms of data can be supplied to and validated in the <a href="https:/
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-10-22 04:15:25 UTC
+Last updated 2023-10-23 11:52:39 UTC
 </div>
 </div>
 </body>
