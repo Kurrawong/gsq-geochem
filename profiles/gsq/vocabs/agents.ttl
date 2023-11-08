@@ -18,3 +18,9 @@ PREFIX sdo: <https://schema.org/>
     sdo:name "KurrawongAI" ;
 .
 
+<https://example.com/org/xyz>
+    a sdo:Organization ;
+    sdo:identifier "XYZ" ;
+    sdo:name "XYZ Corp" ;
+.
+
