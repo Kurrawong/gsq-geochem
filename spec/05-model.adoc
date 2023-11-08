@@ -253,6 +253,10 @@ PREFIX ex: <http://example.com/>
 PREFIX sdo: <https://schema.org/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 
+PREFIX sampty: <https://linked.data.gov.au/def/sample-type/>
+PREFIX material: <http://pid.geoscience.gov.au/def/voc/ga/materialtype/>
+PREFIX colour: <https://linked.data.gov.au/def/soil-colour/>
+
 ex:obs-a
     a sosa:Observation ;
     sosa:hasFeatureOfInterest ex:sample-c ;
@@ -261,10 +265,26 @@ ex:obs-a
 ex:sample-c
     a sosa:Sample ;
     sdo:name "Sample C" ;
-    sdo:additionalType ex:soil-sample ;
+    sdo:additionalType sampty:soil-sample ;
     sdo:description "A soil sample from Sandy Creek" ;
     sdo:location "Zillmere Rock Store: Zone 4, Shelf N, Box 3" ;
     sosa:isSampleOf ex:sandy-creek ;
+    sdo:material material:soil ;
+    sdo:color colour:yellow ;
+
+.
+
+ex:sample-x
+    a sosa:Sample ;
+    sdo:name "Sample X" ;
+    sdo:additionalType sampty:core ;
+    sdo:description "A 1/2 m core sample from Drillhole Y" ;
+    sdo:location "Zillmere Rock Store: Zone 23, Shelf P, Box 17" ;
+    sosa:isSampleOf ex:drillhole-y ;
+    sdo:material material:rock ;
+    sdo:depth
+        327.3 ,
+        327.8 ;
 .
 ----
 |===
@@ -729,7 +749,7 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 
 | IRI | `sdo:dateCreated`
 | Name | date created
-| Definition | The date on which the CreativeWork was created
+| Definition | The date on which the item was created
 | Scope Note | Use this predicate to indicate a <<xsd:date, date>> or <<xsd:dateTime, date time>>
 | Is Defined By | <<SDO, SDO>>
 | Example | See the Example for <<sdo:Dataset, Dataset>>
@@ -744,7 +764,7 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 
 | IRI | `sdo:dateModified`
 | Name | date modified
-| Definition | The date on which the CreativeWork was most recently modified
+| Definition | The date on which the item was most recently modified
 | Scope Note | Use this predicate to indicate a <<xsd:date, date>> or <<xsd:dateTime, date time>>
 | Is Defined By | <<SDO, SDO>>
 | Example | See the Example for <<sdo:Dataset, Dataset>>
@@ -757,8 +777,8 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 |===
 | Property | Value
 
-| IRI | `sdo:dateModified`
-| Name | date modified
+| IRI | `sdo:keywords`
+| Name | keywords
 | Definition | Keywords or tags used to describe some item
 | Scope Note | Use this predicate to indicate <<skos:Concept, Concept>> objects from vocabularies that the object for which this predicate is set, likely a <<sdo:Dataset, Dataset>> is related to. This property is likely to be automatically calculated for datasets, based on the objects indicated by predicates such as <<sosa:observedProperty, observed property>> and other things that the data within it references
 | Is Defined By | <<SDO, SDO>>
@@ -819,8 +839,8 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 
 | IRI | `sdo:value`
 | Name | value
-| Definition | The simple data type - text, number, date etc. - representation of a quantity
-| Scope Note | Use this predicate to indicate a literal value within the <<sosa:Result, Result>> of an <<sosa:Observation, Observation>>
+| Definition | The representation of a quantity or a classification
+| Scope Note | Use this predicate to indicate a literal value or a classification, a <<skos:Concept, Concept>>, within the <<sosa:Result, Result>> of an <<sosa:Observation, Observation>>
 | Is Defined By | <<SDO, SDO>>
 | Example | See the Example for <<sosa:Result, Result>>
 |===
@@ -896,7 +916,7 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 | IRI | `sdo:depth`
 | Name | depth
 | Definition | The depth of the thing
-| Scope Note | Use this predicate to indicate the depth of a <<sosa:Sample, Sample>>, given as a float value. If the Sample is sensible described with a depth interval, use this property twoce for the top and bottom values
+| Scope Note | Use this predicate to indicate the depth of a <<sosa:Sample, Sample>>, in metres, from ground height, given as a float value. If the Sample is sensible described with a depth interval, use this property twice for the top and bottom values
 | Is Defined By | <<SDO, SDO>>
 | Example | See the Example for <<sosa:Sample, Sample>>
 |===
