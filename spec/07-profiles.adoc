@@ -1,3 +1,4 @@
+[[profiles]]
 == Profiles
 
 A Profile (capital 'P') is "A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications"<<PROF>>. In the context of this geochemistry specification, Profiles mandate that certain classes and properties be present in data and that specific vocabularies are used for concept references.

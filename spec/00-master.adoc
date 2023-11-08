@@ -20,8 +20,8 @@
 :source-highlighter: rouge
 
 [#overview]
-.An informal overview diagram of the main part of this Data Model
-image::../img/sosa-overview.svg[Model Overview,align="center"]
+.An overview diagram whole Data Model
+image::../img/whole-model.svg[Model Overview,align="center",link="../img/whole-model.svg"]
 
 == Metadata
 

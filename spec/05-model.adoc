@@ -46,7 +46,7 @@ The classes (defined in <<Class, 'Class'>>) of this model are those indicated in
 | IRI | `sdo:Dataset`
 | Name | Dataset
 | Definition | A body of structured information describing some topic(s) of interest
-| Scope Note | Use this class to describe a package of data that contains one or more <<sosa:ObservationCollection, Observation Collection>> objects.
+| Scope Note | Use this class to describe a package of data that contains one or more <<sosa:ObservationCollection, Observation Collection>> objects
 | Is Defined By | <<SDO, SDO>>
 | Expected Properties | At least <<sdo:name, name>>, <<sdo:description, description>>, <<sdo:dateCreated, data created>>, <<sdo:dateModified, data modified>>, and <<prov:qualifiedAttribution, qualified attribution>>, but potentially any other <<SDO, SDO>> predicates thought relevant to well describe the dataset. <<sdo:keywords, keyword>> predicate values may be calculated from contained data and need not be supplied.
 | Example
@@ -377,7 +377,7 @@ ex:sample-c
 | Name | string
 | Definition | A literal datatype that may contain characters, line feeds, carriage returns, and tab characters
 | Scope Note | This class is used whenever literal values are enclosed in quotes and not further qualified with another specialised datatype
-| Is Defined By | <<XSD2>>
+| Is Defined By | <<XSD2, XSD2>>
 | Example
 a| [source,turtle]
 ----
@@ -403,7 +403,7 @@ PREFIX sosa: <http://www.w3.org/ns/sosa/>
 | Name | float
 | Definition | A literal datatype representing a floating point number
 | Scope Note | This class is used whenever literal values are numerical and contain a decimal point
-| Is Defined By | <<XSD2>>
+| Is Defined By | <<XSD2, XSD2>>
 | Example
 a| [source,turtle]
 ----
@@ -431,7 +431,7 @@ ex:obs-a
 | Name | date
 | Definition | A literal datatype representing a date, formatted according to https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] (YYYY-MM-DD)
 | Scope Note | Use this datatype for date literal values
-| Is Defined By | <XSD2>>
+| Is Defined By | <<XSD2, XSD2>>
 | Example | See the Example for <<sdo:Dataset, Dataset>>
 |===
 
@@ -445,8 +445,8 @@ ex:obs-a
 | IRI | `xsd:dateTime`
 | Name | date time
 | Definition | A literal datatype representing a date and a time, formatted according to https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] (YYYY-MM-DDTHH:II:SS.SSS)
-| Scope Note | Use this datatype for date & time literal values
-| Is Defined By | <XSD2>>
+| Scope Note | Use this datatype for date literals with a time component
+| Is Defined By | <<XSD2, XSD2>>
 | Example
 a| [source,turtle]
 ----
