@@ -182,10 +182,12 @@ ex:obs-a
 ex:sample-c
     a sosa:Sample ;
     sdo:name "Sample C" ;
-    sdo:additionalType ex:soil-sample ;
+    sdo:additionalType <https://linked.data.gov.au/def/sample-type/soil-sample> ;
     sdo:description "A soil sample from Sandy Creek" ;
     sdo:location "Zillmere Rock Store: Zone 4, Shelf N, Box 3" ;
     sosa:isSampleOf ex:sandy-creek ;
+    sdo:material <http://pid.geoscience.gov.au/def/voc/ga/materialtype/soil> ;
+    sdo:color <https://linked.data.gov.au/def/soil-colour/yellow> ;
 .""" ;
 .
 
@@ -303,3 +305,288 @@ ex:obs-a
 .""" ;
 .
 
+sosa:usedProcedure
+    a owl:ObjectProperty ;
+    sdo:name "used procedure" ;
+    sdo:description "A relation to link to a re-usable Procedure used in making an Observation" ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range skos:Concept ;
+    skos:scopeNote "Use this property to indicate a Procedure used to obtain an Observation but indicate Concept objects taken from vocabularies" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example "See the Example for Observation" ;
+.
+
+sosa:madeBySensor
+    a owl:ObjectProperty ;
+    sdo:name "made by sensor" ;
+    sdo:description "Relation between an Observation and the Sensor which made the Observations" ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range skos:Concept ;
+    skos:scopeNote "Use this property to indicate a Sensor used to obtain an Observation but indicate Concept objects taken from vocabularies" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example "See the Example for Observation" ;
+.
+
+sosa:observedProperty
+    a owl:ObjectProperty ;
+    sdo:name "observed property" ;
+    sdo:description "Relation linking an Observation to the property that was observed. The Observable Property should be a property of the Feature Of Interest" ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range skos:Concept ;
+    skos:scopeNote "Use this property to indicate an ObservableProperty observed by an Observation but indicate Concept objects taken from vocabularies" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example "See the Example for Observation" ;
+.
+
+sosa:hasFeatureOfInterest
+    a owl:ObjectProperty ;
+    sdo:name "has feature of interest" ;
+    sdo:description "Relation between an Observation and the entity whose quality was observed" ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:FeatureOfInterest ;
+    skos:scopeNote "Use this property to indicate a Feature Of Interest whose properties were observed by an Observation and expect to indicate objects taken from lists of spatial objects" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example "See the Example for Feature Of Interest" ;
+.
+
+sosa:resultTime
+    a owl:DatatypeProperty ;
+    sdo:name "result time" ;
+    sdo:description "The instant of time when the Observation activity was completed" ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range rdfs:Literal ;
+    skos:scopeNote "Use this property to indicate the date and time of the production of a Result by an Observation. Indicate a literal date time or date value" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example "See the Example for Observation" ;
+.
+
+sosa:hasResult
+    a owl:ObjectProperty ;
+    sdo:name "has result" ;
+    sdo:description "Relation linking an Observation and a Result, which contains a value representing the value associated with the observed Property" ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:Result ;
+    skos:scopeNote "Use this property to indicate the Result, or multiple Results, produced by an Observation" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example "See the Example for Observation" ;
+.
+
+sosa:isSampleOf
+    a owl:ObjectProperty ;
+    sdo:name "is sample of" ;
+    sdo:description "Relation from a Sample to the FeatureOfInterest that it is intended to be representative of" ;
+    rdfs:domain sosa:Sample ;
+    rdfs:range sosa:FeatureOfInterest ;
+    skos:scopeNote "Use this property to indicate the Feature Of Interest that a Sample is a sample of" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example "See the Example of Feature Of Interest" ;
+.
+
+sosa:hasMember
+    a owl:ObjectProperty ;
+    sdo:name "has member" ;
+    sdo:description "Link to a member of a collection of observations that share the same value for one or more of the characteristic properties" ;
+    rdfs:domain sosa:ObservationCollection ;
+    rdfs:range sosa:Observation ;
+    skos:scopeNote "Use this property to link the Observation Collection objects to Observation" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example "See the Example for Observation Collection" ;
+.
+
+geo:hasGeometry
+    a owl:ObjectProperty ;
+    sdo:name "has geometry" ;
+    sdo:description "A spatial representation for a given Feature" ;
+    rdfs:range geo:Geometry ;
+    skos:scopeNote "Use this property to link a FeatureOfInterest to a Geometry" ;
+    rdfs:isDefinedBy geo: ;
+    skos:example "See the Example for Feature Of Interest" ;
+.
+
+geo:asWKT
+    a owl:DatatypeProperty ;
+    sdo:name "as WKT" ;
+    sdo:description "The WKT serialization of a Geometry" ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range rdfs:Literal ;
+    skos:scopeNote "Use this property to indicate a Well-Known Text representation of a Geometry" ;
+    rdfs:isDefinedBy geo: ;
+    skos:example "See the Example for Feature Of Interest" ;
+.
+
+prov:qualifiedAttribution
+    a owl:ObjectProperty ;
+    sdo:name "qualified attribution" ;
+    sdo:description "The ascribing of an entity to an agent" ;
+    rdfs:domain sdo:Dataset ;
+    rdfs:range prov:Attribution ;
+    skos:scopeNote "Use this predicate to link a Dataset to a Attribution which then links to an Agent, which must be an Organization or a Person, and a Concept" ;
+    rdfs:isDefinedBy prov: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+prov:agent
+    a owl:ObjectProperty ;
+    sdo:name "agent" ;
+    sdo:description "References an Agent which influenced a resource" ;
+    rdfs:domain prov:Attribution ;
+    rdfs:range prof:Agent ;
+    skos:scopeNote "Use this predicate to link an Attribution to an Agent, which must be an Organization or a Person" ;
+    rdfs:isDefinedBy prov: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+prov:hadRole
+    a owl:ObjectProperty ;
+    sdo:name "had role" ;
+    sdo:description "A role is the function of an entity or agent with respect to an activity" ;
+    rdfs:domain prov:Attribution ;
+    rdfs:range skos:Concept ;
+    skos:scopeNote "Use this predicate to link an Attribution to a Concept" ;
+    rdfs:isDefinedBy prov: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+sdo:name
+    a owl:DatatypeProperty ;
+    sdo:name "name" ;
+    sdo:description "The name of the item" ;
+    rdfs:range rdfs:Literal ;
+    skos:scopeNote "Use this predicate to indicate a textual name for something" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+sdo:description
+    a owl:DatatypeProperty ;
+    sdo:name "description" ;
+    sdo:description "A description of the item" ;
+    rdfs:range rdfs:Literal ;
+    skos:scopeNote "Use this predicate to indicate a textual description for something" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+sdo:dateCreated
+    a owl:DatatypeProperty ;
+    sdo:name "date created" ;
+    sdo:description "The date on which the item was created" ;
+    rdfs:range rdfs:Literal ;
+    skos:scopeNote "Use this predicate to indicate a date or date time" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+sdo:dateModified
+    a owl:DatatypeProperty ;
+    sdo:name "date modified" ;
+    sdo:description "The date on which the item was most recently modified" ;
+    rdfs:range rdfs:Literal ;
+    skos:scopeNote "Use this predicate to indicate a date or date time" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+sdo:keywords
+    a owl:DatatypeProperty ;
+    sdo:name "keywords" ;
+    sdo:description "Keywords or tags used to describe some item" ;
+    skos:scopeNote "Use this predicate to indicate Concept objects from vocabularies that the object for which this predicate is set, likely a Dataset is related to. This property is likely to be automatically calculated for datasets, based on the objects indicated by predicates such as observed property and other things that the data within it references" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+sdo:hasPart
+    a owl:ObjectProperty ;
+    sdo:name "has part" ;
+    sdo:description "Indicates an item is part of this item" ;
+    skos:scopeNote "Use this predicate to indicate that a Dataset includes an Observation Collection" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+sdo:location
+    a rdfs:Property ;
+    sdo:name "location" ;
+    sdo:description "The location of, for example, where an event is happening, where an organization is located, or where an action takes place" ;
+    rdfs:domain geo:SpatialObject ;
+    skos:scopeNote "Use this predicate to indicate either a located objects supplied externally or a textual description of a location that is being indicated for something, like a Sample. Note, The best use of this property is to indicate objects in managed spatial object collections, but this property should also be used to indicate a location description in text when that is better that indicating it with a Geometry, as per the Example for Sample" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Sample" ;
+.
+
+sdo:unitCode
+    a owl:ObjectProperty ;
+    sdo:name "unit code" ;
+    sdo:description "The unit of measurement given using a URL" ;
+    rdfs:domain sosa:Result ;
+    rdfs:range skos:Concept ;
+    skos:scopeNote "Use this predicate to indicate a Concept in a vocabulary of units of measure" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Result" ;
+.
+
+sdo:value
+    a rdfs:Property ;
+    sdo:name "value" ;
+    sdo:description "The representation of a quantity or a classification" ;
+    rdfs:domain sosa:Result ;
+    skos:scopeNote "Use this predicate to indicate a literal value or a classification, a Concept, within the Result of an Observation" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Result" ;
+.
+
+sdo:marginOfError
+    a owl:DatatypeProperty ;
+    sdo:name "margin of error" ;
+    sdo:description "A margin of error for an Observation" ;
+    rdfs:domain owl:unionOf (
+        sosa:Result
+        sosa:Observation
+        sosa:ObservationCollection
+    ) ;
+    rdfs:range rdfs:Literal ;
+    skos:scopeNote "Use this predicate to indicate a numerical or categorical margin of error within the Result of an Observation" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Result" ;
+.
+
+sdo:additionalType
+    a owl:ObjectProperty ;
+    sdo:name "additional type" ;
+    sdo:description "An additional type for the item, typically used for adding more specific types from external vocabularies" ;
+    rdfs:range skos:Concept ;
+    skos:scopeNote "Use this predicate to indicate a Concept from a vocabulary containing specialised types of the object that this predicates is used on, e.g. values from a Sample Types vocabulary if the object using this is a Sample" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Sample" ;
+.
+
+sdo:color
+    a owl:ObjectProperty ;
+    sdo:name "colour" ;
+    sdo:description "The colour of the thing" ;
+    rdfs:range skos:Concept ;
+    skos:scopeNote "Use this predicate to indicate a Concept from a vocabulary of colour codes" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Sample" ;
+.
+
+sdo:material
+    a owl:ObjectProperty ;
+    sdo:name "material" ;
+    sdo:description "A material that something is made from, e.g. leather, wool, cotton, paper" ;
+    rdfs:range skos:Concept ;
+    skos:scopeNote "Use this predicate to indicate a Concept from materials relevant to the subject ype, e.g. Sample" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Sample" ;
+.
+
+sdo:depth
+    a owl:DatatypeProperty ;
+    sdo:name "depth" ;
+    sdo:description "The depth of the thing" ;
+    rdfs:range rdfs:Literal ;
+    skos:scopeNote "Use this predicate to indicate the depth of a Sample, in metres, from ground height, given as a float value. If the Sample is sensible described with a depth interval, use this property twice for the top and bottom values" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example "See the Example for Sample" ;
+.
