@@ -1,0 +1,305 @@
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sdo: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+<https://linked.data.gov.au/def/geochem/ont>
+    a owl:Ontology ;
+    sdo:name "Geochemistry Data Model Ontology" ;
+    sdo:description """This is the ontology expression of the Geochemistry Data Model published at https://linked.data.gov.au/def/geochem.
+
+The model is intended to be used to represent geochemistry data - samples, observations and results. This ontology provides for an RDF form of the model.
+
+This model does not contain many constraints on its classes and properties: they are expected to be provided for by profiles of this model.
+
+See https://linked.data.gov.au/def/geochem#profiles for the list of all known profiles of this model.""" ;
+    sdo:historyNote "This ontology and the whole Geochemistry Data Model were developed in 2023 by the Geological Survey of Queensland to facilitate machine-readable forms of geochemistry data representation, exchange and storage." ;
+    sdo:creator <https://linked.data.gov.au/org/gsq> ;
+    sdo:publisher <https://linked.data.gov.au/org/gsq> ;
+    sdo:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+    sdo:copyrightNotice "(c) Geological Survey of Queensland, 2023" ;
+    sdo:copyrightHolder <https://linked.data.gov.au/org/gsq> ;
+    sdo:dateCreated "2023-09-15"^^xsd:date ;
+    sdo:dateModified "2023-11-08"^^xsd:date ;
+    sdo:dateIssued "2023-11-08"^^xsd:date ;
+    sdo:version "1.0.0" ;
+    owl:versionIRI <https://linked.data.gov.au/def/geochem/ont/1.0.0> ;
+    sdo:keywords "geochemistry" , "sampling" , "observations" ;
+.
+
+sdo:Dataset
+    a owl:Class ;
+    sdo:name "Dataset" ;
+    sdo:description "A body of structured information describing some topic(s) of interest" ;
+    skos:scopeNote "Use this class to describe a package of data that contains one or more Observation Collection objects" ;
+    rdfs:isDefinedBy sdo: ;
+    skos:example """PREFIX gch: <https://linked.data.gov.au/def/geochem/>
+PREFIX ex: <http://example.com/>
+PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rc: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
+PREFIX sdo: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:dataset-n
+    sdo:name "Example Dataset N" ;
+    sdo:description "An example dataset containing an example Observation Collection object" ;
+    sdo:dateCreated "2023-09-20"^^xsd:date ;
+    sdo:dateModified "2023-09-22"^^xsd:date ;
+    prov:qualifiedAttribution [
+        prov:agent <http://example.com/agent/acme-corp> ;
+        prov:hadRole rc:originator ;  # SKOS Concept for a role
+    ] ;
+    sdo:keywords op:amount-of-gold ;
+    sdo:hasPart ex:obscol-a ;
+.
+
+ex:obscol-a
+    a sosa:ObservationCollection ;
+.
+    """ ;
+.
+
+prov:Attribution
+    a owl:Class ;
+    sdo:name "Attribution" ;
+    sdo:description "The ascribing of an entity to an agent" ;
+    skos:scopeNote "Use objects of this class to link Dataset objects to Agent objects and the roles they played with respect to the dataset" ;
+    rdfs:isDefinedBy prov: ;
+    skos:example "See the Example for Dataset: the range value for the prov:agent predicate of the Dataset" ;
+.
+
+prov:Agent
+    a owl:Class ;
+    sdo:name "Agent" ;
+    sdo:description "Something that bears some form of responsibility for an activity taking place" ;
+    skos:scopeNote "Use specialised objects of this class - Organisation or Person - that bear some form of responsibility for a Dataset where their role is qualified within a Attribution" ;
+    rdfs:isDefinedBy prov: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+sosa:ObservationCollection
+    a owl:Class ;
+    sdo:name "Observation Collection" ;
+    sdo:description "Collection of one or more observations, whose members share a common value for one or more predicate" ;
+    skos:scopeNote "Use this class to represent batches of geochemistry observations. Additional metadata for batches, such as run numbers, may be added to the Observation Collection using custom predicates. Other predicates defined in SDO may also be used" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example """PREFIX ex: <http://example.com/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-1
+    a sosa:Observation ;
+.
+
+ex:obs-2
+    a sosa:Observation ;
+.
+
+ex:obs-3
+    a sosa:Observation ;
+.
+
+# it is inferred that each of the member Observation objects of this
+# Observation Collection object have the same Feature Of Interest
+#- `ex:sample-d`
+ex:obscol-a
+    a sosa:ObservationCollection ;
+    sosa:hasMember
+        ex:obs-1 ,
+        ex:obs-2 ,
+        ex:obs-3 ;
+    sosa:hasFeatureOfInterest ex:sample-d ;
+.""" ;
+.
+
+sosa:Observation
+    a owl:Class ;
+    sdo:name "Observation" ;
+    sdo:description "Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest" ;
+    skos:scopeNote "Use this class to represent a single event of observation of a property of a Feature Of Interest (Sample)" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example """PREFIX ex: <http://example.com/>
+PREFIX op: <https://linked.data.gov.au/def/observable-properties/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:usedProcedure ex:procedure-b ;
+    sosa:madeBySensor ex:sensor-c ;
+    sosa:observedProperty op:amount-of-gold ;
+    sosa:hasFeatureOfInterest ex:sample-d ;
+    sosa:resultTime "2023-05-11"^^xsd:date ;
+    sosa:hasResult
+        ex:result-e ,
+        ex:result-f ;
+.""" ;
+.
+
+sosa:Result
+    a owl:Class ;
+    sdo:name "Result" ;
+    sdo:description "The Result of an Observation" ;
+    skos:scopeNote "Use this class to encapsulate the numerical or other value of the result of an observation as well as any known unit of measure. Uncertainty (error) may be recorded within a Result too" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example """PREFIX ex: <http://example.com/>
+PREFIX sdo: <https://schema.org>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:hasResult ex:result-d ;
+.
+
+ex:result-d
+    sdo:value 0.027  ;
+    sdo:unitCode <https://qudt.org/vocab/unit/PPM> ;
+    sdo:marginOfError 0.005 ;
+.""" ;
+.
+
+sosa:Sample
+    a owl:Class ;
+    sdo:name "Sample" ;
+    sdo:description "Samples are typically subsets or extracts from the feature of interest of an observation" ;
+    skos:scopeNote "Use this class to model the thing for which properties are being determined by geochemical analysis" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example """PREFIX ex: <http://example.com/>
+PREFIX sdo: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-a
+    a sosa:Observation ;
+    sosa:hasFeatureOfInterest ex:sample-c ;
+.
+
+ex:sample-c
+    a sosa:Sample ;
+    sdo:name "Sample C" ;
+    sdo:additionalType ex:soil-sample ;
+    sdo:description "A soil sample from Sandy Creek" ;
+    sdo:location "Zillmere Rock Store: Zone 4, Shelf N, Box 3" ;
+    sosa:isSampleOf ex:sandy-creek ;
+.""" ;
+.
+
+sosa:FeatureOfInterest
+    a owl:Class ;
+    sdo:name "Feature Of Interest" ;
+    sdo:description "The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result" ;
+    skos:scopeNote "Use this class to indicate not the direct object whose properties are observed by an Observation if that thing is a sample - use Sample. Use only if the thing whose properties are observed is the object of ultimate interest, e.g. a rock unit. Expected use is to indicate an FoI in an existing dataset, such as a geological unit in the Queensland Geological Features Dataset" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example """PREFIX ex: <http://example.com/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+ex:obs-1
+    a sosa:Observation ;
+    sosa:hasFeatureOfInterest ex:sample-c ;
+.
+
+ex:sample-c
+    a sosa:Sample ;
+    sosa:isSampleOf <https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince> ;
+.
+
+<https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince>
+    a sosa:FeatureOfInterest , geo:Feature ;
+    geo:hasGeometry [
+        a geo:Geometry ;
+        geo:asWKT "POLYGON((146.850699 -23.704934,146.850699 -20.863771,148.028386 -20.863771,148.028386 -23.704934,146.850699 -23.704934))" ;
+    ] ;
+.""" ;
+.
+
+geo:Geometry
+    a owl:Class ;
+    sdo:name "Geometry" ;
+    sdo:description "A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS)" ;
+    skos:scopeNote "To be used to indicate geospatial coordinates for a Feature Of Interest" ;
+    rdfs:isDefinedBy sosa: ;
+    skos:example "See the Example for Feature Of Interest" ;
+.
+
+skos:Concept
+    a owl:Class ;
+    sdo:name "Concept" ;
+    sdo:description "An idea or notion; a unit of thought" ;
+    skos:scopeNote "While this class is to be used to model the objects indicated by the properties listed in the Vocabularies: Where section, Concepts are not expected to be explicitly defined instead, as the objects indicated by predicates such as had role are understood to be Concepts, use of this class is implied only" ;
+    rdfs:isDefinedBy skos: ;
+.
+
+rdfs:Literal
+    a owl:Class ;
+    sdo:name "Literal" ;
+    sdo:description "Literal values, eg. textual strings and integers" ;
+    skos:scopeNote "Do not use this class directly but instead use specialised RDF literals, such as string, date, float," ;
+    rdfs:isDefinedBy rdfs: ;
+.
+
+xsd:string
+    a owl:Datatype ;
+    sdo:name "string" ;
+    sdo:description "A literal datatype that may contain characters, line feeds, carriage returns, and tab characters" ;
+    skos:scopeNote "This class is used whenever literal values are enclosed in quotes and not further qualified with another specialised datatype" ;
+    rdfs:isDefinedBy xsd: ;
+    skos:example """PREFIX ex: <http://example.com/>
+PREFIX sdo: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+<https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince>
+    a sosa:FeatureOfInterest ;
+    sdo:name "Anakie Province" ;  # a string value
+.""" ;
+.
+
+xsd:float
+    a owl:Datatype ;
+    sdo:name "float" ;
+    sdo:description "A literal datatype representing a floating point number" ;
+    skos:scopeNote "This class is used whenever literal values are numerical and contain a decimal point" ;
+    rdfs:isDefinedBy xsd: ;
+    skos:example """PREFIX ex: <http://example.com/>
+PREFIX sdo: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:obs-a
+    a sosa:Result ;
+    sdo:value 0.027  ; # a float value
+    sdo:marginOfError "0.05"^^xsd:float ;  # also a float value
+.""" ;
+.
+
+xsd:date
+    a owl:Datatype ;
+    sdo:name "date" ;
+    sdo:description "A literal datatype representing a date, formatted according to ISO 8601 (YYYY-MM-DD)" ;
+    skos:scopeNote "Use this datatype for date literal values" ;
+    rdfs:isDefinedBy xsd: ;
+    skos:example "See the Example for Dataset" ;
+.
+
+xsd:dateTime
+    a owl:Datatype ;
+    sdo:name "date time" ;
+    sdo:description "A literal datatype representing a date and a time, formatted according to ISO 8601 (YYYY-MM-DDTHH:II:SS.SSS)" ;
+    skos:scopeNote "Use this datatype for date literals with a time component" ;
+    rdfs:isDefinedBy xsd: ;
+    skos:example """PREFIX ex: <http://example.com/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:obs-a
+    a sosa:Observation ;
+    sosa:resultTime "2023-09-22T17:35:22"^^xsd:dateTime ;
+.""" ;
+.
+
