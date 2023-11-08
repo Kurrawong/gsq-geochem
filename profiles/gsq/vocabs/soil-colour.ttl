@@ -1,0 +1,198 @@
+PREFIX : <https://linked.data.gov.au/def/soil-colour/>
+PREFIX agldwgstatus: <https://linked.data.gov.au/def/reg-statuses/>
+PREFIX cs: <https://linked.data.gov.au/def/soil-colour>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX reg: <http://purl.org/linked-data/registry#>
+PREFIX sampty: <https://linked.data.gov.au/def/sample-type/>
+PREFIX sdo: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+:black
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size black"@en ;
+    skos:inScheme cs: ;
+    skos:notation "BLACK" ;
+    skos:prefLabel "black"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:blue
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size blue"@en ;
+    skos:inScheme cs: ;
+    skos:notation "BLUE" ;
+    skos:prefLabel "blue"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:brown
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size brown"@en ;
+    skos:inScheme cs: ;
+    skos:notation "BROWN" ;
+    skos:prefLabel "brown"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:buff
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size buff"@en ;
+    skos:inScheme cs: ;
+    skos:notation "BUFF" ;
+    skos:prefLabel "buff"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:cream
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size cream"@en ;
+    skos:inScheme cs: ;
+    skos:notation "CREAM" ;
+    skos:prefLabel "cream"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:green
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size green"@en ;
+    skos:inScheme cs: ;
+    skos:notation "GREEN" ;
+    skos:prefLabel "green"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:grey
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size grey"@en ;
+    skos:inScheme cs: ;
+    skos:notation "GREY" ;
+    skos:prefLabel "grey"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:multi-coloured
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size multi-coloured"@en ;
+    skos:inScheme cs: ;
+    skos:notation "MULTI-COLOURED" ;
+    skos:prefLabel "multi-coloured"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:offwhite
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size off white"@en ;
+    skos:inScheme cs: ;
+    skos:notation "OFF WHITE" ;
+    skos:prefLabel "off white"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:orange
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size orange"@en ;
+    skos:inScheme cs: ;
+    skos:notation "ORANGE" ;
+    skos:prefLabel "orange"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:pink
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size pink"@en ;
+    skos:inScheme cs: ;
+    skos:notation "PINK" ;
+    skos:prefLabel "pink"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:purple
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size purple"@en ;
+    skos:inScheme cs: ;
+    skos:notation "PURPLE" ;
+    skos:prefLabel "purple"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:red
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size red"@en ;
+    skos:inScheme cs: ;
+    skos:notation "RED" ;
+    skos:prefLabel "red"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:white
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size white"@en ;
+    skos:inScheme cs: ;
+    skos:notation "WHITE" ;
+    skos:prefLabel "white"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:yellow
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Mesh size yellow"@en ;
+    skos:inScheme cs: ;
+    skos:notation "YELLOW" ;
+    skos:prefLabel "yellow"@en ;
+    skos:topConceptOf cs: ;
+.
+
+<https://linked.data.gov.au/org/gsq>
+    a sdo:Organization ;
+    sdo:name "Geological Survey of Queensland" ;
+    sdo:url "https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq"^^xsd:anyURI ;
+.
+
+cs:
+    a
+        owl:Ontology ,
+        skos:ConceptScheme ;
+    sdo:dateCreated "2020-10-20"^^xsd:date ;
+    sdo:creator <https://linked.data.gov.au/org/gsq> ;
+    sdo:dateModified "2023-10-20"^^xsd:date ;
+    skos:historyNote "Compiled by the Geological Survey of Queensland" ;
+    sdo:publisher <https://linked.data.gov.au/org/gsq> ;
+    reg:status agldwgstatus:experimental ;
+    skos:definition "Colours that soil can be"@en ;
+    skos:historyNote "Created by GSQ staff from own knowledge" ;
+    skos:hasTopConcept
+        :black ,
+        :blue ,
+        :brown ,
+        :buff ,
+        :cream ,
+        :green ,
+        :grey ,
+        :multi-coloured ,
+        :offwhite ,
+        :orange ,
+        :pink ,
+        :purple ,
+        :red ,
+        :white ,
+        :yellow ;
+    skos:prefLabel "Soil Colours"@en ;
+.
