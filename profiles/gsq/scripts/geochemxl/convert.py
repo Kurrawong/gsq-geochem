@@ -10,6 +10,21 @@ from .models import Dataset, Agent, DrillHole, DrillHoleSample, SurfaceSample, G
 from .utils import *
 
 
+def make_vocab_a_list_of_notations(path_to_vocab_file: Path):
+    notations = []
+
+    g = Graph().parse(path_to_vocab_file)
+
+    for s in g.subjects(RDF.type, SKOS.Concept):
+        notations.append(str(g.value(subject=s, predicate=SKOS.notation)))
+
+    if len(notations) is 0:
+        for s in g.subjects(RDF.type, SDO.Organization):
+            notations.append(str(g.value(subject=s, predicate=SDO.identifier)))
+
+    return sorted(notations)
+
+
 def extract_dataset(wb: openpyxl.Workbook, template_version: float, external_metadata: str = None) -> Dataset:
     def _extract_external_metadata():
         g = Graph().parse(external_metadata)
@@ -131,7 +146,7 @@ def extract_samples(wb: openpyxl.Workbook, template_version: float, known_drillh
                     dispatch_date=sheet[f"H{row}"].value,
                     instrument_type=sheet[f"I{row}"].value,
                     specific_gravity=sheet[f"J{row}"].value,
-                    magnetic_susceptibility=float(sheet[f"K{row}"].value),
+                    magnetic_susceptibility=sheet[f"K{row}"].value,
                     remarks=sheet[f"L{row}"].value
                 )
             )
@@ -144,21 +159,24 @@ def extract_samples(wb: openpyxl.Workbook, template_version: float, known_drillh
 
     # only process example row if example data altered
     row = 12
-    if sheet["B9"].value != "DD12345":
+    if sheet["B9"].value != "SS12345":
         row = 9
 
-    if sheet["B10"].value != "DD12346":
+    if sheet["B10"].value != "SS12346":
         row = 10
 
-    if sheet["B11"].value != "DD12347":
+    if sheet["B11"].value != "SS12347":
         row = 11
 
     while True:
         if sheet[f"B{row}"].value is not None:
             sample_id = sheet[f"B{row}"].value
             geom = Geometry(
-                as_wkt=convert_easting_northing_elevation_to_wkt(sheet[f"C{row}"].value, sheet[f"D{row}"].value,
-                                                                 sheet[f"E{row}"].value))
+                as_wkt=convert_easting_northing_elevation_to_wkt(
+                    sheet[f"I{row}"].value,
+                    sheet[f"J{row}"].value,
+                    sheet[f"K{row}"].value)
+            )
             samples.append(
                 SurfaceSample(
                     iri=SAMPLES[sample_id],
@@ -178,7 +196,8 @@ def extract_samples(wb: openpyxl.Workbook, template_version: float, known_drillh
                     remarks=sheet[f"R{row}"].value,
                 )
             )
-
+        else:
+            break
 
     return samples
 
@@ -229,11 +248,7 @@ def excel_to_rdf(
         return grf.serialize(format="longturtle")
 
 
-def main(args=None):
-
-    if args is None:  # run via entrypoint
-        args = sys.argv[1:]
-
+def make_parser(args):
     parser = argparse.ArgumentParser(
         prog="geoexcelrdf", formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
@@ -295,7 +310,22 @@ def main(args=None):
         default=None
     )
 
-    args = parser.parse_args(args)
+    parser.add_argument(
+        "-u",
+        "--update_workbook",
+        help="Update a given Excel Workbook's vocabularies",
+        action="store_true",
+    )
+
+    return parser.parse_args(args)
+
+
+def main(args=None):
+
+    if args is None:  # run via entrypoint
+        args = sys.argv[1:]
+
+    args = make_parser(args)
 
     if not args:
         # show help if no args are given
@@ -316,6 +346,47 @@ def main(args=None):
         print(
             f"Known template versions: {', '.join(sorted(KNOWN_TEMPLATE_VERSIONS, reverse=True))}"
         )
+    elif args.update_workbook:
+        print("Updating template")
+        if args.file_to_convert is None:
+            raise ValueError("If you select the option '-u', you must specify an Excel file to update")
+        elif not Path(args.file_to_convert).is_file():
+            raise ValueError("Files to update must exist")
+        elif not args.file_to_convert.suffix.lower().endswith(tuple(EXCEL_FILE_ENDINGS)):
+            raise ValueError("Files to update must end in .xslx")
+
+        wb = load_workbook(args.file_to_convert)
+        template_version = get_template_version(wb)
+
+        # test that we have a valid template variable
+        from .utils import KNOWN_TEMPLATE_VERSIONS
+        if template_version not in KNOWN_TEMPLATE_VERSIONS:
+            raise ValueError(
+                f"Unknown Template Version. Known Template Versions are {', '.join(KNOWN_TEMPLATE_VERSIONS)},"
+                f" you supplied {template_version}"
+            )
+        ws = wb["VALIDATION_DICTIONARY"]
+
+        for vocab_id, vocab_path in FIELD_VOCABS.items():
+            col = VOCAB_COLUMNS[vocab_id]
+            row = 5
+            for i in make_vocab_a_list_of_notations(vocab_path):
+                ws[f"{col}{row}"] = i
+                row += 1
+
+        from openpyxl.worksheet.datavalidation import DataValidation
+        dv = DataValidation(
+            type="list",
+            formula1="=VALIDATION_DICTIONARY!$J$5:$J$13",
+            showDropDown=False
+        )
+        ws2 = wb["DRILLHOLE_SAMPLE"]
+        ws2.add_data_validation(dv)
+
+        print(create_vocab_validation_formula(wb, "VALIDATION_DICTIONARY", "DRILL_TYPE"))
+        print(create_vocab_validation_formula(wb, "DICTIONARY", "CODE"))
+
+        wb.save(Path(args.file_to_convert).with_suffix(".y.xlsx"))
     elif args.file_to_convert:
         print(f"Processing file {args.file_to_convert}")
 
@@ -334,4 +405,3 @@ def main(args=None):
             except ConversionError as err:
                 logging.error("{0}".format(err))
                 return 1
-

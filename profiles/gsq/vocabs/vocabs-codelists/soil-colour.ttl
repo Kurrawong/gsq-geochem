@@ -1,11 +1,6 @@
-PREFIX : <https://linked.data.gov.au/def/soil-colour/>
-PREFIX agldwgstatus: <https://linked.data.gov.au/def/reg-statuses/>
-PREFIX cs: <https://linked.data.gov.au/def/soil-colour>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX : <https://linked.data.gov.au/def/gsq-geochem/soil-colour/>
+PREFIX cs: <https://linked.data.gov.au/def/gsq-geochem/soil-colour>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX reg: <http://purl.org/linked-data/registry#>
-PREFIX sampty: <https://linked.data.gov.au/def/sample-type/>
 PREFIX sdo: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -13,7 +8,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :black
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size black"@en ;
+    skos:definition "Definition for black"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "BLACK" ;
     skos:prefLabel "black"@en ;
@@ -23,7 +19,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :blue
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size blue"@en ;
+    skos:definition "Definition for blue"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "BLUE" ;
     skos:prefLabel "blue"@en ;
@@ -33,7 +30,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :brown
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size brown"@en ;
+    skos:definition "Definition for brown"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "BROWN" ;
     skos:prefLabel "brown"@en ;
@@ -43,7 +41,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :buff
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size buff"@en ;
+    skos:definition "Definition for buff"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "BUFF" ;
     skos:prefLabel "buff"@en ;
@@ -53,7 +52,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :cream
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size cream"@en ;
+    skos:definition "Definition for cream"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "CREAM" ;
     skos:prefLabel "cream"@en ;
@@ -63,7 +63,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :green
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size green"@en ;
+    skos:definition "Definition for green"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "GREEN" ;
     skos:prefLabel "green"@en ;
@@ -73,7 +74,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :grey
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size grey"@en ;
+    skos:definition "Definition for grey"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "GREY" ;
     skos:prefLabel "grey"@en ;
@@ -83,17 +85,19 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :multi-coloured
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size multi-coloured"@en ;
+    skos:definition "Definition for multi-coloured"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "MULTI-COLOURED" ;
     skos:prefLabel "multi-coloured"@en ;
     skos:topConceptOf cs: ;
 .
 
-:offwhite
+:off-white
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size off white"@en ;
+    skos:definition "Definition for off white"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "OFF WHITE" ;
     skos:prefLabel "off white"@en ;
@@ -103,7 +107,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :orange
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size orange"@en ;
+    skos:definition "Definition for orange"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "ORANGE" ;
     skos:prefLabel "orange"@en ;
@@ -113,7 +118,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :pink
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size pink"@en ;
+    skos:definition "Definition for pink"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "PINK" ;
     skos:prefLabel "pink"@en ;
@@ -123,7 +129,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :purple
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size purple"@en ;
+    skos:definition "Definition for purple"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "PURPLE" ;
     skos:prefLabel "purple"@en ;
@@ -133,7 +140,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :red
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size red"@en ;
+    skos:definition "Definition for red"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "RED" ;
     skos:prefLabel "red"@en ;
@@ -143,7 +151,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :white
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size white"@en ;
+    skos:definition "Definition for white"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "WHITE" ;
     skos:prefLabel "white"@en ;
@@ -153,31 +162,23 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :yellow
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition "Mesh size yellow"@en ;
+    skos:definition "Definition for yellow"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
     skos:notation "YELLOW" ;
     skos:prefLabel "yellow"@en ;
     skos:topConceptOf cs: ;
 .
 
-<https://linked.data.gov.au/org/gsq>
+<https://linked.dat.gov.au/org/gsq>
     a sdo:Organization ;
     sdo:name "Geological Survey of Queensland" ;
     sdo:url "https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq"^^xsd:anyURI ;
 .
 
 cs:
-    a
-        owl:Ontology ,
-        skos:ConceptScheme ;
-    sdo:dateCreated "2020-10-20"^^xsd:date ;
-    sdo:creator <https://linked.data.gov.au/org/gsq> ;
-    sdo:dateModified "2023-10-20"^^xsd:date ;
-    skos:historyNote "Compiled by the Geological Survey of Queensland" ;
-    sdo:publisher <https://linked.data.gov.au/org/gsq> ;
-    reg:status agldwgstatus:experimental ;
-    skos:definition "Colours that soil can be"@en ;
-    skos:historyNote "Created by GSQ staff from own knowledge" ;
+    a skos:ConceptScheme ;
+    skos:definition "Soil Colour"@en ;
     skos:hasTopConcept
         :black ,
         :blue ,
@@ -187,12 +188,21 @@ cs:
         :green ,
         :grey ,
         :multi-coloured ,
-        :offwhite ,
+        :off-white ,
         :orange ,
         :pink ,
         :purple ,
         :red ,
         :white ,
         :yellow ;
-    skos:prefLabel "Soil Colours"@en ;
+    skos:historyNote "Created from the Geochemistry data exchange Excel Template v2, list SOIL_COLOUR November 2023" ;
+    skos:notation "SOIL_COLOUR" ;
+    skos:prefLabel "Soil Colour"@en ;
+    sdo:copyrightNotice "(c) Geological Survey of Queensland, 2023" ;
+    sdo:creator <https://linked.dat.gov.au/org/gsq> ;
+    sdo:dateCreated "2023-11-11"^^xsd:date ;
+    sdo:dateModified "2023-11-11"^^xsd:date ;
+    sdo:license <https://purl.org/NET/rdflicense/cc-by4.0> ;
+    sdo:publisher <https://linked.dat.gov.au/org/gsq> ;
 .
+

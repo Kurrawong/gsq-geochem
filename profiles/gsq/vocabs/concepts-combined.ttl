@@ -1,0 +1,5297 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+<http://qudt.org/vocab/unit/ATM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/BAR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/BBL_UK_PET>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/BBL_UK_PET-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/BBL_UK_PET-PER-HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/BBL_UK_PET-PER-MIN>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/BTU_IT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/COUNT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/CentiM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/CentiM3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/CentiM3-PER-TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/CentiPOISE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/DARCY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/DAYS>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/DEG_C>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/DEG_F>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/FRACTION>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/FT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/FT-PER-HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/FT-PER-SEC>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/FT3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/FT3-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/FT3-PER-TON_LONG>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/FT3-TON_LONG>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/GAL_UK>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/GM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/GM-PER-CentiM3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/GM-PER-KiloGM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/GM-PER-TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/GigaJ>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/HR-PER-FT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/HR-PER-M>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/HZ>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/IN>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/Kilo-FT3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/KiloBBL_UK_PET>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/KiloBTU_IT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/KiloGM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/KiloGM-PER-M3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/KiloL>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/KiloL-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/KiloLB>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/KiloPA>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/L>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/L-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/L-PER-HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/L-PER-MIN>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/LB>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/LB-PER-FT3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/LB-PER-GAL>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/M>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/M-PER-HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/M-PER-SEC>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/M3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/M3-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/M3-PER-HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/M3-PER-TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MIN>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MegaBTU_IT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MegaFT3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MegaFT3-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MegaL>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MegaL-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MegaM3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MegaPA>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MegaTONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MicroS-PER-CentiM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MilliDARCY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MilliGM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MilliGM-PER-GM-TOC>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MilliGM-PER-TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MilliM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/MilliS>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/OHM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/OZ>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/OZ-PER-TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/OZ-PER-TON_LONG>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/PA>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/PA-SEC>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/PERCENT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/PERCENT-BY-MASS>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/PERCENT-BY-VOL>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/PPB>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/PPM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/PSI>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/PetaJ>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/RELATIVE-DENSITY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/REV-PER-MIN>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/SEC>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/SHOTS-PER-FT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/SHOTS-PER-M>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<http://qudt.org/vocab/unit/TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/agent/acme>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/agent> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/agent/gsq>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/agent> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/agent/kurrawongai>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/agent> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/adularia-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/albitic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/alunite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/anhydrite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/argillic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/calc-silicate-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/carbonate-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/chlorite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/epidote-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/goethite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/greisenisation>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/hematite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/hornblende-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/hornfels>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/hydrothermal-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/jarositic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/jasperoid-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/kaolinitic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/leaching>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/limonite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/magnetite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/montmorillonite-smectite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/muscovite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/oxidation>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/palagonitised>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/phyllic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/potassic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/propyllitic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/pyritic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/pyrophyllite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/saussurite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/scapolitic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/sericitic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/serpentinised>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/silica-alteration-silicified>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/skarn>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/sodic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/sulphide-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/talc-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/tourmaline-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/tremolite-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/undefined-alteration-assemblage>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration/zeolitic-alteration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/agate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/aggregate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/alumina>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/aluminium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/aluminosilicate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/alunite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/amazonite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/amber>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/amethyst>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/andalusite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/anhydrite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/anthophyllite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/anthracite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/antimony>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/apatite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/apatite-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/aquamarine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/arsenic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/asbestos>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/asbestos-amphibole>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/asbestos-serpentine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/asphalt>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/barium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/baryte>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/basalt>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/base-metal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/bauxite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/bentonite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/beryl>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/beryllium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/bismuth>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/black-coal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/boghead-coal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/borate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/boron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/brick-clay>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/bromine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/brown-coal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/cadmium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/calcite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/cannel-coal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/carbonaceous-material>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/carnallite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/carnelian>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/cassiterite-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/cerium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/cesium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chalcedony>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chemical-compound-product>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chemical-oxide-product>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chert>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chlorite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chrome>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chromite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chromium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chrysoberyl>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chrysoprase>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/chrysotile>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/citrine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/clay>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/coal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/coal-bed-methane>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/cobalt>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/coking-coal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/copper>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/cordierite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/corundum>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/corundum-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/crocidolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/crushed-rock>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/cryolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/diamond>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/diamond-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/diatomite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/dimension-stone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/diopside-enstatite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/dioptase>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/direct-shipping-ore>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/direct-use-commodity>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/dumortierite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/dysprosium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/emerald>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/energy-resources>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/epsomite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/erbium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/euclase>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/europium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/evaporite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/feldspar>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/feldspar-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/ferrous-metal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/fluorine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/fluorite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/foundry-sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/frac-sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/fullers-earth>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/gadolinium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/gallium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/garnet>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/garnet-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/gas-hydrate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/gaseous-hydrocarbons>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/geothermal-energy>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/germanium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/glauconite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/gold>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/granite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/graphite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/greenhouse-gases>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/greenstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/gypsum>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/hafnium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/halloysite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/heavy-rare-earth-element>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/heavy-rare-earth-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/heliodor>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/hematite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/hematite-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/hematite-ore>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/holmium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/hydro-power>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/ilmenite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/indium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/industrial-material>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/industrial-mineral>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/industrial-rock>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/iodine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/iridium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/iron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/iron-ore>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/iron-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/jade>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/jarosite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/kaolin>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/kornerupine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/kyanite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/kyanite-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/lanthanum>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/laterite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/lazulite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/lead>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/leucoxene>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/light-rare-earth-elements>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/light-rare-earth-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/lime>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/limestone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/liquid-hydrocarbons>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/lithium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/lithium-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/lutetium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/magnesia>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/magnesite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/magnesium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/magnetite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/magnetite-ore>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/malachite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/manganese>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/manganese-ore>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/manganese-oxides>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/manganese-silicates>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/manganite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/marble>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/marcasite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/mariposite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/marmatite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/martite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/massicot>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/matildite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/melanite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/melanterite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/meneghinite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/mercury>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/metahalloysite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/metal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/metalloid>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/metallurgical-coal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/metatorbernite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/methane>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/mica>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/microcline>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/microlite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/millerite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/mimetite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/mineral-sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/miscellaneous-dimension-stones>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/molybdenite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/molybdenum>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/molybdite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/monazite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/montmorillonite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/montroydite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/moonstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/morganite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/moss-agate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/muscovite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/naptha>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/natrolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/natural-gas>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/natural-secondary-aggregate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/naumannite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/neodiginite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/neodymium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/neodymium-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/nepheline>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/nepheline-syenite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/nickel>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/niobium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/niobium--columbium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/niobium-pentoxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/nitrate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/non-metal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/obsidian>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/ochre>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/oil>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/oil-shale>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/oligoclase>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/olivine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/olivine-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/olivinite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/onyx>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/opal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/opalised-wood>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/organic-material>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/orpiment>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/orthoclase>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/orthopyroxene>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/osmiridium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/osmium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/palladium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/palygorskite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/paragonite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/peat>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pentlandite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/periclase>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/peridot>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/perlite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/perthite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/petrified-wood>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/petroleum>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/petzite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/phenacite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/phenakite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/phlogopite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/phosgenite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/phosphate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/phosphate-rock>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/phosphate-rock-phosphorite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/phosphorous>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/phosphorous-pentoxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/phosphorus>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/piemontite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pitchblende>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/plagioclase>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/platinum>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/platinum-group-metal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/plumbo-jarosite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/plumbogummite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pollucite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/polybasite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/potash>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/potash-feldspar>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/potassium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/potassium--potash>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pottery-clay>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/powellite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pozzolan>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/praseodymium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/praseodymium-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/precious-metal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/prehnite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/primary-aggregate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/produced-commodity>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/promethium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/proustite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/psilomelane>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pulverised-coal-injection>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pulverised-lime>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pumice>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pumpellyite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pyrargyrite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pyrite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pyrochlore>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pyrolusite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pyromorphite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pyrope>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pyrophyllite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pyroxene>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/pyrrhotite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/quarry-rock>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/quartz>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/quartz-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/quartzite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/radium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rare-earth-element>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rare-earth-elements>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rare-earth-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rare-earths>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/realgar>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/recycled-aggregate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/refractory-minerals>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/renardite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/reservoir-gas>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rhenium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rhodium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rhodochrosite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rhodolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rhodonite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rhyolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/riebeckite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rip-rap>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/riprap>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/road-pavement-gravel>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rose-quartz>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rubidium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/ruby>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/ruthenium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/rutile>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/salt>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/samarium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/samarium-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sand-and-gravel>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sand-glass>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sandstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sanidine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/saponite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sapphire>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sapphirine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/scandium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/scapolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/scheelite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/scorodite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/selenite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/selenium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/semi-anthracite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/semseyite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/senarmontite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sepiolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sequestered-commodity>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sericite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/serpentine>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/shale>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/shale-gas>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/shale-oil>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/shell-grit>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/siderite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/silica>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/silica-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/silica-sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/silicon>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sillimanite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/silver>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sinhalite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/skutterudite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/slate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/smaltite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/smectite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/smithsonite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/smokey-quartz>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/soda-ash>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sodalite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/soddyite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sodium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sodium-bicarbonate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/solar-power>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/spectrolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sperrylite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/spessartite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sphalerite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sphene--titanite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/spinel>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/spinel-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/spodumene>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/spongolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/stannite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/staurolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/steatite-talc>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/stephanite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/stibiconite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/stibnite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/stilbite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/stillwellite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/stolzite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/strengite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/stromeyerite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/strontianite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/strontium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sulphur>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sylvanite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/sylvite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/talc>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/talc-steatite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tantalite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tantalum>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tantalum-pentoxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tanzanite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tar>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tar-sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tellurides>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tellurium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tennantite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tenorite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/terbium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/terracotta-clay>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tetrahedrite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/thallium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/thenardite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/thermal-coal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/thorianite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/thorite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/thorium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/thulium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/thunder-egg>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tin>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/titanite--sphene>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/titanium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/titanomagnetite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/topaz>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/torbanite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/torbernite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tourmaline>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tremolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tremolite-actinolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tridymite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tsavorite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tungsten>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tungstic-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/tungstite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/turgite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/turquoise>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/umohoite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/undefined>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/unknown>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/uralite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/uraninite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/uranium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/uranium-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/uvarovite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/valentinite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/vanadinite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/vanadium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/vanadium-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/vanadium-pentoxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/variscite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/vermiculite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/vesuvianite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/vivianite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/water>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/wavellite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/waxes>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/willemite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/wind-power>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/witherite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/wolframite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/wollastonite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/wulfenite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/wurtzite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/xenon>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/xenotime>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/xenotime-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/ytterbium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/yttrium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/yttrium-oxide>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zeolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zinc>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zincite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zinkenite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zinnwaldite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zircon>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zircon-gemstone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zirconia>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zirconium>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zoisite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity/zunyite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/commodity> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/agd66>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/agd84>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg66-z54>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg66-z55>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg66-z56>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg84-z54>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg84-z55>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg84-z56>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/gda2020>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/gda94>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga2020-z54>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga2020-z55>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga2020-z56>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga94-z54>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga94-z55>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga94-z56>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/current-class/appraisal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/current-class/bedrock>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/current-class/development>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/current-class/exploration>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/current-class/geotechnical>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/current-class/metallurgical>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/current-class/trenching>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/current-class/water>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/depth-datum/drillpipe-collar-dc>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/depth-datum> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/depth-datum/ground-level-gl>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/depth-datum> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/depth-datum/kelly-bushing-kb>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/depth-datum> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/depth-datum/other>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/depth-datum> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/depth-datum/rotary-table-rt>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/depth-datum> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/100mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/10c>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/12c>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/130mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/144mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/150mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/1875mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/215mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/3c>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/456in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/45in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/4625in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/475in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/476mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/4875in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/4c>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/4in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/507mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/525in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/55in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/5in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/611mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/635mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/6c>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/850mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/8c>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/8in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/bq>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/hmlc>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/hq>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/hq3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/nmlc>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/nq>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/nq2>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/nq3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/nqbq>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/nr>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/nx>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/pmlc>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/pq>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter/pq3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-diameter> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/air-core>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/auger-handheld>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/auger-mechanical>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/box-core>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/cable-percussion>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/core-unspecified>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/diamond-drilling>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/percussion-drilling-unspecified>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/reverse-air-blast-rab>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/reverse-circulation-drilling>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/rotary-air>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/rotary-drilling-unspecified>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/rotary-hammer>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/rotary-mud>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/sonic-core>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/vacuum-drilling>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type/vibro-core>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/drill-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/boulder>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/c-sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/clay>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/cobble>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/f-sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/granule>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/m-sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/pebble>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/silt>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/vc-sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size/vf-sand>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/grain-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/lease-name/epc>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/lease-name> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/lease-name/epm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/lease-name> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/lease-name/mdl>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/lease-name> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/lease-name/ml>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/lease-name> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/agps>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/dgps>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/drone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/estimate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/gps>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/lidar>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/pace-and-compass>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/theodolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/0265-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/0530-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/1-2-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/1-4-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/1-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/100-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/106-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/112-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/118-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/125-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/125-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/132-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/140-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/150-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/160-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/170-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/180-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/180-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/190-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/20-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/200-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/212-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/224-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/236-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/25-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/250-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/250-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/280-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/3-4-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/3-8-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/300-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/315-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/32-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/335-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/355-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/355-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/38-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/400-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/425-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/45-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/450-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/475-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/5-16-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/5-8-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/50-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/500-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/53-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/56-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/600-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/63-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/63-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/67-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/7-16-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/7-8-in>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/71-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/710-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/75-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/80-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/850-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/90-micron>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/90-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/95-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No10>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No100>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No12>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No120>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No14>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No140>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No16>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No170>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No18>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No20>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No200>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No230>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No25>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No270>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No30>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No325>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No35>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No4>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No40>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No400>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No45>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No450>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No5>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No50>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No500>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No6>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No60>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No635>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No7>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No70>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No8>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No80>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/qaqc/average-assay-as-qc-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/qaqc> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/qaqc/blank>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/qaqc> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/qaqc/field-duplicate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/qaqc> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/qaqc/laboratory-duplicate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/qaqc> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/qaqc/laboratory-standard>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/qaqc> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/qaqc/qa-qc-of-known-value>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/qaqc> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/qaqc/re-assayed-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/qaqc> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/qaqc/re-split>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/qaqc> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/qaqc/standard>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/qaqc> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/reserve-class-id/indicated-resource>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/reserve-class-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/reserve-class-id/inferred-resource>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/reserve-class-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/reserve-class-id/measured-resource>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/reserve-class-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/reserve-class-id/probable-reserves>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/reserve-class-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/reserve-class-id/proved-reserves>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/reserve-class-id> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/resource-status/alienated>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/resource-status> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/resource-status/resource-being-mined>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/resource-status> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/resource-status/resource-mined-out>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/resource-status> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/resource-status/resource-unalienated>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/resource-status> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/resource-status/sterilised>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/resource-status> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/resource-status/stockpile-mineralised-material>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/resource-status> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/resource-status/tailings-dam>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/resource-status> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type/gyroscopic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type/magnetic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type/multishot-camera>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type/mwd>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type/singleshot-camera>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type/totco>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type/wireline>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-material/air>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-material> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-material/rock>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-material> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-material/sediment>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-material> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-material/soil>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-material> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-material/vegetation>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-material> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-material/water>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-material> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling/core>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling/cuttings>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling/hcore>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling/percussion>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling/pulp>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling/qcore>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling/rab-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling/rc-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling/water-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/alluvial-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/auger-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/beach-sediments>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/bedrock-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/bulk-soil-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/bulk-stream-sediment-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/calcrete-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/channel-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/composite-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/ferruginous-gravel>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/filter-residue-of-water-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/float>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/geochemical-vegetation-samples>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/grab-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/heavy-mineral-sands>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/lag-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/magnetic-lag-fraction>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/mine-dump-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/mine-tailings-sample-after-concentrate-extracted>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/non-magnetic-lag-fraction>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/pan-concentrate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/petrology-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/pit-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/pulp>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/rock-chip-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/sieved-soil-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/sieved-stream-sediment-samples>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/sluice-box-concentrate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/soil-gas-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/stream-bank-sediment-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/termite-mound-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/trench-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/water-sample>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface/wholerock>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/sample-type-surface> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/black>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/blue>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/brown>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/buff>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/cream>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/green>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/grey>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/multi-coloured>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/off-white>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/orange>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/pink>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/purple>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/red>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/white>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour/yellow>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/bedding>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/boudinage>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/cleavage>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/contact>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/drilling-induced-tensile-fracture>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/fault>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/fold-axis>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/foliation>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/fracture-cleavage>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/lineation>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/shear>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature/vein>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/anastomosing-cleavage>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/angular-matrix-supported-breccia>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/bedding>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/bedding-overturned>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/bedding-parallel>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/blasto--mylonitic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/boudinaged>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/brecciated>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/cataclasite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/chevron-folds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/cleavage>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/contact>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/convoluted-shear-fabric>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/crenulated>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/disharmonic-folds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/elongation-lineation>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/fault>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/fault-breccia>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/fault-gouge-pug>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/fault-grooves>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/fault-zone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/flasher-bedding>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/fold-hinge>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/folded>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/foliated>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/foliated-cataclasite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/fracture>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/fracture-cleavage>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/gradational-contact>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/graded-bedding>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/harmonic-folds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/intersection-lineation>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/intra-folial-folds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/irregular-contact>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/isoclinal-folds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/jigsaw-breccia>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/joint>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/kink-folds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/lenticular-bedding>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/lineation>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/moderately-foliated>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/moderately-jointed-5-10-per-meter>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/mylonite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/parallel-folds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/planar-crossbedding>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/planar-shear-fabric>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/polyclinical-folds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/pseudotachylite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/ptygmatic-folds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/random-fractures>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/rounded-clasts-matrix-supported>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/schistose-fabric>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/shear>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/sheath-folds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/slaty-cleavage>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/slikenside>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/strongly-foliated>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/styolite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/ultra-mylonite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure/vein>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structure> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/adcumulate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/algal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/amorphous>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/amygdaloidal>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/angular>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/anhedral>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/aphanitic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/augen>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/autobrecciated>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/banded>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/bedded>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/biogenic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/bladed-phenocrysts>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/brecciated>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/carbonate-replacement>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/cataclastic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/cemented>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/chill-zone>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/clast-supported>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/cm-bedded>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/columnar-joints>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/cross-bedding>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/crystaline>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/cumulate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/fiamme>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/flow-banding>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/flow-top-breccia>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/fractured>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/glassy>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/gneissose>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/graded-beds>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/granophyric>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/granular>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/graphic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/holocrystalline>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/hornfels>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/hyrothermal-brecca>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/ignimbritic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/interbedded>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/jigsaw>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/laminated>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/massive>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/matrix-supported>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/meter-bedded>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/mm-bedded>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/moderatly-sorted>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/myrmekitic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/ophitic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/orthocumulate>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/pebbly>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/pegmatite>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/phenocrysts-in-coarse-matrix>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/phenocrysts-in-fine-matrix>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/phenocrysts-in-glassy-matrix>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/phenocrysts-in-medium-matrix>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/phyric>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/pillowed>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/poorly-sorted>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/porphyritic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/ripple-marks>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/rounded>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/schist>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/slatey-cleavage>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/spinifex-texture>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/sub-ophitic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/vesicular>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/vuggy>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/well-sorted>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/xenolithic>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture/zoned-phenocrysts>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/texture> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/weathering/completely-oxidised>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/weathering> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/weathering/completely-weathered>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/weathering> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/weathering/fresh>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/weathering> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/weathering/moderately-weathered>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/weathering> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/weathering/partially-weathered>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/weathering> ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/weathering/strongly-weathered>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/weathering> ;
+.
+

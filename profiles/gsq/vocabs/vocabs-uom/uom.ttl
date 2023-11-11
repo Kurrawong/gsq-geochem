@@ -1,0 +1,1357 @@
+PREFIX : <https://linked.data.gov.au/def/gsq-geochem/uom/>
+PREFIX agldwgstatus: <https://linked.data.gov.au/def/reg-statuses/>
+PREFIX cs: <https://linked.data.gov.au/def/gsq-geochem/uom>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX reg: <http://purl.org/linked-data/registry#>
+PREFIX sdo: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX unit: <http://qudt.org/vocab/unit/>
+PREFIX units: <http://qudt.org/vocab/unit>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+:assay_levels
+    a skos:Collection ;
+    skos:definition "Definition for Assay_Levels"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:PERCENT-BY-MASS ,
+        unit:PERCENT-BY-VOL ,
+        unit:PPB ,
+        unit:PPM ;
+    skos:prefLabel "Assay_Levels"@en ;
+.
+
+:concentration
+    a skos:Collection ;
+    skos:definition "Definition for Concentration"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:CentiM3-PER-TONNE ,
+        unit:FT3-TON_LONG ,
+        unit:GM-PER-KiloGM3 ,
+        unit:GM-PER-TONNE ,
+        unit:M3-PER-TONNE ,
+        unit:MilliGM-PER-GM-TOC ,
+        unit:MilliGM-PER-TONNE ,
+        unit:OZ-PER-TONNE ,
+        unit:OZ-PER-TON_LONG ,
+        unit:PERCENT-BY-MASS ,
+        unit:PERCENT-BY-VOL ,
+        unit:PPB ,
+        unit:PPM ;
+    skos:prefLabel "Concentration"@en ;
+.
+
+:conductivity
+    a skos:Collection ;
+    skos:definition "Definition for Conductivity"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member unit:MicroS-PER-CentiM ;
+    skos:prefLabel "Conductivity"@en ;
+.
+
+:density
+    a skos:Collection ;
+    skos:definition "Definition for Density"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:GM-PER-CentiM3 ,
+        unit:KiloGM-PER-M3 ,
+        unit:LB-PER-FT3 ,
+        unit:RELATIVE-DENSITY ;
+    skos:prefLabel "Density"@en ;
+.
+
+:drill-rate
+    a skos:Collection ;
+    skos:definition "Definition for Drill Rate"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:HR-PER-FT ,
+        unit:HR-PER-M ;
+    skos:prefLabel "Drill Rate"@en ;
+.
+
+:energy
+    a skos:Collection ;
+    skos:definition "Definition for Energy"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:BTU_IT ,
+        unit:GigaJ ,
+        unit:KiloBTU_IT ,
+        unit:MegaBTU_IT ,
+        unit:PetaJ ;
+    skos:prefLabel "Energy"@en ;
+.
+
+:flow-rate
+    a skos:Collection ;
+    skos:definition "Definition for Flow Rate"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:BBL_UK_PET-PER-DAY ,
+        unit:BBL_UK_PET-PER-HR ,
+        unit:BBL_UK_PET-PER-MIN ,
+        unit:FT3-PER-DAY ,
+        unit:KiloL-PER-DAY ,
+        unit:L-PER-DAY ,
+        unit:L-PER-HR ,
+        unit:L-PER-MIN ,
+        unit:M3-PER-DAY ,
+        unit:M3-PER-HR ,
+        unit:MegaFT3-PER-DAY ,
+        unit:MegaL-PER-DAY ;
+    skos:prefLabel "Flow Rate"@en ;
+.
+
+:frequency
+    a skos:Collection ;
+    skos:definition "Definition for Frequency"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member unit:HZ ;
+    skos:prefLabel "Frequency"@en ;
+.
+
+:gas-content
+    a skos:Collection ;
+    skos:definition "Definition for Gas Content"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:FT3-PER-TON_LONG ,
+        unit:M3-PER-TONNE ;
+    skos:prefLabel "Gas Content"@en ;
+.
+
+:length
+    a skos:Collection ;
+    skos:definition "Definition for Length"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:CentiM ,
+        unit:FT ,
+        unit:IN ,
+        unit:M ,
+        unit:MilliM ;
+    skos:prefLabel "Length"@en ;
+.
+
+:mass
+    a skos:Collection ;
+    skos:definition "Definition for Mass"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:GM ,
+        unit:KiloGM ,
+        unit:KiloLB ,
+        unit:LB ,
+        unit:MegaTONNE ,
+        unit:MilliGM ,
+        unit:OZ ,
+        unit:TONNE ;
+    skos:prefLabel "Mass"@en ;
+.
+
+:mud-weight
+    a skos:Collection ;
+    skos:definition "Definition for Mud Weight"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member unit:LB-PER-GAL ;
+    skos:prefLabel "Mud Weight"@en ;
+.
+
+:numerical
+    a skos:Collection ;
+    skos:definition "Definition for Numerical"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:COUNT ,
+        unit:FRACTION ,
+        unit:PERCENT ;
+    skos:prefLabel "Numerical"@en ;
+.
+
+:perf-spacing
+    a skos:Collection ;
+    skos:definition "Definition for Perf Spacing"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:SHOTS-PER-FT ,
+        unit:SHOTS-PER-M ;
+    skos:prefLabel "Perf Spacing"@en ;
+.
+
+:permeability
+    a skos:Collection ;
+    skos:definition "Definition for Permeability"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:DARCY ,
+        unit:MilliDARCY ;
+    skos:prefLabel "Permeability"@en ;
+.
+
+:pressure
+    a skos:Collection ;
+    skos:definition "Definition for Pressure"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:ATM ,
+        unit:BAR ,
+        unit:KiloPA ,
+        unit:MegaPA ,
+        unit:PA ,
+        unit:PSI ;
+    skos:prefLabel "Pressure"@en ;
+.
+
+:resitivity
+    a skos:Collection ;
+    skos:definition "Definition for Resitivity"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member unit:OHM ;
+    skos:prefLabel "Resitivity"@en ;
+.
+
+:rotation
+    a skos:Collection ;
+    skos:definition "Definition for Rotation"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member unit:REV-PER-MIN ;
+    skos:prefLabel "Rotation"@en ;
+.
+
+:temperature
+    a skos:Collection ;
+    skos:definition "Definition for Temperature"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:DEG_C ,
+        unit:DEG_F ;
+    skos:prefLabel "Temperature"@en ;
+.
+
+:time
+    a skos:Collection ;
+    skos:definition "Definition for Time"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:DAYS ,
+        unit:HR ,
+        unit:MIN ,
+        unit:MilliS ,
+        unit:SEC ;
+    skos:prefLabel "Time"@en ;
+.
+
+:velocity
+    a skos:Collection ;
+    skos:definition "Definition for Velocity"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:FT-PER-HR ,
+        unit:FT-PER-SEC ,
+        unit:M-PER-HR ,
+        unit:M-PER-SEC ;
+    skos:prefLabel "Velocity"@en ;
+.
+
+:viscosity
+    a skos:Collection ;
+    skos:definition "Definition for Viscosity"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:CentiPOISE ,
+        unit:PA-SEC ;
+    skos:prefLabel "Viscosity"@en ;
+.
+
+:volume
+    a skos:Collection ;
+    skos:definition "Definition for Volume"@en ;
+    skos:historyNote "Collection derived from original spreadsheet columns" ;
+    skos:inScheme cs: ;
+    skos:member
+        unit:BBL_UK_PET ,
+        unit:CentiM3 ,
+        unit:FT3 ,
+        unit:GAL_UK ,
+        unit:Kilo-FT3 ,
+        unit:KiloBBL_UK_PET ,
+        unit:KiloL ,
+        unit:L ,
+        unit:M3 ,
+        unit:MegaFT3 ,
+        unit:MegaL ,
+        unit:MegaM3 ;
+    skos:prefLabel "Volume"@en ;
+.
+
+unit:ATM
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The standard atmosphere (symbol: atm) is an international reference pressure defined as \\(101.325 \\,kPa\\) and formerly used as unit of pressure. For practical purposes it has been replaced by the bar which is \\(100 kPa\\). The difference of about 1% is not significant for many applications, and is within the error range of common pressure gauges." ;
+    skos:notation "atm" ;
+    skos:prefLabel "Standard Atmosphere"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:BAR
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The bar is a non-SI unit of pressure, defined by the IUPAC as exactly equal to \\(100,000\\,Pa\\). It is about equal to the atmospheric pressure on Earth at sea level, and since 1982 the IUPAC has recommended that the standard for atmospheric pressure should be harmonized to \\(100,000\\,Pa = 1 \\,bar \\approx 750.0616827\\, Torr\\). Units derived from the bar are the megabar (symbol: Mbar), kilobar (symbol: kbar), decibar (symbol: dbar), centibar (symbol: cbar), and millibar (symbol: mbar or mb). They are not SI or cgs units, but they are accepted for use with the SI." ;
+    skos:notation "bar" ;
+    skos:prefLabel "Bar"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:BBL_UK_PET
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "unit of the volume for crude oil according to the Imperial system of units" ;
+    skos:notation "bbl" ;
+    skos:prefLabel "Barrel (UK Petroleum)"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:BBL_UK_PET-PER-DAY
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "unit of the volume barrel (UK petroleum) for crude oil according to the Imperial system of units divided by the unit day" ;
+    skos:notation "bbl/d" ;
+    skos:prefLabel "Barrel (UK Petroleum) Per Day"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:BBL_UK_PET-PER-HR
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "unit of the volume barrel (UK petroleum) for crude oil according to the Imperial system of units divided by the unit hour" ;
+    skos:notation "bbl/hr" ;
+    skos:prefLabel "Barrel (UK Petroleum) Per Hour"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:BBL_UK_PET-PER-MIN
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "unit of the volume barrel (UK petroleum) for crude oil according to the Imperial system of units divided by the unit minute" ;
+    skos:notation "bbl/min" ;
+    skos:prefLabel "Barrel (UK Petroleum) Per Minute"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:BTU_IT
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "\\(\\textit{British Thermal Unit}\\) (BTU or Btu) is a traditional unit of energy equal to about \\(1.0550558526 \\textit{ kilojoule}\\). It is approximately the amount of energy needed to heat 1 pound (0.454 kg) of water from \\(39 \\,^{\\circ}{\\rm F}\\)  to \\(40 \\,^{\\circ}{\\rm F}\\) . The unit is most often used in the power, steam generation, heating and air conditioning industries. In scientific contexts the BTU has largely been replaced by the SI unit of energy, the \\(joule\\), though it may be used as a measure of agricultural energy production (BTU/kg). It is still used unofficially in metric English-speaking countries (such as Canada), and remains the standard unit of classification for air conditioning units manufactured and sold in many non-English-speaking metric countries." ;
+    skos:notation "BTU" ;
+    skos:prefLabel "British Thermal Unit (International Definition)"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:COUNT
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "A total integer number of things" ;
+    skos:notation "count" ;
+    skos:prefLabel "Count" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:CentiM
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "A centimetre is a unit of length in the metric system, equal to one hundredth of a metre, which is the SI base unit of length. Centi is the SI prefix for a factor of \\(10^{-2}\\).  The centimetre is the base unit of length in the now deprecated centimetre-gram-second (CGS) system of units." ;
+    skos:notation "cm" ;
+    skos:prefLabel "Centimetre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:CentiM3
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The CGS unit of volume, equal to 10-6 cubic meter, 1 milliliter, or about 0.061 023 7 cubic inch" ;
+    skos:notation "cm3 or cc" ;
+    skos:prefLabel "Cubic Centimetre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:CentiM3-PER-TONNE
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Cubic centimetre per tonne" ;
+    skos:notation "cm3/t" ;
+    skos:prefLabel "Cubic centimetre per tonne" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:CentiPOISE
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "\\(\\textbf{Centipoise}\\) is a C.G.S System unit for  'Dynamic Viscosity' expressed as \\(cP\\)." ;
+    skos:notation "cp" ;
+    skos:prefLabel "Centipoise"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:DARCY
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "<p>The <strong>darcy</strong> (d) is a unit of permeability named after Henry Darcy. It is not an SI unit, but it is widely used in petroleum engineering and geology. The unit has also been used in biophysics and biomechanics, where the flow of fluids such as blood through capillary beds and cerebrospinal fluid through the brain interstitial space is being examined. A darcy has dimensional units of length<sup>2</sup>.</p>" ;
+    skos:notation "D" ;
+    skos:prefLabel "Darcy"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:DAYS
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Day - 24 hours" ;
+    skos:notation "d" ;
+    skos:prefLabel "Days" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:DEG_C
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "\\(\\textit{Celsius}\\), also known as centigrade, is a scale and unit of measurement for temperature. It can refer to a specific temperature on the Celsius scale as well as a unit to indicate a temperature interval, a difference between two temperatures or an uncertainty. This definition fixes the magnitude of both the degree Celsius and the kelvin as precisely 1 part in 273.16 (approximately 0.00366) of the difference between absolute zero and the triple point of water. Thus, it sets the magnitude of one degree Celsius and that of one kelvin as exactly the same. Additionally, it establishes the difference between the two scales' null points as being precisely \\(273.15\\,^{\\circ}{\\rm C}\\).</p>" ;
+    skos:notation "degc" ;
+    skos:prefLabel "Degree Celsius"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:DEG_F
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "\\(\\textbf{Degree Fahrenheit} is an Imperial unit for 'Thermodynamic Temperature' expressed as \\(\\,^{\\circ}{\\rm F}\\)" ;
+    skos:notation "degf" ;
+    skos:prefLabel "Degree Fahrenheit"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:FRACTION
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Fraction is a unit for 'Dimensionless Ratio' expressed as the value of the ratio itself." ;
+    skos:notation "decfrac" ;
+    skos:prefLabel "Fraction"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:FT
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "A foot is a unit of length defined as being 0.3048 m exactly and used in the imperial system of units and United States customary units. It is subdivided into 12 inches. The foot is still officially used in Canada and still commonly used in the United Kingdom, although the latter has partially metricated its units of measurement. " ;
+    skos:notation "ft" ;
+    skos:prefLabel "Foot"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:FT-PER-HR
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "\"Foot per Hour\" is an Imperial unit for  'Linear Velocity' expressed as \\(ft/hr\\)." ;
+    skos:notation "ft/hr" ;
+    skos:prefLabel "Foot per Hour"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:FT-PER-SEC
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "\\(\\textit{foot per second}\\) (plural \\(\\textit{feet per second}\\)) is a unit of both speed (scalar) and velocity (vector quantity, which includes direction). It expresses the distance in feet (\\(ft\\)) traveled or displaced, divided by the time in seconds (\\(s\\), or \\(sec\\)). The corresponding unit in the International System of Units (SI) is the \\(\\textit{metre per second}\\). Abbreviations include \\(ft/s\\), \\(ft/sec\\) and \\(fps\\), and the rarely used scientific notation \\(ft\\,s\\)." ;
+    skos:notation "ft/s" ;
+    skos:prefLabel "Foot per Second"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:FT3
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The cubic foot is an Imperial and US customary unit of volume, used in the United States and the United Kingdom. It is defined as the volume of a cube with sides of one foot (0.3048 m) in length. To calculate cubic feet multiply length X width X height. " ;
+    skos:notation "ft3 or cf" ;
+    skos:prefLabel "Cubic Foot"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:FT3-PER-DAY
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "power of the unit foot according to the Anglo-American and the Imperial system of units with the exponent 3 divided by the unit for time day" ;
+    skos:notation "cf/hr or ft3/d" ;
+    skos:prefLabel "Cubic Foot Per Day"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:FT3-PER-TON_LONG
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Cubic feet per ton" ;
+    skos:notation "scf/ton" ;
+    skos:prefLabel "Cubic feet per ton" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:FT3-TON_LONG
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Cubic feet per ton" ;
+    skos:notation "ft3/ton" ;
+    skos:prefLabel "Cubic feet per ton" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:GAL_UK
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "unit of the volume for fluids according to the Imperial system of units" ;
+    skos:notation "gal" ;
+    skos:prefLabel "Gallon (UK)"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:GM
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "A unit of mass in the metric system. The name comes from the Greek gramma, a small weight identified in later Roman and Byzantine times with the Latin scripulum or scruple (the English scruple is equal to about 1.3 grams). The gram was originally defined to be the mass of one cubic centimeter of pure water, but to provide precise standards it was necessary to construct physical objects of specified mass. One gram is now defined to be 1/1000 of the mass of the standard kilogram, a platinum-iridium bar carefully guarded by the International Bureau of Weights and Measures in Paris for more than a century. (The kilogram, rather than the gram, is considered the base unit of mass in the SI.) The gram is a small mass, equal to about 15.432 grains or 0.035 273 966 ounce. " ;
+    skos:notation "g" ;
+    skos:prefLabel "Gram"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:GM-PER-CentiM3
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "0,001-fold of the SI base unit kilogram divided by the 0.000 001-fold of the power of the SI base unit metre with the exponent 3" ;
+    skos:notation "g/cc" ;
+    skos:prefLabel "Gram Per Cubic Centimetre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:GM-PER-KiloGM
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Grams per kilogram" ;
+    skos:notation "g/kg" ;
+    skos:prefLabel "Grams per kilogram" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:GM-PER-TONNE
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Grams per tonne" ;
+    skos:notation "g/t" ;
+    skos:prefLabel "Grams per tonne" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:GigaJ
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1,000,000,000-fold of the SI derived unit joule" ;
+    skos:notation "GJ" ;
+    skos:prefLabel "Gigajoule"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:HR
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The hour (common symbol: h or hr) is a unit of measurement of time. In modern usage, an hour comprises 60 minutes, or 3,600 seconds. It is approximately 1/24 of a mean solar day. An hour in the Universal Coordinated Time (UTC) time standard can include a negative or positive leap second, and may therefore have a duration of 3,599 or 3,601 seconds for adjustment purposes. Although it is not a standard defined by the International System of Units, the hour is a unit accepted for use with SI, represented by the symbol h." ;
+    skos:notation "hr" ;
+    skos:prefLabel "Hour"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:HR-PER-FT
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Hours per foot" ;
+    skos:notation "hrs/ft" ;
+    skos:prefLabel "Hours per foot" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:HR-PER-M
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Hours per metre" ;
+    skos:notation "hrs/m" ;
+    skos:prefLabel "Hours per metre" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:HZ
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The hertz (symbol Hz) is the SI unit of frequency defined as the number of cycles per second of a periodic phenomenon. One of its most common uses is the description of the sine wave, particularly those used in radio and audio applications, such as the frequency of musical tones. The word \"hertz\" is named for Heinrich Rudolf Hertz, who was the first to conclusively prove the existence of electromagnetic waves." ;
+    skos:notation "hz" ;
+    skos:prefLabel "hertz"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:IN
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "An inch is the name of a unit of length in a number of different systems, including Imperial units, and United States customary units. There are 36 inches in a yard and 12 inches in a foot. Corresponding units of area and volume are the square inch and the cubic inch." ;
+    skos:notation "in" ;
+    skos:prefLabel "Inch"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:Kilo-FT3
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1 000-fold of the unit cubic foot. " ;
+    skos:notation "mcf or kft3" ;
+    skos:prefLabel "Thousand Cubic Foot"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:KiloBBL_UK_PET
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Thousand barrels" ;
+    skos:notation "kbbl" ;
+    skos:prefLabel "Kilo Barrels (UK Petroleum)" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:KiloBTU_IT
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Kilo British Thermal Unit (International Definition)" ;
+    skos:notation "MBTU" ;
+    skos:prefLabel "Kilo British Thermal Unit (International Definition)"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:KiloGM
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The kilogram or kilogramme (SI symbol: kg), also known as the kilo, is the base unit of mass in the International System of Units and is defined as being equal to the mass of the International Prototype Kilogram (IPK), which is almost exactly equal to the mass of one liter of water. The avoirdupois (or international) pound, used in both the Imperial system and U.S. customary units, is defined as exactly 0.45359237 kg, making one kilogram approximately equal to 2.2046 avoirdupois pounds." ;
+    skos:notation "kg" ;
+    skos:prefLabel "Kilogram"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:KiloGM-PER-M3
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Kilogram per cubic metre is an SI derived unit of density, defined by mass in kilograms divided by volume in cubic metres. The official SI symbolic abbreviation is \\(kg \\cdot m^{-3}\\), or equivalently either \\(kg/m^3\\)." ;
+    skos:notation "kg/m3" ;
+    skos:prefLabel "kilogram per cubic metre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:KiloL
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1 000-fold of the unit litre" ;
+    skos:notation "kl" ;
+    skos:prefLabel "Kilolitre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:KiloL-PER-DAY
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Kilolitres per day" ;
+    skos:notation "kl/d" ;
+    skos:prefLabel "Kilolitres per day" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:KiloLB
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1 000 fold pounds" ;
+    skos:notation "klbs" ;
+    skos:prefLabel "Kilopounds" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:KiloPA
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Kilopascal is a unit of pressure. 1 kPa is approximately the pressure exerted by a 10-g mass resting on a 1-cm2 area. 101.3 kPa = 1 atm. There are 1,000 pascals in 1 kilopascal." ;
+    skos:notation "kpa" ;
+    skos:prefLabel "Kilopascal"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:L
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The \\(litre\\) (American spelling: \\(\\textit{liter}\\); SI symbol \\(l\\) or \\(L\\)) is a non-SI metric system unit of volume equal to \\(1 \\textit{cubic decimetre}\\) (\\(dm^3\\)), 1,000 cubic centimetres (\\(cm^3\\)) or \\(1/1000 \\textit{cubic metre}\\). If the lower case \"L\" is used as the symbol, it is sometimes rendered as a cursive \"l\" to help distinguish it from the capital \"I\", although this usage has no official approval by any international bureau." ;
+    skos:notation "l" ;
+    skos:prefLabel "Litre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:L-PER-DAY
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "unit litre divided by the unit day" ;
+    skos:notation "l/d" ;
+    skos:prefLabel "Litre Per Day"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:L-PER-HR
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Unit litre divided by the unit hour" ;
+    skos:notation "l/hr" ;
+    skos:prefLabel "Litre Per Hour"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:L-PER-MIN
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "unit litre divided by the unit minute" ;
+    skos:notation "l/min" ;
+    skos:prefLabel "Litre Per Minute"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:LB
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "A pound of mass, based on the international standard definition of the pound of mass as exactly 0.45359237 kg." ;
+    skos:notation "lbs" ;
+    skos:prefLabel "Pound Mass"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:LB-PER-FT3
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "\"Pound per Cubic Foot\" is an Imperial unit for  'Density' expressed as \\(lb/ft^{3}\\)." ;
+    skos:notation "lbs/ft3" ;
+    skos:prefLabel "Pound per Cubic Foot"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:LB-PER-GAL
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "\"Pound per Gallon\" is an Imperial unit for  'Density' expressed as \\(lb/gal\\)." ;
+    skos:notation "lbs/gal" ;
+    skos:prefLabel "Pound per Gallon"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:M
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The metric and SI base unit of distance.  The 17th General Conference on Weights and Measures in 1983 defined the meter as that distance that makes the speed of light in a vacuum equal to exactly 299 792 458 meters per second. The speed of light in a vacuum, \\(c\\), is one of the fundamental constants of nature. The meter is equal to approximately 1.093 613 3 yards, 3.280 840 feet, or 39.370 079 inches." ;
+    skos:notation "m" ;
+    skos:prefLabel "Metre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:M-PER-HR
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Metre per hour is a metric unit of both speed (scalar) and velocity (Vector (geometry)). Its symbol is m/h or mu00b7h-1 (not to be confused with the imperial unit symbol mph. By definition, an object travelling at a speed of 1 m/h for an hour would move 1 metre." ;
+    skos:notation "m/hr" ;
+    skos:prefLabel "Metre per Hour"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:M-PER-SEC
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition """Metre per second is an SI derived unit of both speed (scalar) and velocity (vector quantity which specifies both magnitude and a specific direction), defined by distance in metres divided by time in seconds.\r
+The official SI symbolic abbreviation is mu00b7s-1, or equivalently either m/s.""" ;
+    skos:notation "m/s" ;
+    skos:prefLabel "Metre per Second"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:M3
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The SI unit of volume, equal to 1.0e6 cm3, 1000 liters, 35.3147 ft3, or 1.30795 yd3. A cubic meter holds about 264.17 U.S. liquid gallons or 219.99 British Imperial gallons." ;
+    skos:notation "m3" ;
+    skos:prefLabel "Cubic Metre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:M3-PER-DAY
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "power of the SI base unit metre with the exponent 3 divided by the unit day" ;
+    skos:notation "m3/d" ;
+    skos:prefLabel "Cubic Metre Per Day"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:M3-PER-HR
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Cubic Meter Per Hour (m3/h) is a unit in the category of Volume flow rate. It is also known as cubic meters per hour, cubic metre per hour, cubic metres per hour, cubic meter/hour, cubic metre/hour, cubic meter/hr, cubic metre/hr, flowrate. Cubic Meter Per Hour (m3/h) has a dimension of L3T-1 where L is length, and T is time. It can be converted to the corresponding standard SI unit m3/s by multiplying its value by a factor of 0.00027777777." ;
+    skos:notation "m3/hr" ;
+    skos:prefLabel "Cubic Metre per Hour"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MIN
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "A minute is a unit of measurement of time. The minute is a unit of time equal to 1/60 (the first sexagesimal fraction of an hour or 60 seconds. In the UTC time scale, a minute on rare occasions has 59 or 61 seconds; see leap second. The minute is not an SI unit; however, it is accepted for use with SI units. The SI symbol for minute or minutes is min (for time measurement) or the prime symbol after a number, e.g. 5' (for angle measurement, even if it is informally used for time)." ;
+    skos:notation "min" ;
+    skos:prefLabel "Minute"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MegaBTU_IT
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1 000 000 fold BTU" ;
+    skos:notation "MMBTU" ;
+    skos:prefLabel "Mega British Thermal Unit (International Definition)" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MegaFT3
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1 000 000 fold cubic foot" ;
+    skos:notation "MMcf " ;
+    skos:prefLabel "Mega Cubic Foot" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MegaFT3-PER-DAY
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1 000 000 fold cubic foot per day" ;
+    skos:notation "MMcf/d" ;
+    skos:prefLabel "Mega Cubic Foot per Day" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MegaL
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1 000 000-fold of the unit litre" ;
+    skos:notation "ML" ;
+    skos:prefLabel "Megalitre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MegaL-PER-DAY
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1 000 000 fold litre per day" ;
+    skos:notation "ML/d" ;
+    skos:prefLabel "Megalitre per day" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MegaM3
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1 000 000 fold cubic metre" ;
+    skos:notation "MMm3" ;
+    skos:prefLabel "Mega cubic metre" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MegaPA
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1,000,000-fold of the derived unit pascal" ;
+    skos:notation "mpa" ;
+    skos:prefLabel "Megapascal"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MegaTONNE
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1 000 000 fold tonne" ;
+    skos:notation "Mt" ;
+    skos:prefLabel "Megatonne" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MicroS-PER-CentiM
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "0.000001-fold of the SI derived unit Siemens divided by the 0.01-fold of the SI base unit metre" ;
+    skos:notation "µS/cm" ;
+    skos:prefLabel "Microsiemens Per Centimetre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MilliDARCY
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "<p>The <strong>millidarcy</strong> (md) is a unit of permeability named after Henry Darcy. It is not an SI unit, but it is widely used in petroleum engineering and geology. The unit has also been used in biophysics and biomechanics, where the flow of fluids such as blood through capillary beds and cerebrospinal fluid through the brain interstitial space is being examined. A millidarcy has dimensional units of length<sup>2</sup>.</p>" ;
+    skos:notation "mD" ;
+    skos:prefLabel "Millidarcy"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MilliGM
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "0.000001-fold of the SI base unit kilogram" ;
+    skos:notation "mg" ;
+    skos:prefLabel "Milligram"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MilliGM-PER-GM-TOC
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Milligram per Gram TOC" ;
+    skos:notation "mg/gTOC" ;
+    skos:prefLabel "Milligram per Gram TOC" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MilliGM-PER-TONNE
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Milligram per Gram Tonne" ;
+    skos:notation "mg/t" ;
+    skos:prefLabel "Milligram per Gram Tonne" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MilliM
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The millimetre (International spelling as used by the International Bureau of Weights and Measures) or millimeter (American spelling) (SI unit symbol mm) is a unit of length in the metric system, equal to one thousandth of a metre, which is the SI base unit of length. It is equal to 1000 micrometres or 1000000 nanometres. A millimetre is equal to exactly 5/127 (approximately 0.039370) of an inch." ;
+    skos:notation "mm" ;
+    skos:prefLabel "Millimetre"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:MilliS
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "0.001-fold of the SI derived unit siemens" ;
+    skos:notation "ms" ;
+    skos:prefLabel "Millisiemens"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:OHM
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The \\textit{ohm} is the SI derived unit of electrical resistance, named after German physicist Georg Simon Ohm. \\(\\Omega \\equiv\\ \\frac{\\text{V}}{\\text{A}}\\ \\equiv\\ \\frac{\\text{volt}}{\\text{amp}}\\ \\equiv\\ \\frac{\\text{W}}{\\text {A}^{2}}\\ \\equiv\\ \\frac{\\text{watt}}{\\text{amp}^{2}}\\ \\equiv\\ \\frac{\\text{H}}{\\text {s}}\\ \\equiv\\ \\frac{\\text{henry}}{\\text{second}}\\)" ;
+    skos:notation "ohmms" ;
+    skos:prefLabel "Ohm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:OZ
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "An ounce of mass is 1/16th of a pound of mass, based on the international standard definition of the pound as exactly 0.45359237 kg." ;
+    skos:notation "oz" ;
+    skos:prefLabel "Ounce"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:OZ-PER-TONNE
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Ounces per Tonne" ;
+    skos:notation "oz/t" ;
+    skos:prefLabel "Ounces per Tonne" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:OZ-PER-TON_LONG
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Ounces per Ton" ;
+    skos:notation "oz/ton" ;
+    skos:prefLabel "Ounces per Ton" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:PA
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The SI unit of pressure. The pascal is the standard pressure unit in the MKS metric system, equal to one newton per square meter or one \"kilogram per meter per second per second.\" The unit is named for Blaise Pascal (1623-1662), French philosopher and mathematician, who was the first person to use a barometer to measure differences in altitude." ;
+    skos:notation "pa" ;
+    skos:prefLabel "Pascal"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:PA-SEC
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "The SI unit of dynamic viscosity, equal to 10 poises or 1000 centipoises. " ;
+    skos:notation "pa.s" ;
+    skos:prefLabel "Pascal Second"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:PERCENT
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "\"Percent\" is a unit for  'Dimensionless Ratio' expressed as \\(\\%\\)." ;
+    skos:notation "%" ;
+    skos:prefLabel "Percent"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:PSI
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Pounds of force per square inch, the unit for pressure as a compounded unit pound-force according to the Anglo-American system of units divided by the power of the unit Inch according to the Anglo-American and Imperial system of units by exponent 2" ;
+    skos:notation "psi" ;
+    skos:prefLabel "PSI"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:PetaJ
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1,000,000,000,000,000-fold of the derived SI unit joule" ;
+    skos:notation "PJ" ;
+    skos:prefLabel "Petajoule"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:RELATIVE-DENSITY
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Relative density of a substance to water at 4 degrees celcius" ;
+    skos:notation "sg" ;
+    skos:prefLabel "Relative density" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:REV-PER-MIN
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "\"Revolution per Minute\" is a unit for  'Angular Velocity' expressed as \\(rev/min\\)." ;
+    skos:notation "RPM" ;
+    skos:prefLabel "Revolution per Minute"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:SEC
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition """The \\(Second\\) (symbol: \\(s\\)) is the base unit of time in the International System of Units (SI) and is also a unit of time in other systems of measurement. Between the years1000 (when al-Biruni used seconds) and 1960 the second was defined as \\(1/86400\\) of a mean solar day (that definition still applies in some astronomical and legal contexts). Between 1960 and 1967, it was defined in terms of the period of the Earth's orbit around the Sun in 1900, but it is now defined more precisely in atomic terms.\r
+Under the International System of Units (via the International Committee for Weights and Measures, or CIPM), since 1967 the second has been defined as the duration of \\({9192631770}\\) periods of the radiation corresponding to the transition between the two hyperfine levels of the ground state of the caesium 133 atom.In 1997 CIPM added that the periods would be defined for a caesium atom at rest, and approaching the theoretical temperature of absolute zero, and in 1999, it included corrections from ambient radiation.""" ;
+    skos:notation "sec" ;
+    skos:prefLabel "Second"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:SHOTS-PER-FT
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Shots per foot" ;
+    skos:notation "sht/ft" ;
+    skos:prefLabel "Shots per foot" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:SHOTS-PER-M
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Shots per metre" ;
+    skos:notation "sht/m" ;
+    skos:prefLabel "Shots per metre" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:TONNE
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "1,000-fold of the SI base unit kilogram" ;
+    skos:notation "t" ;
+    skos:prefLabel "Tonne"@en ;
+    skos:topConceptOf cs: ;
+.
+
+<https://linked.dat.gov.au/org/gsq>
+    a sdo:Organization ;
+    sdo:name "Geological Survey of Queensland" ;
+    sdo:url "https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq"^^xsd:anyURI ;
+.
+
+unit:M3-PER-TONNE
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Cubic metre per tonne" ;
+    skos:notation "m3/t" ;
+    skos:prefLabel "Cubic metre per tonne" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:PERCENT-BY-MASS
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Percent by mass" ;
+    skos:notation "wt%" ;
+    skos:prefLabel "Percent by mass" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:PERCENT-BY-VOL
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Percent by volume" ;
+    skos:notation "vol%" ;
+    skos:prefLabel "Percent by volume" ;
+    skos:topConceptOf cs: ;
+.
+
+unit:PPB
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Dimensionless unit for concentration. Recommended practice is to use specific units such as \\(ug/l\\)." ;
+    skos:notation "ppb" ;
+    skos:prefLabel "Parts per billion"@en ;
+    skos:topConceptOf cs: ;
+.
+
+unit:PPM
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "Dimensionless unit for concentration. Recommended practice is to use specific units such as \\(ug/l\\)." ;
+    skos:notation "ppm" ;
+    skos:prefLabel "Parts per million"@en ;
+    skos:topConceptOf cs: ;
+.
+
+cs:
+    a skos:ConceptScheme ;
+    reg:status agldwgstatus:experimental ;
+    skos:definition "The Units of Measure as used in Geochemistry data exchange with GSQ"@en ;
+    skos:hasTopConcept
+        unit:ATM ,
+        unit:BAR ,
+        unit:BBL_UK_PET ,
+        unit:BBL_UK_PET-PER-DAY ,
+        unit:BBL_UK_PET-PER-HR ,
+        unit:BBL_UK_PET-PER-MIN ,
+        unit:BTU_IT ,
+        unit:COUNT ,
+        unit:CentiM ,
+        unit:CentiM3 ,
+        unit:CentiM3-PER-TONNE ,
+        unit:CentiPOISE ,
+        unit:DARCY ,
+        unit:DAYS ,
+        unit:DEG_C ,
+        unit:DEG_F ,
+        unit:FRACTION ,
+        unit:FT ,
+        unit:FT-PER-HR ,
+        unit:FT-PER-SEC ,
+        unit:FT3 ,
+        unit:FT3-PER-DAY ,
+        unit:FT3-PER-TON_LONG ,
+        unit:FT3-TON_LONG ,
+        unit:GAL_UK ,
+        unit:GM ,
+        unit:GM-PER-CentiM3 ,
+        unit:GM-PER-KiloGM3 ,
+        unit:GM-PER-TONNE ,
+        unit:GigaJ ,
+        unit:HR ,
+        unit:HR-PER-FT ,
+        unit:HR-PER-M ,
+        unit:HZ ,
+        unit:IN ,
+        unit:Kilo-FT3 ,
+        unit:KiloBBL_UK_PET ,
+        unit:KiloBTU_IT ,
+        unit:KiloGM ,
+        unit:KiloGM-PER-M3 ,
+        unit:KiloL ,
+        unit:KiloL-PER-DAY ,
+        unit:KiloLB ,
+        unit:KiloPA ,
+        unit:L ,
+        unit:L-PER-DAY ,
+        unit:L-PER-HR ,
+        unit:L-PER-MIN ,
+        unit:LB ,
+        unit:LB-PER-FT3 ,
+        unit:LB-PER-GAL ,
+        unit:M ,
+        unit:M-PER-HR ,
+        unit:M-PER-SEC ,
+        unit:M3 ,
+        unit:M3-PER-DAY ,
+        unit:M3-PER-HR ,
+        unit:M3-PER-TONNE ,
+        unit:MIN ,
+        unit:MegaBTU_IT ,
+        unit:MegaFT3 ,
+        unit:MegaFT3-PER-DAY ,
+        unit:MegaL ,
+        unit:MegaL-PER-DAY ,
+        unit:MegaM3 ,
+        unit:MegaPA ,
+        unit:MegaTONNE ,
+        unit:MicroS-PER-CentiM ,
+        unit:MilliDARCY ,
+        unit:MilliGM ,
+        unit:MilliGM-PER-GM-TOC ,
+        unit:MilliGM-PER-TONNE ,
+        unit:MilliM ,
+        unit:MilliS ,
+        unit:OHM ,
+        unit:OZ ,
+        unit:OZ-PER-TONNE ,
+        unit:OZ-PER-TON_LONG ,
+        unit:PA ,
+        unit:PA-SEC ,
+        unit:PERCENT ,
+        unit:PERCENT-BY-MASS ,
+        unit:PERCENT-BY-VOL ,
+        unit:PPB ,
+        unit:PPM ,
+        unit:PSI ,
+        unit:PetaJ ,
+        unit:RELATIVE-DENSITY ,
+        unit:REV-PER-MIN ,
+        unit:SEC ,
+        unit:SHOTS-PER-FT ,
+        unit:SHOTS-PER-M ,
+        unit:TONNE ;
+    skos:historyNote "Created from the Geochemistry data exchange Excel Template v2, UNITS_OF_MEASURE sheet November 2023" ;
+    skos:prefLabel "Geochemistry Units of Measure"@en ;
+    sdo:copyrightNotice "(c) Geological Survey of Queensland, 2023" ;
+    sdo:creator <https://linked.dat.gov.au/org/gsq> ;
+    sdo:dateCreated "2023-11-11"^^xsd:date ;
+    sdo:dateModified "2023-11-11"^^xsd:date ;
+    sdo:license <https://purl.org/NET/rdflicense/cc-by4.0> ;
+    sdo:publisher <https://linked.dat.gov.au/org/gsq> ;
+.
+
