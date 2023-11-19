@@ -4,25 +4,10 @@ from typing import BinaryIO, Optional
 from uuid import uuid4
 
 import openpyxl
-from rdflib.namespace import RDF, SDO, SOSA
+from rdflib.namespace import SDO, SOSA
 
 from .models import Dataset, Agent, DrillHole, DrillHoleSample, SurfaceSample, Geometry
 from .utils import *
-
-
-def make_vocab_a_list_of_notations(path_to_vocab_file: Path):
-    notations = []
-
-    g = Graph().parse(path_to_vocab_file)
-
-    for s in g.subjects(RDF.type, SKOS.Concept):
-        notations.append(str(g.value(subject=s, predicate=SKOS.notation)))
-
-    if len(notations) is 0:
-        for s in g.subjects(RDF.type, SDO.Organization):
-            notations.append(str(g.value(subject=s, predicate=SDO.identifier)))
-
-    return sorted(notations)
 
 
 def extract_dataset(wb: openpyxl.Workbook, template_version: float, external_metadata: str = None) -> Dataset:
@@ -261,25 +246,6 @@ def make_parser(args):
     )
 
     parser.add_argument(
-        "-l",
-        "--listprofiles",
-        help="This flag, if set, must be the only flag supplied. It will cause the program to list all the vocabulary"
-        " profiles that this converter, indicating both their URI and their short token for use with the"
-        " -p (--profile) flag when converting Excel files",
-        action="store_true",
-    )
-
-    parser.add_argument(
-        "-p",
-        "--profile",
-        help="A profile - a specified information model - for a vocabulary. This tool understands several profiles and"
-        "you can choose which one you want to convert the Excel file according to. The list of profiles - URIs "
-        "and their corresponding tokens - supported by VocExcel, can be found by running the program with the "
-        "flag -lp or --listprofiles.",
-        default="vocpub",
-    )
-
-    parser.add_argument(
         "file_to_convert",
         nargs="?",  # allow 0 or 1 file name as argument
         type=Path,
@@ -294,17 +260,9 @@ def make_parser(args):
     )
 
     parser.add_argument(
-        "-g",
-        "--logfile",
-        help="The file to write logging output to",
-        type=Path,
-        required=False,
-    )
-
-    parser.add_argument(
         "-e",
         "--external_metadata",
-        help="Metadata for the Dataset object that is supplied outside the Excel file",
+        help="Metadata for the Dataset object that is supplied outside the Excel file in an RDF file",
         type=Path,
         required=False,
         default=None
@@ -329,14 +287,9 @@ def main(args=None):
 
     if not args:
         # show help if no args are given
-        parser.print_help()
-        parser.exit()
+        args.print_help()
+        args.exit()
 
-    if args.listprofiles:
-        s = "Profiles\nToken\tIRI\n-----\t-----\n"
-        for k, v in PROFILES.items():
-            s += f"{k}\t{v.uri}\n"
-        print(s.rstrip())
     elif args.info:
         from .__init__ import __version__
 

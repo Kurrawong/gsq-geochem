@@ -11,7 +11,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 :assay_levels
     a skos:Collection ;
-    skos:definition "Definition for Assay_Levels"@en ;
+    skos:definition "Definition for Assay Levels"@en ;
     skos:historyNote "Collection derived from original spreadsheet columns" ;
     skos:inScheme cs: ;
     skos:member
@@ -19,7 +19,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:PERCENT-BY-VOL ,
         unit:PPB ,
         unit:PPM ;
-    skos:prefLabel "Assay_Levels"@en ;
+    skos:prefLabel "Assay Levels"@en ;
 .
 
 :concentration

@@ -3,9 +3,10 @@
 This script dumped all the codelists in the previous Excel template to SKOS RDF files."""
 
 import datetime
-from rdflib import Graph
-from openpyxl import load_workbook as _load_workbook
 from pathlib import Path
+
+from openpyxl import load_workbook as _load_workbook
+from rdflib import Graph
 
 wb = _load_workbook(filename="../examples/data-submission-template-minerals-3.0-001.xlsx", data_only=True)
 

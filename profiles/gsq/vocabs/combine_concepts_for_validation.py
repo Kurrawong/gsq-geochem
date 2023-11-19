@@ -15,5 +15,6 @@ for f in sorted(files):
         for o in g.objects(c, SKOS.inScheme):
             combined.add((c, RDF.type, SKOS.Concept))
             combined.add((c, SKOS.inScheme, o))
+            combined.add((c, SKOS.notation, g.value(subject=c, predicate=SKOS.notation)))
 
 combined.serialize(OUTPUT_FILE, format="longturtle")

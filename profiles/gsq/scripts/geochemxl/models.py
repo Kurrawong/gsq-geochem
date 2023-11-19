@@ -1,4 +1,5 @@
 import datetime
+import math
 from itertools import chain
 from typing import List, Union, Optional
 from pathlib import Path
@@ -31,7 +32,7 @@ class Agent(BaseModel):
 
     @field_validator("iri")
     def iri_must_be_for_known_agent(cls, v):
-        g = Graph().parse(Path(__file__).parent.resolve() / "reference-data" / "agents.ttl")
+        g = Graph().parse(VOCABS_DIR / "agents.ttl")
         for iri in g.subjects(RDF.type, None):
             if v == str(iri):
                 return v
@@ -182,8 +183,19 @@ class Sample(BaseModel):
     collection_date: datetime.date
     dispatch_date: datetime.date
     specific_gravity: Optional[float]
-    magnetic_susceptibility: Optional[float]
+    magnetic_susceptibility: Optional[str]
     remarks: Optional[str] = None
+
+    @field_validator("magnetic_susceptibility")
+    def parse_mag_sus(cls, v):
+        try:
+            parts = v.split("x10")
+            return float(parts[0]) * math.exp(int(parts[1]))
+        except Exception as e:
+            raise ConversionError(
+                "Could not parse magnetic susceptibility. Must be of the form -Ax10B, e.g. -5x100-3. "
+                f"You gave the value {v}"
+            )
 
     def to_graph(self) -> Graph:
         g = Graph(bind_namespaces="rdflib")

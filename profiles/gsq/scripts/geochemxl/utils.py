@@ -28,14 +28,85 @@ RDF_FILE_ENDINGS = {
 KNOWN_FILE_ENDINGS = [str(x) for x in RDF_FILE_ENDINGS.keys()] + EXCEL_FILE_ENDINGS
 KNOWN_TEMPLATE_VERSIONS = [
     "3.0",
-    "2.0",
 ]
 LATEST_TEMPLATE = KNOWN_TEMPLATE_VERSIONS[-1]
+VOCAB_COLUMNS = {
+    "LEASE_NAME": "A",
+    "COORD_SYS_ID": "B",
+    "DEPTH_DATUM": "C",
+    "LOC_SURVEY_TYPE": "D",
+    "DRILL_TYPE": "E",
+    "DRILL_DIAMETER": "F",
+    "CURRENT_CLASS": "G",
+    "RPT_SURVEY_TYPE": "H",
+    "SAMPLE_MATERIAL": "I",
+    "SAMPLE_TYPE_DRILLING": "J",
+    "SAMPLE_TYPE_SURFACE": "K",
+    "MESH_SIZE": "L",
+    "QAQC": "M",
+    "SOIL_COLOUR": "N",
+    "WEATHERING": "O",
+    "ALTERATION": "P",
+    "STRUCTURE": "Q",
+    "TEXTURE": "R",
+    "GRAIN_SIZE": "S",
+    "STRUCTURAL_FEATURE": "T",
+    "COMMODITY": "U",
+    "RESERVE_CLASS_ID": "V",
+    "RESOURCE_STATUS": "W",
+    "AGENT": "X",
+}
+VOCABS_DIR = Path(__file__).parent.parent.resolve().parent / "vocabs"
 FIELD_VOCABS = {
-    "sample_material": Path(__file__).parent.parent.resolve().parent / "vocabs" / "gsq-sample-materials.ttl",
-    "sample_type_surface": Path(__file__).parent.parent.resolve().parent / "vocabs" / "sample-type-surfaces.ttl",
-    "mesh_size": Path(__file__).parent.parent.resolve().parent / "vocabs" / "sample-mesh-sizes.ttl",
-    "soil_colour": Path(__file__).parent.parent.resolve().parent / "vocabs" / "soil-colour.ttl",
+    "SAMPLE_MATERIAL": VOCABS_DIR / "gsq-sample-materials.ttl",
+    #"SAMPLE_TYPE_SURFACE": VOCABS_DIR / "sample-type-surfaces.ttl",
+    "MESH_SIZE": VOCABS_DIR / "sample-mesh-sizes.ttl",
+    "SOIL_COLOUR": VOCABS_DIR / "soil-colour.ttl",
+    "AGENT": VOCABS_DIR / "agents.ttl",
+}
+
+SHEETS_VOCABS = {
+    "DICTIONARY": {
+        "B": {
+            "tab": "VALIDATION_DICTIONARY",
+            "column_name": "METHOD_TYPE"
+        }
+    },
+    "DRILLHOLE_SAMPLE": {
+        "D": {
+            "tab": "VALIDATION_DICTIONARY",
+            "column_name": "SAMPLE_TYPE_DRILLING",
+        }
+    },
+    "SURFACE_SAMPLE": {
+        "C": {
+            "tab": "VALIDATION_DICTIONARY",
+            "column_name": "SAMPLE_MATERIAL",
+        },
+        "D": {
+            "tab": "VALIDATION_DICTIONARY",
+            "column_name": "SAMPLE_TYPE_SURFACE",
+        },
+        "E": {
+            "tab": "VALIDATION_DICTIONARY",
+            "column_name": "MESH_SIZE",
+        },
+        "G": {
+            "tab": "VALIDATION_DICTIONARY",
+            "column_name": "SOIL_COLOUR",
+        },
+        "L": {
+            "tab": "VALIDATION_DICTIONARY",
+            "column_name": "LOC_SURVEY_TYPE"
+        },
+    },
+    "SAMPLE_PREPARATION": {
+        # "E":
+        "F": {
+            "tab": "DICTIONARY",
+            "column_name": "CODE"
+        }
+    }
 }
 
 
@@ -48,7 +119,7 @@ def load_workbook(file_path: Path) -> Workbook:
         file_path, SpooledTemporaryFile
     ) and not file_path.name.lower().endswith(tuple(EXCEL_FILE_ENDINGS)):
         raise ValueError("Files for conversion to RDF must be Excel files ending .xlsx")
-    return _load_workbook(filename=file_path, data_only=True)
+    return _load_workbook(filename=file_path, data_only=False)
 
 
 def load_template(file_path: Path) -> Workbook:
@@ -321,3 +392,22 @@ def convert_easting_northing_elevation_to_wkt(easting, northing, elevation) -> s
     lat, lon = utm.to_latlon(easting, northing, 55, "E")
 
     return f"POINTZ({lon:.6f} {lat:.6f} {elevation})"
+
+
+def create_vocab_validation_formula(wb: Workbook, tab, column_name: str):
+    """returns something like =VALIDATION_DICTIONARY!$J$5:$J$13 """
+    ws = wb[tab]
+    smallest_row = 2 if tab == "VALIDATION_DICTIONARY" else 9
+    greatest_row = 5
+    for col in range(1, 100):
+        header_cell = ws.cell(column=col, row=1)
+        if header_cell.value == column_name:
+            col_letter = header_cell.column_letter
+            for row in ws.iter_rows(min_col=col, max_col=col, min_row=smallest_row):
+                for cell in row:
+                    if ws.cell(column=col, row=cell.row).value is None:
+                        return f"={tab}!${col_letter}${smallest_row}:${col_letter}${greatest_row}"
+                    else:
+                        greatest_row = cell.row
+    raise ValueError(f"A column header in sheet {tab} with value {column_name} could not be found")
+
