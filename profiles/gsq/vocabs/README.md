@@ -101,7 +101,7 @@ Validation of Excel data's values against vocabularies is done using the `geoche
 
 Any conversion errors or validation errors are output and, if there are none, then the RDF representation of the Excel data is output.
 
-This conversion can also be done online at the [GSQL Geochemistry Data Portal](https://geochem.dev.kurrawong.ai/).
+This conversion can also be done online at the [GSQ Geochemistry Data Portal](https://geochem.dev.kurrawong.ai/).
 
 Behind-the-scenes, this conversion relies on a comparison of all the codes in the VALIDATION_DICTIONARY, the UNITS_OF_MEASURE to codes in vocabs to know that they are legitimate values and takes all the codes supplied in the  USER_DICTIONARY and the USER_UNITS_OF_MEASURE worksheets at face value.
 
