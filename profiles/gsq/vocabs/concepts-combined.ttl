@@ -1,561 +1,9 @@
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-<http://qudt.org/vocab/unit/ATM>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "atm" ;
-.
-
-<http://qudt.org/vocab/unit/BAR>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "bar" ;
-.
-
-<http://qudt.org/vocab/unit/BBL_UK_PET>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "bbl" ;
-.
-
-<http://qudt.org/vocab/unit/BBL_UK_PET-PER-DAY>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "bbl/d" ;
-.
-
-<http://qudt.org/vocab/unit/BBL_UK_PET-PER-HR>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "bbl/hr" ;
-.
-
-<http://qudt.org/vocab/unit/BBL_UK_PET-PER-MIN>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "bbl/min" ;
-.
-
-<http://qudt.org/vocab/unit/BTU_IT>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "BTU" ;
-.
-
-<http://qudt.org/vocab/unit/COUNT>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "count" ;
-.
-
-<http://qudt.org/vocab/unit/CentiM>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "cm" ;
-.
-
-<http://qudt.org/vocab/unit/CentiM3>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "cm3 or cc" ;
-.
-
-<http://qudt.org/vocab/unit/CentiM3-PER-TONNE>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "cm3/t" ;
-.
-
-<http://qudt.org/vocab/unit/CentiPOISE>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "cp" ;
-.
-
-<http://qudt.org/vocab/unit/DARCY>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "D" ;
-.
-
-<http://qudt.org/vocab/unit/DAYS>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "d" ;
-.
-
-<http://qudt.org/vocab/unit/DEG_C>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "degc" ;
-.
-
-<http://qudt.org/vocab/unit/DEG_F>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "degf" ;
-.
-
-<http://qudt.org/vocab/unit/FRACTION>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "decfrac" ;
-.
-
-<http://qudt.org/vocab/unit/FT>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ft" ;
-.
-
-<http://qudt.org/vocab/unit/FT-PER-HR>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ft/hr" ;
-.
-
-<http://qudt.org/vocab/unit/FT-PER-SEC>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ft/s" ;
-.
-
-<http://qudt.org/vocab/unit/FT3>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ft3 or cf" ;
-.
-
-<http://qudt.org/vocab/unit/FT3-PER-DAY>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "cf/hr or ft3/d" ;
-.
-
-<http://qudt.org/vocab/unit/FT3-PER-TON_LONG>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "scf/ton" ;
-.
-
-<http://qudt.org/vocab/unit/FT3-TON_LONG>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ft3/ton" ;
-.
-
-<http://qudt.org/vocab/unit/GAL_UK>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "gal" ;
-.
-
-<http://qudt.org/vocab/unit/GM>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "g" ;
-.
-
-<http://qudt.org/vocab/unit/GM-PER-CentiM3>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "g/cc" ;
-.
-
 <http://qudt.org/vocab/unit/GM-PER-KiloGM>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
     skos:notation "g/kg" ;
-.
-
-<http://qudt.org/vocab/unit/GM-PER-TONNE>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "g/t" ;
-.
-
-<http://qudt.org/vocab/unit/GigaJ>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "GJ" ;
-.
-
-<http://qudt.org/vocab/unit/HR>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "hr" ;
-.
-
-<http://qudt.org/vocab/unit/HR-PER-FT>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "hrs/ft" ;
-.
-
-<http://qudt.org/vocab/unit/HR-PER-M>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "hrs/m" ;
-.
-
-<http://qudt.org/vocab/unit/HZ>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "hz" ;
-.
-
-<http://qudt.org/vocab/unit/IN>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "in" ;
-.
-
-<http://qudt.org/vocab/unit/Kilo-FT3>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "mcf or kft3" ;
-.
-
-<http://qudt.org/vocab/unit/KiloBBL_UK_PET>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "kbbl" ;
-.
-
-<http://qudt.org/vocab/unit/KiloBTU_IT>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "MBTU" ;
-.
-
-<http://qudt.org/vocab/unit/KiloGM>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "kg" ;
-.
-
-<http://qudt.org/vocab/unit/KiloGM-PER-M3>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "kg/m3" ;
-.
-
-<http://qudt.org/vocab/unit/KiloL>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "kl" ;
-.
-
-<http://qudt.org/vocab/unit/KiloL-PER-DAY>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "kl/d" ;
-.
-
-<http://qudt.org/vocab/unit/KiloLB>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "klbs" ;
-.
-
-<http://qudt.org/vocab/unit/KiloPA>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "kpa" ;
-.
-
-<http://qudt.org/vocab/unit/L>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "l" ;
-.
-
-<http://qudt.org/vocab/unit/L-PER-DAY>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "l/d" ;
-.
-
-<http://qudt.org/vocab/unit/L-PER-HR>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "l/hr" ;
-.
-
-<http://qudt.org/vocab/unit/L-PER-MIN>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "l/min" ;
-.
-
-<http://qudt.org/vocab/unit/LB>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "lbs" ;
-.
-
-<http://qudt.org/vocab/unit/LB-PER-FT3>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "lbs/ft3" ;
-.
-
-<http://qudt.org/vocab/unit/LB-PER-GAL>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "lbs/gal" ;
-.
-
-<http://qudt.org/vocab/unit/M>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "m" ;
-.
-
-<http://qudt.org/vocab/unit/M-PER-HR>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "m/hr" ;
-.
-
-<http://qudt.org/vocab/unit/M-PER-SEC>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "m/s" ;
-.
-
-<http://qudt.org/vocab/unit/M3>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "m3" ;
-.
-
-<http://qudt.org/vocab/unit/M3-PER-DAY>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "m3/d" ;
-.
-
-<http://qudt.org/vocab/unit/M3-PER-HR>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "m3/hr" ;
-.
-
-<http://qudt.org/vocab/unit/M3-PER-TONNE>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "m3/t" ;
-.
-
-<http://qudt.org/vocab/unit/MIN>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "min" ;
-.
-
-<http://qudt.org/vocab/unit/MegaBTU_IT>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "MMBTU" ;
-.
-
-<http://qudt.org/vocab/unit/MegaFT3>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "MMcf " ;
-.
-
-<http://qudt.org/vocab/unit/MegaFT3-PER-DAY>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "MMcf/d" ;
-.
-
-<http://qudt.org/vocab/unit/MegaL>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ML" ;
-.
-
-<http://qudt.org/vocab/unit/MegaL-PER-DAY>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ML/d" ;
-.
-
-<http://qudt.org/vocab/unit/MegaM3>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "MMm3" ;
-.
-
-<http://qudt.org/vocab/unit/MegaPA>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "mpa" ;
-.
-
-<http://qudt.org/vocab/unit/MegaTONNE>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "Mt" ;
-.
-
-<http://qudt.org/vocab/unit/MicroS-PER-CentiM>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "µS/cm" ;
-.
-
-<http://qudt.org/vocab/unit/MilliDARCY>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "mD" ;
-.
-
-<http://qudt.org/vocab/unit/MilliGM>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "mg" ;
-.
-
-<http://qudt.org/vocab/unit/MilliGM-PER-GM-TOC>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "mg/gTOC" ;
-.
-
-<http://qudt.org/vocab/unit/MilliGM-PER-TONNE>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "mg/t" ;
-.
-
-<http://qudt.org/vocab/unit/MilliM>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "mm" ;
-.
-
-<http://qudt.org/vocab/unit/MilliS>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ms" ;
-.
-
-<http://qudt.org/vocab/unit/OHM>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ohmms" ;
-.
-
-<http://qudt.org/vocab/unit/OZ>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "oz" ;
-.
-
-<http://qudt.org/vocab/unit/OZ-PER-TONNE>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "oz/t" ;
-.
-
-<http://qudt.org/vocab/unit/OZ-PER-TON_LONG>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "oz/ton" ;
-.
-
-<http://qudt.org/vocab/unit/PA>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "pa" ;
-.
-
-<http://qudt.org/vocab/unit/PA-SEC>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "pa.s" ;
-.
-
-<http://qudt.org/vocab/unit/PERCENT>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "%" ;
-.
-
-<http://qudt.org/vocab/unit/PERCENT-BY-MASS>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "wt%" ;
-.
-
-<http://qudt.org/vocab/unit/PERCENT-BY-VOL>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "vol%" ;
-.
-
-<http://qudt.org/vocab/unit/PPB>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ppb" ;
-.
-
-<http://qudt.org/vocab/unit/PPM>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "ppm" ;
-.
-
-<http://qudt.org/vocab/unit/PSI>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "psi" ;
-.
-
-<http://qudt.org/vocab/unit/PetaJ>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "PJ" ;
-.
-
-<http://qudt.org/vocab/unit/RELATIVE-DENSITY>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "sg" ;
-.
-
-<http://qudt.org/vocab/unit/REV-PER-MIN>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "RPM" ;
-.
-
-<http://qudt.org/vocab/unit/SEC>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "sec" ;
-.
-
-<http://qudt.org/vocab/unit/SHOTS-PER-FT>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "sht/ft" ;
-.
-
-<http://qudt.org/vocab/unit/SHOTS-PER-M>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "sht/m" ;
-.
-
-<http://qudt.org/vocab/unit/TONNE>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
-    skos:notation "t" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/agent/acme>
@@ -4296,12 +3744,6 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "ML" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
-    skos:notation "" ;
-.
-
 <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type/agps>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/loc-survey-type> ;
@@ -6318,6 +5760,214 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "ZONED PHENOCRYSTS" ;
 .
 
+<https://linked.data.gov.au/def/gsq-geochem/uom/assay_levels>
+    skos:member
+        <http://qudt.org/vocab/unit/PERCENT-BY-MASS> ,
+        <http://qudt.org/vocab/unit/PERCENT-BY-VOL> ,
+        <http://qudt.org/vocab/unit/PPB> ,
+        <http://qudt.org/vocab/unit/PPM> ;
+    skos:notation "ASSAY_LEVELS" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/concentration>
+    skos:member
+        <http://qudt.org/vocab/unit/CentiM3-PER-TONNE> ,
+        <http://qudt.org/vocab/unit/FT3-TON_LONG> ,
+        <http://qudt.org/vocab/unit/GM-PER-KiloGM3> ,
+        <http://qudt.org/vocab/unit/GM-PER-TONNE> ,
+        <http://qudt.org/vocab/unit/M3-PER-TONNE> ,
+        <http://qudt.org/vocab/unit/MilliGM-PER-GM-TOC> ,
+        <http://qudt.org/vocab/unit/MilliGM-PER-TONNE> ,
+        <http://qudt.org/vocab/unit/OZ-PER-TONNE> ,
+        <http://qudt.org/vocab/unit/OZ-PER-TON_LONG> ,
+        <http://qudt.org/vocab/unit/PERCENT-BY-MASS> ,
+        <http://qudt.org/vocab/unit/PERCENT-BY-VOL> ,
+        <http://qudt.org/vocab/unit/PPB> ,
+        <http://qudt.org/vocab/unit/PPM> ;
+    skos:notation "CONCENTRATION" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/conductivity>
+    skos:member <http://qudt.org/vocab/unit/MicroS-PER-CentiM> ;
+    skos:notation "CONDUCTIVITY" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/density>
+    skos:member
+        <http://qudt.org/vocab/unit/GM-PER-CentiM3> ,
+        <http://qudt.org/vocab/unit/KiloGM-PER-M3> ,
+        <http://qudt.org/vocab/unit/LB-PER-FT3> ,
+        <http://qudt.org/vocab/unit/RELATIVE-DENSITY> ;
+    skos:notation "DENSITY" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/drill-rate>
+    skos:member
+        <http://qudt.org/vocab/unit/HR-PER-FT> ,
+        <http://qudt.org/vocab/unit/HR-PER-M> ;
+    skos:notation "DRILL_RATE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/energy>
+    skos:member
+        <http://qudt.org/vocab/unit/BTU_IT> ,
+        <http://qudt.org/vocab/unit/GigaJ> ,
+        <http://qudt.org/vocab/unit/KiloBTU_IT> ,
+        <http://qudt.org/vocab/unit/MegaBTU_IT> ,
+        <http://qudt.org/vocab/unit/PetaJ> ;
+    skos:notation "ENERGY" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/flow-rate>
+    skos:member
+        <http://qudt.org/vocab/unit/BBL_UK_PET-PER-DAY> ,
+        <http://qudt.org/vocab/unit/BBL_UK_PET-PER-HR> ,
+        <http://qudt.org/vocab/unit/BBL_UK_PET-PER-MIN> ,
+        <http://qudt.org/vocab/unit/FT3-PER-DAY> ,
+        <http://qudt.org/vocab/unit/KiloL-PER-DAY> ,
+        <http://qudt.org/vocab/unit/L-PER-DAY> ,
+        <http://qudt.org/vocab/unit/L-PER-HR> ,
+        <http://qudt.org/vocab/unit/L-PER-MIN> ,
+        <http://qudt.org/vocab/unit/M3-PER-DAY> ,
+        <http://qudt.org/vocab/unit/M3-PER-HR> ,
+        <http://qudt.org/vocab/unit/MegaFT3-PER-DAY> ,
+        <http://qudt.org/vocab/unit/MegaL-PER-DAY> ;
+    skos:notation "FLOW_RATE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/frequency>
+    skos:member <http://qudt.org/vocab/unit/HZ> ;
+    skos:notation "FREQUENCY" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/gas-content>
+    skos:member
+        <http://qudt.org/vocab/unit/FT3-PER-TON_LONG> ,
+        <http://qudt.org/vocab/unit/M3-PER-TONNE> ;
+    skos:notation "GAS_CONTENT" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/length>
+    skos:member
+        <http://qudt.org/vocab/unit/CentiM> ,
+        <http://qudt.org/vocab/unit/FT> ,
+        <http://qudt.org/vocab/unit/IN> ,
+        <http://qudt.org/vocab/unit/M> ,
+        <http://qudt.org/vocab/unit/MilliM> ;
+    skos:notation "LENGTH" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/mass>
+    skos:member
+        <http://qudt.org/vocab/unit/GM> ,
+        <http://qudt.org/vocab/unit/KiloGM> ,
+        <http://qudt.org/vocab/unit/KiloLB> ,
+        <http://qudt.org/vocab/unit/LB> ,
+        <http://qudt.org/vocab/unit/MegaTONNE> ,
+        <http://qudt.org/vocab/unit/MilliGM> ,
+        <http://qudt.org/vocab/unit/OZ> ,
+        <http://qudt.org/vocab/unit/TONNE> ;
+    skos:notation "MASS" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/mud-weight>
+    skos:member <http://qudt.org/vocab/unit/LB-PER-GAL> ;
+    skos:notation "lbs/gal" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/numerical>
+    skos:member
+        <http://qudt.org/vocab/unit/COUNT> ,
+        <http://qudt.org/vocab/unit/FRACTION> ,
+        <http://qudt.org/vocab/unit/PERCENT> ;
+    skos:notation "NUMERICAL" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/perf-spacing>
+    skos:member
+        <http://qudt.org/vocab/unit/SHOTS-PER-FT> ,
+        <http://qudt.org/vocab/unit/SHOTS-PER-M> ;
+    skos:notation "PERF_SPACING" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/permeability>
+    skos:member
+        <http://qudt.org/vocab/unit/DARCY> ,
+        <http://qudt.org/vocab/unit/MilliDARCY> ;
+    skos:notation "PERMEABILITY" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/pressure>
+    skos:member
+        <http://qudt.org/vocab/unit/ATM> ,
+        <http://qudt.org/vocab/unit/BAR> ,
+        <http://qudt.org/vocab/unit/KiloPA> ,
+        <http://qudt.org/vocab/unit/MegaPA> ,
+        <http://qudt.org/vocab/unit/PA> ,
+        <http://qudt.org/vocab/unit/PSI> ;
+    skos:notation "PRESSURE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/resitivity>
+    skos:member <http://qudt.org/vocab/unit/OHM> ;
+    skos:notation "RESISTIVITY" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/rotation>
+    skos:member <http://qudt.org/vocab/unit/REV-PER-MIN> ;
+    skos:notation "ROTATION" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/temperature>
+    skos:member
+        <http://qudt.org/vocab/unit/DEG_C> ,
+        <http://qudt.org/vocab/unit/DEG_F> ;
+    skos:notation "TEMPERATURE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/time>
+    skos:member
+        <http://qudt.org/vocab/unit/DAYS> ,
+        <http://qudt.org/vocab/unit/HR> ,
+        <http://qudt.org/vocab/unit/MIN> ,
+        <http://qudt.org/vocab/unit/MilliS> ,
+        <http://qudt.org/vocab/unit/SEC> ;
+    skos:notation "TIME" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/velocity>
+    skos:member
+        <http://qudt.org/vocab/unit/FT-PER-HR> ,
+        <http://qudt.org/vocab/unit/FT-PER-SEC> ,
+        <http://qudt.org/vocab/unit/M-PER-HR> ,
+        <http://qudt.org/vocab/unit/M-PER-SEC> ;
+    skos:notation "VELOCITY" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/viscosity>
+    skos:member
+        <http://qudt.org/vocab/unit/CentiPOISE> ,
+        <http://qudt.org/vocab/unit/PA-SEC> ;
+    skos:notation "VISCOSITY" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom/volume>
+    skos:member
+        <http://qudt.org/vocab/unit/BBL_UK_PET> ,
+        <http://qudt.org/vocab/unit/CentiM3> ,
+        <http://qudt.org/vocab/unit/FT3> ,
+        <http://qudt.org/vocab/unit/GAL_UK> ,
+        <http://qudt.org/vocab/unit/Kilo-FT3> ,
+        <http://qudt.org/vocab/unit/KiloBBL_UK_PET> ,
+        <http://qudt.org/vocab/unit/KiloL> ,
+        <http://qudt.org/vocab/unit/L> ,
+        <http://qudt.org/vocab/unit/M3> ,
+        <http://qudt.org/vocab/unit/MegaFT3> ,
+        <http://qudt.org/vocab/unit/MegaL> ,
+        <http://qudt.org/vocab/unit/MegaM3> ;
+    skos:notation "VOLUME" ;
+.
+
 <https://linked.data.gov.au/def/gsq-geochem/weathering/completely-oxidised>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/weathering> ;
@@ -6352,5 +6002,657 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/weathering> ;
     skos:notation "STRONGLY WEATHERED" ;
+.
+
+<http://qudt.org/vocab/unit/ATM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "atm" ;
+.
+
+<http://qudt.org/vocab/unit/BAR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "bar" ;
+.
+
+<http://qudt.org/vocab/unit/BBL_UK_PET>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "bbl" ;
+.
+
+<http://qudt.org/vocab/unit/BBL_UK_PET-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "bbl/d" ;
+.
+
+<http://qudt.org/vocab/unit/BBL_UK_PET-PER-HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "bbl/hr" ;
+.
+
+<http://qudt.org/vocab/unit/BBL_UK_PET-PER-MIN>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "bbl/min" ;
+.
+
+<http://qudt.org/vocab/unit/BTU_IT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "BTU" ;
+.
+
+<http://qudt.org/vocab/unit/COUNT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "count" ;
+.
+
+<http://qudt.org/vocab/unit/CentiM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "cm" ;
+.
+
+<http://qudt.org/vocab/unit/CentiM3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "cm3 or cc" ;
+.
+
+<http://qudt.org/vocab/unit/CentiM3-PER-TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "cm3/t" ;
+.
+
+<http://qudt.org/vocab/unit/CentiPOISE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "cp" ;
+.
+
+<http://qudt.org/vocab/unit/DARCY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "D" ;
+.
+
+<http://qudt.org/vocab/unit/DAYS>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "d" ;
+.
+
+<http://qudt.org/vocab/unit/DEG_C>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "degc" ;
+.
+
+<http://qudt.org/vocab/unit/DEG_F>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "degf" ;
+.
+
+<http://qudt.org/vocab/unit/FRACTION>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "decfrac" ;
+.
+
+<http://qudt.org/vocab/unit/FT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ft" ;
+.
+
+<http://qudt.org/vocab/unit/FT-PER-HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ft/hr" ;
+.
+
+<http://qudt.org/vocab/unit/FT-PER-SEC>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ft/s" ;
+.
+
+<http://qudt.org/vocab/unit/FT3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ft3 or cf" ;
+.
+
+<http://qudt.org/vocab/unit/FT3-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "cf/hr or ft3/d" ;
+.
+
+<http://qudt.org/vocab/unit/FT3-PER-TON_LONG>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "scf/ton" ;
+.
+
+<http://qudt.org/vocab/unit/FT3-TON_LONG>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ft3/ton" ;
+.
+
+<http://qudt.org/vocab/unit/GAL_UK>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "gal" ;
+.
+
+<http://qudt.org/vocab/unit/GM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "g" ;
+.
+
+<http://qudt.org/vocab/unit/GM-PER-CentiM3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "g/cc" ;
+.
+
+<http://qudt.org/vocab/unit/GM-PER-TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "g/t" ;
+.
+
+<http://qudt.org/vocab/unit/GigaJ>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "GJ" ;
+.
+
+<http://qudt.org/vocab/unit/HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "hr" ;
+.
+
+<http://qudt.org/vocab/unit/HR-PER-FT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "hrs/ft" ;
+.
+
+<http://qudt.org/vocab/unit/HR-PER-M>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "hrs/m" ;
+.
+
+<http://qudt.org/vocab/unit/HZ>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "hz" ;
+.
+
+<http://qudt.org/vocab/unit/IN>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "in" ;
+.
+
+<http://qudt.org/vocab/unit/Kilo-FT3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "mcf or kft3" ;
+.
+
+<http://qudt.org/vocab/unit/KiloBBL_UK_PET>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "kbbl" ;
+.
+
+<http://qudt.org/vocab/unit/KiloBTU_IT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "MBTU" ;
+.
+
+<http://qudt.org/vocab/unit/KiloGM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "kg" ;
+.
+
+<http://qudt.org/vocab/unit/KiloGM-PER-M3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "kg/m3" ;
+.
+
+<http://qudt.org/vocab/unit/KiloL>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "kl" ;
+.
+
+<http://qudt.org/vocab/unit/KiloL-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "kl/d" ;
+.
+
+<http://qudt.org/vocab/unit/KiloLB>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "klbs" ;
+.
+
+<http://qudt.org/vocab/unit/KiloPA>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "kpa" ;
+.
+
+<http://qudt.org/vocab/unit/L>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "l" ;
+.
+
+<http://qudt.org/vocab/unit/L-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "l/d" ;
+.
+
+<http://qudt.org/vocab/unit/L-PER-HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "l/hr" ;
+.
+
+<http://qudt.org/vocab/unit/L-PER-MIN>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "l/min" ;
+.
+
+<http://qudt.org/vocab/unit/LB>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "lbs" ;
+.
+
+<http://qudt.org/vocab/unit/LB-PER-FT3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "lbs/ft3" ;
+.
+
+<http://qudt.org/vocab/unit/LB-PER-GAL>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "lbs/gal" ;
+.
+
+<http://qudt.org/vocab/unit/M>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "m" ;
+.
+
+<http://qudt.org/vocab/unit/M-PER-HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "m/hr" ;
+.
+
+<http://qudt.org/vocab/unit/M-PER-SEC>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "m/s" ;
+.
+
+<http://qudt.org/vocab/unit/M3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "m3" ;
+.
+
+<http://qudt.org/vocab/unit/M3-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "m3/d" ;
+.
+
+<http://qudt.org/vocab/unit/M3-PER-HR>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "m3/hr" ;
+.
+
+<http://qudt.org/vocab/unit/MIN>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "min" ;
+.
+
+<http://qudt.org/vocab/unit/MegaBTU_IT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "MMBTU" ;
+.
+
+<http://qudt.org/vocab/unit/MegaFT3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "MMcf " ;
+.
+
+<http://qudt.org/vocab/unit/MegaFT3-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "MMcf/d" ;
+.
+
+<http://qudt.org/vocab/unit/MegaL>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ML" ;
+.
+
+<http://qudt.org/vocab/unit/MegaL-PER-DAY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ML/d" ;
+.
+
+<http://qudt.org/vocab/unit/MegaM3>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "MMm3" ;
+.
+
+<http://qudt.org/vocab/unit/MegaPA>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "mpa" ;
+.
+
+<http://qudt.org/vocab/unit/MegaTONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "Mt" ;
+.
+
+<http://qudt.org/vocab/unit/MicroS-PER-CentiM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "µS/cm" ;
+.
+
+<http://qudt.org/vocab/unit/MilliDARCY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "mD" ;
+.
+
+<http://qudt.org/vocab/unit/MilliGM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "mg" ;
+.
+
+<http://qudt.org/vocab/unit/MilliGM-PER-GM-TOC>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "mg/gTOC" ;
+.
+
+<http://qudt.org/vocab/unit/MilliGM-PER-TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "mg/t" ;
+.
+
+<http://qudt.org/vocab/unit/MilliM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "mm" ;
+.
+
+<http://qudt.org/vocab/unit/MilliS>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ms" ;
+.
+
+<http://qudt.org/vocab/unit/OHM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ohmms" ;
+.
+
+<http://qudt.org/vocab/unit/OZ>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "oz" ;
+.
+
+<http://qudt.org/vocab/unit/OZ-PER-TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "oz/t" ;
+.
+
+<http://qudt.org/vocab/unit/OZ-PER-TON_LONG>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "oz/ton" ;
+.
+
+<http://qudt.org/vocab/unit/PA>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "pa" ;
+.
+
+<http://qudt.org/vocab/unit/PA-SEC>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "pa.s" ;
+.
+
+<http://qudt.org/vocab/unit/PERCENT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "%" ;
+.
+
+<http://qudt.org/vocab/unit/PSI>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "psi" ;
+.
+
+<http://qudt.org/vocab/unit/PetaJ>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "PJ" ;
+.
+
+<http://qudt.org/vocab/unit/RELATIVE-DENSITY>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "sg" ;
+.
+
+<http://qudt.org/vocab/unit/REV-PER-MIN>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "RPM" ;
+.
+
+<http://qudt.org/vocab/unit/SEC>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "sec" ;
+.
+
+<http://qudt.org/vocab/unit/SHOTS-PER-FT>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "sht/ft" ;
+.
+
+<http://qudt.org/vocab/unit/SHOTS-PER-M>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "sht/m" ;
+.
+
+<http://qudt.org/vocab/unit/TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "t" ;
+.
+
+<http://qudt.org/vocab/unit/M3-PER-TONNE>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "m3/t" ;
+.
+
+<http://qudt.org/vocab/unit/PERCENT-BY-MASS>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "wt%" ;
+.
+
+<http://qudt.org/vocab/unit/PERCENT-BY-VOL>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "vol%" ;
+.
+
+<http://qudt.org/vocab/unit/PPB>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ppb" ;
+.
+
+<http://qudt.org/vocab/unit/PPM>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
+    skos:notation "ppm" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/agent>
+    skos:notation "AGENT" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/lease-name>
+    skos:notation "LEASE_NAME" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/depth-datum>
+    skos:notation "DEPTH_DATUM" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/reserve-class-id>
+    skos:notation "RESERVE_CLASS_ID" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-material>
+    skos:notation "SAMPLE_MATERIAL" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/weathering>
+    skos:notation "WEATHERING" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/resource-status>
+    skos:notation "RESOURCE_STATUS" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/rpt-survey-type>
+    skos:notation "RPT_SURVEY_TYPE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/current-class>
+    skos:notation "CURRENT_CLASS" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/loc-survey-type>
+    skos:notation "LOC_SURVEY_TYPE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/qaqc>
+    skos:notation "QAQC" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-drilling>
+    skos:notation "SAMPLE_TYPE_DRILLING" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/grain-size>
+    skos:notation "GRAIN_SIZE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structural-feature>
+    skos:notation "STRUCTURAL_FEATURE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/soil-colour>
+    skos:notation "SOIL_COLOUR" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id>
+    skos:notation "COORD_SYS_ID" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-type>
+    skos:notation "DRILL_TYPE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/sample-type-surface>
+    skos:notation "SAMPLE_TYPE_SURFACE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/drill-diameter>
+    skos:notation "DRILL_DIAMETER" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/alteration>
+    skos:notation "ALTERATION" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/structure>
+    skos:notation "STRUCTURE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/texture>
+    skos:notation "TEXTURE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/uom>
+    skos:notation "UOM" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size>
+    skos:notation "MESH_SIZE" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/commodity>
+    skos:notation "COMMODITY" ;
 .
 

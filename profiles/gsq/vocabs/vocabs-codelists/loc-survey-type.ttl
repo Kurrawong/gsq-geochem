@@ -5,17 +5,6 @@ PREFIX sdo: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-:
-    a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
-    skos:definition "Definition for "@en ;
-    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
-    skos:inScheme cs: ;
-    skos:notation "" ;
-    skos:prefLabel ""@en ;
-    skos:topConceptOf cs: ;
-.
-
 :agps
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
@@ -114,7 +103,6 @@ cs:
     a skos:ConceptScheme ;
     skos:definition "Loc Survey Type"@en ;
     skos:hasTopConcept
-        : ,
         :agps ,
         :dgps ,
         :drone ,

@@ -19,6 +19,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:PERCENT-BY-VOL ,
         unit:PPB ,
         unit:PPM ;
+    skos:notation "ASSAY_LEVELS" ;
     skos:prefLabel "Assay Levels"@en ;
 .
 
@@ -41,6 +42,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:PERCENT-BY-VOL ,
         unit:PPB ,
         unit:PPM ;
+    skos:notation "CONCENTRATION" ;
     skos:prefLabel "Concentration"@en ;
 .
 
@@ -50,6 +52,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Collection derived from original spreadsheet columns" ;
     skos:inScheme cs: ;
     skos:member unit:MicroS-PER-CentiM ;
+    skos:notation "CONDUCTIVITY" ;
     skos:prefLabel "Conductivity"@en ;
 .
 
@@ -63,6 +66,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:KiloGM-PER-M3 ,
         unit:LB-PER-FT3 ,
         unit:RELATIVE-DENSITY ;
+    skos:notation "DENSITY" ;
     skos:prefLabel "Density"@en ;
 .
 
@@ -74,6 +78,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:member
         unit:HR-PER-FT ,
         unit:HR-PER-M ;
+    skos:notation "DRILL_RATE" ;
     skos:prefLabel "Drill Rate"@en ;
 .
 
@@ -88,6 +93,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:KiloBTU_IT ,
         unit:MegaBTU_IT ,
         unit:PetaJ ;
+    skos:notation "ENERGY" ;
     skos:prefLabel "Energy"@en ;
 .
 
@@ -109,6 +115,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:M3-PER-HR ,
         unit:MegaFT3-PER-DAY ,
         unit:MegaL-PER-DAY ;
+    skos:notation "FLOW_RATE" ;
     skos:prefLabel "Flow Rate"@en ;
 .
 
@@ -118,6 +125,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Collection derived from original spreadsheet columns" ;
     skos:inScheme cs: ;
     skos:member unit:HZ ;
+    skos:notation "FREQUENCY" ;
     skos:prefLabel "Frequency"@en ;
 .
 
@@ -129,6 +137,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:member
         unit:FT3-PER-TON_LONG ,
         unit:M3-PER-TONNE ;
+    skos:notation "GAS_CONTENT" ;
     skos:prefLabel "Gas Content"@en ;
 .
 
@@ -143,6 +152,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:IN ,
         unit:M ,
         unit:MilliM ;
+    skos:notation "LENGTH" ;
     skos:prefLabel "Length"@en ;
 .
 
@@ -160,6 +170,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:MilliGM ,
         unit:OZ ,
         unit:TONNE ;
+    skos:notation "MASS" ;
     skos:prefLabel "Mass"@en ;
 .
 
@@ -169,7 +180,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Collection derived from original spreadsheet columns" ;
     skos:inScheme cs: ;
     skos:member unit:LB-PER-GAL ;
-    skos:prefLabel "Mud Weight"@en ;
+    skos:notation "lbs/gal" ;
+    skos:prefLabel "MUD_WEIGHT"@en ;
 .
 
 :numerical
@@ -181,6 +193,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:COUNT ,
         unit:FRACTION ,
         unit:PERCENT ;
+    skos:notation "NUMERICAL" ;
     skos:prefLabel "Numerical"@en ;
 .
 
@@ -192,6 +205,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:member
         unit:SHOTS-PER-FT ,
         unit:SHOTS-PER-M ;
+    skos:notation "PERF_SPACING" ;
     skos:prefLabel "Perf Spacing"@en ;
 .
 
@@ -203,6 +217,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:member
         unit:DARCY ,
         unit:MilliDARCY ;
+    skos:notation "PERMEABILITY" ;
     skos:prefLabel "Permeability"@en ;
 .
 
@@ -218,6 +233,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:MegaPA ,
         unit:PA ,
         unit:PSI ;
+    skos:notation "PRESSURE" ;
     skos:prefLabel "Pressure"@en ;
 .
 
@@ -227,6 +243,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Collection derived from original spreadsheet columns" ;
     skos:inScheme cs: ;
     skos:member unit:OHM ;
+    skos:notation "RESISTIVITY" ;
     skos:prefLabel "Resitivity"@en ;
 .
 
@@ -236,6 +253,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Collection derived from original spreadsheet columns" ;
     skos:inScheme cs: ;
     skos:member unit:REV-PER-MIN ;
+    skos:notation "ROTATION" ;
     skos:prefLabel "Rotation"@en ;
 .
 
@@ -247,6 +265,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:member
         unit:DEG_C ,
         unit:DEG_F ;
+    skos:notation "TEMPERATURE" ;
     skos:prefLabel "Temperature"@en ;
 .
 
@@ -261,6 +280,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:MIN ,
         unit:MilliS ,
         unit:SEC ;
+    skos:notation "TIME" ;
     skos:prefLabel "Time"@en ;
 .
 
@@ -274,6 +294,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:FT-PER-SEC ,
         unit:M-PER-HR ,
         unit:M-PER-SEC ;
+    skos:notation "VELOCITY" ;
     skos:prefLabel "Velocity"@en ;
 .
 
@@ -285,6 +306,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:member
         unit:CentiPOISE ,
         unit:PA-SEC ;
+    skos:notation "VISCOSITY" ;
     skos:prefLabel "Viscosity"@en ;
 .
 
@@ -306,6 +328,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         unit:MegaFT3 ,
         unit:MegaL ,
         unit:MegaM3 ;
+    skos:notation "VOLUME" ;
     skos:prefLabel "Volume"@en ;
 .
 
@@ -1346,6 +1369,7 @@ cs:
         unit:SHOTS-PER-M ,
         unit:TONNE ;
     skos:historyNote "Created from the Geochemistry data exchange Excel Template v2, UNITS_OF_MEASURE sheet November 2023" ;
+    skos:notation "UOM" ;
     skos:prefLabel "Geochemistry Units of Measure"@en ;
     sdo:copyrightNotice "(c) Geological Survey of Queensland, 2023" ;
     sdo:creator <https://linked.dat.gov.au/org/gsq> ;
