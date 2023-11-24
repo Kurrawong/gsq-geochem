@@ -3822,10 +3822,46 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "1 in." ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/mesh-size/100-mm>
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/1.00-mm>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
     skos:notation "1.00 mm" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/1.12-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "1.12 mm" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/1.25-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "1.25 mm" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/1.40-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "1.40 mm" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/1.60-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "1.60 mm" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/1.80-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "1.80 mm" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/10.0-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "10.0 mm" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/106-micron>
@@ -3834,10 +3870,10 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "106 micron" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/mesh-size/112-mm>
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/11.2-mm>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
-    skos:notation "1.12 mm" ;
+    skos:notation "11.2 mm" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/118-mm>
@@ -3846,16 +3882,16 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "1.18 mm" ;
 .
 
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/12.5-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "12.5 mm" ;
+.
+
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/125-micron>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
     skos:notation "125 micron" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/mesh-size/125-mm>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
-    skos:notation "1.25 mm" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/132-mm>
@@ -3864,10 +3900,10 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "13.2 mm" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/mesh-size/140-mm>
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/14.0-mm>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
-    skos:notation "1.40 mm" ;
+    skos:notation "14.0 mm" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/150-micron>
@@ -3876,10 +3912,10 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "150 micron" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/mesh-size/160-mm>
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/16.0-mm>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
-    skos:notation "1.60 mm" ;
+    skos:notation "16.0 mm" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/170-mm>
@@ -3888,16 +3924,16 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "1.70 mm" ;
 .
 
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/18.0-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "18.0 mm" ;
+.
+
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/180-micron>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
     skos:notation "180 micron" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/mesh-size/180-mm>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
-    skos:notation "1.80 mm" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/190-mm>
@@ -3906,16 +3942,28 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "19.0 mm" ;
 .
 
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/2.00-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "2.00 mm" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/2.50-mm>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "2.50 mm" ;
+.
+
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/20-micron>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
     skos:notation "20 micron" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/mesh-size/200-mm>
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/20.0-mm>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
-    skos:notation "2.00 mm" ;
+    skos:notation "20.0 mm" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/212-micron>
@@ -3951,7 +3999,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/250-mm>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
-    skos:notation "2.50 mm" ;
+    skos:notation "25.0 mm" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/280-mm>
@@ -4248,6 +4296,12 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "#270" ;
 .
 
+<https://linked.data.gov.au/def/gsq-geochem/mesh-size/No3.5>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
+    skos:notation "#3.5" ;
+.
+
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/No30>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
@@ -4263,7 +4317,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/No35>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/mesh-size> ;
-    skos:notation "#3.5" ;
+    skos:notation "#35" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/mesh-size/No4>
@@ -5872,7 +5926,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 <https://linked.data.gov.au/def/gsq-geochem/uom/mud-weight>
     skos:member <http://qudt.org/vocab/unit/LB-PER-GAL> ;
-    skos:notation "lbs/gal" ;
+    skos:notation "MUD_WEIGHT" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/uom/numerical>

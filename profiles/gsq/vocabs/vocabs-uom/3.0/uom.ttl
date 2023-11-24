@@ -180,7 +180,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Collection derived from original spreadsheet columns" ;
     skos:inScheme cs: ;
     skos:member unit:LB-PER-GAL ;
-    skos:notation "lbs/gal" ;
+    skos:notation "MUD_WEIGHT" ;
     skos:prefLabel "MUD_WEIGHT"@en ;
 .
 

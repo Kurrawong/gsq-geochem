@@ -2,13 +2,13 @@ from pathlib import Path
 from rdflib import Graph
 from rdflib.namespace import RDF, SKOS
 
-VOCABS_DIR = Path(__file__).parent / "vocabs-codelists"
-OUTPUT_FILE = Path(__file__).parent / "concepts-combined.ttl"
+VOCABS_DIR = Path(__file__).parent / "vocabs-codelists" / "3.0"
+OUTPUT_FILE = Path(__file__).parent / "concepts-combined-3.0.ttl"
 
 combined = Graph()
 
 files = list(VOCABS_DIR.glob("*.ttl"))
-files.append(Path("vocabs-uom/uom.ttl"))
+files.append(Path("vocabs-uom/3.0/uom.ttl"))
 for f in sorted(files):
     g = Graph().parse(f)
     for c in g.subjects(RDF.type, SKOS.Concept):

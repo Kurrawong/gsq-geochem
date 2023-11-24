@@ -32,7 +32,7 @@ class Agent(BaseModel):
 
     @field_validator("iri")
     def iri_must_be_for_known_agent(cls, v):
-        g = Graph().parse(VOCABS_DIR / "agents.ttl")
+        g = Graph().parse(VOCABS_DIR_30 / "agent.ttl")
         for iri in g.subjects(RDF.type, None):
             if v == str(iri):
                 return v

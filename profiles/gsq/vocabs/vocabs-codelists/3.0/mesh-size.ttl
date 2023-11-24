@@ -60,20 +60,25 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:100-mm
+:1.00-mm
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for 1.00 mm"@en ,
-        "Definition for 10.0 mm"@en ;
+    skos:definition  "Definition for 1.00 mm"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "1.00 mm" ,
-        "10.0 mm" ;
-    skos:prefLabel
-        "1.00 mm"@en ,
-        "10.0 mm"@en ;
+    skos:notation "1.00 mm" ;
+    skos:prefLabel "1.00 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:10.0-mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Definition for 10.0 mm"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
+    skos:inScheme cs: ;
+    skos:notation "10.0 mm" ;
+    skos:prefLabel "10.0 mm"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -88,20 +93,25 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:112-mm
+:1.12-mm
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for 1.12 mm"@en ,
-        "Definition for 11.2 mm"@en ;
+    skos:definition "Definition for 1.12 mm"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "1.12 mm" ,
-        "11.2 mm" ;
-    skos:prefLabel
-        "1.12 mm"@en ,
-        "11.2 mm"@en ;
+    skos:notation "1.12 mm" ;
+    skos:prefLabel "1.12 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:11.2-mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Definition for 11.2 mm"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
+    skos:inScheme cs: ;
+    skos:notation "11.2 mm" ;
+    skos:prefLabel "11.2 mm"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -127,20 +137,25 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:125-mm
+:1.25-mm
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for 1.25 mm"@en ,
-        "Definition for 12.5 mm"@en ;
+    skos:definition "Definition for 1.25 mm"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "1.25 mm" ,
-        "12.5 mm" ;
-    skos:prefLabel
-        "1.25 mm"@en ,
-        "12.5 mm"@en ;
+    skos:notation "1.25 mm" ;
+    skos:prefLabel "1.25 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:12.5-mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Definition for 12.5 mm"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
+    skos:inScheme cs: ;
+    skos:notation "12.5 mm" ;
+    skos:prefLabel "12.5 mm"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -155,20 +170,25 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:140-mm
+:1.40-mm
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for 1.40 mm"@en ,
-        "Definition for 14.0 mm"@en ;
+    skos:definition "Definition for 1.40 mm"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "1.40 mm" ,
-        "14.0 mm" ;
-    skos:prefLabel
-        "1.40 mm"@en ,
-        "14.0 mm"@en ;
+    skos:notation "1.40 mm" ;
+    skos:prefLabel "1.40 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:14.0-mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Definition for 14.0 mm"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
+    skos:inScheme cs: ;
+    skos:notation "14.0 mm" ;
+    skos:prefLabel "14.0 mm"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -183,20 +203,25 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:160-mm
+:1.60-mm
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for 1.60 mm"@en ,
-        "Definition for 16.0 mm"@en ;
+    skos:definition "Definition for 1.60 mm"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "1.60 mm" ,
-        "16.0 mm" ;
-    skos:prefLabel
-        "1.60 mm"@en ,
-        "16.0 mm"@en ;
+    skos:notation "1.60 mm" ;
+    skos:prefLabel "1.60 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:16.0-mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Definition for 16.0 mm"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
+    skos:inScheme cs: ;
+    skos:notation "16.0 mm" ;
+    skos:prefLabel "16.0 mm"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -222,20 +247,25 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:180-mm
+:1.80-mm
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for 1.80 mm"@en ,
-        "Definition for 18.0 mm"@en ;
+    skos:definition "Definition for 1.80 mm"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "1.80 mm" ,
-        "18.0 mm" ;
-    skos:prefLabel
-        "1.80 mm"@en ,
-        "18.0 mm"@en ;
+    skos:notation "1.80 mm" ;
+    skos:prefLabel "1.80 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:18.0-mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Definition for 18.0 mm"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
+    skos:inScheme cs: ;
+    skos:notation "18.0 mm" ;
+    skos:prefLabel "18.0 mm"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -261,20 +291,25 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:200-mm
+:2.00-mm
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for 2.00 mm"@en ,
-        "Definition for 20.0 mm"@en ;
+    skos:definition "Definition for 2.00 mm"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "2.00 mm" ,
-        "20.0 mm" ;
-    skos:prefLabel
-        "2.00 mm"@en ,
-        "20.0 mm"@en ;
+    skos:notation "2.00 mm" ;
+    skos:prefLabel "2.00 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:20.0-mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Definition for 20.0 mm"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
+    skos:inScheme cs: ;
+    skos:notation "20.0 mm" ;
+    skos:prefLabel "20.0 mm"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -336,17 +371,22 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :250-mm
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for 2.50 mm"@en ,
-        "Definition for 25.0 mm"@en ;
+    skos:definition "Definition for 25.0 mm"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "2.50 mm" ,
-        "25.0 mm" ;
-    skos:prefLabel
-        "2.50 mm"@en ,
-        "25.0 mm"@en ;
+    skos:notation "25.0 mm" ;
+    skos:prefLabel "25.0 mm"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:2.50-mm
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Definition for 2.50 mm"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
+    skos:inScheme cs: ;
+    skos:notation "2.50 mm" ;
+    skos:prefLabel "2.50 mm"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -914,19 +954,25 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :No35
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for #3.5"@en ,
-        "Definition for #35"@en ;
+    skos:definition "Definition for #35"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "#3.5" ,
-        "#35" ;
-    skos:prefLabel
-        "#3.5"@en ,
-        "#35"@en ;
+    skos:notation "#35" ;
+    skos:prefLabel "#35"@en ;
     skos:topConceptOf cs: ;
 .
+
+:No3.5
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Definition for #3.5"@en ;
+    skos:historyNote "Taken from Geochem Excel exchange template v2" ;
+    skos:inScheme cs: ;
+    skos:notation "#3.5" ;
+    skos:prefLabel "#3.5"@en ;
+    skos:topConceptOf cs: ;
+.
+
 
 :No4
     a skos:Concept ;
@@ -1108,28 +1154,35 @@ cs:
         :1-2-in ,
         :1-4-in ,
         :1-in ,
-        :100-mm ,
+        :1.00-mm ,
+        :10.0-mm ,
         :106-micron ,
-        :112-mm ,
+        :1.12-mm ,
+        :11.2-mm ,
         :118-mm ,
         :125-micron ,
-        :125-mm ,
+        :1.25-mm ,
+        :12.5-mm ,
         :132-mm ,
-        :140-mm ,
+        :1.40-mm ,
+        :14.0-mm ,
         :150-micron ,
-        :160-mm ,
+        :1.60-mm ,
+        :16.0-mm ,
         :170-mm ,
         :180-micron ,
         :180-mm ,
         :190-mm ,
         :20-micron ,
-        :200-mm ,
+        :2.00-mm ,
+        :20.0-mm ,
         :212-micron ,
         :224-mm ,
         :236-mm ,
         :25-micron ,
         :250-micron ,
         :250-mm ,
+        :2.50-mm ,
         :280-mm ,
         :3-4-in ,
         :3-8-in ,
@@ -1181,6 +1234,7 @@ cs:
         :No270 ,
         :No30 ,
         :No325 ,
+        :No3.5 ,
         :No35 ,
         :No4 ,
         :No40 ,

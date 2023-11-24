@@ -2373,17 +2373,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :oil-shale
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for oil shale"@en ,
-        "Definition for oil-shale"@en ;
+    skos:definition "Definition for oil shale"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "OIL SHALE" ,
-        "OIL-SHALE" ;
-    skos:prefLabel
-        "oil shale"@en ,
-        "oil-shale"@en ;
+    skos:notation "OIL SHALE" ;
+    skos:prefLabel "oil shale"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -3974,17 +3968,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :soda-ash
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for soda ash"@en ,
-        "Definition for soda-ash"@en ;
+    skos:definition "Definition for soda ash"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "SODA ASH" ,
-        "SODA-ASH" ;
-    skos:prefLabel
-        "soda ash"@en ,
-        "soda-ash"@en ;
+    skos:notation "SODA ASH"  ;
+    skos:prefLabel "soda ash"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -4827,17 +4815,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :uranium-oxide
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for uranium oxide"@en ,
-        "Definition for uranium-oxide"@en ;
+    skos:definition "Definition for uranium oxide"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "URANIUM OXIDE" ,
-        "URANIUM-OXIDE" ;
-    skos:prefLabel
-        "uranium oxide"@en ,
-        "uranium-oxide"@en ;
+    skos:notation "URANIUM OXIDE" ;
+    skos:prefLabel "uranium oxide"@en ;
     skos:topConceptOf cs: ;
 .
 
@@ -5119,17 +5101,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :yttrium-oxide
     a skos:Concept ;
     rdfs:isDefinedBy cs: ;
-    skos:definition
-        "Definition for yttrium oxide"@en ,
-        "Definition for yttrium-oxide"@en ;
+    skos:definition "Definition for yttrium oxide"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation
-        "YTTRIUM OXIDE" ,
-        "YTTRIUM-OXIDE" ;
-    skos:prefLabel
-        "yttrium oxide"@en ,
-        "yttrium-oxide"@en ;
+    skos:notation "YTTRIUM OXIDE" ;
+    skos:prefLabel "yttrium oxide"@en ;
     skos:topConceptOf cs: ;
 .
 

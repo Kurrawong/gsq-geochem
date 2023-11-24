@@ -5,6 +5,7 @@ from tempfile import SpooledTemporaryFile
 from typing import Dict, Tuple, Union
 from typing import Literal as TypeLiteral
 
+import openpyxl
 import pyshacl
 from colorama import Fore, Style
 from openpyxl import load_workbook as _load_workbook
@@ -56,13 +57,13 @@ VOCAB_COLUMNS = {
     "RESOURCE_STATUS": "W",
     "AGENT": "X",
 }
-VOCABS_DIR = Path(__file__).parent.parent.resolve().parent / "vocabs"
+VOCABS_DIR_30 = Path(__file__).parent.parent.resolve().parent / "vocabs" / "vocabs-codelists" / "3.0"
 FIELD_VOCABS = {
-    "SAMPLE_MATERIAL": VOCABS_DIR / "gsq-sample-materials.ttl",
+    "SAMPLE_MATERIAL": VOCABS_DIR_30 / "gsq-sample-materials.ttl",
     #"SAMPLE_TYPE_SURFACE": VOCABS_DIR / "sample-type-surfaces.ttl",
-    "MESH_SIZE": VOCABS_DIR / "sample-mesh-sizes.ttl",
-    "SOIL_COLOUR": VOCABS_DIR / "soil-colour.ttl",
-    "AGENT": VOCABS_DIR / "agents.ttl",
+    "MESH_SIZE": VOCABS_DIR_30 / "sample-mesh-sizes.ttl",
+    "SOIL_COLOUR": VOCABS_DIR_30 / "soil-colour.ttl",
+    "AGENT": VOCABS_DIR_30 / "agents.ttl",
 }
 
 SHEETS_VOCABS = {
@@ -411,3 +412,34 @@ def create_vocab_validation_formula(wb: Workbook, tab, column_name: str):
                         greatest_row = cell.row
     raise ValueError(f"A column header in sheet {tab} with value {column_name} could not be found")
 
+
+def get_codelist_id_for_code(code: str, combined_concepts: Graph):
+    # check the code is in the combined_concepts
+    c = combined_concepts.value(predicate=SKOS.notation, object=Literal(code))
+    if c is None:
+        raise ConversionError(f"The code {code} is not in any codelist")
+
+    # return the code of the ConceptScheme or Collection it is in
+    cs = combined_concepts.value(subject=c, predicate=SKOS.inScheme)
+    # if it's in the UoM vocab. we need he Collection ID, not the CS ID
+    if cs != URIRef("https://linked.data.gov.au/def/gsq-geochem/uom"):
+        return str(combined_concepts.value(subject=cs, predicate=SKOS.notation))
+    else:
+        col = combined_concepts.value(predicate=SKOS.member, object=c)
+        return str(combined_concepts.value(subject=col, predicate=SKOS.notation))
+
+
+def get_iri_from_code(code: str, combined_concepts: Graph) -> URIRef:
+    return combined_concepts.value(predicate=SKOS.notation, object=Literal(code))
+
+
+def check_template_version_supported(wb: openpyxl.Workbook):
+    notes_sheet = wb["TEMPLATE_NOTES"]
+    version_number = notes_sheet["C7"].value.replace("VERSION ", "")
+    if version_number in KNOWN_TEMPLATE_VERSIONS:
+        return version_number
+    else:
+        raise ConversionError(
+            f"You are using template version {version_number} however only the following versions are supported: "
+            f"{', '.join(KNOWN_TEMPLATE_VERSIONS)}"
+        )

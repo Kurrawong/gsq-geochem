@@ -3,66 +3,304 @@ import sys
 from typing import BinaryIO, Optional
 from uuid import uuid4
 
-import openpyxl
 from rdflib.namespace import SDO, SOSA
 
-from .models import Dataset, Agent, DrillHole, DrillHoleSample, SurfaceSample, Geometry
+from .models import Dataset, DrillHole, DrillHoleSample, SurfaceSample, Geometry
 from .utils import *
+from .utils import check_template_version_supported
+
+GSQ_PROFILE_DIR = Path(__file__).parent.parent.resolve().parent
 
 
-def extract_dataset(wb: openpyxl.Workbook, template_version: float, external_metadata: str = None) -> Dataset:
-    def _extract_external_metadata():
-        g = Graph().parse(external_metadata)
-        iri = g.value(predicate=RDF.type, object=SDO.Dataset)
-        name = g.value(subject=iri, predicate=SDO.name)
-        description = g.value(subject=iri, predicate=SDO.description)
-        date_created = g.value(subject=iri, predicate=SDO.dateCreated)
-        date_modified = g.value(subject=iri, predicate=SDO.dateModified)
-        author = None
-        for o in g.objects(iri, PROV.qualifiedAttribution):
-            for p, o2 in g.predicate_objects(o):
-                if o2 == URIRef("http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/author"):
-                    author = g.value(o, PROV.agent)
-        keywords = []
-        for o in g.objects(subject=None, predicate=SDO.keywords):
-            keywords.append(str(o))
+def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Graph) -> Dataset:
+    check_template_version_supported(wb)
 
-        return Dataset(
-            iri=str(iri),
-            name=str(name),
-            description=str(description),
-            date_created=str(date_created),
-            date_modified=date_modified.toPython(),
-            author=Agent(iri=str(author)),
-            keywords=keywords
-        )
+    sheet = wb["DATASET_METADATA"]
 
-    if template_version == 2.0:
-        # for v2.0, metadata must be supplied externally only
-        if not external_metadata:
-            raise ConversionError("If you are using an 2.0 version of the Geochem Excel template, you must supply Dataset metadata as external metadata")
+    return Dataset(
+        iri=sheet["B5"].value
+        if string_is_http_iri(sheet["B5"].value) else "http://example.com/dataset/" + str(uuid4()),
+        name=sheet["B6"].value,
+        description=sheet["B7"].value,
+        date_created=sheet["B8"].value,
+        date_modified=sheet["B9"].value,
+        author=get_iri_from_code(sheet["B10"].value, combined_concepts),
+    )
+
+
+def validate_sheet_validation_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph):
+    check_template_version_supported(wb)
+
+    # load user dict if not present
+    if not combined_concepts.value(subject=URIRef("http://example.com/user-defined-vocab"), predicate=RDF.type):
+        extract_sheet_user_dictionary(wb, combined_concepts)
+
+    sheet = wb["VALIDATION_DICTIONARY"]
+
+    # for every code in the VALIDATION_DICTIONARY sheet, check that either it's the notation of a Concept in the
+    # combined_concepts or it's defined in the USER_DICTIONARY
+    col = 1
+    while True:
+        codelist = sheet.cell(row=4, column=col).value
+
+        if codelist is None:
+            break
         else:
-            return _extract_external_metadata()
+            if not combined_concepts.value(predicate=SKOS.notation, object=Literal(codelist)):
+                raise ConversionError(f"Codelist {codelist} on worksheet VALIDATION_DICTIONARY is not known")
 
-    elif template_version == 3.0:
-        # for v3.0, you need not supply external metadata but, if you do, it will override metadata in the Workbook
-        if external_metadata:
-            return _extract_external_metadata()
+            row = 5
+            while True:
+                code = sheet.cell(row=row, column=col).value
+                if code is None:
+                    break
+                else:
+                    if not combined_concepts.value(predicate=SKOS.notation, object=Literal(code)):
+                        raise ConversionError(f"Code {code} in codelist {codelist} on worksheet VALIDATION_DICTIONARY "
+                                              f"is not known")
+                row += 1
+
+        col += 1
+
+    allowed_codes = []
+    for o in combined_concepts.objects(None, SKOS.notation):
+        allowed_codes.append(str(o))
+
+
+def extract_sheet_user_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph():
+    check_template_version_supported(wb)
+
+    sheet = wb["USER_DICTIONARY"]
+
+    row = 9
+    if sheet["C9"].value == "MEGA":
+        row = 10
+
+    g = Graph()
+
+    cs = URIRef("http://example.com/user-defined-vocab")
+    g.add((cs, RDF.type, SKOS.ConceptScheme))
+    g.add((cs, SKOS.prefLabel, Literal("User-defined Vocabulary")))
+    g.add((cs, SKOS.notation, Literal("USER-VOC")))
+
+    while True:
+        if sheet[f"B{row}"].value is not None:
+            bn = BNode()
+            g.add((bn, RDF.type, SKOS.Concept))
+            if sheet[f"C{row}"].value is None:
+                raise ConversionError(
+                    "You must supply a CODE value for each code you define in the USER_DICTIONARY sheet")
+            g.add((bn, SKOS.notation, Literal(sheet[f"C{row}"].value)))
+            g.add((bn, SKOS.inScheme, cs))
+            if sheet[f"D{row}"].value is None:
+                print()
+                raise ConversionError(
+                    "You must supply a DESCRIPTION value for each code you define in the USER_DICTIONARY sheet")
+            g.add((bn, SKOS.definition, Literal(sheet[f"D{row}"].value)))
+
+            row += 1
         else:
-            sheet = wb["DATASET_METADATA"]
+            break
 
-            return Dataset(
-                iri=sheet["B3"].value
-                if string_is_http_iri(sheet["B3"].value) else "http://example.com/dataset/" + str(uuid4()),
-                name=sheet["B4"].value,
-                description=sheet["B5"].value,
-                date_created=sheet["B6"].value,
-                date_modified=sheet["B7"].value,
-                author=sheet["B8"].value,
-            )
+    combined_concepts += g
 
 
-def extract_drillholes(wb: openpyxl.Workbook, template_version: float) -> list[Graph]:
+def validate_sheet_uom(wb: openpyxl.Workbook, combined_concepts: Graph):
+    check_template_version_supported(wb)
+    
+    # load user UoM if not present
+    if not combined_concepts.value(subject=URIRef("http://example.com/user-uom"), predicate=RDF.type):
+        extract_sheet_user_uom(wb, combined_concepts)
+
+    sheet = wb["UNITS_OF_MEASURE"]
+
+    col = 1
+    while True:
+        codelist = sheet.cell(row=1, column=col).value
+
+        if codelist is None:
+            break
+        else:
+            if not combined_concepts.value(predicate=SKOS.notation, object=Literal(codelist)):
+                raise ConversionError(f"Codelist {codelist} on worksheet UNITS_OF_MEASURE is not known")
+
+            row = 2
+            while True:
+                code = sheet.cell(row=row, column=col).value
+                if code is None:
+                    break
+                else:
+                    code = code.split("(")[1].split(")")[0]
+                    if not combined_concepts.value(predicate=SKOS.notation, object=Literal(code)):
+                        raise ConversionError(f"Code {code} in codelist {codelist} on worksheet UNITS_OF_MEASURE "
+                                              f"is not known")
+                row += 1
+
+        col += 1
+
+    allowed_codes = []
+    for o in combined_concepts.objects(None, SKOS.notation):
+        allowed_codes.append(str(o))
+
+
+def extract_sheet_user_uom(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph():
+    check_template_version_supported(wb)
+
+    sheet = wb["USER_UNITS_OF_MEASURE"]
+    
+    row = 9
+    if sheet["C9"].value == "kg/L":
+        row = 10
+
+    g = Graph()
+
+    cs = URIRef("http://example.com/user-defined-uom")
+    g.add((cs, RDF.type, SKOS.ConceptScheme))
+    g.add((cs, SKOS.prefLabel, Literal("User-defined Units of Measure")))
+    g.add((cs, SKOS.notation, Literal("USER-UOM")))
+
+    while True:
+        if sheet[f"B{row}"].value is not None:
+            bn = BNode()
+            g.add((bn, RDF.type, SKOS.Concept))
+            g.add((bn, SKOS.inScheme, cs))
+            if sheet[f"B{row}"].value is None:
+                raise ConversionError(
+                    "You must select a COLLECTION value for each code you define in the USER_UNITS_OF_MEASURE sheet")
+            col = combined_concepts.value(predicate=SKOS.notation, object=Literal(sheet[f"B{row}"].value))
+            g.add((col, SKOS.member, bn))
+            g.add((col, SKOS.inScheme, cs))
+            if sheet[f"C{row}"].value is None:
+                raise ConversionError(
+                    "You must supply a UNIT_CODE value for each unit you define in the USER_UNITS_OF_MEASURE sheet")
+            g.add((bn, SKOS.notation, Literal(sheet[f"C{row}"].value)))
+            if sheet[f"C{row}"].value is None:
+                raise ConversionError(
+                    "You must supply a LABEL value for each code you define in the USER_UNITS_OF_MEASURE sheet")
+            g.add((bn, SKOS.prefLabel, Literal(sheet[f"D{row}"].value, lang="en")))
+            if sheet[f"C{row}"].value is None:
+                raise ConversionError(
+                    "You must supply a DEFINITION value for each code you define in the USER_UNITS_OF_MEASURE sheet")
+            g.add((bn, SKOS.definition, Literal(sheet[f"E{row}"].value, lang="en")))
+
+            row += 1
+        else:
+            break
+
+    combined_concepts += g
+
+
+def extract_sheet_tenement(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["TENEMENT"]
+
+
+def extract_sheet_drillhole_location(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["DRILLHOLE_LOCATION"]
+
+
+def extract_sheet_drillhole_survey(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["DRILLHOLE_SURVEY"]
+
+
+def extract_sheet_drillhole_sample(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["DRILLHOLE_SAMPLE"]
+
+
+def extract_sheet_surface_sample(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["SURFACE_SAMPLE"]
+
+
+def extract_sheet_sample_preparation(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["SAMPLE_PREPARATION"]
+
+
+def extract_sheet_geochemistry_meta(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["GEOCHEMISTRY_META"]
+
+
+def extract_sheet_sample_geochemistry(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["SAMPLE_GEOCHEMISTRY"]
+
+
+def extract_sheet_qaqc_meta(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["QAQC_META"]
+
+
+def extract_sheet_qaqc_geochemistry(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["QAQC_GEOCHEMISTRY"]
+
+
+def extract_sheet_sample_pxrf(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["SAMPLE_PXRF"]
+
+
+def extract_sheet_drillhole_lithology(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["DRILLHOLE_LITHOLOGY"]
+
+
+def extract_sheet_drillhole_structure(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["DRILLHOLE_STRUCTURE"]
+
+
+def extract_sheet_surface_lithology(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["SURFACE_LITHOLOGY"]
+
+
+def extract_sheet_surface_structure(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["SURFACE_STRUCTURE"]
+
+
+def extract_sheet_lith_dictionary(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["LITH_DICTIONARY"]
+
+
+def extract_sheet_min_dictionary(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["MIN_DICTIONARY"]
+
+
+def extract_sheet_reserves_resources(wb: openpyxl.Workbook):
+    check_template_version_supported(wb)
+
+    sheet = wb["RESERVES_RESOURCES"]
+
+
+
+
+def extract_drillholes(wb: openpyxl.Workbook) -> list[Graph]:
     # only handle v 3.0
     if not template_version == 3.0:
         return []
@@ -94,7 +332,7 @@ def extract_drillholes(wb: openpyxl.Workbook, template_version: float) -> list[G
     return drillholes
 
 
-def extract_samples(wb: openpyxl.Workbook, template_version: float, known_drillholes: []) -> list[Graph]:
+def extract_samples(wb: openpyxl.Workbook, known_drillholes: []) -> list[Graph]:
     # only handle v 3.0
     if not template_version == 3.0:
         return []
@@ -195,6 +433,8 @@ def excel_to_rdf(
     """Converts a sheet within an Excel workbook to an RDF file"""
     wb = load_workbook(file_to_convert_path)
     template_version = get_template_version(wb)
+
+    CONCEPTS_COMBINED_GRAPH = Graph().parse(GSQ_PROFILE_DIR / "vocabs" / f"concepts-combined-{template_version}.ttl")
 
     # test that we have a valid template variable.
     if template_version not in KNOWN_TEMPLATE_VERSIONS:
