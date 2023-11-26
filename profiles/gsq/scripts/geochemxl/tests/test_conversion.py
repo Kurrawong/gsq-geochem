@@ -8,6 +8,9 @@ TESTS_DIR = GSQ_PROFILE_DIR / "scripts" / "geochemxl" / "tests"
 TEST_WORKBOOK_30_VALID = GSQ_PROFILE_DIR / "templates" / "GeochemXL-v3.0.xlsx"
 
 
+# wb = load_workbook(TESTS_DIR.parent.parent.resolve().parent / "templates" / "GeochemXL-v3.0.xlsx")
+
+
 class TestExtractSheetDatasetMetadata30:
     def test_extract_sheet_dataset_metadata(self):
         wb = load_workbook(TEST_WORKBOOK_30_VALID)
@@ -100,3 +103,53 @@ class TestExtractSheetUserUom30:
             extract_sheet_user_uom(wb, Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl"))
         except ConversionError as e:
             assert str(e) == "You must supply a DESCRIPTION value for each code you define in the USER_UNITS_OF_MEASURE sheet"
+
+
+class TestExtractSheetTenement30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-TENEMENT_01_valid.xlsx")
+        g = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        ten = extract_sheet_tenement(wb, g)
+
+        assert (URIRef("https://linked.data.gov.au/dataset/gsq-tenements/6789"), RDF.type, TENEMENT.Tenement) in ten
+
+        assert (URIRef("https://linked.data.gov.au/dataset/gsq-tenements/6789"), TENEMENT.hasProject, Literal("Test Project")) in ten
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-TENEMENT_02_invalid.xlsx")
+        g = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        try:
+            extract_sheet_tenement(wb, g)
+        except ConversionError as e:
+            assert str(e) == "For each tenement in the TENEMENTS worksheet, you must supply a TENEMENT_OPERATOR value"
+
+    def test_03_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-TENEMENT_03_invalid.xlsx")
+        g = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        try:
+            extract_sheet_tenement(wb, g)
+        except ConversionError as e:
+            assert str(e) == "The value Hello for GEODETIC_DATUM in row 10 on the TENEMENT worksheet is not within " \
+                             "the COORD_SYS_ID lookup list"
+
+
+class TestExtractSheetDrillholeLocation30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_LOCATION_01_valid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        g = extract_sheet_drillhole_location(wb, cc)
+
+        assert (
+            URIRef("https://linked.data.gov.au/dataset/gsq-bores/DEF123"),
+            BORE.hadDrillingMethod,
+            URIRef("https://linked.data.gov.au/def/gsq-geochem/drill-type/box-core")
+        ) in g
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_LOCATION_02_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        try:
+            extract_sheet_drillhole_location(wb, cc)
+        except ConversionError as e:
+            assert str(e) == "For each row in the DRILLHOLE_LOCATION worksheet, " \
+                             "you must supply a PRE_COLLAR_DEPTH value"

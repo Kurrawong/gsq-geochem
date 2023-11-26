@@ -12,7 +12,7 @@ from openpyxl import load_workbook as _load_workbook
 from openpyxl.workbook.workbook import Workbook
 from pyshacl.pytypes import GraphLike
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
-from rdflib.namespace import DCAT, DCTERMS, PROV, RDF, RDFS, SKOS, XSD
+from rdflib.namespace import DCAT, DCTERMS, PROV, RDF, RDFS, SKOS, XSD, TIME
 from .defined_namespaces import BORE, FOIS, SAMPLES
 import utm
 
@@ -227,7 +227,7 @@ def string_from_iri(iri):
     return s
 
 
-def id_from_iri(iri):
+def get_id_from_iri(iri):
     id = str(iri.split("/")[-1].split("#")[-1])
     return Literal(id, datatype=XSD.token)
 
@@ -430,7 +430,20 @@ def get_codelist_id_for_code(code: str, combined_concepts: Graph):
 
 
 def get_iri_from_code(code: str, combined_concepts: Graph) -> URIRef:
+    """Returns an IRI for any valid value in the VALIATION_DICTIONARY, the USER_DICTIONARY, the UNITS_OF_MEASURE or the USER_UNITS_OF_MEASURE whorksheets"""
+
     return combined_concepts.value(predicate=SKOS.notation, object=Literal(code))
+
+
+def validate_code(code: str, codelist_id: str, column_name: str, row_num: int, sheet_name: str, combined_concepts: Graph) -> None:
+    try:  # so we get better error reporting further down
+        codelist_id_actual = get_codelist_id_for_code(code, combined_concepts)
+    except:
+        codelist_id_actual = None
+    if codelist_id_actual != codelist_id:
+        raise ConversionError(
+            f"The value {code} for {column_name} in row {row_num} on the {sheet_name} worksheet is not within "
+            f"the {codelist_id} lookup list")
 
 
 def check_template_version_supported(wb: openpyxl.Workbook):

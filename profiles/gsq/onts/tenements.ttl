@@ -1,0 +1,18 @@
+<https://linked.data.gov.au/def/mining-tenements>
+    a owl:Ontology ;
+.
+
+<https://linked.data.gov.au/def/mining-tenements/Tenement>
+    a owl:Class ;
+.
+
+<https://linked.data.gov.au/def/mining-tenements/tenement-area>
+    a owl:Class ;
+    rdfs:subClassOf
+        geo:Feature ,
+        sdo:Place ;
+.
+
+<https://linked.data.gov.au/def/mining-tenements/tenement>
+    a owl:Class ;
+.

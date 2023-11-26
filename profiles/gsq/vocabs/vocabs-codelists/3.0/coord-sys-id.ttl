@@ -1,5 +1,7 @@
 PREFIX : <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/>
 PREFIX cs: <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id>
+PREFIX qldutm: <http://linked.data.gov.au/def/qld-utm-zones/>
+PREFIX qldutmcs: <http://linked.data.gov.au/def/qld-utm-zones>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sdo: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -27,9 +29,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:amg66-z54
+qldutm:amg66z54
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for amg66 z54"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -38,9 +40,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:amg66-z55
+qldutm:amg66z55
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for amg66 z55"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -49,9 +51,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:amg66-z56
+qldutm:amg66z56
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for amg66 z56"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -60,9 +62,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:amg84-z54
+qldutm:amg84z54
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for amg84 z54"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -71,9 +73,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:amg84-z55
+qldutm:amg84z55
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for amg84 z55"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -82,9 +84,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:amg84-z56
+qldutm:amg84z56
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for amg84 z56"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -115,9 +117,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:mga2020-z54
+qldutm:mga2020z54
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for mga2020 z54"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -126,9 +128,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:mga2020-z55
+qldutm:mga2020z55
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for mga2020 z55"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -137,9 +139,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:mga2020-z56
+qldutm:mga2020z56
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for mga2020 z56"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -148,9 +150,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:mga94-z54
+qldutm:mga94z54
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for mga94 z54"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -159,9 +161,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:mga94-z55
+qldutm:mga94z55
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for mga94 z55"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
@@ -170,9 +172,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:topConceptOf cs: ;
 .
 
-:mga94-z56
+qldutm:mga94z56
     a skos:Concept ;
-    rdfs:isDefinedBy cs: ;
+    rdfs:isDefinedBy qldutmcs: ;
     skos:definition "Definition for mga94 z56"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;

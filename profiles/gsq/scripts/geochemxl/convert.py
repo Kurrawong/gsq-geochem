@@ -1,9 +1,14 @@
 import argparse
+import datetime
 import sys
 from typing import BinaryIO, Optional
 from uuid import uuid4
+from pyproj import Transformer
 
-from rdflib.namespace import SDO, SOSA
+from rdflib.namespace import GEO, SDO, SOSA, PROV
+from .defined_namespaces import MININGROLES, TENEMENT, TENEMENTS, QLDBORES, BORE
+from rdflib import Namespace
+EX = Namespace("http://example.com/")
 
 from .models import Dataset, DrillHole, DrillHoleSample, SurfaceSample, Geometry
 from .utils import *
@@ -190,112 +195,427 @@ def extract_sheet_user_uom(wb: openpyxl.Workbook, combined_concepts: Graph) -> G
     combined_concepts += g
 
 
-def extract_sheet_tenement(wb: openpyxl.Workbook):
+def extract_sheet_tenement(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["TENEMENT"]
+    sheet_name = "TENEMENT"
+    sheet = wb[sheet_name]
+
+    row = 9
+    if sheet["C9"].value == 12345:
+        row = 10
+
+    g = Graph()
+
+    while True:
+        if sheet[f"B{row}"].value is not None:
+            # make vars of all the sheet values
+            data = {
+                "required": {
+                    "tenement_type": sheet[f"B{row}"].value,
+                    "tenement_no": sheet[f"C{row}"].value,
+                    "tenement_holder": sheet[f"D{row}"].value,
+                    "project_name": sheet[f"E{row}"].value,
+                    "tenement_operator": sheet[f"F{row}"].value,
+                    "geodetic_datum": sheet[f"G{row}"].value,
+                    "map_sheet_no": sheet[f"H{row}"].value,
+                },
+                "optional": {
+                    "remark": sheet[f"I{row}"].value,
+                }
+            }
+
+            # check required sheet values are present
+            for k, v in data["required"].items():
+                if v is None:
+                    raise ConversionError(
+                        f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+            # check lookup values are valid
+            validate_code(
+                data["required"]["tenement_type"], "LEASE_NAME", "TENEMENT_TYPE", row, sheet_name, combined_concepts
+            )
+
+            validate_code(
+                data["required"]["geodetic_datum"], "COORD_SYS_ID", "GEODETIC_DATUM", row, sheet_name, combined_concepts
+            )
+
+            # make RDFLib objects of the values
+            tenement_iri = URIRef(TENEMENTS + str(data["required"]["tenement_no"]))
+            tenement_type_iri = get_iri_from_code(data["required"]["tenement_type"], combined_concepts)
+            tenement_holder_lit = Literal(data["required"]["tenement_holder"])
+            project_name_lit = Literal(data["required"]["project_name"])
+            tenement_operator_lit = Literal(data["required"]["tenement_operator"])
+            geodetic_datum_iri = get_iri_from_code(data["required"]["geodetic_datum"], combined_concepts)
+            map_sheet_no_lit = [
+                Literal(x.strip(), datatype=TENEMENT.MapSheet)
+                for x in str(data["required"]["map_sheet_no"]).split(",")
+            ]
+
+            if data["optional"]["remark"] is not None:
+                remark_lit = Literal(data["optional"]["remark"])
+
+            # make the graph
+            g.add((tenement_iri, RDF.type, TENEMENT.Tenement))
+
+            g.add((tenement_iri, SDO.additionalType, tenement_type_iri))
+
+            qa = BNode()
+            g.add((tenement_iri, PROV.qualifiedAttribution, qa))
+            g.add((qa, PROV.agent, tenement_holder_lit))
+            g.add((qa, PROV.hadRole, MININGROLES.TenementHolder))
+
+            g.add((tenement_iri, TENEMENT.hasProject, project_name_lit))
+
+            qa2 = BNode()
+            g.add((tenement_iri, PROV.qualifiedAttribution, qa2))
+            g.add((qa2, PROV.agent, tenement_operator_lit))
+            g.add((qa2, PROV.hadRole, MININGROLES.TenementOperator))
+
+            ta = BNode()
+            g.add((ta, RDF.type, GEO.Feature))
+            g.add((ta, RDF.type, TENEMENT.TenementArea))
+
+            g.add((tenement_iri, SDO.location, ta))
+
+            tg = BNode()
+            g.add((tg, RDF.type, GEO.Geometry))
+            g.add((tg, RDFS.comment, Literal(f"CRS is {geodetic_datum_iri}")))
+            for map_sheet in map_sheet_no_lit:
+                g.add((tg, SDO.identifier, map_sheet))
+
+            g.add((ta, GEO.hasGeometry, tg))
+
+            if data["optional"]["remark"] is not None:
+                g.add((tenement_iri, RDFS.comment, remark_lit))
+
+            row += 1
+        else:
+            break
+
+    g.bind(TENEMENT.prefix, TENEMENT)
+    return g
 
 
-def extract_sheet_drillhole_location(wb: openpyxl.Workbook):
+def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["DRILLHOLE_LOCATION"]
+    sheet_name = "DRILLHOLE_LOCATION"
+    sheet = wb[sheet_name]
+
+    row = 9
+    if sheet["B9"].value == "DD12345":
+        row = 10
+
+    g = Graph()
+
+    while True:
+        if sheet[f"B{row}"].value is not None:
+            # make vars of all the sheet values
+            data = {
+                "required": {
+                    "drillhole_id": sheet[f"B{row}"].value,
+                    "easting": sheet[f"C{row}"].value,
+                    "northing": sheet[f"D{row}"].value,
+                    "elevation": sheet[f"E{row}"].value,
+                    "total_depth": sheet[f"F{row}"].value,
+                    "drill_type": sheet[f"H{row}"].value,
+                    "drill_diameter": sheet[f"I{row}"].value,
+                    "dip": sheet[f"J{row}"].value,
+                    "azimuth": sheet[f"K{row}"].value,
+                    "drill_start_date": sheet[f"M{row}"].value,
+                    "drill_end_date": sheet[f"N{row}"].value,
+                    "location_survey_type": sheet[f"O{row}"].value,
+                    "pre_collar_method": sheet[f"Q{row}"].value,
+                    "pre_collar_depth": sheet[f"R{row}"].value,
+                    "drill_contractor": sheet[f"S{row}"].value,
+                },
+                "optional": {
+                    "total_depth_logger": sheet[f"G{row}"].value,
+                    "current_class": sheet[f"L{row}"].value,
+                    "survey_company": sheet[f"P{row}"].value,
+                    "remark": sheet[f"T{row}"].value,
+                }
+            }
+
+            # check required sheet values are present
+            for k, v in data["required"].items():
+                if v is None:
+                    raise ConversionError(
+                        f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+            # check lookup values are valid
+            validate_code(
+                data["required"]["drill_type"], "DRILL_TYPE", "DRILL_TYPE", row, sheet_name,
+                combined_concepts
+            )
+
+            validate_code(
+                data["required"]["drill_diameter"], "DRILL_DIAMETER", "DRILL_DIAMETER", row, sheet_name,
+                combined_concepts
+            )
+
+            if data["optional"]["current_class"] is not None:
+                validate_code(
+                    data["optional"]["current_class"], "CURRENT_CLASS", "CURRENT_CLASS", row, sheet_name,
+                    combined_concepts
+                )
+
+            validate_code(
+                data["required"]["location_survey_type"], "LOC_SURVEY_TYPE", "LOCATION_SURVEY_TYPE", row, sheet_name,
+                combined_concepts
+            )
+
+            validate_code(
+                data["required"]["pre_collar_method"], "DRILL_TYPE", "PRE_COLLAR_METHOD", row, sheet_name,
+                combined_concepts
+            )
+
+            # numerical validation
+            easting = dip = data["required"]["easting"]
+            if type(easting) != int or easting < 0:
+                raise ConversionError(
+                    f"The value {easting} for EASTING in row {row} of sheet {sheet_name} is not an integer greater than 0"
+                    f" as required")
+
+            northing = dip = data["required"]["northing"]
+            if type(easting) != int or easting < 0:
+                raise ConversionError(
+                    f"The value {northing} for NORTHING in row {row} of sheet {sheet_name} is not an integer "
+                    f"greater than 0 as required")
+
+            elevation = data["required"]["elevation"]
+            if type(elevation) not in [float, int]:
+                raise ConversionError(
+                    f"The value {elevation} for ELEVATION in row {row} of sheet {sheet_name} is not an number"
+                    f" as required")
+
+            total_depth = data["required"]["total_depth"]
+            if type(total_depth) not in [float, int] and total_depth < 0:
+                raise ConversionError(
+                    f"The value {total_depth} for TOTAL_DEPTH in row {row} of sheet {sheet_name} is not an number"
+                    f" as required")
+
+            dip = data["required"]["dip"]
+            if 0 > dip > 90:
+                raise ConversionError(
+                    f"The value {dip} for DIP in row {row} of sheet {sheet_name} is not between 0 and 90 as required")
+
+            azimuth = data["required"]["dip"]
+            if 0 > azimuth > 360:
+                raise ConversionError(
+                    f"The value {azimuth} for DIP in row {row} of sheet {sheet_name} is not between "
+                    f"0 and 360 as required")
+
+            drill_start_date = data["required"]["drill_start_date"]
+            if type(drill_start_date) != datetime.datetime:
+                raise ConversionError(
+                    f"The value {drill_start_date} for DRILL_START_DATE in row {row} of sheet {sheet_name} "
+                    f"is not a date as required")
+
+            drill_end_date = data["required"]["drill_end_date"]
+            if type(drill_end_date) != datetime.datetime:
+                raise ConversionError(
+                    f"The value {drill_end_date} for DRILL_END_DATE in row {row} of sheet {sheet_name} "
+                    f"is not a date as required")
+
+            pre_collar_depth = data["required"]["pre_collar_depth"]
+            if type(pre_collar_depth) not in [float, int] and total_depth < 0:
+                raise ConversionError(
+                    f"The value {pre_collar_depth} for PRE_COLLAR_DEPTH in row {row} of sheet {sheet_name} "
+                    f"is not an number as required")
+
+            # make RDFLib objects of the values
+            drillhole_iri = URIRef(QLDBORES + str(data["required"]["drillhole_id"]))
+            transformer = Transformer.from_crs("EPSG:32755", "EPSG:4326")
+            lon, lat = transformer.transform(easting, northing)
+            wkt = Literal(f"POINTZ({lon} {lat}, {elevation})", datatype=GEO.wktLiteral)
+            total_depth_lit = Literal(total_depth)
+            if data["optional"]["total_depth_logger"] is not None:
+                total_depth_logger_lit = Literal(data["required"]["total_depth_logger"])
+            drill_type_iri = get_iri_from_code(data["required"]["drill_type"], combined_concepts)
+            drill_diameter_iri = get_iri_from_code(data["required"]["drill_diameter"], combined_concepts)
+            dip_lit = Literal(dip)
+            azimuth_lit = Literal(azimuth)
+            if data["optional"]["current_class"] is not None:
+                current_class_iri = get_iri_from_code(data["optional"]["current_class"], combined_concepts)
+            drill_start_date_date = Literal(datetime.datetime.strftime(data["required"]["drill_start_date"], "%Y-%M-%D"), datatype=XSD.date)
+            drill_end_date_date = Literal(datetime.datetime.strftime(data["required"]["drill_end_date"], "%Y-%M-%D"), datatype=XSD.date)
+            location_survey_type_iri = get_iri_from_code(data["required"]["location_survey_type"], combined_concepts)
+            if data["optional"]["survey_company"] is not None:
+                survey_company_lit = Literal(data["optional"]["survey_company"])
+            pre_collar_method_iri = get_iri_from_code(data["required"]["pre_collar_method"], combined_concepts)
+            pre_collar_depth_lit = Literal(data["required"]["pre_collar_depth"])
+            drill_contractor_lit = Literal(data["required"]["drill_contractor"])
+            remark_lit = Literal(data["optional"]["remark"])
+
+            # make the graph
+            g.add((drillhole_iri, RDF.type, BORE.Bore))
+
+            geom = BNode()
+            g.add((drillhole_iri, GEO.hasGeometry, geom))
+            g.add((geom, RDF.type, GEO.Geometry))
+            g.add((geom, RDF.type, wkt))
+
+            g.add((drillhole_iri, SDO.depth, total_depth_lit))
+
+            if data["optional"]["total_depth_logger"] is not None:
+                g.add((drillhole_iri, BORE.totalDepthLogger, total_depth_logger_lit))
+
+            g.add((drillhole_iri, BORE.hadDrillingMethod, drill_type_iri))
+            g.add((drillhole_iri, BORE.hasDiameter, drill_diameter_iri))
+            g.add((drillhole_iri, BORE.hasDip, dip_lit))
+            g.add((drillhole_iri, BORE.hasAzimuth, azimuth_lit))
+
+            if data["optional"]["current_class"] is not None:
+                g.add((drillhole_iri, BORE.hasPurpose, current_class_iri))
+
+            dt = BNode()
+            g.add((dt, RDF.type, BORE.DrillingTime))
+            g.add((dt, PROV.startedAtTime, drill_start_date_date))
+            g.add((dt, PROV.endedAtTime, drill_end_date_date))
+            g.add((drillhole_iri, TIME.hasTime, dt))
+
+            g.add((drillhole_iri, EX.locationSurveyType, location_survey_type_iri))
+
+            if data["optional"]["survey_company"] is not None:
+                sc = BNode()
+                g.add((drillhole_iri, PROV.qualifiedAttribution, sc))
+                g.add((sc, PROV.agent, survey_company_lit))
+                g.add((sc, PROV.hadRole, MININGROLES.Surveyer))
+
+            g.add((drillhole_iri, EX.preCollarMethod, pre_collar_method_iri))
+
+            g.add((drillhole_iri, EX.preCollarDepth, pre_collar_depth_lit))
+
+            dc = BNode()
+            g.add((drillhole_iri, PROV.qualifiedAttribution, dc))
+            g.add((dc, PROV.agent, drill_contractor_lit))
+            g.add((dc, PROV.hadRole, MININGROLES.Driller))
+
+            g.add((drillhole_iri, RDFS.comment, remark_lit))
+
+            row += 1
+        else:
+            break
+
+    g.bind("bore", BORE)
+    g.bind("ex", EX)
+
+    return g
 
 
-def extract_sheet_drillhole_survey(wb: openpyxl.Workbook):
+def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["DRILLHOLE_SURVEY"]
+    sheet_name = "DRILLHOLE_SURVEY"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_drillhole_sample(wb: openpyxl.Workbook):
+def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["DRILLHOLE_SAMPLE"]
+    sheet_name = "DRILLHOLE_SAMPLE"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_surface_sample(wb: openpyxl.Workbook):
+def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
     sheet = wb["SURFACE_SAMPLE"]
+    sheet_name = "SURFACE_SAMPLE"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_sample_preparation(wb: openpyxl.Workbook):
+def extract_sheet_sample_preparation(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["SAMPLE_PREPARATION"]
+    sheet_name = "SAMPLE_PREPARATION"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_geochemistry_meta(wb: openpyxl.Workbook):
+def extract_sheet_geochemistry_meta(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["GEOCHEMISTRY_META"]
+    sheet_name = "GEOCHEMISTRY_META"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_sample_geochemistry(wb: openpyxl.Workbook):
+def extract_sheet_sample_geochemistry(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["SAMPLE_GEOCHEMISTRY"]
+    sheet_name = "SAMPLE_GEOCHEMISTRY"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_qaqc_meta(wb: openpyxl.Workbook):
+def extract_sheet_qaqc_meta(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["QAQC_META"]
+    sheet_name = "QAQC_META"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_qaqc_geochemistry(wb: openpyxl.Workbook):
+def extract_sheet_qaqc_geochemistry(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["QAQC_GEOCHEMISTRY"]
+    sheet_name = "QAQC_GEOCHEMISTRY"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_sample_pxrf(wb: openpyxl.Workbook):
+def extract_sheet_sample_pxrf(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["SAMPLE_PXRF"]
+    sheet_name = "SAMPLE_PXRF"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_drillhole_lithology(wb: openpyxl.Workbook):
+def extract_sheet_drillhole_lithology(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["DRILLHOLE_LITHOLOGY"]
+    sheet_name = "DRILLHOLE_LITHOLOGY"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_drillhole_structure(wb: openpyxl.Workbook):
+def extract_sheet_drillhole_structure(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["DRILLHOLE_STRUCTURE"]
+    sheet_name = "DRILLHOLE_STRUCTURE"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_surface_lithology(wb: openpyxl.Workbook):
+def extract_sheet_surface_lithology(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["SURFACE_LITHOLOGY"]
+    sheet_name = "SURFACE_LITHOLOGY"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_surface_structure(wb: openpyxl.Workbook):
+def extract_sheet_surface_structure(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["SURFACE_STRUCTURE"]
+    sheet_name = "SURFACE_STRUCTURE"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_lith_dictionary(wb: openpyxl.Workbook):
+def extract_sheet_lith_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["LITH_DICTIONARY"]
+    sheet_name = "LITH_DICTIONARY"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_min_dictionary(wb: openpyxl.Workbook):
+def extract_sheet_min_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["MIN_DICTIONARY"]
+    sheet_name = "MIN_DICTIONARY"
+    sheet = wb[sheet_name]
 
 
-def extract_sheet_reserves_resources(wb: openpyxl.Workbook):
+def extract_sheet_reserves_resources(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
-    sheet = wb["RESERVES_RESOURCES"]
+    sheet_name = "RESERVES_RESOURCES"
+    sheet = wb[sheet_name]
 
 
 
