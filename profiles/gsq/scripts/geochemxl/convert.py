@@ -17,7 +17,7 @@ from .utils import check_template_version_supported
 GSQ_PROFILE_DIR = Path(__file__).parent.parent.resolve().parent
 
 
-def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Graph) -> Dataset:
+def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
     check_template_version_supported(wb)
 
     sheet = wb["DATASET_METADATA"]
@@ -30,7 +30,7 @@ def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Gra
         date_created=sheet["B8"].value,
         date_modified=sheet["B9"].value,
         author=get_iri_from_code(sheet["B10"].value, combined_concepts),
-    )
+    ).to_graph()
 
 
 def validate_sheet_validation_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph):
@@ -297,7 +297,7 @@ def extract_sheet_tenement(wb: openpyxl.Workbook, combined_concepts: Graph) -> G
     return g
 
 
-def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
+def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: Graph) -> Tuple[Graph, List[str]]:
     check_template_version_supported(wb)
 
     sheet_name = "DRILLHOLE_LOCATION"
@@ -308,6 +308,8 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
         row = 10
 
     g = Graph()
+
+    drillhole_ids = []
 
     while True:
         if sheet[f"B{row}"].value is not None:
@@ -372,13 +374,13 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
             )
 
             # value validation
-            easting = dip = data["required"]["easting"]
+            easting = data["required"]["easting"]
             if type(easting) != int or easting < 0:
                 raise ConversionError(
                     f"The value {easting} for EASTING in row {row} of sheet {sheet_name} is not an integer greater than 0"
                     f" as required")
 
-            northing = dip = data["required"]["northing"]
+            northing = data["required"]["northing"]
             if type(easting) != int or easting < 0:
                 raise ConversionError(
                     f"The value {northing} for NORTHING in row {row} of sheet {sheet_name} is not an integer "
@@ -426,7 +428,9 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
                     f"is not an number as required")
 
             # make RDFLib objects of the values
-            drillhole_iri = URIRef(QLDBORES + str(data["required"]["drillhole_id"]))
+            drillhole_id = str(data["required"]["drillhole_id"])
+            drillhole_ids.append(drillhole_id)
+            drillhole_iri = URIRef(QLDBORES + drillhole_id)
             transformer = Transformer.from_crs("EPSG:32755", "EPSG:4326")
             lon, lat = transformer.transform(easting, northing)
             wkt = Literal(f"POINTZ({lon} {lat}, {elevation})", datatype=GEO.wktLiteral)
@@ -456,7 +460,7 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
             geom = BNode()
             g.add((drillhole_iri, GEO.hasGeometry, geom))
             g.add((geom, RDF.type, GEO.Geometry))
-            g.add((geom, RDF.type, wkt))
+            g.add((geom, GEO.asWKT, wkt))
 
             g.add((drillhole_iri, SDO.depth, total_depth_lit))
 
@@ -504,7 +508,7 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
     g.bind("bore", BORE)
     g.bind("ex", EX)
 
-    return g
+    return g, drillhole_ids
 
 
 # dependent on extract_sheet_drillhole_location
@@ -1098,38 +1102,28 @@ def excel_to_rdf(
     wb = load_workbook(file_to_convert_path)
     template_version = get_template_version(wb)
 
-    CONCEPTS_COMBINED_GRAPH = Graph().parse(GSQ_PROFILE_DIR / "vocabs" / f"concepts-combined-{template_version}.ttl")
+    cc = Graph().parse(GSQ_PROFILE_DIR / "vocabs" / f"concepts-combined-{template_version}.ttl")
 
     # test that we have a valid template variable.
     if template_version not in KNOWN_TEMPLATE_VERSIONS:
-        raise ValueError(
+        raise ConversionError(
             f"Unknown Template Version. Known Template Versions are {', '.join(KNOWN_TEMPLATE_VERSIONS)},"
             f" you supplied {template_version}"
         )
 
-    tv = float(template_version)
+    grf = extract_sheet_dataset_metadata(wb, cc)
+    validate_sheet_validation_dictionary(wb, cc)
+    user_dict = extract_sheet_user_dictionary(wb, cc)
+    validate_sheet_uom(wb, cc)
+    user_uom = extract_sheet_user_uom(wb, cc)
+    grf += extract_sheet_tenement(wb, cc)
+    grf_x, drillhole_ids = extract_sheet_drillhole_location(wb, cc)
+    grf += grf_x
+    grf += extract_sheet_drillhole_survey(wb, cc, drillhole_ids)
+    grf += extract_sheet_drillhole_sample(wb, cc, drillhole_ids)
 
-    grf = extract_dataset(wb, tv, external_metadata).to_graph()
-
-    for drillhole in extract_drillholes(wb, tv):
-        grf += drillhole.to_graph()
-
-    known_drillholes = []
-    for foi in grf.subjects(RDF.type, SOSA.FeatureOfInterest):
-        known_drillholes.append(str(foi))
-
-    for sample in extract_samples(wb, tv, known_drillholes):
-        grf += sample.to_graph()
-
-    # link Drillholes to Dataset
-    for s in grf.subjects(RDF.type, SDO.Dataset):
-        for s2 in grf.subjects(RDF.type, SOSA.FeatureOfInterest):
-            grf.add((s, SDO.hasPart, s2))
-
-    grf.bind("qk", Namespace("http://qudt.org/vocab/quantitykind/"))
-    grf.bind("unit", Namespace("http://qudt.org/vocab/unit/"))
-    grf.bind("foi", FOIS)
-    grf.bind("samples", SAMPLES)
+    grf.bind("bore", BORE)
+    grf.bind("ex", EX)
 
     if output_file_path is not None:
         grf.serialize(destination=str(output_file_path), format="longturtle")

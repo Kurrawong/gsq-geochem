@@ -2,7 +2,7 @@ import logging
 import re
 from pathlib import Path
 from tempfile import SpooledTemporaryFile
-from typing import Dict, Tuple, Union, Optional
+from typing import Dict, Tuple, Union, Optional, List
 from typing import Literal as TypeLiteral
 import datetime
 

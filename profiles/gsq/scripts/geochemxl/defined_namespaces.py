@@ -3,7 +3,7 @@ from rdflib.term import URIRef
 
 
 class BORE(DefinedNamespace):
-    _NS = Namespace("https://linked.data.gov.au/def/borehole/")
+    _NS = Namespace("https://linked.data.gov.au/def/bore/")
     _fail = True
 
     GeologicalSite: URIRef  # A geological feature or set of features that may be sampled or observed to determine the geological properties of an ultimate feature of interest
