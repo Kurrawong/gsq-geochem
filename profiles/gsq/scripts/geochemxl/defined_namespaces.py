@@ -11,8 +11,10 @@ class BORE(DefinedNamespace):
     Borehole: URIRef  # An individual shaft within a Bore
     BoreholeInterval: URIRef
     DrillingTime: URIRef
+    Survey: URIRef
 
     hadDrillingMethod: URIRef  # The method used to create the Bore
+    hadSurvey: URIRef
     hasInclination: URIRef  # The inclination of a Borehole at the surface from the horizontal
     hasPurpose: URIRef  # The main purpose of the Bore
     hasStatus: URIRef  # The operational status of the Bore

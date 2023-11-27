@@ -1,7 +1,7 @@
 import argparse
 import datetime
 import sys
-from typing import BinaryIO, Optional
+from typing import BinaryIO, Optional, List
 from uuid import uuid4
 from pyproj import Transformer
 
@@ -439,15 +439,16 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
             azimuth_lit = Literal(azimuth)
             if data["optional"]["current_class"] is not None:
                 current_class_iri = get_iri_from_code(data["optional"]["current_class"], combined_concepts)
-            drill_start_date_date = Literal(datetime.datetime.strftime(data["required"]["drill_start_date"], "%Y-%M-%D"), datatype=XSD.date)
-            drill_end_date_date = Literal(datetime.datetime.strftime(data["required"]["drill_end_date"], "%Y-%M-%D"), datatype=XSD.date)
+            drill_start_date_date = Literal(datetime.datetime.strftime(data["required"]["drill_start_date"], "%Y-%m-%d"), datatype=XSD.date)
+            drill_end_date_date = Literal(datetime.datetime.strftime(data["required"]["drill_end_date"], "%Y-%m-%d"), datatype=XSD.date)
             location_survey_type_iri = get_iri_from_code(data["required"]["location_survey_type"], combined_concepts)
             if data["optional"]["survey_company"] is not None:
                 survey_company_lit = Literal(data["optional"]["survey_company"])
             pre_collar_method_iri = get_iri_from_code(data["required"]["pre_collar_method"], combined_concepts)
             pre_collar_depth_lit = Literal(data["required"]["pre_collar_depth"])
             drill_contractor_lit = Literal(data["required"]["drill_contractor"])
-            remark_lit = Literal(data["optional"]["remark"])
+            if data["optional"]["remark"] is not None:
+                remark_lit = Literal(data["optional"]["remark"])
 
             # make the graph
             g.add((drillhole_iri, RDF.type, BORE.Bore))
@@ -493,7 +494,8 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
             g.add((dc, PROV.agent, drill_contractor_lit))
             g.add((dc, PROV.hadRole, MININGROLES.Driller))
 
-            g.add((drillhole_iri, RDFS.comment, remark_lit))
+            if data["optional"]["remark"] is not None:
+                g.add((drillhole_iri, RDFS.comment, remark_lit))
 
             row += 1
         else:
@@ -505,11 +507,193 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
     return g
 
 
-def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
+def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Graph, drillhole_ids: List[str]) -> Graph:
     check_template_version_supported(wb)
 
     sheet_name = "DRILLHOLE_SURVEY"
     sheet = wb[sheet_name]
+
+    row = 9
+    if sheet["B9"].value == "DD1234":
+        row = 10
+
+    g = Graph()
+
+    while True:
+        if sheet[f"B{row}"].value is not None:
+            # make vars of all the sheet values
+            data = {
+                "required": {
+                    "drillhole_id": sheet[f"B{row}"].value,
+                    "survey_instrument": sheet[f"C{row}"].value,  # RPT_SURVEY_TYPE
+                    "survey_depth": sheet[f"F{row}"].value,
+                    "azimuth": sheet[f"G{row}"].value,
+                    "dip": sheet[f"I{row}"].value,
+                },
+                "optional": {
+                    "survey_company": sheet[f"D{row}"].value,
+                    "survey_date": sheet[f"E{row}"].value,
+                    "azimuth_accuracy": sheet[f"H{row}"].value,
+                    "inclination_accuracy": sheet[f"J{row}"].value,
+                    "magnetic_field": sheet[f"K{row}"].value,
+                    "remark": sheet[f"L{row}"].value,
+                }
+            }
+
+            # check required sheet values are present
+            for k, v in data["required"].items():
+                if v is None:
+                    raise ConversionError(
+                        f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+            # check lookup values are valid
+            validate_code(
+                data["required"]["survey_instrument"], "RPT_SURVEY_TYPE", "SURVEY_INSTRUMENT", row, sheet_name,
+                combined_concepts
+            )
+
+            # numerical validation
+            survey_depth = data["required"]["survey_depth"]
+            if type(survey_depth) not in [float, int] and survey_depth < 0:
+                raise ConversionError(
+                    f"The value {survey_depth} for TOTAL_DEPTH in row {row} of sheet {sheet_name} is not an number"
+                    f" as required")
+
+            azimuth = data["required"]["dip"]
+            if 0 > azimuth > 360:
+                raise ConversionError(
+                    f"The value {azimuth} for DIP in row {row} of sheet {sheet_name} is not between "
+                    f"0 and 360 as required")
+
+            dip = data["required"]["dip"]
+            if 0 > dip > 90:
+                raise ConversionError(
+                    f"The value {dip} for DIP in row {row} of sheet {sheet_name} is not between 0 and 90 as required")
+
+            survey_date = data["optional"]["survey_date"]
+            if type(survey_date) != datetime.datetime:
+                raise ConversionError(
+                    f"The value {survey_date} for SURVEY_DATE in row {row} of sheet {sheet_name} "
+                    f"is not a date as required")
+
+            azimuth_accuracy = data["optional"]["azimuth_accuracy"]
+            if azimuth_accuracy is not None:
+                if 0 > azimuth_accuracy > 100:
+                    raise ConversionError(
+                        f"The value {azimuth_accuracy} for DRILL_END_DATE in row {row} of sheet {sheet_name} "
+                        f"is not between 0 and 100 as required")
+
+            inclination_accuracy = data["optional"]["azimuth_accuracy"]
+            if inclination_accuracy is not None:
+                if 0 > inclination_accuracy > 100:
+                    raise ConversionError(
+                        f"The value {inclination_accuracy} for DRILL_END_DATE in row {row} of sheet {sheet_name} "
+                        f"is not between 0 and 100 as required")
+
+            magnetic_field = data["optional"]["magnetic_field"]
+            if magnetic_field is not None:
+                if 0 > magnetic_field > 10000000:
+                    raise ConversionError(
+                        f"The value {magnetic_field} for DRILL_END_DATE in row {row} of sheet {sheet_name} "
+                        f"is not between 0 and 10000000 as required")
+
+            # cross-sheet validation
+            drillhole_id = str(data["required"]["drillhole_id"])
+            if drillhole_id not in drillhole_ids:
+                raise ConversionError(
+                    f"The value {drillhole_id} for DRILLHOLE_ID in row {row} of sheet {sheet_name} "
+                    f"is not present on sheet DRILLHOLE_LOCATION, DRILLHOLE_ID, as required")
+
+            # make RDFLib objects of the values
+            drillhole_iri = QLDBORES[drillhole_id]
+            survey_instrument_iri = get_iri_from_code(data["required"]["survey_instrument"], combined_concepts)
+            if data["optional"]["survey_company"] is not None:
+                survey_company_lit = Literal(data["optional"]["survey_company"])
+            if data["optional"]["survey_date"] is not None:
+                survey_date_lit = Literal(datetime.datetime.strftime(data["optional"]["survey_date"], "%Y-%m-%d"), datatype=XSD.date)
+            survey_depth_lit = Literal(data["required"]["survey_depth"])
+            azimuth_lit = Literal(azimuth)
+            if data["optional"]["azimuth_accuracy"] is not None:
+                azimuth_accuracy_lit = Literal(data["optional"]["azimuth_accuracy"])
+            dip_lit = Literal(dip)
+            if data["optional"]["inclination_accuracy"] is not None:
+                inclination_accuracy_lit = Literal(data["optional"]["inclination_accuracy"])
+            if data["optional"]["magnetic_field"] is not None:
+                magnetic_field_lit = Literal(data["optional"]["magnetic_field"])
+            if data["optional"]["remark"] is not None:
+                remark_lit = Literal(data["optional"]["remark"])
+
+            # make the graph
+            g.add((drillhole_iri, RDF.type, BORE.Bore))
+            s = BNode()
+            g.add((drillhole_iri, BORE.hadSurvey, s))
+            g.add((s, RDF.type, BORE.Survey))  # an ObservationCollection
+            g.add((s, SOSA.madeBySensor, survey_instrument_iri))
+            if data["optional"]["survey_company"] is not None:
+                sc = BNode()
+                g.add((s, PROV.qualifiedAttribution, sc))
+                g.add((sc, PROV.agent, survey_company_lit))
+                g.add((sc, PROV.hadRole, MININGROLES.Surveyer))
+            if data["optional"]["survey_date"] is not None:
+                t = BNode()
+                g.add((t, RDF.type, TIME.Instant))
+                g.add((t, TIME.inXSDDateTime, survey_date_lit))
+                g.add((s, TIME.hasTime, t))
+
+            depth_obs = BNode()
+            depth_res = BNode()
+            g.add((s, SOSA.member, depth_obs))
+            g.add((depth_obs, SOSA.observedProperty, BORE.hasTotalDepth))
+            g.add((depth_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
+            g.add((depth_obs, SOSA.hasResult, depth_res))
+            g.add((depth_res, SDO.value, survey_depth_lit))
+            g.add((depth_res, SDO.unitCode, URIRef("http://qudt.org/vocab/unit/M")))
+
+            az_obs = BNode()
+            az_res = BNode()
+            g.add((s, SOSA.member, az_obs))
+            g.add((az_obs, SOSA.observedProperty, BORE.hasAzimuth))
+            g.add((az_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
+            g.add((az_obs, SOSA.hasResult, az_res))
+            g.add((az_res, SDO.value, azimuth_lit))
+            g.add((az_res, SDO.unitCode, URIRef("http://qudt.org/vocab/unit/DEG")))
+
+            if azimuth_accuracy is not None:
+                g.add((az_res, SDO.marginOfError, azimuth_accuracy_lit))
+
+            dip_obs = BNode()
+            dip_res = BNode()
+            g.add((s, SOSA.member, dip_obs))
+            g.add((dip_obs, SOSA.observedProperty, BORE.hasDip))
+            g.add((dip_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
+            g.add((dip_obs, SOSA.hasResult, dip_res))
+            g.add((dip_res, SDO.value, dip_lit))
+            g.add((dip_res, SDO.unitCode, URIRef("http://qudt.org/vocab/unit/DEG")))
+
+            if inclination_accuracy is not None:
+                g.add((dip_res, SDO.marginOfError, inclination_accuracy_lit))
+
+            if magnetic_field is not None:
+                mag_obs = BNode()
+                mag_res = BNode()
+                g.add((s, SOSA.member, mag_obs))
+                g.add((mag_obs, SOSA.observedProperty, EX.hasMagneticFieldStrength))
+                g.add((mag_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
+                g.add((mag_obs, SOSA.hasResult, mag_res))
+                g.add((mag_res, SDO.value, magnetic_field_lit))
+                g.add((mag_res, SDO.unitCode, URIRef("http://qudt.org/vocab/unit/NanoT")))
+
+            if data["optional"]["remark"] is not None:
+                g.add((s, RDFS.comment, remark_lit))
+
+            row += 1
+        else:
+            break
+
+    g.bind("bore", BORE)
+    g.bind("unit", Namespace("http://qudt.org/vocab/unit/"))
+
+    return g
 
 
 def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
