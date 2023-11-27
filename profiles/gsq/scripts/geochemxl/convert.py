@@ -5,8 +5,8 @@ from typing import BinaryIO, Optional, List
 from uuid import uuid4
 from pyproj import Transformer
 
-from rdflib.namespace import GEO, SDO, SOSA, PROV
-from .defined_namespaces import MININGROLES, TENEMENT, TENEMENTS, QLDBORES, BORE
+from rdflib.namespace import GEO, SDO, SOSA
+from .defined_namespaces import MININGROLES, TENEMENT, TENEMENTS, QLDBORES, QKINDS
 from rdflib import Namespace
 EX = Namespace("http://example.com/")
 
@@ -371,7 +371,7 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
                 combined_concepts
             )
 
-            # numerical validation
+            # value validation
             easting = dip = data["required"]["easting"]
             if type(easting) != int or easting < 0:
                 raise ConversionError(
@@ -507,6 +507,7 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
     return g
 
 
+# dependent on extract_sheet_drillhole_location
 def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Graph, drillhole_ids: List[str]) -> Graph:
     check_template_version_supported(wb)
 
@@ -552,7 +553,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
                 combined_concepts
             )
 
-            # numerical validation
+            # value validation
             survey_depth = data["required"]["survey_depth"]
             if type(survey_depth) not in [float, int] and survey_depth < 0:
                 raise ConversionError(
@@ -597,6 +598,8 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
                         f"The value {magnetic_field} for DRILL_END_DATE in row {row} of sheet {sheet_name} "
                         f"is not between 0 and 10000000 as required")
 
+            remark = data["optional"].get("remark")
+            
             # cross-sheet validation
             drillhole_id = str(data["required"]["drillhole_id"])
             if drillhole_id not in drillhole_ids:
@@ -620,7 +623,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
                 inclination_accuracy_lit = Literal(data["optional"]["inclination_accuracy"])
             if data["optional"]["magnetic_field"] is not None:
                 magnetic_field_lit = Literal(data["optional"]["magnetic_field"])
-            if data["optional"]["remark"] is not None:
+            if remark is not None:
                 remark_lit = Literal(data["optional"]["remark"])
 
             # make the graph
@@ -696,11 +699,168 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
     return g
 
 
-def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
+# dependent on extract_sheet_drillhole_location
+def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Graph, drillhole_ids: List[str]) -> Graph:
     check_template_version_supported(wb)
 
     sheet_name = "DRILLHOLE_SAMPLE"
     sheet = wb[sheet_name]
+
+    row = 9
+    if sheet["B9"].value == "DD12345":
+        row = 10
+
+    g = Graph()
+
+    while True:
+        if sheet[f"B{row}"].value is not None:
+            # make vars of all the sheet values
+            data = {
+                "required": {
+                    "drillhole_id": sheet[f"B{row}"].value,
+                    "sample_id": sheet[f"C{row}"].value,
+                    "sample_type_drilling": sheet[f"D{row}"].value,  # SAMPLE_TYPE_DRILLING
+                    "from": sheet[f"E{row}"].value,
+                    "to": sheet[f"F{row}"].value,
+                    "collection_date": sheet[f"G{row}"].value,
+                    "dispatch_date": sheet[f"H{row}"].value,
+                },
+                "optional": {
+                    "instrument_type": sheet[f"I{row}"].value,
+                    "specific_gravity": sheet[f"J{row}"].value,
+                    "magnetic_susceptibility": sheet[f"K{row}"].value,
+                    "remark": sheet[f"L{row}"].value,
+                }
+            }
+
+            # check required sheet values are present
+            for k, v in data["required"].items():
+                if v is None:
+                    raise ConversionError(
+                        f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+            # check lookup values are valid
+            validate_code(
+                data["required"]["sample_type_drilling"], "SAMPLE_TYPE_DRILLING", "SAMPLE_TYPE_DRILLING", row, sheet_name,
+                combined_concepts
+            )
+
+            # value validation
+            depth_from = data["required"]["from"]
+            if depth_from < 0:
+                raise ConversionError(
+                    f"The value {depth_from} for FROM in row {row} of sheet {sheet_name} is not greater or equal to "
+                    f"zero as required")
+
+            depth_to = data["required"]["to"]
+            if depth_to <= depth_from:
+                raise ConversionError(
+                    f"The value {depth_to} for FROM in row {row} of sheet {sheet_name} is not greater or equal to "
+                    f"the FROM value as required")
+
+            collection_date = data["required"]["collection_date"]
+            if type(collection_date) != datetime.datetime:
+                raise ConversionError(
+                    f"The value {collection_date} for COLLECTION_DATE in row {row} of sheet {sheet_name} "
+                    f"is not a date as required")
+
+            dispatch_date = data["required"]["dispatch_date"]
+            if type(dispatch_date) != datetime.datetime:
+                raise ConversionError(
+                    f"The value {dispatch_date} for DISPATCH_DATE in row {row} of sheet {sheet_name} "
+                    f"is not a date as required")
+            if dispatch_date < collection_date:
+                raise ConversionError(
+                    f"The value {dispatch_date} for DISPATCH_DATE in row {row} of sheet {sheet_name} "
+                    f"is not greater than or equal to the value {collection_date} in the same row, as required")
+
+            instrument_type = data["optional"].get("instrument_type")
+
+            specific_gravity = data["optional"].get("specific_gravity")
+            if specific_gravity is not None:
+                if specific_gravity < 0:
+                    raise ConversionError(
+                        f"The value {specific_gravity} for SPECIFIC_GRAVITY in row {row} of sheet {sheet_name} "
+                        f"is not greater than 0, as required")
+                
+            magnetic_susceptibility = data["optional"].get("magnetic_susceptibility")
+            if magnetic_susceptibility is not None:
+                if not str(magnetic_susceptibility).startswith("-"):
+                    raise ConversionError(
+                        f"The value {magnetic_susceptibility} for MAGNETIC_SUSCEPTIBILITY in row {row} of sheet {sheet_name} "
+                        f"is not negative, as required")
+
+            remark = data["optional"].get("remark")
+
+            # cross-sheet validation
+            drillhole_id = str(data["required"]["drillhole_id"])
+            if drillhole_id not in drillhole_ids:
+                raise ConversionError(
+                    f"The value {drillhole_id} for DRILLHOLE_ID in row {row} of sheet {sheet_name} "
+                    f"is not present on sheet DRILLHOLE_LOCATION, DRILLHOLE_ID, as required")
+
+            # make RDFLib objects of the values
+            drillhole_iri = QLDBORES[drillhole_id]
+            sample_iri = make_rdflib_type(data["required"]["sample_id"], "URIRef", combined_concepts, SAMPLES)
+            sample_type_drilling_iri = make_rdflib_type(data["required"]["sample_type_drilling"], "Concept", combined_concepts)
+            depth_from_lit = make_rdflib_type(depth_from, "Number")
+            depth_to_lit = make_rdflib_type(depth_to, "Number")
+            collection_date_lit = make_rdflib_type(collection_date, "Date")
+            dispatch_date_lit = make_rdflib_type(dispatch_date, "Date")
+            
+            if instrument_type is not None:
+                instrument_type_lit = make_rdflib_type(instrument_type, "String")
+            if specific_gravity is not None:
+                specific_gravity_lit = make_rdflib_type(specific_gravity, "Number")
+            if magnetic_susceptibility is not None:
+                magnetic_susceptibility_lit = make_rdflib_type(magnetic_susceptibility, "Number")
+            if remark is not None:
+                remark_lit = make_rdflib_type(remark, "String")
+
+            # make the graph
+            g.add((drillhole_iri, RDF.type, BORE.Bore))
+            g.add((sample_iri, RDF.type, SOSA.Sample))
+            g.add((sample_iri, SOSA.isSampleOf, drillhole_iri))
+            g.add((sample_iri, SDO.additionalType, URIRef("ttps://linked.data.gov.au/def/sample-type/rock")))
+            g.add((sample_iri, SOSA.usedProcedure, sample_type_drilling_iri))
+            g.add((sample_iri, SDO.depth, depth_from_lit))
+            g.add((sample_iri, SDO.depth, depth_to_lit))
+            g.add((sample_iri, PROV.generatedAtTime, collection_date_lit))
+            g.add((sample_iri, SDO.dateIssued, dispatch_date_lit))
+            if instrument_type is not None:
+                g.add((sample_iri, SDO.madeBySensor, instrument_type_lit))
+
+            if specific_gravity is not None:
+                spec_grav_obs = BNode()
+                spec_grav_res = BNode()
+                g.add((spec_grav_obs, RDF.type, SOSA.Observation))
+                g.add((spec_grav_obs, SOSA.hasFeatureOfInterest, sample_iri))
+                g.add((sample_iri, SOSA.isFeatureOfInterestOf, spec_grav_obs))
+                g.add((spec_grav_obs, SOSA.observedProperty, EX.SpecificGravity))
+                g.add((spec_grav_obs, SOSA.hasResult, spec_grav_res))
+                g.add((spec_grav_res, RDF.type, SOSA.Result))
+                g.add((spec_grav_res, SDO.value, specific_gravity_lit))
+            if magnetic_susceptibility is not None:
+                mag_sup_obs = BNode()
+                mag_sup_res = BNode()
+                g.add((mag_sup_obs, RDF.type, SOSA.Observation))
+                g.add((mag_sup_obs, SOSA.hasFeatureOfInterest, sample_iri))
+                g.add((sample_iri, SOSA.isFeatureOfInterestOf, mag_sup_obs))
+                g.add((mag_sup_obs, SOSA.observedProperty, QKINDS.MagneticSusceptability))
+                g.add((mag_sup_obs, SOSA.hasResult, mag_sup_res))
+                g.add((mag_sup_res, RDF.type, SOSA.Result))
+                g.add((mag_sup_res, SDO.value, magnetic_susceptibility_lit))
+            if remark is not None:
+                g.add((sample_iri, RDFS.comment, remark_lit))
+
+            row += 1
+        else:
+            break
+
+    g.bind("bore", BORE)
+    g.bind("qkinds", QKINDS)
+
+    return g
 
 
 def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:

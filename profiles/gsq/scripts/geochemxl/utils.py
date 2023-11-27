@@ -2,8 +2,9 @@ import logging
 import re
 from pathlib import Path
 from tempfile import SpooledTemporaryFile
-from typing import Dict, Tuple, Union
+from typing import Dict, Tuple, Union, Optional
 from typing import Literal as TypeLiteral
+import datetime
 
 import openpyxl
 import pyshacl
@@ -456,3 +457,21 @@ def check_template_version_supported(wb: openpyxl.Workbook):
             f"You are using template version {version_number} however only the following versions are supported: "
             f"{', '.join(KNOWN_TEMPLATE_VERSIONS)}"
         )
+
+
+def make_rdflib_type(
+    value,
+    rdflib_type: TypeLiteral["URIRef", "Concept", "String", "Number", "Date"],
+    combined_concepts: Optional[Graph] = None,
+    uri_namespace: Optional[Namespace] = None,
+):
+    if value is None:
+        return None
+    elif rdflib_type == "URIRef":
+        return uri_namespace[str(value)]
+    elif rdflib_type == "Concept":
+        return get_iri_from_code(value, combined_concepts)
+    elif rdflib_type in ["String", "Number"]:
+        return Literal(value)
+    elif rdflib_type == "Date":
+        return Literal(datetime.datetime.strftime(value, "%Y-%m-%d"), datatype=XSD.date)

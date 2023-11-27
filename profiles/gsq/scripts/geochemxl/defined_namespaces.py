@@ -27,6 +27,7 @@ class BORE(DefinedNamespace):
 
 FOIS = Namespace("https://linked.data.gov.au/dataset/gsq-fois/")
 SAMPLES = Namespace("https://linked.data.gov.au/dataset/gsq-samples/")
+QKINDS = Namespace("http://qudt.org/vocab/quantitykind/")
 TENEMENTS = Namespace("https://linked.data.gov.au/dataset/gsq-tenements/")
 QLDBORES = Namespace("https://linked.data.gov.au/dataset/gsq-bores/")
 

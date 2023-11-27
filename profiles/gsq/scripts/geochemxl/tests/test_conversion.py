@@ -161,7 +161,7 @@ class TestExtractSheetDrillholeSurvey30:
         cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
         g = extract_sheet_drillhole_survey(wb, cc, ["DD1234", "DEF123"])
 
-        g.serialize(destination="TestExtractSheetDrillholeSurvey30.ttl", format="longturtle")
+        # g.serialize(destination="TestExtractSheetDrillholeSurvey30.ttl", format="longturtle")
         assert (
             URIRef("https://linked.data.gov.au/dataset/gsq-bores/DD1234"),
             BORE.hadSurvey,
@@ -176,3 +176,34 @@ class TestExtractSheetDrillholeSurvey30:
         except ConversionError as e:
             assert str(e) == "The value DD1234x for DRILLHOLE_ID in row 10 of sheet DRILLHOLE_SURVEY is not " \
                              "present on sheet DRILLHOLE_LOCATION, DRILLHOLE_ID, as required"
+
+
+class TestExtractSheetDrillholeSample30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_SAMPLE_01_valid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        g = extract_sheet_drillhole_sample(wb, cc, ["DD1234", "DEF123"])
+
+        # print(g.serialize(format="longturtle"))
+        assert (
+            URIRef("https://linked.data.gov.au/dataset/gsq-samples/ABC123"),
+            SOSA.isSampleOf,
+            URIRef("https://linked.data.gov.au/dataset/gsq-bores/DEF123"),
+        ) in g
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_SAMPLE_02_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        try:
+            extract_sheet_drillhole_sample(wb, cc, ["DD1234", "DEF123"])
+        except ConversionError as e:
+            assert str(e) == "For each row in the DRILLHOLE_SAMPLE worksheet, you must supply a TO value"
+
+    def test_03_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_SAMPLE_03_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        try:
+            extract_sheet_drillhole_sample(wb, cc, ["DD1234", "DEF123"])
+        except ConversionError as e:
+            assert str(e) == "The value 3600 for MAGNETIC_SUSCEPTIBILITY in row 10 of sheet DRILLHOLE_SAMPLE is " \
+                             "not negative, as required"
