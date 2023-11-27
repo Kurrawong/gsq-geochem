@@ -18,12 +18,12 @@ from .utils import check_template_version_supported
 GSQ_PROFILE_DIR = Path(__file__).parent.parent.resolve().parent
 
 
-def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
+def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Graph) -> Tuple[URIRef, Graph]:
     check_template_version_supported(wb)
 
     sheet = wb["DATASET_METADATA"]
 
-    return Dataset(
+    d = Dataset(
         iri=sheet["B5"].value
         if string_is_http_iri(sheet["B5"].value) else "http://example.com/dataset/" + str(uuid4()),
         name=sheet["B6"].value,
@@ -31,7 +31,9 @@ def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Gra
         date_created=sheet["B8"].value,
         date_modified=sheet["B9"].value,
         author=get_iri_from_code(sheet["B10"].value, combined_concepts),
-    ).to_graph()
+    )
+
+    return URIRef(d.iri), d.to_graph()
 
 
 def validate_sheet_validation_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph):
@@ -196,7 +198,7 @@ def extract_sheet_user_uom(wb: openpyxl.Workbook, combined_concepts: Graph) -> G
     combined_concepts += g
 
 
-def extract_sheet_tenement(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
+def extract_sheet_tenement(wb: openpyxl.Workbook, combined_concepts: Graph, dataset_iri: URIRef) -> Graph:
     check_template_version_supported(wb)
 
     sheet_name = "TENEMENT"
@@ -256,6 +258,8 @@ def extract_sheet_tenement(wb: openpyxl.Workbook, combined_concepts: Graph) -> G
             remark_lit = Literal(data["optional"]["remark"])
 
             # make the graph
+            g.add((dataset_iri, SDO.hasPart, tenement_iri))
+
             g.add((tenement_iri, RDF.type, TENEMENT.Tenement))
 
             g.add((tenement_iri, SDO.additionalType, tenement_type_iri))
@@ -294,10 +298,11 @@ def extract_sheet_tenement(wb: openpyxl.Workbook, combined_concepts: Graph) -> G
             break
 
     g.bind(TENEMENT.prefix, TENEMENT)
+
     return g
 
 
-def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: Graph) -> Tuple[Graph, List[str]]:
+def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: Graph, dataset_iri: URIRef) -> Tuple[Graph, List[str]]:
     check_template_version_supported(wb)
 
     sheet_name = "DRILLHOLE_LOCATION"
@@ -455,6 +460,8 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
                 remark_lit = Literal(data["optional"]["remark"])
 
             # make the graph
+            g.add((dataset_iri, SDO.hasPart, drillhole_iri))
+
             g.add((drillhole_iri, RDF.type, BORE.Bore))
 
             geom = BNode()
@@ -512,7 +519,7 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
 
 
 # dependent on extract_sheet_drillhole_location
-def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Graph, drillhole_ids: List[str]) -> Graph:
+def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Graph, drillhole_ids: List[str], dataset_iri: URIRef) -> Graph:
     check_template_version_supported(wb)
 
     sheet_name = "DRILLHOLE_SURVEY"
@@ -603,7 +610,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
                         f"is not between 0 and 10000000 as required")
 
             remark = data["optional"].get("remark")
-            
+
             # cross-sheet validation
             drillhole_id = str(data["required"]["drillhole_id"])
             if drillhole_id not in drillhole_ids:
@@ -631,6 +638,8 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
                 remark_lit = Literal(data["optional"]["remark"])
 
             # make the graph
+            g.add((dataset_iri, SDO.hasPart, drillhole_iri))
+
             g.add((drillhole_iri, RDF.type, BORE.Bore))
             s = BNode()
             g.add((drillhole_iri, BORE.hadSurvey, s))
@@ -649,7 +658,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
 
             depth_obs = BNode()
             depth_res = BNode()
-            g.add((s, SOSA.member, depth_obs))
+            g.add((s, SOSA.hasMember, depth_obs))
             g.add((depth_obs, SOSA.observedProperty, BORE.hasTotalDepth))
             g.add((depth_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
             g.add((depth_obs, SOSA.hasResult, depth_res))
@@ -658,7 +667,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
 
             az_obs = BNode()
             az_res = BNode()
-            g.add((s, SOSA.member, az_obs))
+            g.add((s, SOSA.hasMember, az_obs))
             g.add((az_obs, SOSA.observedProperty, BORE.hasAzimuth))
             g.add((az_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
             g.add((az_obs, SOSA.hasResult, az_res))
@@ -670,7 +679,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
 
             dip_obs = BNode()
             dip_res = BNode()
-            g.add((s, SOSA.member, dip_obs))
+            g.add((s, SOSA.hasMember, dip_obs))
             g.add((dip_obs, SOSA.observedProperty, BORE.hasDip))
             g.add((dip_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
             g.add((dip_obs, SOSA.hasResult, dip_res))
@@ -683,7 +692,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
             if magnetic_field is not None:
                 mag_obs = BNode()
                 mag_res = BNode()
-                g.add((s, SOSA.member, mag_obs))
+                g.add((s, SOSA.hasMember, mag_obs))
                 g.add((mag_obs, SOSA.observedProperty, EX.hasMagneticFieldStrength))
                 g.add((mag_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
                 g.add((mag_obs, SOSA.hasResult, mag_res))
@@ -704,7 +713,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
 
 
 # dependent on extract_sheet_drillhole_location
-def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Graph, drillhole_ids: List[str]) -> Graph:
+def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Graph, drillhole_ids: List[str], dataset_iri: URIRef) -> Graph:
     check_template_version_supported(wb)
 
     sheet_name = "DRILLHOLE_SAMPLE"
@@ -762,17 +771,21 @@ def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Gra
                     f"The value {depth_to} for FROM in row {row} of sheet {sheet_name} is not greater or equal to "
                     f"the FROM value as required")
 
-            collection_date = dateparser.parse(data["required"]["collection_date"])
+            collection_date = data["required"]["collection_date"]
             if type(collection_date) != datetime.datetime:
-                raise ConversionError(
-                    f'The value {data["required"]["collection_date"]} for COLLECTION_DATE in row {row} of '
-                    f'sheet {sheet_name} is not a date as required')
+                collection_date = dateparser.parse(collection_date)
+                if type(collection_date) != datetime.datetime:
+                    raise ConversionError(
+                        f'The value {data["required"]["collection_date"]} for COLLECTION_DATE in row {row} of '
+                        f'sheet {sheet_name} is not a date as required')
 
-            dispatch_date = dateparser.parse(data["required"]["dispatch_date"])
+            dispatch_date = data["required"]["dispatch_date"]
             if type(dispatch_date) != datetime.datetime:
-                raise ConversionError(
-                    f'The value {data["required"]["collection_date"]} for DISPATCH_DATE in row {row} of '
-                    f'sheet {sheet_name} is not a date as required')
+                dispatch_date = dateparser.parse(dispatch_date)
+                if type(dispatch_date) != datetime.datetime:
+                    raise ConversionError(
+                        f'The value {data["required"]["dispatch_date"]} for DISPATCH_DATE in row {row} of '
+                        f'sheet {sheet_name} is not a date as required')
 
             if dispatch_date < collection_date:
                 raise ConversionError(
@@ -787,7 +800,7 @@ def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Gra
                     raise ConversionError(
                         f"The value {specific_gravity} for SPECIFIC_GRAVITY in row {row} of sheet {sheet_name} "
                         f"is not greater than 0, as required")
-                
+
             magnetic_susceptibility = data["optional"].get("magnetic_susceptibility")
             if magnetic_susceptibility is not None:
                 if not str(magnetic_susceptibility).startswith("-"):
@@ -812,7 +825,7 @@ def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Gra
             depth_to_lit = make_rdflib_type(depth_to, "Number")
             collection_date_lit = make_rdflib_type(collection_date, "Date")
             dispatch_date_lit = make_rdflib_type(dispatch_date, "Date")
-            
+
             if instrument_type is not None:
                 instrument_type_lit = make_rdflib_type(instrument_type, "String")
             if specific_gravity is not None:
@@ -823,6 +836,9 @@ def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Gra
                 remark_lit = make_rdflib_type(remark, "String")
 
             # make the graph
+            g.add((dataset_iri, SDO.hasPart, drillhole_iri))
+            g.add((dataset_iri, SDO.hasPart, sample_iri))
+
             g.add((drillhole_iri, RDF.type, BORE.Bore))
             g.add((sample_iri, RDF.type, SOSA.Sample))
             g.add((sample_iri, SOSA.isSampleOf, drillhole_iri))
@@ -833,7 +849,7 @@ def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Gra
             g.add((sample_iri, PROV.generatedAtTime, collection_date_lit))
             g.add((sample_iri, SDO.dateIssued, dispatch_date_lit))
             if instrument_type is not None:
-                g.add((sample_iri, SDO.madeBySensor, instrument_type_lit))
+                g.add((sample_iri, SOSA.madeBySensor, instrument_type_lit))
 
             if specific_gravity is not None:
                 spec_grav_obs = BNode()
@@ -868,7 +884,7 @@ def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Gra
     return g
 
 
-def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
+def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph, dataset_iri: URIRef) -> Graph:
     check_template_version_supported(wb)
 
     sheet_name = "SURFACE_SAMPLE"
@@ -979,17 +995,21 @@ def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph
                         f"The value {elevation} for ELEVATION in row {row} of sheet {sheet_name} is not an number"
                         f" as required")
 
-            collection_date = dateparser.parse(data["required"]["collection_date"])
+            collection_date = data["required"]["collection_date"]
             if type(collection_date) != datetime.datetime:
-                raise ConversionError(
-                    f'The value {data["required"]["collection_date"]} for COLLECTION_DATE in row {row} of '
-                    f'sheet {sheet_name} is not a date as required')
+                collection_date = dateparser.parse(collection_date)
+                if type(collection_date) != datetime.datetime:
+                    raise ConversionError(
+                        f'The value {data["required"]["collection_date"]} for COLLECTION_DATE in row {row} of '
+                        f'sheet {sheet_name} is not a date as required')
 
-            dispatch_date = dateparser.parse(data["required"]["dispatch_date"])
+            dispatch_date = data["required"]["dispatch_date"]
             if type(dispatch_date) != datetime.datetime:
-                raise ConversionError(
-                    f'The value {data["required"]["dispatch_date"]} for DISPATCH_DATE in row {row} of '
-                    f'sheet {sheet_name} is not a date as required')
+                dispatch_date = dateparser.parse(dispatch_date)
+                if type(dispatch_date) != datetime.datetime:
+                    raise ConversionError(
+                        f'The value {data["required"]["dispatch_date"]} for DISPATCH_DATE in row {row} of '
+                        f'sheet {sheet_name} is not a date as required')
 
             if dispatch_date < collection_date:
                 raise ConversionError(
@@ -1041,6 +1061,8 @@ def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph
                 remark_lit = make_rdflib_type(remark, "String")
 
             # make the graph
+            g.add((dataset_iri, SDO.hasPart, sample_iri))
+
             g.add((sample_iri, RDF.type, SOSA.Sample))
             g.add((sample_iri, SDO.material, sample_material_iri))
             g.add((sample_iri, SDO.additionalType, sample_type_surface_iri))
@@ -1069,7 +1091,7 @@ def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph
             g.add((sample_iri, SDO.dateIssued, dispatch_date_lit))
 
             if instrument_type is not None:
-                g.add((sample_iri, SDO.madeBySensor, instrument_type_lit))
+                g.add((sample_iri, SOSA.madeBySensor, instrument_type_lit))
 
             if specific_gravity is not None:
                 spec_grav_obs = BNode()
@@ -1340,19 +1362,21 @@ def excel_to_rdf(
             f" you supplied {template_version}"
         )
 
-    grf = extract_sheet_dataset_metadata(wb, cc)
+    dataset_iri, grf = extract_sheet_dataset_metadata(wb, cc)
     validate_sheet_validation_dictionary(wb, cc)
     user_dict = extract_sheet_user_dictionary(wb, cc)
     validate_sheet_uom(wb, cc)
     user_uom = extract_sheet_user_uom(wb, cc)
-    grf += extract_sheet_tenement(wb, cc)
-    grf_x, drillhole_ids = extract_sheet_drillhole_location(wb, cc)
+    grf += extract_sheet_tenement(wb, cc, dataset_iri)
+    grf_x, drillhole_ids = extract_sheet_drillhole_location(wb, cc, dataset_iri)
     grf += grf_x
-    grf += extract_sheet_drillhole_survey(wb, cc, drillhole_ids)
-    grf += extract_sheet_drillhole_sample(wb, cc, drillhole_ids)
+    grf += extract_sheet_drillhole_survey(wb, cc, drillhole_ids, dataset_iri)
+    grf += extract_sheet_drillhole_sample(wb, cc, drillhole_ids, dataset_iri)
+    grf += extract_sheet_surface_sample(wb, cc, dataset_iri)
 
     grf.bind("bore", BORE)
     grf.bind("ex", EX)
+    grf.bind(TENEMENT.prefix, TENEMENT)
 
     if output_file_path is not None:
         grf.serialize(destination=str(output_file_path), format="longturtle")

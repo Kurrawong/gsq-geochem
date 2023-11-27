@@ -108,12 +108,13 @@ class TestExtractSheetUserUom30:
 class TestExtractSheetTenement30:
     def test_01_valid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-TENEMENT_01_valid.xlsx")
-        g = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
-        ten = extract_sheet_tenement(wb, g)
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        g = extract_sheet_tenement(wb, cc, URIRef("http://test.com"))
 
-        assert (URIRef("https://linked.data.gov.au/dataset/gsq-tenements/6789"), RDF.type, TENEMENT.Tenement) in ten
+        #print(g.serialize(format="longturtle"))
+        assert (URIRef("https://linked.data.gov.au/dataset/gsq-tenements/6789"), RDF.type, TENEMENT.Tenement) in g
 
-        assert (URIRef("https://linked.data.gov.au/dataset/gsq-tenements/6789"), TENEMENT.hasProject, Literal("Test Project")) in ten
+        assert (URIRef("https://linked.data.gov.au/dataset/gsq-tenements/6789"), TENEMENT.hasProject, Literal("Test Project")) in g
 
     def test_02_invalid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-TENEMENT_02_invalid.xlsx")
@@ -230,3 +231,12 @@ class TestExtractSheetSurfaceSample30:
         except ConversionError as e:
             assert str(e) == "The value hello for DISPATCH_DATE in row 12 of sheet SURFACE_SAMPLE " \
                              "is not a date as required"
+
+
+class TestIntegration30:
+    def test_01_valid(self):
+        rdf = excel_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")
+        g = Graph().parse(data=rdf, format="turtle")
+        #print(g.serialize(format="longturtle"))
+
+        assert len(g) == 148
