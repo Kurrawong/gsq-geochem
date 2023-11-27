@@ -207,3 +207,26 @@ class TestExtractSheetDrillholeSample30:
         except ConversionError as e:
             assert str(e) == "The value 3600 for MAGNETIC_SUSCEPTIBILITY in row 10 of sheet DRILLHOLE_SAMPLE is " \
                              "not negative, as required"
+
+
+class TestExtractSheetSurfaceSample30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-SURFACE_SAMPLE_01_valid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        g = extract_sheet_surface_sample(wb, cc)
+
+        # print(g.serialize(format="longturtle"))
+        assert (
+            URIRef("https://linked.data.gov.au/dataset/gsq-samples/SSABCD"),
+            SDO.material,
+            URIRef("https://linked.data.gov.au/def/gsq-geochem/sample-material/sediment"),
+        ) in g
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-SURFACE_SAMPLE_02_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        try:
+            extract_sheet_surface_sample(wb, cc)
+        except ConversionError as e:
+            assert str(e) == "The value hello for DISPATCH_DATE in row 12 of sheet SURFACE_SAMPLE " \
+                             "is not a date as required"
