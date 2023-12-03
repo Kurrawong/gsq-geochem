@@ -14,8 +14,10 @@ from openpyxl.styles import Font, Border, PatternFill, Side
 from rdflib import Graph
 from rdflib.namespace import RDF, SKOS
 
-VOCABS_DIR = Path(__file__).parent / "vocabs-codelists"
+VOCABS_DIR = Path(__file__).parent / "vocabs-codelists" / "3.0"
 OUTPUT_FILE = Path(__file__).parent / "validation-dictionary.xlsx"
+
+print(f"vocabs dir: {VOCABS_DIR}")
 
 # styling
 ft = Font(bold=True)

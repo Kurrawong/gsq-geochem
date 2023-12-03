@@ -8,7 +8,7 @@ from pyproj import Transformer
 
 from rdflib.namespace import GEO, SDO, SOSA
 from .defined_namespaces import MININGROLES, TENEMENT, TENEMENTS, QLDBORES, QKINDS
-from rdflib import Namespace
+from rdflib import Namespace, Seq
 EX = Namespace("http://example.com/")
 
 from .models import Dataset, DrillHole, DrillHoleSample, SurfaceSample, Geometry
@@ -33,7 +33,7 @@ def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Gra
         author=get_iri_from_code(sheet["B10"].value, combined_concepts),
     )
 
-    return URIRef(d.iri), d.to_graph()
+    return d.to_graph(), URIRef(d.iri)
 
 
 def validate_sheet_validation_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph):
@@ -819,7 +819,7 @@ def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Gra
 
             # make RDFLib objects of the values
             drillhole_iri = QLDBORES[drillhole_id]
-            sample_iri = make_rdflib_type(data["required"]["sample_id"], "URIRef", combined_concepts, SAMPLES)
+            sample_iri = make_rdflib_type(data["required"]["sample_id"], "URIRef", None, Namespace(dataset_iri + "/sample/"))
             sample_type_drilling_iri = make_rdflib_type(data["required"]["sample_type_drilling"], "Concept", combined_concepts)
             depth_from_lit = make_rdflib_type(depth_from, "Number")
             depth_to_lit = make_rdflib_type(depth_to, "Number")
@@ -1035,7 +1035,7 @@ def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph
             remark = data["optional"].get("remark")
 
             # make RDFLib objects of the values
-            sample_iri = make_rdflib_type(data["required"]["sample_id"], "URIRef", combined_concepts, SAMPLES)
+            sample_iri = make_rdflib_type(data["required"]["sample_id"], "URIRef", None, Namespace(dataset_iri + "/sample/"))
             sample_material_iri = make_rdflib_type(data["required"]["sample_material"], "Concept", combined_concepts)
             sample_type_surface_iri = make_rdflib_type(data["required"]["sample_type_surface"], "Concept", combined_concepts)
             sample_mesh_size_iri = make_rdflib_type(data["required"]["sample_mesh_size"], "Concept", combined_concepts)
@@ -1126,25 +1126,335 @@ def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph
     return g
 
 
-def extract_sheet_sample_preparation(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
-    check_template_version_supported(wb)
+def extract_sheet_sample_preparation(
+        wb: openpyxl.Workbook,
+        laboratory_names_and_ids: Dict,
+        user_sample_prep_code_ids: List[str],
+        user_assay_code_ids: List[str],
+        sample_ids: List[str],
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Graph:
+    if template_version is None:
+        template_version = check_template_version_supported(wb)
 
     sheet_name = "SAMPLE_PREPARATION"
     sheet = wb[sheet_name]
 
+    row = 9
+    g = Graph()
 
-def extract_sheet_geochemistry_meta(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
-    check_template_version_supported(wb)
+    while True:
+        bv = sheet[f"B{row}"].value
+
+        if bv is not None:
+            if bv == "TV19287993":
+                row += 1
+                continue
+            else:
+                # make vars of all the sheet values
+                data = {
+                    "required": {
+                        "job_number": bv,
+                        "laboratory": sheet[f"C{row}"].value,
+                        "sample_prep_codes": sheet[f"D{row}"].value,  # USER_SAMPLE_PREP_CODES
+                        "assay_code": sheet[f"E{row}"].value,  # USER_ASSAY_CODES
+                        "sample_id": sheet[f"F{row}"].value,
+                    }
+                }
+
+                # check required sheet values are present
+                for k, v in data["required"].items():
+                    if v is None:
+                        raise ConversionError(
+                            f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+                # value validation
+                job_number = data["required"]["job_number"]
+
+                laboratory_name = data["required"]["laboratory"]
+
+                if laboratory_name not in laboratory_names_and_ids.keys():
+                    raise ConversionError(
+                        f"The value {laboratory_name} for LABORATORY in row {row} of sheet {sheet_name} is "
+                        f"not defined in the USER_LABORATORY worksheet as required")
+
+                sample_prep_codes = [x.strip() for x in data["required"]["sample_prep_codes"].split(";")]
+                for sample_prep_code in sample_prep_codes:
+                    if sample_prep_code not in user_sample_prep_code_ids:
+                        raise ConversionError(
+                            f"The value {sample_prep_code} for SAMPLE_PREP_CODES in row {row} of sheet {sheet_name} is "
+                            f"not defined in the USER_SAMPLE_PREP_CODES worksheet as required")
+
+                assay_code = data["required"]["assay_code"]
+                if assay_code not in user_assay_code_ids:
+                    raise ConversionError(
+                        f"The value {assay_code} for ASSAY_CODE in row {row} of sheet {sheet_name} is "
+                        f"not defined in the USER_ASSAY_CODES worksheet as required")
+
+                sample_id = data["required"]["sample_id"]
+                if sample_id not in sample_ids:
+                    raise ConversionError(
+                        f"The value {sample_id} for SAMPLE_ID in row {row} of sheet {sheet_name} is "
+                        f"not defined in either the DRILLHOLE_SAMPLE or the SURFACE_SAMPLE worksheet as required")
+
+                # make RDFLib objects of the values
+                job_number_iri = URIRef(Namespace(dataset_iri + "/jobNumber/") + job_number)
+                laboratory_iri = URIRef(Namespace(dataset_iri + "/lab/" + laboratory_names_and_ids[laboratory_name]))
+                sample_prep_codes_iris = [URIRef(Namespace(dataset_iri + "/samplePrepCode/") + x) for x in sample_prep_codes]
+                assay_code_iri = URIRef(Namespace(dataset_iri + "/assayCode/") + assay_code)
+                sample_iri = make_rdflib_type(sample_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
+
+                # make the graph
+                g.add((dataset_iri, SDO.hasPart, job_number_iri))
+
+                g.add((job_number_iri, RDF.type, SOSA.ObservationCollection))
+                obs = BNode()
+                g.add((obs, RDF.type, SOSA.Observation))
+                g.add((job_number_iri, SOSA.member, obs))
+
+                qa = BNode()
+                g.add((obs, PROV.qualifiedAttribution, qa))
+                g.add((qa, PROV.agent, laboratory_iri))
+                g.add((qa, PROV.hadRole, MININGROLES.SampleAnalyser))
+
+                # pcs = BNode()
+                # g.add((pcs, RDF.List))
+                # for sample_prep_codes_iri in sample_prep_codes_iris:
+                #     g.add(obs, SOSA.usedProcedure, sample_prep_codes_iri)
+
+                pcs = BNode()
+                Seq(g, pcs, sample_prep_codes_iris)
+                g.add((pcs, RDFS.label, Literal("Sample Preparation codes")))
+                g.add((obs, SOSA.usedProcedure, pcs))
+
+                g.add((obs, SOSA.usedProcedure, assay_code_iri))
+
+                g.add((obs, SOSA.hasFeatureOfInterest, sample_iri))
+
+                g.add((dataset_iri, SDO.hasPart, sample_iri))
+
+                row += 1
+        else:
+            break
+
+    return g
+
+
+def extract_sheet_geochemistry_meta(
+        wb: openpyxl.Workbook,
+        job_numbers: List[str],
+        user_assay_code_ids: List[str],
+        analyte_ids: List[str],
+        unit_of_measure_ids: List[str],
+        combined_concepts: Graph,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Graph:
+    if template_version is None:
+        template_version = check_template_version_supported(wb)
 
     sheet_name = "GEOCHEMISTRY_META"
     sheet = wb[sheet_name]
 
+    row = 9
+    g = Graph()
 
-def extract_sheet_sample_geochemistry(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
-    check_template_version_supported(wb)
+    while True:
+        bv = sheet[f"B{row}"].value
+        if bv is not None:
+            if bv == "GC12345":
+                row += 1
+                continue
+            else:
+                # make vars of all the sheet values
+                data = {
+                    "required": {
+                        "job_number": bv,
+                        "assay_code": sheet[f"C{row}"].value,  # USER_ASSAY_CODES
+                        "analyte_code": sheet[f"D{row}"].value,
+                        "unit_of_measure": sheet[f"E{row}"].value,
+                        "lower_detection_limit": sheet[f"F{row}"].value,
+                        "accuracy": sheet[f"G{row}"].value,
+                        "preferred_result": sheet[f"I{row}"].value,
+                    },
+                    "optional": {
+                        "upper_detection_limit": sheet[f"H{row}"].value,
+                    }
+                }
+
+                # check required sheet values are present
+                for k, v in data["required"].items():
+                    if v is None:
+                        raise ConversionError(
+                            f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+                # value validation
+                job_number = data["required"]["job_number"]
+                if job_number not in job_numbers:
+                    raise ConversionError(
+                        f"The value {job_number} for JOB_NUMBER in row {row} of sheet {sheet_name} is "
+                        f"not present in the SAMPLE_PREPARATION job numbers worksheet as required")
+
+                assay_code = data["required"]["assay_code"]
+                if assay_code not in user_assay_code_ids:
+                    raise ConversionError(
+                        f"The value {assay_code} for ASSAY_CODE in row {row} of sheet {sheet_name} is "
+                        f"not defined in the USER_ASSAY_CODES worksheet as required")
+
+                analyte_code = data["required"]["analyte_code"]
+                if analyte_code not in analyte_ids:
+                    raise ConversionError(
+                        f"The value {analyte_code} for ANALYTE_CODE in row {row} of sheet {sheet_name} is "
+                        f"not defined in the USER_ANALYTES worksheet as required")
+
+                unit_of_measure = data["required"]["unit_of_measure"].split("(")[1].split(")")[0]
+                if unit_of_measure not in unit_of_measure_ids:
+                    raise ConversionError(
+                        f"The value {unit_of_measure} for SAMPLE_ID in row {row} of sheet {sheet_name} is "
+                        f"not defined in the UNITS_OF_MEASURE or the USER_UNITS_OF_MEASURE worksheets as required")
+
+                # make RDFLib objects of the values
+                job_number_iri = URIRef(Namespace(dataset_iri + "/jobNumber/") + job_number)
+                assay_code_iri = URIRef(Namespace(dataset_iri + "/assayCode/") + assay_code)
+                analyte_code_iri = URIRef(Namespace(dataset_iri + "/analyteCode/") + analyte_code)
+                unit_of_measure_iri = make_rdflib_type(unit_of_measure, "Concept", combined_concepts)
+                lower_detection_limit_lit = make_rdflib_type(data["required"]["lower_detection_limit"], "Number")
+                accuracy_lit = make_rdflib_type(data["required"]["accuracy"], "Number")
+                if data["required"].get("upper_detection_limit") is not None:
+                    upper_detection_limit_lit = make_rdflib_type(data["required"].get("upper_detection_limit"), "Number")
+                preferred_result_lit = make_rdflib_type(True if data["required"]["preferred_result"] == "Yes" else  False, "Boolean")
+
+                # make the graph
+                g.add((dataset_iri, SDO.hasPart, job_number_iri))
+
+                obs = BNode()
+                g.add((obs, RDF.type, SOSA.Observation))
+                g.add((job_number_iri, SOSA.member, obs))
+
+                g.add((obs, SOSA.usedProcedure, assay_code_iri))
+
+                g.add((obs, SOSA.observedProperty, analyte_code_iri))
+
+                r = BNode()
+                g.add((obs, SOSA.hasResult, r))
+                g.add((r, RDF.type, SOSA.Result))
+                g.add((r, SDO.unitCode, unit_of_measure_iri))
+                g.add((r, EX.lowerDetectionLimit, lower_detection_limit_lit))
+                g.add((r, SDO.marginOfError, accuracy_lit))
+                if data["required"].get("upper_detection_limit") is not None:
+                    g.add((r, EX.upperDetectionLimit, upper_detection_limit_lit))
+                g.add((r, EX.isPreferredResult, preferred_result_lit))
+
+                row += 1
+        else:
+            break
+
+    g.bind("ex", EX)
+
+    return g
+
+
+def extract_sheet_sample_geochemistry(
+        wb: openpyxl.Workbook,
+        job_numbers: List[str],
+        sample_ids: List[str],
+        user_assay_code_ids: List[str],
+        analyte_ids: List[str],
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Graph:
+    if template_version is None:
+        template_version = check_template_version_supported(wb)
 
     sheet_name = "SAMPLE_GEOCHEMISTRY"
     sheet = wb[sheet_name]
+
+    row = 9
+    g = Graph()
+
+    while True:
+        bv = sheet[f"B{row}"].value
+        if bv is not None:
+            if bv == "TV19287993":
+                row += 1
+                continue
+            else:
+                # make vars of all the sheet values
+                data = {
+                    "required": {
+                        "job_number": bv,
+                        "sample_id": sheet[f"C{row}"].value,
+                        "assay_code": sheet[f"D{row}"].value,  # USER_ASSAY_CODES
+                        "analyte_code": sheet[f"E{row}"].value,
+                        "result": sheet[f"F{row}"].value,
+                    },
+                }
+
+                # check required sheet values are present
+                for k, v in data["required"].items():
+                    if v is None:
+                        raise ConversionError(
+                            f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+                # value validation
+                job_number = data["required"]["job_number"]
+                if job_number not in job_numbers:
+                    raise ConversionError(
+                        f"The value {job_number} for JOB_NUMBER in row {row} of sheet {sheet_name} is "
+                        f"not present in the SAMPLE_PREPARATION job numbers worksheet as required")
+
+                sample_id = data["required"]["sample_id"]
+                if sample_id not in sample_ids:
+                    raise ConversionError(
+                        f"The value {sample_id} for SAMPLE_ID in row {row} of sheet {sheet_name} is "
+                        f"not defined in either the DRILLHOLE_SAMPLE or the SURFACE_SAMPLE worksheet as required")
+
+                assay_code = data["required"]["assay_code"]
+                if assay_code not in user_assay_code_ids:
+                    raise ConversionError(
+                        f"The value {assay_code} for ASSAY_CODE in row {row} of sheet {sheet_name} is "
+                        f"not defined in the USER_ASSAY_CODES worksheet as required")
+
+                analyte_code = data["required"]["analyte_code"]
+                if analyte_code not in analyte_ids:
+                    raise ConversionError(
+                        f"The value {analyte_code} for ANALYTE_CODE in row {row} of sheet {sheet_name} is "
+                        f"not defined in the USER_ANALYTES worksheet as required")
+
+                # make RDFLib objects of the values
+                job_number_iri = URIRef(Namespace(dataset_iri + "/jobNumber/") + job_number)
+                sample_iri = URIRef(Namespace(dataset_iri + "/sample/") + sample_id)
+                assay_code_iri = URIRef(Namespace(dataset_iri + "/assayCode/") + assay_code)
+                analyte_code_iri = URIRef(Namespace(dataset_iri + "/analyteCode/") + analyte_code)
+                result_lit = make_rdflib_type(data["required"]["result"], "Number")
+
+                # make the graph
+                g.add((dataset_iri, SDO.hasPart, job_number_iri))
+
+                obs = BNode()
+                g.add((obs, RDF.type, SOSA.Observation))
+                g.add((job_number_iri, SOSA.member, obs))
+
+                g.add((obs, SOSA.hasFeatureOfInterest, sample_iri))
+
+                g.add((obs, SOSA.usedProcedure, assay_code_iri))
+
+                g.add((obs, SOSA.observedProperty, analyte_code_iri))
+
+                r = BNode()
+                g.add((r, RDF.type, SOSA.Result))
+                g.add((r, SDO.value, result_lit))
+
+                g.add((obs, SOSA.hasResult, r))
+
+                row += 1
+        else:
+            break
+
+    g.bind("ex", EX)
+
+    return g
 
 
 def extract_sheet_qaqc_meta(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
@@ -1251,99 +1561,6 @@ def extract_drillholes(wb: openpyxl.Workbook) -> list[Graph]:
     return drillholes
 
 
-def extract_samples(wb: openpyxl.Workbook, known_drillholes: []) -> list[Graph]:
-    # only handle v 3.0
-    if not template_version == 3.0:
-        return []
-
-    samples = []
-
-    sheet = wb["DRILLHOLE_SAMPLE"]
-
-    # only process example row if example data altered
-    if sheet["B9"].value != "DD12345":
-        row = 9
-    else:
-        row = 10
-
-    while True:
-        if sheet[f"C{row}"].value is not None:
-            foi_id = sheet[f"B{row}"].value
-            sample_id = sheet[f"C{row}"].value
-            if str(FOIS[foi_id]) not in known_drillholes:
-                raise ConversionError(
-                    f"The given Drillhole ID {foi_id} for Sample {sample_id} is unknown. "
-                    f"Must be present in the DRILLHOLE_LOCATION tab. "
-                    f"Known Drillhole IDs are: {', '.join([x.split('/')[-1] for x in known_drillholes])}"
-                )
-
-            samples.append(
-                DrillHoleSample(
-                    is_sample_of=sheet[f"B{row}"].value,
-                    iri=SAMPLES[sample_id],
-                    sample_type=sheet[f"D{row}"].value,
-                    depth_from=sheet[f"E{row}"].value,
-                    depth_to=sheet[f"F{row}"].value,
-                    collection_date=sheet[f"G{row}"].value,
-                    dispatch_date=sheet[f"H{row}"].value,
-                    instrument_type=sheet[f"I{row}"].value,
-                    specific_gravity=sheet[f"J{row}"].value,
-                    magnetic_susceptibility=sheet[f"K{row}"].value,
-                    remarks=sheet[f"L{row}"].value
-                )
-            )
-
-            row += 1
-        else:
-            break
-
-    sheet = wb["SURFACE_SAMPLE"]
-
-    # only process example row if example data altered
-    row = 12
-    if sheet["B9"].value != "SS12345":
-        row = 9
-
-    if sheet["B10"].value != "SS12346":
-        row = 10
-
-    if sheet["B11"].value != "SS12347":
-        row = 11
-
-    while True:
-        if sheet[f"B{row}"].value is not None:
-            sample_id = sheet[f"B{row}"].value
-            geom = Geometry(
-                as_wkt=convert_easting_northing_elevation_to_wkt(
-                    sheet[f"I{row}"].value,
-                    sheet[f"J{row}"].value,
-                    sheet[f"K{row}"].value)
-            )
-            samples.append(
-                SurfaceSample(
-                    iri=SAMPLES[sample_id],
-                    sample_material=sheet[f"C{row}"].value,
-                    sample_type_surface=sheet[f"D{row}"].value,
-                    mesh_size=sheet[f"E{row}"].value,
-                    soil_sample_depth=sheet[f"F{row}"].value,
-                    soil_colour=sheet[f"G{row}"].value,
-                    soil_ph=sheet[f"H{row}"].value,
-                    has_geometry=geom,
-                    location_survey_type=sheet[f"L{row}"].value,
-                    collection_date=sheet[f"M{row}"].value,
-                    dispatch_date=sheet[f"N{row}"].value,
-                    instrument_type=sheet[f"O{row}"].value,
-                    specific_gravity=sheet[f"P{row}"].value,
-                    magnetic_susceptibility=sheet[f"Q{row}"].value,
-                    remarks=sheet[f"R{row}"].value,
-                )
-            )
-        else:
-            break
-
-    return samples
-
-
 def excel_to_rdf(
     file_to_convert_path: Path | BinaryIO,
     output_file_path: Optional[Path] = None,
@@ -1355,14 +1572,17 @@ def excel_to_rdf(
 
     cc = Graph().parse(GSQ_PROFILE_DIR / "vocabs" / f"concepts-combined-{template_version}.ttl")
 
-    # test that we have a valid template variable.
+    # test that we have a valid template variable
     if template_version not in KNOWN_TEMPLATE_VERSIONS:
         raise ConversionError(
             f"Unknown Template Version. Known Template Versions are {', '.join(KNOWN_TEMPLATE_VERSIONS)},"
             f" you supplied {template_version}"
         )
 
-    dataset_iri, grf = extract_sheet_dataset_metadata(wb, cc)
+    grf, dataset_iri = extract_sheet_dataset_metadata(wb, cc)
+    grf: Graph
+    dataset_iri: URIRef
+
     validate_sheet_validation_dictionary(wb, cc)
     user_dict = extract_sheet_user_dictionary(wb, cc)
     validate_sheet_uom(wb, cc)

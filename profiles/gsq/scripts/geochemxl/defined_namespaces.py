@@ -52,6 +52,8 @@ class MININGROLES(DefinedNamespace):
     TenementOperator: URIRef
     Surveyer: URIRef
     Driller: URIRef
+    SampleAnalyser: URIRef
+
 
 class SAMPLE(DefinedNamespace):
     _NS = Namespace("https://linked.data.gov.au/def/mining-roles/")

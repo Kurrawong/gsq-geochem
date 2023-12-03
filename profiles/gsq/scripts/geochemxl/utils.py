@@ -462,7 +462,7 @@ def check_template_version_supported(wb: openpyxl.Workbook):
 
 def make_rdflib_type(
     value,
-    rdflib_type: TypeLiteral["URIRef", "Concept", "String", "Number", "Date"],
+    rdflib_type: TypeLiteral["URIRef", "Concept", "String", "Number", "Date", "Boolean"],
     combined_concepts: Optional[Graph] = None,
     uri_namespace: Optional[Namespace] = None,
 ):
@@ -476,3 +476,5 @@ def make_rdflib_type(
         return Literal(value)
     elif rdflib_type == "Date":
         return Literal(datetime.datetime.strftime(value, "%Y-%m-%d"), datatype=XSD.date)
+    elif rdflib_type == "Boolean":
+        return Literal(value, datatype=XSD.boolean)
