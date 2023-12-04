@@ -11,7 +11,8 @@ TEST_WORKBOOK_30_VALID = GSQ_PROFILE_DIR / "templates" / "GeochemXL-v3.0.xlsx"
 class TestExtractSheetDatasetMetadata30:
     def test_extract_sheet_dataset_metadata(self):
         wb = load_workbook(TEST_WORKBOOK_30_VALID)
-        g, iri = extract_sheet_dataset_metadata(wb, Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl"))
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        g, iri = extract_sheet_dataset_metadata(wb, cc, "3.0")
 
         assert type(g) == Graph
         assert type(iri) == URIRef
@@ -24,21 +25,24 @@ class TestExtractSheetDatasetMetadata30:
 class TestValidateSheetValidationDictionary30:
     def test_01_invalid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-VALIDATION_DICTIONARY_01_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
         try:
-            validate_sheet_validation_dictionary(wb, Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl"))
+            validate_sheet_validation_dictionary(wb, cc, "3.0")
         except ConversionError as e:
             assert str(e) == "Code xx in codelist LOC_SURVEY_TYPE on worksheet VALIDATION_DICTIONARY is not known"
 
     def test_02_valid(self):
         # code xx is defined by user
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-VALIDATION_DICTIONARY_02_valid.xlsx")
-        validate_sheet_validation_dictionary(wb, Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl"))
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        validate_sheet_validation_dictionary(wb, cc, "3.0")
 
     def test_03_invalid(self):
         # code xx is incorrectly defined as xy by user
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-VALIDATION_DICTIONARY_03_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
         try:
-            validate_sheet_validation_dictionary(wb, Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl"))
+            validate_sheet_validation_dictionary(wb, Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl"), "3.0")
         except ConversionError as e:
             assert str(e) == "Code xx in codelist LOC_SURVEY_TYPE on worksheet VALIDATION_DICTIONARY is not known"
 
@@ -46,8 +50,8 @@ class TestValidateSheetValidationDictionary30:
 class TestExtractSheetUserDictionary30:
     def test_01_valid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_DICTIONARY_01_valid.xlsx")
-        g = Graph()
-        extract_sheet_user_dictionary(wb, g)
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        g = extract_sheet_user_dictionary(wb, cc)
 
         concepts_count = 0
         notations = []
@@ -69,13 +73,15 @@ class TestExtractSheetUserDictionary30:
 class TestExtractSheetUom30:
     def test_01_valid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-UNITS_OF_MEASURE_01_valid.xlsx")
-        validate_sheet_uom(wb, Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl"))
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        validate_sheet_uom(wb, cc, "3.0")
 
     def test_02_valid(self):
         # code 'ROUNDS' defined by user should be 'rounds'
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-UNITS_OF_MEASURE_02_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
         try:
-            validate_sheet_uom(wb, Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl"))
+            validate_sheet_uom(wb, cc, "3.0")
         except ConversionError as e:
             assert str(e) == "Code rounds in codelist ROTATION on worksheet UNITS_OF_MEASURE is not known"
 
@@ -83,25 +89,111 @@ class TestExtractSheetUom30:
 class TestExtractSheetUserUom30:
     def test_01_valid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_UNITS_OF_MEASURE_01_valid.xlsx")
-        g = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
-        extract_sheet_user_uom(wb, g)
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        g, notations = extract_sheet_user_uom(wb, cc, "3.0")
 
         concepts_count = 0
-        notations = []
         for c in g.subjects(RDF.type, SKOS.Concept):
             for _ in g.triples((c, SKOS.inScheme, URIRef("http://example.com/user-defined-uom"))):
                 concepts_count += 1
-                notations.append(str(g.value(subject=c, predicate=SKOS.notation)))
+                notations.append(str(cc.value(subject=c, predicate=SKOS.notation)))
         assert concepts_count == 2
 
         assert "BPC" in notations
 
     def test_02_invalid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_UNITS_OF_MEASURE_01_valid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
         try:
-            extract_sheet_user_uom(wb, Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl"))
+            extract_sheet_user_uom(wb, cc, "3.0")
         except ConversionError as e:
             assert str(e) == "You must supply a DESCRIPTION value for each code you define in the USER_UNITS_OF_MEASURE sheet"
+
+
+class TestExtractSheetUserSamplePrepCodes30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_SAMPLE_PREP_CODES_01_valid.xlsx")
+        g, prep_code_ids = extract_sheet_user_sample_prep_codes(wb, URIRef("http://test.com"), "3.0")
+
+        assert (
+            URIRef("http://test.com/user-ConceptScheme-sample-preparations"),
+            SKOS.hasTopConcept,
+            URIRef("http://test.com/code/D"),
+        ) in g
+
+        assert 'A' in prep_code_ids
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_SAMPLE_PREP_CODES_02_invalid.xlsx")
+        try:
+            extract_sheet_user_sample_prep_codes(wb, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "For each row in the USER_SAMPLE_PREP_CODES worksheet, you must supply a " \
+                             "DESCRIPTION value"
+
+
+class TestExtractSheetUserAssayCodes30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_ASSAY_CODES_01_valid.xlsx")
+        g, assay_code_ids = extract_sheet_user_assay_codes(wb, URIRef("http://test.com"), "3.0")
+
+        assert (
+            URIRef("http://test.com/user-ConceptScheme-assays"),
+            SKOS.hasTopConcept,
+            URIRef("http://test.com/code/TTT"),
+        ) in g
+
+        assert 'TTT' in assay_code_ids
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_ASSAY_CODES_02_invalid.xlsx")
+        try:
+            extract_sheet_user_assay_codes(wb, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "For each row in the USER_ASSAY_CODES worksheet, you must supply a " \
+                             "DESCRIPTION value"
+
+
+class TestExtractSheetUserAnalytes30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_ANALYTES_01_valid.xlsx")
+        g, analyte_ids = extract_sheet_user_analytes(wb, URIRef("http://test.com"), "3.0")
+
+        assert (
+            URIRef("http://test.com/user-ConceptScheme-analytes"),
+            SKOS.hasTopConcept,
+            URIRef("http://test.com/code/Ag"),
+        ) in g
+
+        assert 'Ag' in analyte_ids
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_ANALYTES_02_invalid.xlsx")
+        try:
+            g, analyte_ids = extract_sheet_user_analytes(wb, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "For each row in the USER_ANALYTES worksheet, you must supply a " \
+                             "DESCRIPTION value"
+
+
+class TestExtractSheetUserLaboratories30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_LABORATORIES_01_valid.xlsx")
+        g, lab_names_and_ids = extract_sheet_user_laboratories(wb, URIRef("http://test.com"), "3.0")
+
+        assert (
+            URIRef("http://test.com/lab/ABC-Corp-GC"),
+            RDF.type,
+            SDO.Organization,
+        ) in g
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-USER_LABORATORIES_02_invalid.xlsx")
+        try:
+            g = extract_sheet_user_laboratories(wb, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "For each row in the USER_LABORATORIES worksheet, you must supply a " \
+                             "LABORATORY_LOCATION value"
 
 
 class TestExtractSheetTenement30:
@@ -116,17 +208,17 @@ class TestExtractSheetTenement30:
 
     def test_02_invalid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-TENEMENT_02_invalid.xlsx")
-        g = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
         try:
-            extract_sheet_tenement(wb, g, URIRef("http://test.com"))
+            extract_sheet_tenement(wb, cc, URIRef("http://test.com"))
         except ConversionError as e:
             assert str(e) == "For each row in the TENEMENT worksheet, you must supply a TENEMENT_OPERATOR value"
 
     def test_03_invalid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-TENEMENT_03_invalid.xlsx")
-        g = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
         try:
-            extract_sheet_tenement(wb, g, URIRef("http://test.com"))
+            extract_sheet_tenement(wb, cc, URIRef("http://test.com"))
         except ConversionError as e:
             assert str(e) == "The value Hello for GEODETIC_DATUM in row 10 on the TENEMENT worksheet is not within " \
                              "the COORD_SYS_ID lookup list"
@@ -136,7 +228,7 @@ class TestExtractSheetDrillholeLocation30:
     def test_01_valid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_LOCATION_01_valid.xlsx")
         cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
-        g, drillhole_ids = extract_sheet_drillhole_location(wb, cc, URIRef("http://test.com"))
+        g, drillhole_ids = extract_sheet_drillhole_location(wb, cc, URIRef("http://test.com"), "3.0")
 
         assert (
             URIRef("https://linked.data.gov.au/dataset/gsq-bores/DEF123"),
@@ -148,7 +240,7 @@ class TestExtractSheetDrillholeLocation30:
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_LOCATION_02_invalid.xlsx")
         cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
         try:
-            extract_sheet_drillhole_location(wb, cc, URIRef("http://test.com"))
+            extract_sheet_drillhole_location(wb, cc, URIRef("http://test.com"), "3.0")
         except ConversionError as e:
             assert str(e) == "For each row in the DRILLHOLE_LOCATION worksheet, " \
                              "you must supply a PRE_COLLAR_DEPTH value"
@@ -159,8 +251,6 @@ class TestExtractSheetDrillholeSurvey30:
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_SURVEY_01_valid.xlsx")
         cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
         g = extract_sheet_drillhole_survey(wb, cc, ["DD1234", "DEF123"], URIRef("http://test.com"))
-
-        # g.serialize(destination="TestExtractSheetDrillholeSurvey30.ttl", format="longturtle")
         assert (
             URIRef("https://linked.data.gov.au/dataset/gsq-bores/DD1234"),
             BORE.hadSurvey,
@@ -181,11 +271,10 @@ class TestExtractSheetDrillholeSample30:
     def test_01_valid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_SAMPLE_01_valid.xlsx")
         cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
-        g = extract_sheet_drillhole_sample(wb, cc, ["DD1234", "DEF123"], URIRef("http://test.com"))
+        g, _ = extract_sheet_drillhole_sample(wb, cc, ["DD1234", "DEF123"], URIRef("http://test.com"))
 
-        # print(g.serialize(format="longturtle"))
         assert (
-            URIRef("https://linked.data.gov.au/dataset/gsq-samples/ABC123"),
+            URIRef("http://test.com/sample/ABC123"),
             SOSA.isSampleOf,
             URIRef("https://linked.data.gov.au/dataset/gsq-bores/DEF123"),
         ) in g
@@ -212,11 +301,11 @@ class TestExtractSheetSurfaceSample30:
     def test_01_valid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-SURFACE_SAMPLE_01_valid.xlsx")
         cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
-        g = extract_sheet_surface_sample(wb, cc, URIRef("http://test.com"))
+        g, _ = extract_sheet_surface_sample(wb, cc, URIRef("http://test.com"))
 
         # print(g.serialize(format="longturtle"))
         assert (
-            URIRef("https://linked.data.gov.au/dataset/gsq-samples/SSABCD"),
+            URIRef("http://test.com/sample/SSABCD"),
             SDO.material,
             URIRef("https://linked.data.gov.au/def/gsq-geochem/sample-material/sediment"),
         ) in g
@@ -244,7 +333,7 @@ class TestExtractSheetSamplePreparation30:
             "SSABCE",
             "SSABCF"
         ]
-        g = extract_sheet_sample_preparation(wb, labs, ["A", "B", "C", "D"], ["TTTT"], sample_ids, URIRef("http://test.com"), "3.0")
+        g, _ = extract_sheet_sample_preparation(wb, labs, ["A", "B", "C", "D"], ["TTTT"], sample_ids, URIRef("http://test.com"), "3.0")
 
         has_expected_foi = False
         for oc in g.subjects(RDF.type, SOSA.ObservationCollection):
@@ -268,7 +357,7 @@ class TestExtractSheetSamplePreparation30:
             "SSABCF"
         ]
         try:
-            g = extract_sheet_sample_preparation(wb, labs, ["A", "B", "C", "D"], ["TTTT"], sample_ids, URIRef("http://test.com"), "3.0")
+            extract_sheet_sample_preparation(wb, labs, ["A", "B", "C", "D"], ["TTTT"], sample_ids, URIRef("http://test.com"), "3.0")
         except ConversionError as e:
             assert str(e) == "The value TTTX for ASSAY_CODE in row 15 of sheet SAMPLE_PREPARATION is not " \
                              "defined in the USER_ASSAY_CODES worksheet as required"
@@ -289,8 +378,6 @@ class TestExtractSheetGeochemistryMeta30:
         g = extract_sheet_geochemistry_meta(wb, job_numbers, labs, ["TTTT"], ["Au"], ["ppm", "ppb"], cc, URIRef("http://test.com"), "3.0")
 
         assert (None, SDO.marginOfError, Literal("0.05")) in g
-
-        # print(g.serialize(format="longturtle"))
 
     def test_02_invalid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-GEOCHEMISTRY_META_02_invalid.xlsx")
@@ -314,8 +401,6 @@ class TestExtractSheetSampleGeochemistry30:
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-SAMPLE_GEOCHEMISTRY_01_valid.xlsx")
         g = extract_sheet_sample_geochemistry(wb, ["JOB_27"], ["SSABCD"], ["TTTT"], ["Ag", "As", "Au"], URIRef("http://test.com"), "3.0")
 
-        print(g.serialize(format="longturtle"))
-
         assert (None, SOSA.observedProperty, URIRef("http://test.com/analyteCode/Au")) in g
 
     def test_02_invalid(self):
@@ -323,13 +408,12 @@ class TestExtractSheetSampleGeochemistry30:
         try:
             g = extract_sheet_sample_geochemistry(wb, ["JOB_27"], ["SSABCD"], ["TTTT"], ["Ag", "As", "Au"], URIRef("http://test.com"), "3.0")
         except ConversionError as e:
-            assert str(e) == "For each row in the GEOCHEMISTRY_META worksheet, you must supply a ACCURACY value"
+            assert str(e) == "The value JB27 for JOB_NUMBER in row 15 of sheet SAMPLE_GEOCHEMISTRY is not present in the SAMPLE_PREPARATION job numbers worksheet as required"
 
 
 class TestIntegration30:
     def test_01_valid(self):
         rdf = excel_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")
         g = Graph().parse(data=rdf, format="turtle")
-        #print(g.serialize(format="longturtle"))
 
-        assert len(g) == 148
+        assert len(g) == 285

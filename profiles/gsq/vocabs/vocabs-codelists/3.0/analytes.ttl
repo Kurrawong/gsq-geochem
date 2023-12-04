@@ -1,5 +1,5 @@
-PREFIX : <https://linked.data.gov.au/def/gsq-geochem/current-class/>
-PREFIX cs: <https://linked.data.gov.au/def/gsq-geochem/current-class>
+PREFIX : <https://linked.data.gov.au/def/gsq-geochem/analytes/>
+PREFIX cs: <https://linked.data.gov.au/def/gsq-geochem/analytes>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sdo: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -45,7 +45,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:definition "The rate of presence of elemental gold within another substance"@en ;
     skos:historyNote "Created for the Geochemistry data exchange Excel Template v3 based on common analytes" ;
     skos:inScheme cs: ;
-    skos:notation "Ag" ;
+    skos:notation "Au" ;
     skos:prefLabel "Amount of gold"@en ;
     skos:topConceptOf cs: ;
 .

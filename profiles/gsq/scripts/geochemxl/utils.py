@@ -234,6 +234,18 @@ def get_id_from_iri(iri):
     return Literal(id, datatype=XSD.token)
 
 
+def make_id_from_name(name: str) -> str:
+    to_replace = [" ", "_"]
+    for char in to_replace:
+        name = name.replace(char, "-")
+
+    to_remove = ["(", ")", "?", "&"]
+    for char in to_remove:
+        name = name.replace(char, "")
+
+    return name
+
+
 def make_agent(agent_value, agent_role, prefixes, iri_of_subject) -> Graph:
     ag = Graph()
     iri = expand_namespaces(agent_value, prefixes)
@@ -473,6 +485,8 @@ def make_rdflib_type(
     elif rdflib_type == "Concept":
         return get_iri_from_code(value, combined_concepts)
     elif rdflib_type in ["String", "Number"]:
+        if str(value).startswith("http"):
+            return Literal(value, datatype=XSD.anyURI)
         return Literal(value)
     elif rdflib_type == "Date":
         return Literal(datetime.datetime.strftime(value, "%Y-%m-%d"), datatype=XSD.date)

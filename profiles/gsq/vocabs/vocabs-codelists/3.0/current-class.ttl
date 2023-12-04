@@ -11,7 +11,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:definition "Definition for appraisal"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation "APPRAISAL" ;
+    skos:notation "APPRAISAL CLASS" ;
     skos:prefLabel "appraisal"@en ;
     skos:topConceptOf cs: ;
 .
@@ -22,7 +22,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:definition "Definition for bedrock"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation "BEDROCK" ;
+    skos:notation "BEDROCK CLASS" ;
     skos:prefLabel "bedrock"@en ;
     skos:topConceptOf cs: ;
 .
@@ -33,7 +33,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:definition "Definition for development"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation "DEVELOPMENT" ;
+    skos:notation "DEVELOPMENT CLASS" ;
     skos:prefLabel "development"@en ;
     skos:topConceptOf cs: ;
 .
@@ -44,7 +44,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:definition "Definition for exploration"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation "EXPLORATION" ;
+    skos:notation "EXPLORATION CLASS" ;
     skos:prefLabel "exploration"@en ;
     skos:topConceptOf cs: ;
 .
@@ -55,7 +55,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:definition "Definition for geotechnical"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation "GEOTECHNICAL" ;
+    skos:notation "GEOTECHNICAL CLASS" ;
     skos:prefLabel "geotechnical"@en ;
     skos:topConceptOf cs: ;
 .
@@ -66,7 +66,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:definition "Definition for metallurgical"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation "METALLURGICAL" ;
+    skos:notation "METALLURGICAL CLASS" ;
     skos:prefLabel "metallurgical"@en ;
     skos:topConceptOf cs: ;
 .
@@ -77,7 +77,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:definition "Definition for trenching"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation "TRENCHING" ;
+    skos:notation "TRENCHING CLASS" ;
     skos:prefLabel "trenching"@en ;
     skos:topConceptOf cs: ;
 .
@@ -88,7 +88,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:definition "Definition for water"@en ;
     skos:historyNote "Taken from Geochem Excel exchange template v2" ;
     skos:inScheme cs: ;
-    skos:notation "WATER" ;
+    skos:notation "WATER CLASS" ;
     skos:prefLabel "water"@en ;
     skos:topConceptOf cs: ;
 .

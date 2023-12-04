@@ -23,6 +23,8 @@ class BORE(DefinedNamespace):
     hasDiameter: URIRef
     hasDip: URIRef
     hasAzimuth: URIRef
+    hasCollarDip: URIRef
+    hasCollarAzimuth: URIRef
 
 
 FOIS = Namespace("https://linked.data.gov.au/dataset/gsq-fois/")
@@ -30,6 +32,7 @@ SAMPLES = Namespace("https://linked.data.gov.au/dataset/gsq-samples/")
 QKINDS = Namespace("http://qudt.org/vocab/quantitykind/")
 TENEMENTS = Namespace("https://linked.data.gov.au/dataset/gsq-tenements/")
 QLDBORES = Namespace("https://linked.data.gov.au/dataset/gsq-bores/")
+LABORATORIES = Namespace("https://linked.data.gov.au/dataset/gsq-bores/")
 
 
 class TENEMENT(DefinedNamespace):

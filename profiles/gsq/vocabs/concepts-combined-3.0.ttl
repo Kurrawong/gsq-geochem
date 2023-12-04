@@ -1,5 +1,77 @@
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
+<http://linked.data.gov.au/def/qld-utm-zones/amg66z54>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "AMG66 Z54" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/amg66z55>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "AMG66 Z55" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/amg66z56>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "AMG66 Z56" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/amg84z54>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "AMG84 Z54" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/amg84z55>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "AMG84 Z55" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/amg84z56>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "AMG84 Z56" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/mga2020z54>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "MGA2020 Z54" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/mga2020z55>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "MGA2020 Z55" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/mga2020z56>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "MGA2020 Z56" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/mga94z54>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "MGA94 Z54" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/mga94z55>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "MGA94 Z55" ;
+.
+
+<http://linked.data.gov.au/def/qld-utm-zones/mga94z56>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
+    skos:notation "MGA94 Z56" ;
+.
+
 <http://qudt.org/vocab/unit/GM-PER-KiloGM>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/uom> ;
@@ -280,6 +352,30 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/alteration> ;
     skos:notation "ZEOLITIC ALTERATION" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/analytes/amount-of-ag>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/analytes> ;
+    skos:notation "Ag" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/analytes/amount-of-al>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/analytes> ;
+    skos:notation "Al" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/analytes/amount-of-as>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/analytes> ;
+    skos:notation "As" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/analytes/amount-of-au>
+    a skos:Concept ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/analytes> ;
+    skos:notation "Au" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/commodity/agate>
@@ -3144,42 +3240,6 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "AGD84" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg66-z54>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "AMG66 Z54" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg66-z55>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "AMG66 Z55" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg66-z56>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "AMG66 Z56" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg84-z54>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "AMG84 Z54" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg84-z55>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "AMG84 Z55" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/amg84-z56>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "AMG84 Z56" ;
-.
-
 <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/gda2020>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
@@ -3192,88 +3252,52 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "GDA94" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga2020-z54>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "MGA2020 Z54" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga2020-z55>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "MGA2020 Z55" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga2020-z56>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "MGA2020 Z56" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga94-z54>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "MGA94 Z54" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga94-z55>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "MGA94 Z55" ;
-.
-
-<https://linked.data.gov.au/def/gsq-geochem/coord-sys-id/mga94-z56>
-    a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id> ;
-    skos:notation "MGA94 Z56" ;
-.
-
 <https://linked.data.gov.au/def/gsq-geochem/current-class/appraisal>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
-    skos:notation "APPRAISAL" ;
+    skos:notation "APPRAISAL CLASS" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/current-class/bedrock>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
-    skos:notation "BEDROCK" ;
+    skos:notation "BEDROCK CLASS" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/current-class/development>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
-    skos:notation "DEVELOPMENT" ;
+    skos:notation "DEVELOPMENT CLASS" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/current-class/exploration>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
-    skos:notation "EXPLORATION" ;
+    skos:notation "EXPLORATION CLASS" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/current-class/geotechnical>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
-    skos:notation "GEOTECHNICAL" ;
+    skos:notation "GEOTECHNICAL CLASS" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/current-class/metallurgical>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
-    skos:notation "METALLURGICAL" ;
+    skos:notation "METALLURGICAL CLASS" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/current-class/trenching>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
-    skos:notation "TRENCHING" ;
+    skos:notation "TRENCHING CLASS" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/current-class/water>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/current-class> ;
-    skos:notation "WATER" ;
+    skos:notation "WATER CLASS" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/depth-datum/drillpipe-collar-dc>
@@ -6612,6 +6636,10 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 <https://linked.data.gov.au/def/gsq-geochem/agent>
     skos:notation "AGENT" ;
+.
+
+<https://linked.data.gov.au/def/gsq-geochem/analytes>
+    skos:notation "ANALYTE" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/lease-name>
