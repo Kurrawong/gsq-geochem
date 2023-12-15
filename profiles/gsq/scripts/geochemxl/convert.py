@@ -1,38 +1,49 @@
 import argparse
 import sys
-from typing import BinaryIO, Optional, List
+from typing import BinaryIO
 from uuid import uuid4
-from pyproj import Transformer
 
-from rdflib.namespace import GEO, SDO, SOSA
-from .defined_namespaces import MININGROLES, TENEMENT, TENEMENTS, QLDBORES, QKINDS
+from pyproj import Transformer
 from rdflib import Namespace, Seq
+from rdflib.namespace import GEO, SDO, SOSA
+
+from .defined_namespaces import MININGROLES, TENEMENT, TENEMENTS, QLDBORES, QKINDS
+
 EX = Namespace("http://example.com/")
 
-from .models import Dataset
 from .utils import *
 from .utils import check_template_version_supported
 
 GSQ_PROFILE_DIR = Path(__file__).parent.parent.resolve().parent
 
 
-def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Graph, template_version: Optional[str] = None) -> Tuple[URIRef, Graph]:
+def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Graph, template_version: Optional[str] = None) -> Tuple[Graph, URIRef]:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
-    sheet = wb["DATASET_METADATA"]
+    sheet_name = wb["DATASET_METADATA"]
 
-    d = Dataset(
-        iri=sheet["B5"].value
-        if string_is_http_iri(sheet["B5"].value) else "http://example.com/dataset/" + str(uuid4()),
-        name=sheet["B6"].value,
-        description=sheet["B7"].value,
-        date_created=sheet["B8"].value,
-        date_modified=sheet["B9"].value,
-        author=get_iri_from_code(sheet["B10"].value, combined_concepts),
-    )
+    iri = sheet_name["B5"].value if string_is_http_iri(sheet_name["B5"].value) else "http://example.com/dataset/" + str(uuid4())
+    name = sheet_name["B6"].value
+    description = sheet_name["B7"].value
+    date_created = sheet_name["B8"].value
+    date_modified = sheet_name["B9"].value
+    author = get_iri_from_code(sheet_name["B10"].value, combined_concepts)
 
-    return d.to_graph(), URIRef(d.iri)
+    g = Graph(bind_namespaces="rdflib")
+    v = URIRef(iri)
+    g.add((v, RDF.type, SDO.Dataset))
+    g.add((v, SDO.name, Literal(name)))
+    g.add((v, SDO.description, Literal(description)))
+    g.add((v, SDO.dateCreated, Literal(date_created, datatype=XSD.date)))
+    g.add((v, SDO.dateModified, Literal(date_modified, datatype=XSD.date)))
+    qa = BNode()
+    g.add((v, PROV.qualifiedAttribution, qa))
+    g.add((qa, PROV.agent, URIRef(author)))
+    g.add((qa, PROV.hadRole, URIRef(
+        "http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/author")))
+
+    return g, v
 
 
 def validate_sheet_validation_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph, template_version: Optional[str] = None):

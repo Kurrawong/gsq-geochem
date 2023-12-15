@@ -1,16 +1,14 @@
 from ..convert import *
-from ..models import *
 
 
 GSQ_PROFILE_DIR = Path(__file__).parent.parent.resolve().parent.parent
 CONCEPTS_COMBINED_GRAPH = Graph().parse(GSQ_PROFILE_DIR / "vocabs" / "concepts-combined-3.0.ttl")
 TESTS_DIR = GSQ_PROFILE_DIR / "scripts" / "geochemxl" / "tests"
-TEST_WORKBOOK_30_VALID = GSQ_PROFILE_DIR / "templates" / "GeochemXL-v3.0.xlsx"
 
 
 class TestExtractSheetDatasetMetadata30:
     def test_extract_sheet_dataset_metadata(self):
-        wb = load_workbook(TEST_WORKBOOK_30_VALID)
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DATASET_METADATA_01_valid.xlsx")
         cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
         g, iri = extract_sheet_dataset_metadata(wb, cc, "3.0")
 
@@ -19,7 +17,7 @@ class TestExtractSheetDatasetMetadata30:
 
         for o in g.objects(None, SDO.dateModified):
             assert type(o) == Literal
-            assert o.value == datetime.date(2023, 11, 15)
+            assert o.value == datetime.datetime(2023, 11, 15)
 
 
 class TestValidateSheetValidationDictionary30:
