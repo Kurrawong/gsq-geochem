@@ -409,9 +409,60 @@ class TestExtractSheetSampleGeochemistry30:
             assert str(e) == "The value JB27 for JOB_NUMBER in row 15 of sheet SAMPLE_GEOCHEMISTRY is not present in the SAMPLE_PREPARATION job numbers worksheet as required"
 
 
+class TestExtractSheetQaqcMeta30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-QAQC_META_01_valid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        labs = {
+            "ABC Corp (GC)": "abc-corp-gc",
+            "GeoChem Labs Pty Ltd": "geochem-labs",
+            "DEF Corp": "def-corp",
+        }
+        job_numbers = [
+            "JOB_27"
+        ]
+        g = extract_sheet_qaqc_meta(wb, job_numbers, labs, ["TTTT"], ["Au"], ["ppm", "ppb"], cc, URIRef("http://test.com"), "3.0")
+
+        assert (None, SDO.marginOfError, Literal("0.05")) in g
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-QAQC_META_02_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        labs = {
+            "ABC Corp (GC)": "abc-corp-gc",
+            "GeoChem Labs Pty Ltd": "geochem-labs",
+            "DEF Corp": "def-corp",
+        }
+        job_numbers = [
+            "JOB_27"
+        ]
+        try:
+            g = extract_sheet_qaqc_meta(wb, job_numbers, labs, ["TTTT"], ["Au"], ["ppm", "ppb"], cc, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "For each row in the QAQC_META worksheet, you must supply a ACCURACY value"
+
+
+class TestExtractSheetQaqcGeochemistry30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-QAQC_GEOCHEMISTRY_01_valid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        g = extract_sheet_qaqc_geochemistry(wb, ["JOB_27"], ["DEF123", "SSABCD"], ["TTTT"], ["Ag", "As", "Au"], cc, URIRef("http://test.com"), "3.0")
+
+        assert (None, SOSA.observedProperty, URIRef("http://test.com/analyteCode/Au")) in g
+        assert (URIRef("http://test.com/sample/DEF123"), SOSA.isSampleOf, URIRef("http://test.com/sample/S54321")) in g
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-QAQC_GEOCHEMISTRY_02_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        try:
+            g = extract_sheet_qaqc_geochemistry(wb, ["JOB_27"], ["DEF123", "SSABCD"], ["TTTT"], ["Ag", "As", "Au"], cc, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "For each row in the QAQC_GEOCHEMISTRY worksheet, you must supply a STANDARD_ID value"
+
+
 class TestIntegration30:
     def test_01_valid(self):
         rdf = excel_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")
         g = Graph().parse(data=rdf, format="turtle")
 
-        assert len(g) == 285
+        assert len(g) == 298
