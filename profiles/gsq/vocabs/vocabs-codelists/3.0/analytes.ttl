@@ -58,6 +58,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 cs:
     a skos:ConceptScheme ;
+    sdo:keywords <http://linked.data.gov.au/def/earth-science-data-category/geochemistry> ;
     skos:definition "A substance or sample being analyzed, usually by means of a laboratory procedure or test"@en ;
     skos:hasTopConcept
         :Ag ,

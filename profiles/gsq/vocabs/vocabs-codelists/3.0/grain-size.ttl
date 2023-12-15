@@ -134,6 +134,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 cs:
     a skos:ConceptScheme ;
+    sdo:keywords <http://linked.data.gov.au/def/earth-science-data-category/geochemistry> ;
     skos:definition "Grain Size"@en ;
     skos:hasTopConcept
         :boulder ,
