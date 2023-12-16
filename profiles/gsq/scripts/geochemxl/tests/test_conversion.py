@@ -481,6 +481,23 @@ class TestExtractSheetSamplePxrf30:
             assert str(e) == "For each row in the SAMPLE_PXRF worksheet, you must supply a RESULT value"
 
 
+class TestExtractSheetLithDictionary30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-LITH_DICTIONARY_01_valid.xlsx")
+        g, lith_ids = extract_sheet_lith_dictionary(wb, URIRef("http://test.com"), "3.0")
+
+        # print(g.serialize(format="longturtle"))
+
+        assert len(lith_ids) == 180
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-LITH_DICTIONARY_02_invalid.xlsx")
+        try:
+            g, lith_ids = extract_sheet_lith_dictionary(wb, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "The value for GSQ_CODE_MATCH on row 24 of the worksheet LITH_DICTIONARY must not be null"
+
+
 class TestIntegration30:
     def test_01_valid(self):
         rdf = excel_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")

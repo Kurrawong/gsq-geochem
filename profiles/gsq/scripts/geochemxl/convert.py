@@ -1066,7 +1066,7 @@ def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Gra
             depth_to = data["required"]["to"]
             if depth_to <= depth_from:
                 raise ConversionError(
-                    f"The value {depth_to} for FROM in row {row} of sheet {sheet_name} is not greater or equal to "
+                    f"The value {depth_to} for TO in row {row} of sheet {sheet_name} is not greater or equal to "
                     f"the FROM value as required")
 
             collection_date = data["required"]["collection_date"]
@@ -2172,11 +2172,227 @@ def extract_sheet_sample_pxrf(
     return g
 
 
-def extract_sheet_drillhole_lithology(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
-    check_template_version_supported(wb)
+def extract_sheet_lith_dictionary(
+        wb: openpyxl.Workbook,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Tuple[Graph, List]:
+    if template_version is None:
+        template_version = check_template_version_supported(wb)
+
+    sheet_name = "LITH_DICTIONARY"
+    sheet = wb[sheet_name]
+
+    row = 9
+
+    lith_codes = []
+    g = Graph(bind_namespaces="rdflib")
+
+    lith_cs_iri = URIRef(str(dataset_iri) + "/lithology-cs")
+    g.add((lith_cs_iri, RDF.type, SKOS.ConceptScheme))
+    g.add((lith_cs_iri, SKOS.prefLabel, Literal(f"Dataset {dataset_iri} lithology vocabulary")))
+
+    while True:
+        v = sheet[f"B{row}"].value
+        if v is not None:
+            their_label = sheet[f"A{row}"].value
+            if their_label is None:
+                raise ConversionError(
+                    f"The value for COMP_LITH on row {row} of the worksheet LITH_DICTIONARY must not be null")
+            their_lith_code = v
+            gsq_label = sheet[f"D{row}"].value
+            if gsq_label is None:
+                raise ConversionError(
+                    f"The value for GSQ_LITH_MATCH on row {row} of the worksheet LITH_DICTIONARY must not be null")
+            gsq_lith_code = sheet[f"E{row}"].value
+            if gsq_lith_code is None:
+                raise ConversionError(
+                    f"The value for GSQ_CODE_MATCH on row {row} of the worksheet LITH_DICTIONARY must not be null")
+
+            lith_codes.append(v)
+
+            # make RDF types
+            lith_iri = make_rdflib_type(gsq_lith_code, "URIRef", None, Namespace(dataset_iri + "/lithology/"))
+            lith_pl_lit = make_rdflib_type(gsq_label, "String")
+            lith_al_lit = make_rdflib_type(their_label, "String")
+
+            # make graph
+            g.add((lith_iri, RDF.type, SKOS.Concept))
+            g.add((lith_iri, SKOS.prefLabel, lith_pl_lit))
+            if their_lith_code != gsq_lith_code:
+                g.add((lith_iri, SKOS.notation, Literal(their_lith_code, datatype=dataset_iri)))
+            if their_label != gsq_label:
+                g.add((lith_iri, SKOS.altLabel, lith_al_lit))
+            g.add((lith_iri, SKOS.topConceptOf, lith_cs_iri))
+            g.add((lith_cs_iri, SKOS.hasTopConcept, lith_iri))
+
+            row += 1
+        else:
+            break
+
+    return g, lith_codes
+
+
+def extract_sheet_drillhole_lithology(
+        wb: openpyxl.Workbook,
+        drillhole_ids: List[str],
+        combined_concepts: Graph,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Graph:
+    if template_version is None:
+        template_version = check_template_version_supported(wb)
 
     sheet_name = "DRILLHOLE_LITHOLOGY"
     sheet = wb[sheet_name]
+
+    row = 9
+    g = Graph()
+
+    while True:
+        bv = sheet[f"B{row}"].value
+        if bv is not None:
+            if bv == "DD12345":
+                row += 1
+                continue
+            else:
+                # make vars of all the sheet values
+                data = {
+                    "required": {
+                        "drillhole_id": bv,
+                        "from": sheet[f"C{row}"].value,
+                        "to": sheet[f"D{row}"].value,
+
+                        "rock_type_code_1": sheet[f"F{row}"].value,
+                        "rock_type_code_2": sheet[f"F{row}"].value,
+
+                        "alt_type": sheet[f"F{row}"].value,
+                        "alt_intensity": sheet[f"F{row}"].value,
+                    },
+                    "optional": {
+                        "recovered_amount": sheet[f"D{row}"].value,
+                        "weathering": sheet[f"E{row}"].value,
+                        "colour": sheet[f"D{row}"].value,
+                        "colour_shade": sheet[f"E{row}"].value,
+
+                        "rock_type_percentage_1": sheet[f"F{row}"].value,
+                        "rock_type_percentage_2": sheet[f"F{row}"].value,
+
+                        "prim_min_1": sheet[f"F{row}"].value,
+                        "prim_min_abundance_1": sheet[f"F{row}"].value,
+                        "prim_min_2": sheet[f"F{row}"].value,
+                        "prim_min_abundance_2": sheet[f"F{row}"].value,
+                        "prim_min_3": sheet[f"F{row}"].value,
+                        "prim_min_abundance_3": sheet[f"F{row}"].value,
+
+                        "alt_mineral_1": sheet[f"F{row}"].value,
+                        "alt_mineral_abund_1": sheet[f"F{row}"].value,
+                        "alt_mineral_2": sheet[f"F{row}"].value,
+                        "alt_mineral_abund_2": sheet[f"F{row}"].value,
+
+                        "vein_composition": sheet[f"F{row}"].value,
+                        "vein_description": sheet[f"F{row}"].value,
+                        "vein_percent": sheet[f"F{row}"].value,
+                        "structure": sheet[f"F{row}"].value,
+                        "texture": sheet[f"F{row}"].value,
+                        "grain_size": sheet[f"F{row}"].value,
+                        "remark": sheet[f"F{row}"].value,
+                    }
+                }
+
+                # check required sheet values are present
+                for k, v in data["required"].items():
+                    if v is None:
+                        raise ConversionError(
+                            f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+                # value validation
+                # cross-sheet validation
+                drillhole_id = str(data["required"]["drillhole_id"])
+                if drillhole_id not in drillhole_ids:
+                    raise ConversionError(
+                        f"The value {drillhole_id} for DRILLHOLE_ID in row {row} of sheet {sheet_name} "
+                        f"is not present on sheet DRILLHOLE_LOCATION, DRILLHOLE_ID, as required")
+
+                depth_from = data["required"]["from"]
+                if depth_from < 0:
+                    raise ConversionError(
+                        f"The value {depth_from} for FROM in row {row} of sheet {sheet_name} is not greater or equal to "
+                        f"zero as required")
+
+                depth_to = data["required"]["to"]
+                if depth_to <= depth_from:
+                    raise ConversionError(
+                        f"The value {depth_to} for TO in row {row} of sheet {sheet_name} is not greater or equal to "
+                        f"the FROM value as required")
+
+                validate_code(
+                    data["required"]["rock_type_code_1"], "QAQC", "ROCK_TYPE_CODE_1", row,
+                    sheet_name,
+                    combined_concepts
+                )
+
+                validate_code(
+                    data["required"]["rock_type_code_2"], "QAQC", "ROCK_TYPE_CODE_2", row,
+                    sheet_name,
+                    combined_concepts
+                )
+
+                validate_code(
+                    data["required"]["alt_type"], "QAQC", "QAQC", row,
+                    sheet_name,
+                    combined_concepts
+                )
+
+                qaqc_type = data["required"]["qaqc_type"]
+
+
+
+                # make RDFLib objects of the values
+                job_number_iri = make_rdflib_type(job_number, "URIRef", None, Namespace(dataset_iri + "/jobNumber/"))
+                sample_iri = make_rdflib_type(sample_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
+                assay_code_iri = make_rdflib_type(assay_code, "URIRef", None, Namespace(dataset_iri + "/assayCode/"))
+                analyte_code_iri = make_rdflib_type(analyte_code, "URIRef", None, Namespace(dataset_iri + "/analyteCode/"))
+                result_lit = make_rdflib_type(result, "Number")
+                orig_sample_iri = make_rdflib_type(orig_sample_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
+                qaqc_type_iri = make_rdflib_type(qaqc_type, "Concept", combined_concepts)
+                standard_id_lit = make_rdflib_type(standard_id, "String")
+                standard_provider_lit = make_rdflib_type(standard_provider, "String")
+
+                # make the graph
+                g.add((dataset_iri, SDO.hasPart, job_number_iri))
+
+                obs = BNode()
+                g.add((obs, RDF.type, SOSA.Observation))
+                g.add((job_number_iri, SOSA.member, obs))
+
+                g.add((obs, SOSA.hasFeatureOfInterest, sample_iri))
+
+                g.add((obs, SOSA.usedProcedure, assay_code_iri))
+
+                g.add((obs, SOSA.observedProperty, analyte_code_iri))
+
+                r = BNode()
+                g.add((r, RDF.type, SOSA.Result))
+                g.add((r, SDO.value, result_lit))
+
+                g.add((obs, SOSA.hasResult, r))
+
+                g.add((sample_iri, SOSA.isSampleOf, orig_sample_iri))
+                g.add((sample_iri, SDO.additionalType, qaqc_type_iri))
+                p = BNode()
+                g.add((p, RDF.type, SOSA.Procedure))
+                g.add((p, SDO.identifier, standard_id_lit))
+                g.add((p, SDO.author, standard_provider_lit))
+                g.add((obs, SOSA.usedProcedure, p))
+
+                row += 1
+        else:
+            break
+
+    g.bind("ex", EX)
+
+    return g
 
 
 def extract_sheet_drillhole_structure(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
@@ -2200,11 +2416,6 @@ def extract_sheet_surface_structure(wb: openpyxl.Workbook, combined_concepts: Gr
     sheet = wb[sheet_name]
 
 
-def extract_sheet_lith_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
-    check_template_version_supported(wb)
-
-    sheet_name = "LITH_DICTIONARY"
-    sheet = wb[sheet_name]
 
 
 def extract_sheet_min_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
