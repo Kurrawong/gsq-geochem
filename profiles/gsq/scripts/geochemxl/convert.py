@@ -1,4 +1,5 @@
 import argparse
+import json
 import sys
 from typing import BinaryIO
 from uuid import uuid4
@@ -113,7 +114,6 @@ def extract_sheet_user_dictionary(wb: openpyxl.Workbook, combined_concepts: Grap
             g.add((bn, SKOS.notation, Literal(sheet[f"C{row}"].value)))
             g.add((bn, SKOS.inScheme, cs))
             if sheet[f"D{row}"].value is None:
-                print()
                 raise ConversionError(
                     "You must supply a DESCRIPTION value for each code you define in the USER_DICTIONARY sheet")
             g.add((bn, SKOS.definition, Literal(sheet[f"D{row}"].value)))
@@ -2041,11 +2041,135 @@ def extract_sheet_qaqc_geochemistry(
     return g
 
 
-def extract_sheet_sample_pxrf(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
-    check_template_version_supported(wb)
+def extract_sheet_sample_pxrf(
+        wb: openpyxl.Workbook,
+        sample_ids: List[str],
+        analyte_ids: List[str],
+        unit_of_measure_ids: List[str],
+        combined_concepts: Graph,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Graph:
+    if template_version is None:
+        template_version = check_template_version_supported(wb)
 
     sheet_name = "SAMPLE_PXRF"
     sheet = wb[sheet_name]
+
+    row = 9
+    g = Graph()
+    obs_col_bn = BNode()
+    g.add((obs_col_bn, RDF.type, SOSA.ObservationCollection))
+    g.add((dataset_iri, SDO.hasPart, obs_col_bn))
+
+    while True:
+        bv = sheet[f"B{row}"].value
+        if bv is not None:
+            if bv == "SS12345":
+                row += 1
+                continue
+            else:
+                # make vars of all the sheet values
+                data = {
+                    "required": {
+                        "sample_id": bv,
+                        "reading_no": sheet[f"C{row}"].value,
+                        "filter_beam_setting": sheet[f"E{row}"].value,
+                        "xrf_beam1_time": sheet[f"F{row}"].value,
+                        "xrf_beam2_time": sheet[f"G{row}"].value,
+                        "xrf_beam3_time": sheet[f"H{row}"].value,
+                        "xrf_elapsed_time": sheet[f"I{row}"].value,
+                        "xrf_instrument_type": sheet[f"J{row}"].value,
+                        "analyte_code": sheet[f"K{row}"].value,
+                        "unit_of_measure": sheet[f"L{row}"].value,
+                        "result": sheet[f"M{row}"].value,
+                    },
+                    "optional": {
+                        "mode": sheet[f"D{row}"].value,
+                    }
+                }
+
+                # check required sheet values are present
+                for k, v in data["required"].items():
+                    if v is None:
+                        raise ConversionError(
+                            f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+                # value validation
+                sample_id = data["required"]["sample_id"]
+                if sample_id not in sample_ids:
+                    raise ConversionError(
+                        f"The value {sample_id} for SAMPLE_ID in row {row} of sheet {sheet_name} is "
+                        f"not defined in either the DRILLHOLE_SAMPLE or the SURFACE_SAMPLE worksheet as required")
+
+                if data["optional"].get("mode") is not None:
+                    result = data["optional"]["mode"]
+
+                filter_beam_setting = data["required"]["filter_beam_setting"]
+                xrf_beam1_time = data["required"]["xrf_beam1_time"]
+                xrf_beam2_time = data["required"]["xrf_beam2_time"]
+                xrf_beam3_time = data["required"]["xrf_beam3_time"]
+                xrf_elapsed_time = data["required"]["xrf_elapsed_time"]
+                xrf_instrument_type = data["required"]["xrf_instrument_type"]
+
+                analyte_code = data["required"]["analyte_code"]
+                if analyte_code not in analyte_ids:
+                    raise ConversionError(
+                        f"The value {analyte_code} for ANALYTE_CODE in row {row} of sheet {sheet_name} is "
+                        f"not defined in the USER_ANALYTES worksheet as required")
+
+                unit_of_measure = data["required"]["unit_of_measure"].split("(")[1].split(")")[0]
+                if unit_of_measure not in unit_of_measure_ids:
+                    raise ConversionError(
+                        f"The value {unit_of_measure} for SAMPLE_ID in row {row} of sheet {sheet_name} is "
+                        f"not defined in the UNITS_OF_MEASURE or the USER_UNITS_OF_MEASURE worksheets as required")
+
+                result = data["required"]["result"]
+
+                # make RDFLib objects of the values
+                sample_iri = make_rdflib_type(sample_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
+                json_val = {
+                    "FILTER_BEAM_SETTING": filter_beam_setting,
+                    "XRF_BEAM1_TIME": xrf_beam1_time,
+                    "XRF_BEAM2_TIME": xrf_beam2_time,
+                    "XRF_BEAM3_TIME": xrf_beam3_time,
+                    "XRF_ELAPSED_TIME": xrf_elapsed_time,
+                    "XRF_INSTRUMENT_TYPE": xrf_instrument_type
+                }
+                procedure_lit = Literal(json.dumps(json_val), datatype=RDF.JSON)
+                analyte_code_iri = make_rdflib_type(analyte_code, "URIRef", None, Namespace(dataset_iri + "/analyteCode/"))
+                uom_iri = make_rdflib_type(unit_of_measure, "Concept", combined_concepts)
+                result_lit = make_rdflib_type(result, "Number")
+
+                # make the graph
+                g.add((dataset_iri, SDO.hasPart, sample_iri))
+
+                obs = BNode()
+                g.add((obs, RDF.type, SOSA.Observation))
+                g.add((obs, SOSA.hasFeatureOfInterest, sample_iri))
+                g.add((obs_col_bn, SOSA.member, obs))
+
+                procedure_bn = BNode()
+                g.add((procedure_bn, RDF.type, SOSA.Procedure))
+                g.add((procedure_bn, SDO.name, Literal("XRF Analysis")))
+                g.add((procedure_bn, SDO.description, procedure_lit))
+                g.add((obs, SOSA.usedProcedure, procedure_bn))
+
+                g.add((obs, SOSA.observedProperty, analyte_code_iri))
+
+                r = BNode()
+                g.add((r, RDF.type, SOSA.Result))
+                g.add((r, SDO.unitCode, uom_iri))
+                g.add((r, SDO.value, result_lit))
+                g.add((obs, SOSA.hasResult, r))
+
+                row += 1
+        else:
+            break
+
+    g.bind("ex", EX)
+
+    return g
 
 
 def extract_sheet_drillhole_lithology(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
@@ -2150,6 +2274,8 @@ def excel_to_rdf(
 
     grf += extract_sheet_qaqc_meta(wb, job_numbers, laboratories_dict, assay_codes, ans, uoms_concentration_notations, cc, dataset_iri, template_version)
     grf += extract_sheet_qaqc_geochemistry(wb, job_numbers, sample_ids, assay_codes, ans, cc, dataset_iri, template_version)
+
+    grf += extract_sheet_sample_pxrf(wb, sample_ids, ans, uoms_concentration_notations, cc, dataset_iri, template_version)
 
     grf.bind("bore", BORE)
     grf.bind("ex", EX)

@@ -460,9 +460,30 @@ class TestExtractSheetQaqcGeochemistry30:
             assert str(e) == "For each row in the QAQC_GEOCHEMISTRY worksheet, you must supply a STANDARD_ID value"
 
 
+class TestExtractSheetSamplePxrf30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-SAMPLE_PXRF_01_valid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        g = extract_sheet_sample_pxrf(wb, ["SS12346", "SS12347"], ["Ag", "As", "Au"], ["ppb", "g/t"], cc, URIRef("http://test.com"), "3.0")
+
+        assert (None, SOSA.observedProperty, URIRef("http://test.com/analyteCode/Au")) in g
+        for s in g.subjects(RDF.type, SOSA.Procedure):
+            desc = g.value(subject=s, predicate=SDO.description)
+            desc: Literal
+            assert desc.datatype == RDF.JSON
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-SAMPLE_PXRF_02_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        try:
+            g = extract_sheet_sample_pxrf(wb, ["SS12346", "SS12347"], ["Ag", "As", "Au"], ["ppb", "g/t"], cc, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "For each row in the SAMPLE_PXRF worksheet, you must supply a RESULT value"
+
+
 class TestIntegration30:
     def test_01_valid(self):
         rdf = excel_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")
         g = Graph().parse(data=rdf, format="turtle")
 
-        assert len(g) == 298
+        assert len(g) == 324
