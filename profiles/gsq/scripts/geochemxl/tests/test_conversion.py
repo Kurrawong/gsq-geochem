@@ -335,7 +335,7 @@ class TestExtractSheetSamplePreparation30:
 
         has_expected_foi = False
         for oc in g.subjects(RDF.type, SOSA.ObservationCollection):
-            for o in g.objects(oc, SOSA.member):
+            for o in g.objects(oc, SOSA.hasMember):
                 for foi in g.objects(o, SOSA.hasFeatureOfInterest):
                     if foi == URIRef("http://test.com/sample/SSABCE"):
                         has_expected_foi = True
@@ -552,7 +552,7 @@ class TestExtractSheetDrillholeLithology30:
         try:
             g = extract_sheet_drillhole_lithology(wb, ["DD12346"], ["SL"], ["Qz", "Sp", "OL", "Ka", "As"], cc, URIRef("http://test.com"), "3.0")
         except ConversionError as e:
-            assert str(e) == "The value OSO for ROCK_TYPE_CODE_2 in row 10 of sheet DRILLHOLE_LITHOLOGY definedin the worksheet LITH_DICTIONARY in column B"
+            assert str(e) == "The value OSO for ROCK_2 in row 10 of sheet DRILLHOLE_LITHOLOGY definedin the worksheet LITH_DICTIONARY in column B"
 
 
 class TestIntegration30:
