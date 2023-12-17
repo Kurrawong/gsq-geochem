@@ -7,6 +7,24 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
+:geological-unit-alteration
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "Aspects of a geologic unit or earth material that are the result of bulk chemical, mineralogical or physical changes related to change in the physical or chemical environment" ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
+    dcterms:source "https://docs.ogc.org/is/16-008/16-008r1.html#142"^^xsd:anyURI ;
+.
+
+:weathering
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "The weathering state of rock. e.g. residual soil, extremely weathered, supergene zone, fresh" ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
+    skos:historyNote "Defined by the Geological Survey of Queensland's Geochemistry standardisation work, 2023" ;
+.
+
 qk:AmountOfSubstancePerUnitMass
     a skos:Concept ;
     skos:definition "The rate of presence of a substance within another substance"@en ;
@@ -45,6 +63,26 @@ qk:AmountOfSubstancePerUnitMass
     skos:definition "The rate of presence of a chemical compound within another substance"@en ;
     skos:inScheme cs: ;
     skos:prefLabel "Amount of a Compound Per Unit Mass"@en ;
+    skos:historyNote "Defined for the first time in this vocabulary" ;
+.
+
+:amount-of-a-rock
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:broader :amount-of-a-compound ;
+    skos:definition "The rate of presence of a type of rock within another substance"@en ;
+    skos:inScheme cs: ;
+    skos:prefLabel "Amount of Rock Per Unit Mass"@en ;
+    skos:historyNote "Defined for the first time in this vocabulary" ;
+.
+
+:amount-of-a-mineral
+    a skos:Concept ;
+    rdfs:isDefinedBy cs: ;
+    skos:broader :amount-of-a-compound ;
+    skos:definition "The rate of presence of a type of mineral within another substance"@en ;
+    skos:inScheme cs: ;
+    skos:prefLabel "Amount of Rock Per Unit Mass"@en ;
     skos:historyNote "Defined for the first time in this vocabulary" ;
 .
 
@@ -136,7 +174,10 @@ cs:
     dcterms:creator <https://orcid.org/0000-0002-8742-7730> ;
     dcterms:publisher <https://linked.data.gov.au/org/gsq> ;
     skos:definition "Observable quality (property, characteristic) of a Feature Of Interest" ;
-    skos:hasTopConcept qk:AmountOfSubstancePerUnitMass ;
+    skos:hasTopConcept
+        qk:AmountOfSubstancePerUnitMass ,
+        :geological-unit-alteration ,
+        :weathering ;
     skos:prefLabel "Observable Properties"@en ;
     skos:historyNote """This vocabulary was created as a fundamental vocabulary supporting data about the observations and measurements of phenomena.
 

@@ -498,9 +498,66 @@ class TestExtractSheetLithDictionary30:
             assert str(e) == "The value for GSQ_CODE_MATCH on row 24 of the worksheet LITH_DICTIONARY must not be null"
 
 
+class TestExtractSheetMinDictionary30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-MIN_DICTIONARY_01_valid.xlsx")
+        g, lith_ids = extract_sheet_min_dictionary(wb, URIRef("http://test.com"), "3.0")
+
+        # print(g.serialize(format="longturtle"))
+
+        assert len(lith_ids) == 69
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-MIN_DICTIONARY_02_invalid.xlsx")
+        try:
+            g, lith_ids = extract_sheet_min_dictionary(wb, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "The value for GSQ_CODE_MATCH on row 24 of the worksheet MIN_DICTIONARY must not be null"
+
+
+class TestExtractSheetDrillholeLithology30:
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_LITHOLOGY_01_valid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+        g = extract_sheet_drillhole_lithology(wb, ["DD12346"], ["SL", "OSO"], ["Qz", "Sp", "OL", "Ka", "As"], cc, URIRef("http://test.com"), "3.0")
+
+        no_obs = 0
+        for s, o in g.subject_objects(SOSA.hasMember):
+            no_obs += 1
+
+        assert no_obs == 15
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_LITHOLOGY_02_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+
+        try:
+            g = extract_sheet_drillhole_lithology(wb, ["DD12346"], ["SL", "OSO"], ["Qz", "Sp", "OL", "Ka", "As"], cc, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "The value 1 for TO in row 10 of sheet DRILLHOLE_LITHOLOGY is not greater or equal to the FROM value as required"
+
+    def test_03_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_LITHOLOGY_03_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+
+        try:
+            g = extract_sheet_drillhole_lithology(wb, ["DD12346"], ["SL", "OSO"], ["Qz", "Sp", "OL", "Ka", "As"], cc, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "The value XXX for ALT_TYPE in row 10 on the DRILLHOLE_LITHOLOGY worksheet is not within the ALTERATION lookup list"
+
+    def test_04_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_LITHOLOGY_04_invalid.xlsx")
+        cc = Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+
+        try:
+            g = extract_sheet_drillhole_lithology(wb, ["DD12346"], ["SL"], ["Qz", "Sp", "OL", "Ka", "As"], cc, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "The value OSO for ROCK_TYPE_CODE_2 in row 10 of sheet DRILLHOLE_LITHOLOGY definedin the worksheet LITH_DICTIONARY in column B"
+
+
 class TestIntegration30:
     def test_01_valid(self):
         rdf = excel_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")
         g = Graph().parse(data=rdf, format="turtle")
 
-        assert len(g) == 324
+        assert len(g) == 1820

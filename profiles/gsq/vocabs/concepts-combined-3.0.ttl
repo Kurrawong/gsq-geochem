@@ -4896,93 +4896,93 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "WHOLEROCK" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/black>
+<https://linked.data.gov.au/def/gsq-geochem/colour/black>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "BLACK" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/blue>
+<https://linked.data.gov.au/def/gsq-geochem/colour/blue>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "BLUE" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/brown>
+<https://linked.data.gov.au/def/gsq-geochem/colour/brown>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "BROWN" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/buff>
+<https://linked.data.gov.au/def/gsq-geochem/colour/buff>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "BUFF" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/cream>
+<https://linked.data.gov.au/def/gsq-geochem/colour/cream>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "CREAM" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/green>
+<https://linked.data.gov.au/def/gsq-geochem/colour/green>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "GREEN" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/grey>
+<https://linked.data.gov.au/def/gsq-geochem/colour/grey>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "GREY" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/multi-coloured>
+<https://linked.data.gov.au/def/gsq-geochem/colour/multi-coloured>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "MULTI-COLOURED" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/off-white>
+<https://linked.data.gov.au/def/gsq-geochem/colour/off-white>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "OFF WHITE" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/orange>
+<https://linked.data.gov.au/def/gsq-geochem/colour/orange>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "ORANGE" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/pink>
+<https://linked.data.gov.au/def/gsq-geochem/colour/pink>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "PINK" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/purple>
+<https://linked.data.gov.au/def/gsq-geochem/colour/purple>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "PURPLE" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/red>
+<https://linked.data.gov.au/def/gsq-geochem/colour/red>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "RED" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/white>
+<https://linked.data.gov.au/def/gsq-geochem/colour/white>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "WHITE" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour/yellow>
+<https://linked.data.gov.au/def/gsq-geochem/colour/yellow>
     a skos:Concept ;
-    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/soil-colour> ;
+    skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/colour> ;
     skos:notation "YELLOW" ;
 .
 
@@ -6694,8 +6694,8 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     skos:notation "STRUCTURAL_FEATURE" ;
 .
 
-<https://linked.data.gov.au/def/gsq-geochem/soil-colour>
-    skos:notation "SOIL_COLOUR" ;
+<https://linked.data.gov.au/def/gsq-geochem/colour>
+    skos:notation "COLOUR" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/coord-sys-id>

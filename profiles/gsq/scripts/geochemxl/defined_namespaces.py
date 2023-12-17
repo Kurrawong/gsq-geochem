@@ -58,11 +58,21 @@ class MININGROLES(DefinedNamespace):
     SampleAnalyser: URIRef
 
 
-class SAMPLE(DefinedNamespace):
-    _NS = Namespace("https://linked.data.gov.au/def/mining-roles/")
+class GEOSAMPLE(DefinedNamespace):
+    _NS = Namespace("https://linked.data.gov.au/def/geosample/")
     _fail = True
 
-    TenementHolder: URIRef
-    TenementOperator: URIRef
-    Surveyer: URIRef
-    Driller: URIRef
+    # from GAS
+    # ref https://kurrawong.github.io/gswa-supermodel/components/samples/
+    material: URIRef  # Sample -> isFeatureOfInterestOf -> Observation -> observedProperty -> material
+    # samplingMethod: URIRef - Sample -> isResultOf -> Sampling -> usdProcedure -> Procedure
+    # samplingLocation: URIRef - Sample -> isResultOf -> Sampling -> hasGeometry -> Geometry
+    # currentLocation: URIRef - sdo:location
+
+    # from GSQ Geochem
+    weathering: URIRef
+    colour: URIRef
+    structure: URIRef
+    texture: URIRef
+    grainSize: URIRef
+

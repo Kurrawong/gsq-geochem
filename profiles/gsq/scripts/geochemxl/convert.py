@@ -8,7 +8,7 @@ from pyproj import Transformer
 from rdflib import Namespace, Seq
 from rdflib.namespace import GEO, SDO, SOSA
 
-from .defined_namespaces import MININGROLES, TENEMENT, TENEMENTS, QLDBORES, QKINDS
+from .defined_namespaces import MININGROLES, TENEMENT, TENEMENTS, QLDBORES, QKINDS, GEOSAMPLE
 
 EX = Namespace("http://example.com/")
 
@@ -1212,7 +1212,7 @@ def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph
                     "sample_type_surface": sheet[f"D{row}"].value,  # SAMPLE_TYPE_SURFACE
                     "sample_mesh_size": sheet[f"E{row}"].value,  # MESH_SIZE
                     "soil_sample_depth": sheet[f"F{row}"].value,
-                    "soil_colour": sheet[f"G{row}"].value,  # SOIL_COLOUR
+                    "soil_colour": sheet[f"G{row}"].value,  # COLOUR
                     "soil_ph": sheet[f"H{row}"].value,
                     "easting": sheet[f"I{row}"].value,
                     "northing": sheet[f"J{row}"].value,
@@ -1255,7 +1255,7 @@ def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph
             )
 
             validate_code(
-                data["required"]["soil_colour"], "SOIL_COLOUR", "SOIL_COLOUR", row,
+                data["required"]["soil_colour"], "COLOUR", "SOIL_COLOUR", row,
                 sheet_name,
                 combined_concepts
             )
@@ -1515,7 +1515,7 @@ def extract_sheet_sample_preparation(
                 g.add((job_number_iri, RDF.type, SOSA.ObservationCollection))
                 obs = BNode()
                 g.add((obs, RDF.type, SOSA.Observation))
-                g.add((job_number_iri, SOSA.member, obs))
+                g.add((job_number_iri, SOSA.hasMember, obs))
 
                 qa = BNode()
                 g.add((obs, PROV.qualifiedAttribution, qa))
@@ -1645,7 +1645,7 @@ def extract_sheet_geochemistry_meta(
 
                 obs = BNode()
                 g.add((obs, RDF.type, SOSA.Observation))
-                g.add((job_number_iri, SOSA.member, obs))
+                g.add((job_number_iri, SOSA.hasMember, obs))
 
                 qa = BNode()
                 g.add((obs, PROV.qualifiedAttribution, qa))
@@ -1756,7 +1756,7 @@ def extract_sheet_sample_geochemistry(
 
                 obs = BNode()
                 g.add((obs, RDF.type, SOSA.Observation))
-                g.add((job_number_iri, SOSA.member, obs))
+                g.add((job_number_iri, SOSA.hasMember, obs))
 
                 g.add((obs, SOSA.hasFeatureOfInterest, sample_iri))
 
@@ -1877,7 +1877,7 @@ def extract_sheet_qaqc_meta(
 
                 obs = BNode()
                 g.add((obs, RDF.type, SOSA.Observation))
-                g.add((job_number_iri, SOSA.member, obs))
+                g.add((job_number_iri, SOSA.hasMember, obs))
 
                 qa = BNode()
                 g.add((obs, PROV.qualifiedAttribution, qa))
@@ -2010,7 +2010,7 @@ def extract_sheet_qaqc_geochemistry(
 
                 obs = BNode()
                 g.add((obs, RDF.type, SOSA.Observation))
-                g.add((job_number_iri, SOSA.member, obs))
+                g.add((job_number_iri, SOSA.hasMember, obs))
 
                 g.add((obs, SOSA.hasFeatureOfInterest, sample_iri))
 
@@ -2147,7 +2147,7 @@ def extract_sheet_sample_pxrf(
                 obs = BNode()
                 g.add((obs, RDF.type, SOSA.Observation))
                 g.add((obs, SOSA.hasFeatureOfInterest, sample_iri))
-                g.add((obs_col_bn, SOSA.member, obs))
+                g.add((obs_col_bn, SOSA.hasMember, obs))
 
                 procedure_bn = BNode()
                 g.add((procedure_bn, RDF.type, SOSA.Procedure))
@@ -2233,9 +2233,72 @@ def extract_sheet_lith_dictionary(
     return g, lith_codes
 
 
+def extract_sheet_min_dictionary(
+        wb: openpyxl.Workbook,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Tuple[Graph, List]:
+    if template_version is None:
+        template_version = check_template_version_supported(wb)
+
+    sheet_name = "MIN_DICTIONARY"
+    sheet = wb[sheet_name]
+
+    row = 9
+
+    min_codes = []
+    g = Graph(bind_namespaces="rdflib")
+
+    min_cs_iri = URIRef(str(dataset_iri) + "/minerals-cs")
+    g.add((min_cs_iri, RDF.type, SKOS.ConceptScheme))
+    g.add((min_cs_iri, SKOS.prefLabel, Literal(f"Dataset {dataset_iri} minerals vocabulary")))
+
+    while True:
+        v = sheet[f"B{row}"].value
+        if v is not None:
+            their_label = sheet[f"A{row}"].value
+            if their_label is None:
+                raise ConversionError(
+                    f"The value for COMP_MIN on row {row} of the worksheet MIN_DICTIONARY must not be null")
+            their_lith_code = v
+            gsq_label = sheet[f"C{row}"].value
+            if gsq_label is None:
+                raise ConversionError(
+                    f"The value for GSQ_MIN_MATCH on row {row} of the worksheet MIN_DICTIONARY must not be null")
+            gsq_lith_code = sheet[f"D{row}"].value
+            if gsq_lith_code is None:
+                raise ConversionError(
+                    f"The value for GSQ_CODE_MATCH on row {row} of the worksheet MIN_DICTIONARY must not be null")
+
+            min_codes.append(v)
+
+            # make RDF types
+            min_iri = make_rdflib_type(gsq_lith_code, "URIRef", None, Namespace(dataset_iri + "/lithology/"))
+            min_pl_lit = make_rdflib_type(gsq_label, "String")
+            min_al_lit = make_rdflib_type(their_label, "String")
+
+            # make graph
+            g.add((min_iri, RDF.type, SKOS.Concept))
+            g.add((min_iri, SKOS.prefLabel, min_pl_lit))
+            if their_lith_code != gsq_lith_code:
+                g.add((min_iri, SKOS.notation, Literal(their_lith_code, datatype=dataset_iri)))
+            if their_label != gsq_label:
+                g.add((min_iri, SKOS.altLabel, min_al_lit))
+            g.add((min_iri, SKOS.topConceptOf, min_cs_iri))
+            g.add((min_cs_iri, SKOS.hasTopConcept, min_iri))
+
+            row += 1
+        else:
+            break
+
+    return g, min_codes
+
+
 def extract_sheet_drillhole_lithology(
         wb: openpyxl.Workbook,
         drillhole_ids: List[str],
+        lith_code_ids: List[str],
+        min_code_ids: List[str],
         combined_concepts: Graph,
         dataset_iri: URIRef,
         template_version: Optional[str] = None
@@ -2263,40 +2326,40 @@ def extract_sheet_drillhole_lithology(
                         "from": sheet[f"C{row}"].value,
                         "to": sheet[f"D{row}"].value,
 
-                        "rock_type_code_1": sheet[f"F{row}"].value,
-                        "rock_type_code_2": sheet[f"F{row}"].value,
+                        "rock_1": sheet[f"I{row}"].value,
+                        "rock_2": sheet[f"K{row}"].value,
 
-                        "alt_type": sheet[f"F{row}"].value,
-                        "alt_intensity": sheet[f"F{row}"].value,
+                        "alt_type": sheet[f"S{row}"].value,
+                        "alt_intensity": sheet[f"T{row}"].value,
                     },
                     "optional": {
-                        "recovered_amount": sheet[f"D{row}"].value,
-                        "weathering": sheet[f"E{row}"].value,
-                        "colour": sheet[f"D{row}"].value,
-                        "colour_shade": sheet[f"E{row}"].value,
+                        "recovered_amount": sheet[f"E{row}"].value,
+                        "weathering": sheet[f"F{row}"].value,
+                        "colour": sheet[f"G{row}"].value,
+                        "colour_shade": sheet[f"H{row}"].value,
 
-                        "rock_type_percentage_1": sheet[f"F{row}"].value,
-                        "rock_type_percentage_2": sheet[f"F{row}"].value,
+                        "rock_1_abund": sheet[f"J{row}"].value,
+                        "rock_2_abund": sheet[f"L{row}"].value,
 
-                        "prim_min_1": sheet[f"F{row}"].value,
-                        "prim_min_abundance_1": sheet[f"F{row}"].value,
-                        "prim_min_2": sheet[f"F{row}"].value,
-                        "prim_min_abundance_2": sheet[f"F{row}"].value,
-                        "prim_min_3": sheet[f"F{row}"].value,
-                        "prim_min_abundance_3": sheet[f"F{row}"].value,
+                        "min_1": sheet[f"M{row}"].value,
+                        "min_1_abund": sheet[f"N{row}"].value,
+                        "min_2": sheet[f"O{row}"].value,
+                        "min_2_abund": sheet[f"P{row}"].value,
+                        "min_3": sheet[f"Q{row}"].value,
+                        "min_3_abund": sheet[f"R{row}"].value,
 
-                        "alt_mineral_1": sheet[f"F{row}"].value,
-                        "alt_mineral_abund_1": sheet[f"F{row}"].value,
-                        "alt_mineral_2": sheet[f"F{row}"].value,
-                        "alt_mineral_abund_2": sheet[f"F{row}"].value,
+                        "alt_min_1": sheet[f"U{row}"].value,
+                        "alt_min_1_abund": sheet[f"V{row}"].value,
+                        "alt_min_2": sheet[f"W{row}"].value,
+                        "alt_min_abund_2": sheet[f"X{row}"].value,
 
-                        "vein_composition": sheet[f"F{row}"].value,
-                        "vein_description": sheet[f"F{row}"].value,
-                        "vein_percent": sheet[f"F{row}"].value,
-                        "structure": sheet[f"F{row}"].value,
-                        "texture": sheet[f"F{row}"].value,
-                        "grain_size": sheet[f"F{row}"].value,
-                        "remark": sheet[f"F{row}"].value,
+                        "vein_composition": sheet[f"Y{row}"].value,
+                        "vein_description": sheet[f"Z{row}"].value,
+                        "vein_percent": sheet[f"AA{row}"].value,
+                        "structure": sheet[f"AB{row}"].value,
+                        "texture": sheet[f"AC{row}"].value,
+                        "grain_size": sheet[f"AD{row}"].value,
+                        "remark": sheet[f"AE{row}"].value,
                     }
                 }
 
@@ -2326,65 +2389,354 @@ def extract_sheet_drillhole_lithology(
                         f"The value {depth_to} for TO in row {row} of sheet {sheet_name} is not greater or equal to "
                         f"the FROM value as required")
 
+                rock_1 = data["required"]["rock_1"]
+                if rock_1 not in lith_code_ids:
+                    raise ConversionError(
+                        f"The value {rock_1} for ROCK_1 in row {row} of sheet {sheet_name} defined"
+                        f"in the worksheet LITH_DICTIONARY in column B")
+
+                rock_2 = data["required"]["rock_2"]
+                if rock_2 not in lith_code_ids:
+                    raise ConversionError(
+                        f"The value {rock_2} for ROCK_2 in row {row} of sheet {sheet_name} defined"
+                        f"in the worksheet LITH_DICTIONARY in column B")
+
                 validate_code(
-                    data["required"]["rock_type_code_1"], "QAQC", "ROCK_TYPE_CODE_1", row,
+                    data["required"]["alt_type"],
+                    "ALTERATION",
+                    "ALT_TYPE",
+                    row,
                     sheet_name,
                     combined_concepts
                 )
+                alt_type = data["required"]["alt_type"]
 
-                validate_code(
-                    data["required"]["rock_type_code_2"], "QAQC", "ROCK_TYPE_CODE_2", row,
-                    sheet_name,
-                    combined_concepts
-                )
+                alt_intensity = data["required"]["alt_intensity"]
 
-                validate_code(
-                    data["required"]["alt_type"], "QAQC", "QAQC", row,
-                    sheet_name,
-                    combined_concepts
-                )
+                recovered_amount = data["optional"].get("recovered_amount")
+                if recovered_amount is not None:
+                    try:
+                        recovered_amount = float(recovered_amount)
+                    except ValueError:
+                        raise ConversionError(
+                            f"The value {recovered_amount} for RECOVERED_AMOUNT in row {row} of sheet {sheet_name} "
+                            f"cannot be converted to a number")
 
-                qaqc_type = data["required"]["qaqc_type"]
+                    if recovered_amount < 0 or recovered_amount > 100:
+                        raise ConversionError(
+                            f"The value {rock_2} for RECOVERED_AMOUNT in row {row} of sheet {sheet_name} "
+                            f"is not between 0 and 100, as required")
 
+                weathering = data["optional"].get("weathering")
+                if weathering is not None:
+                    validate_code(
+                        data["optional"]["weathering"],
+                        "WEATHERING",
+                        "WEATHERING",
+                        row,
+                        sheet_name,
+                        combined_concepts
+                    )
 
+                colour = data["optional"].get("colour")
+                if colour is not None:
+                    validate_code(
+                        colour,
+                        "COLOUR",
+                        "COLOUR",
+                        row,
+                        sheet_name,
+                        combined_concepts
+                    )
+
+                colour_shade = data["optional"].get("colour_shade")
+
+                rock_1_abund = data["optional"].get("rock_1_abund")
+                if rock_1_abund is not None:
+                    try:
+                        rock_1_abund = float(rock_1_abund)
+                    except ValueError:
+                        raise ConversionError(
+                            f"The value {rock_1_abund} for ROCK_1_ABUND in row {row} of sheet {sheet_name} "
+                            f"cannot be converted to a number")
+                    if 0 > rock_1_abund > 100:
+                        raise ConversionError(
+                            f"The value {rock_1_abund} for ROCK_1_ABUND in row {row} of sheet {sheet_name} "
+                            f"is a percentage and must be between 0 and 100")
+
+                rock_2_abund = data["optional"].get("rock_2_abund")
+                if rock_2_abund is not None:
+                    try:
+                        rock_2_abund = float(rock_2_abund)
+                    except ValueError:
+                        raise ConversionError(
+                            f"The value {rock_2_abund} for ROCK_2_ABUND in row {row} of sheet {sheet_name} "
+                            f"cannot be converted to a number")
+                    if 0 > rock_2_abund > 100:
+                        raise ConversionError(
+                            f"The value {rock_2_abund} for ROCK_2_ABUND in row {row} of sheet {sheet_name} "
+                            f"is a percentage and must be between 0 and 100")
+
+                min_1 = data["optional"].get("min_1")
+                if min_1 is not None:
+                    if min_1 not in min_code_ids:
+                        raise ConversionError(
+                            f"The value {min_1} for MIN_1 in row {row} of sheet {sheet_name}, if given "
+                            f"must be defined in the worksheet MIN_DICTIONARY in column B")
+
+                min_1_abund = data["optional"].get("min_1_abund")
+                if min_1_abund is not None:
+                    try:
+                        min_1_abund = float(min_1_abund)
+                    except ValueError:
+                        raise ConversionError(
+                            f"The value {min_1_abund} for PRIM_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
+                            f"if given must be convertable into a number")
+                    if 0 > min_1_abund > 100:
+                        raise ConversionError(
+                            f"The value {min_1_abund} for PRIM_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
+                            f"if given, must be a percentage between 0 and 100")
+
+                min_2 = data["optional"].get("min_2")
+                if min_2 is not None:
+                    if min_2 not in min_code_ids:
+                        raise ConversionError(
+                            f"The value {min_2} for MIN_2 in row {row} of sheet {sheet_name}, if given "
+                            f"must be defined in the worksheet MIN_DICTIONARY in column B")
+
+                min_2_abund = data["optional"].get("min_2_abund")
+                if min_2_abund is not None:
+                    try:
+                        min_2_abund = float(min_2_abund)
+                    except ValueError:
+                        raise ConversionError(
+                            f"The value {min_2_abund} for PRIM_MIN_ABUND_2 in row {row} of sheet {sheet_name}, "
+                            f"if given must be convertable into a number")
+                    if 0 > min_2_abund > 100:
+                        raise ConversionError(
+                            f"The value {min_2_abund} for PRIM_MIN_ABUND_2 in row {row} of sheet {sheet_name}, "
+                            f"if given, must be a percentage between 0 and 100")
+
+                min_3 = data["optional"].get("min_3")
+                if min_3 is not None:
+                    if min_3 not in min_code_ids:
+                        raise ConversionError(
+                            f"The value {min_3} for MIN_3 in row {row} of sheet {sheet_name}, if given "
+                            f"must be defined in the worksheet MIN_DICTIONARY in column B")
+
+                min_3_abund = data["optional"].get("min_3_abund")
+                if min_3_abund is not None:
+                    try:
+                        min_3_abund = float(min_3_abund)
+                    except ValueError:
+                        raise ConversionError(
+                            f"The value {min_3_abund} for PRIM_MIN_ABUND_3 in row {row} of sheet {sheet_name}, "
+                            f"if given must be convertable into a number")
+                    if 0 > min_3_abund > 100:
+                        raise ConversionError(
+                            f"The value {min_3} for PRIM_MIN_ABUND_3 in row {row} of sheet {sheet_name}, "
+                            f"if given, must be a percentage between 0 and 100")
+
+                alt_min_1 = data["optional"].get("alt_min_1")
+                if min_1 is not None:
+                    if alt_min_1 not in min_code_ids:
+                        raise ConversionError(
+                            f"The value {alt_min_1} for ATL_MIN_1 in row {row} of sheet {sheet_name}, if given "
+                            f"must be defined in the worksheet MIN_DICTIONARY in column B")
+
+                alt_min_1_abund = data["optional"].get("alt_min_1_abund")
+                if alt_min_1_abund is not None:
+                    try:
+                        alt_min_1_abund = float(alt_min_1_abund)
+                    except ValueError:
+                        raise ConversionError(
+                            f"The value {alt_min_1_abund} for ATL_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
+                            f"if given must be convertable into a number")
+                    if 0 > alt_min_1_abund > 100:
+                        raise ConversionError(
+                            f"The value {alt_min_1_abund} for ATL_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
+                            f"if given, must be a percentage between 0 and 100")
+
+                alt_min_2 = data["optional"].get("alt_min_2")
+                if alt_min_2 is not None:
+                    if alt_min_2 not in min_code_ids:
+                        raise ConversionError(
+                            f"The value {alt_min_2} for ATL_MIN_2 in row {row} of sheet {sheet_name}, if given "
+                            f"must be defined in the worksheet MIN_DICTIONARY in column B")
+
+                alt_min_2_abund = data["optional"].get("alt_min_2_abund")
+                if alt_min_2_abund is not None:
+                    try:
+                        alt_min_abund_2 = float(alt_min_2_abund)
+                    except ValueError:
+                        raise ConversionError(
+                            f"The value {alt_min_2_abund} for ATL_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
+                            f"if given must be convertable into a number")
+                    if 0 > alt_min_abund_2 > 100:
+                        raise ConversionError(
+                            f"The value {alt_min_abund_2} for ATL_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
+                            f"if given, must be a percentage between 0 and 100")
+
+                vein_composition = data["optional"].get("vein_composition")
+                if vein_composition is not None:
+                    if vein_composition not in min_code_ids:
+                        raise ConversionError(
+                            f"The value {vein_composition} for ATL_MIN_1 in row {row} of sheet {sheet_name}, if given "
+                            f"must be defined in the worksheet MIN_DICTIONARY in column B")
+
+                vein_description = data["optional"].get("vein_description")
+
+                vein_percent = data["optional"].get("vein_percent")
+                if vein_percent is not None:
+                    try:
+                        vein_percent = float(vein_percent)
+                    except ValueError:
+                        raise ConversionError(
+                            f"The value {vein_percent} for VEIN_PERCENT in row {row} of sheet {sheet_name}, "
+                            f"if given must be convertable into a number")
+                    if 0 > vein_percent > 100:
+                        raise ConversionError(
+                            f"The value {vein_percent} for VEIN_PERCENT in row {row} of sheet {sheet_name}, "
+                            f"if given, must be a percentage between 0 and 100")
+
+                structure = data["optional"].get("structure")
+                if structure is not None:
+                    validate_code(
+                        structure,
+                        "STRUCTURAL_FEATURE",
+                        "STRUCTURE",
+                        row,
+                        sheet_name,
+                        combined_concepts
+                    )
+
+                texture = data["optional"].get("texture")
+                if structure is not None:
+                    validate_code(
+                        texture,
+                        "TEXTURE",
+                        "TEXTURE",
+                        row,
+                        sheet_name,
+                        combined_concepts
+                    )
+
+                grain_size = data["optional"].get("grain_size")
+                if grain_size is not None:
+                    validate_code(
+                        grain_size,
+                        "GRAIN_SIZE",
+                        "GRAIN_SIZE",
+                        row,
+                        sheet_name,
+                        combined_concepts
+                    )
+
+                remark = data["optional"].get("remark")
 
                 # make RDFLib objects of the values
-                job_number_iri = make_rdflib_type(job_number, "URIRef", None, Namespace(dataset_iri + "/jobNumber/"))
-                sample_iri = make_rdflib_type(sample_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
-                assay_code_iri = make_rdflib_type(assay_code, "URIRef", None, Namespace(dataset_iri + "/assayCode/"))
-                analyte_code_iri = make_rdflib_type(analyte_code, "URIRef", None, Namespace(dataset_iri + "/analyteCode/"))
-                result_lit = make_rdflib_type(result, "Number")
-                orig_sample_iri = make_rdflib_type(orig_sample_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
-                qaqc_type_iri = make_rdflib_type(qaqc_type, "Concept", combined_concepts)
-                standard_id_lit = make_rdflib_type(standard_id, "String")
-                standard_provider_lit = make_rdflib_type(standard_provider, "String")
+                drillhole_iri = URIRef(QLDBORES + drillhole_id)
+                depth_from_lit = make_rdflib_type(depth_from, "Number")
+                depth_to_lit = make_rdflib_type(depth_to, "Number")
+
+                rock_1_iri = make_rdflib_type(rock_1, "URIRef", None, Namespace(dataset_iri + "/lithology/"))
+                rock_1_abund_lit = make_rdflib_type(rock_1_abund, "Number")
+                rock_2_iri = make_rdflib_type(rock_2, "URIRef", None, Namespace(dataset_iri + "/lithology/"))
+                rock_2_abund_lit = make_rdflib_type(rock_2_abund, "Number")
+
+                min_1_iri = make_rdflib_type(min_1, "URIRef", None, Namespace(dataset_iri + "/lithology/"))
+                min_1_abund_lit = make_rdflib_type(min_1_abund, "Number")
+                min_2_iri = make_rdflib_type(min_2, "URIRef", None, Namespace(dataset_iri + "/lithology/"))
+                min_2_abund_lit = make_rdflib_type(min_2_abund, "Number")
+                min_3_iri = make_rdflib_type(min_3, "URIRef", None, Namespace(dataset_iri + "/lithology/"))
+                min_3_abund_lit = make_rdflib_type(min_3_abund, "Number")
+
+                alt_type_iri = make_rdflib_type(alt_type, "Concept", combined_concepts)
+                alt_intensity_lit = make_rdflib_type(alt_intensity, "String")
+
+                alt_min_1_iri = make_rdflib_type(alt_min_1, "URIRef", None, Namespace(dataset_iri + "/lithology/"))
+                alt_min_1_abund_lit = make_rdflib_type(alt_min_1_abund, "Number")
+                alt_min_2_iri = make_rdflib_type(alt_min_2, "URIRef", None, Namespace(dataset_iri + "/lithology/"))
+                alt_min_2_abund_lit = make_rdflib_type(alt_min_2_abund, "Number")
+
+                recovered_amount_lit = make_rdflib_type(recovered_amount, "Number")
+                weathering_iri = make_rdflib_type(weathering, "Concept", combined_concepts)
+                colour_iri = make_rdflib_type(colour, "Concept", combined_concepts)
+                colour_shade_lit = make_rdflib_type(colour_shade, "Number")
+
+                vein_composition_iri = make_rdflib_type(vein_composition, "URIRef", None, Namespace(dataset_iri + "/lithology/"))
+                vein_description_lit = make_rdflib_type(vein_description, "String")
+                vein_percent_lit = make_rdflib_type(vein_percent, "Number")
+
+                structure_iri = make_rdflib_type(structure, "Concept", combined_concepts)
+                texture_iri = make_rdflib_type(texture, "Concept", combined_concepts)
+                grain_size_iri = make_rdflib_type(grain_size, "Concept", combined_concepts)
+
+                remark_lit = make_rdflib_type(remark, "String")
 
                 # make the graph
-                g.add((dataset_iri, SDO.hasPart, job_number_iri))
+                g.add((dataset_iri, SDO.hasPart, drillhole_iri))
 
-                obs = BNode()
-                g.add((obs, RDF.type, SOSA.Observation))
-                g.add((job_number_iri, SOSA.member, obs))
+                bh = BNode()
+                g.add((bh, RDF.type, BORE.BoreholeInterval))
+                g.add((drillhole_iri, SDO.hasPart, bh))
 
-                g.add((obs, SOSA.hasFeatureOfInterest, sample_iri))
+                bi = BNode()
+                g.add((bi, RDF.type, BORE.BoreholeInterval))
+                g.add((bi, SDO.depth, depth_from_lit))
+                g.add((bi, SDO.depth, depth_to_lit))
+                g.add((bh, SDO.hasPart, bi))
 
-                g.add((obs, SOSA.usedProcedure, assay_code_iri))
+                s = BNode()
+                g.add((s, RDF.type, SOSA.Sample))
+                g.add((s, SOSA.isSampleOf, bi))
 
-                g.add((obs, SOSA.observedProperty, analyte_code_iri))
+                oc = BNode()
+                g.add((oc, RDF.type, SOSA.ObservationCollection))
 
-                r = BNode()
-                g.add((r, RDF.type, SOSA.Result))
-                g.add((r, SDO.value, result_lit))
+                length = URIRef("http://qudt.org/vocab/quantitykind/Length")
+                m = URIRef("http://qudt.org/vocab/unit/M")
+                pc = URIRef("http://qudt.org/vocab/unit/PERCENT")
+                alteration = URIRef("https://linked.data.gov.au/def/observable-properties/geological-unit-alteration")
 
-                g.add((obs, SOSA.hasResult, r))
+                material_observations = [
+                    # name, op, value, unit, desc
+                    ("Recovered Amount", length, recovered_amount_lit, m, None),
+                    ("Weathering", GEOSAMPLE.weathering, weathering_iri, None, None),
+                    ("Colour", GEOSAMPLE.colour, colour_iri, None, colour_shade_lit),
+                    ("Rock 1", rock_1_iri, rock_1_abund_lit, pc, None),
+                    ("Rock 2", rock_2_iri, rock_2_abund_lit, pc, None),
+                    ("Mineral 1", min_1_iri, min_1_abund_lit, pc, None),
+                    ("Mineral 2", min_2_iri, min_2_abund_lit, pc, None),
+                    ("Mineral 3", min_3_iri, min_3_abund_lit, pc, None),
+                    ("Alteration Type", alteration, alt_type_iri, None, alt_intensity_lit),
+                    ("Alteration Mineral 1", alt_min_1_iri, alt_min_1_abund_lit, pc, None),
+                    ("Alteration Mineral 2", alt_min_2_iri, alt_min_2_abund_lit, pc, None),
+                    ("Vein Composition", vein_composition_iri, vein_percent_lit, pc, vein_description_lit),
+                    ("Structure", GEOSAMPLE.structure, structure_iri, pc, vein_description_lit),
+                    ("Texture", GEOSAMPLE.texture, texture_iri, pc, vein_description_lit),
+                    ("Grain Size", GEOSAMPLE.grainSize, grain_size_iri, pc, vein_description_lit),
+                ]
 
-                g.add((sample_iri, SOSA.isSampleOf, orig_sample_iri))
-                g.add((sample_iri, SDO.additionalType, qaqc_type_iri))
-                p = BNode()
-                g.add((p, RDF.type, SOSA.Procedure))
-                g.add((p, SDO.identifier, standard_id_lit))
-                g.add((p, SDO.author, standard_provider_lit))
-                g.add((obs, SOSA.usedProcedure, p))
+                for n, op, v, u, d in material_observations:
+                    if op is not None:
+                        o = BNode()
+                        g.add((o, RDF.type, SOSA.Observation))
+                        g.add((o, RDFS.label, Literal(n)))
+                        if d is not None:
+                            g.add((o, RDFS.comment, Literal(n)))
+                        g.add((o, SOSA.observedProperty, op))
+                        if v is not None:
+                            r = BNode()
+                            g.add((r, RDF.type, SOSA.Result))
+                            g.add((r, SDO.value, v))
+                            if u is not None:
+                                g.add((r, SDO.unitCode, u))
+                            g.add((o, SOSA.hasResult, r))
+                        g.add((oc, SOSA.hasMember, o))
+
+                if remark_lit is not None:
+                    g.add((oc, RDFS.comment, remark_lit))
 
                 row += 1
         else:
@@ -2413,15 +2765,6 @@ def extract_sheet_surface_structure(wb: openpyxl.Workbook, combined_concepts: Gr
     check_template_version_supported(wb)
 
     sheet_name = "SURFACE_STRUCTURE"
-    sheet = wb[sheet_name]
-
-
-
-
-def extract_sheet_min_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
-    check_template_version_supported(wb)
-
-    sheet_name = "MIN_DICTIONARY"
     sheet = wb[sheet_name]
 
 
@@ -2456,27 +2799,28 @@ def excel_to_rdf(
     validate_sheet_validation_dictionary(wb, cc)
     grf += extract_sheet_user_dictionary(wb, cc, template_version)
     validate_sheet_uom(wb, cc)
-    g_uuom, uuo_notations = extract_sheet_user_uom(wb, cc)
-    grf += g_uuom
+    g, uuo_notations = extract_sheet_user_uom(wb, cc)
+    grf += g
     grf += extract_sheet_tenement(wb, cc, dataset_iri, template_version)
-    grf_dloc, drillhole_ids = extract_sheet_drillhole_location(wb, cc, dataset_iri, template_version)
-    grf += grf_dloc
+    g, drillhole_ids = extract_sheet_drillhole_location(wb, cc, dataset_iri, template_version)
+    grf += g
     grf += extract_sheet_drillhole_survey(wb, cc, drillhole_ids, dataset_iri, template_version)
-    g_ds, sample_ids = extract_sheet_drillhole_sample(wb, cc, drillhole_ids, dataset_iri, template_version)
-    grf += g_ds
-    g_ss, sample_ids2 = extract_sheet_surface_sample(wb, cc, dataset_iri, template_version)
-    grf += g_ss
+    g, sample_ids = extract_sheet_drillhole_sample(wb, cc, drillhole_ids, dataset_iri, template_version)
+    grf += g
+    g, sample_ids2 = extract_sheet_surface_sample(wb, cc, dataset_iri, template_version)
+    grf += g
     sample_ids: []
     sample_ids += sample_ids2
-    g_labs, laboratories_dict = extract_sheet_user_laboratories(wb, dataset_iri, template_version)
-    grf += g_labs
-    g_uspc, uspcs = extract_sheet_user_sample_prep_codes(wb, dataset_iri, template_version)
-    grf += g_uspc
-    g_ass, assay_codes = extract_sheet_user_assay_codes(wb, dataset_iri, template_version)
-    grf += g_ass
-    g_an, ans = extract_sheet_user_analytes(wb, dataset_iri, template_version)
-    g_sp, job_numbers = extract_sheet_sample_preparation(wb, laboratories_dict, uspcs, assay_codes, sample_ids, dataset_iri, template_version)
-    grf += g_sp
+    g, laboratories_dict = extract_sheet_user_laboratories(wb, dataset_iri, template_version)
+    grf += g
+    g, uspcs = extract_sheet_user_sample_prep_codes(wb, dataset_iri, template_version)
+    grf += g
+    g, assay_codes = extract_sheet_user_assay_codes(wb, dataset_iri, template_version)
+    grf += g
+    g, ans = extract_sheet_user_analytes(wb, dataset_iri, template_version)
+    grf += g
+    g, job_numbers = extract_sheet_sample_preparation(wb, laboratories_dict, uspcs, assay_codes, sample_ids, dataset_iri, template_version)
+    grf += g
     uoms_concentration_notations = []
     for mem in cc.objects(URIRef("https://linked.data.gov.au/def/gsq-geochem/uom/concentration"), SKOS.member):
         uoms_concentration_notations.append(str(cc.value(subject=mem, predicate=SKOS.notation)))
@@ -2487,6 +2831,12 @@ def excel_to_rdf(
     grf += extract_sheet_qaqc_geochemistry(wb, job_numbers, sample_ids, assay_codes, ans, cc, dataset_iri, template_version)
 
     grf += extract_sheet_sample_pxrf(wb, sample_ids, ans, uoms_concentration_notations, cc, dataset_iri, template_version)
+
+    g, lith_ids = extract_sheet_lith_dictionary(wb, URIRef("http://test.com"), "3.0")
+    grf += g
+    g, min_ids = extract_sheet_min_dictionary(wb, URIRef("http://test.com"), "3.0")
+    grf += g
+    grf += extract_sheet_drillhole_lithology(wb, drillhole_ids, lith_ids, min_ids, cc, dataset_iri, template_version)
 
     grf.bind("bore", BORE)
     grf.bind("ex", EX)
