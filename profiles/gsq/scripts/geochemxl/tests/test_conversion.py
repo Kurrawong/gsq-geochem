@@ -1,3 +1,4 @@
+import pytest
 from ..convert import *
 
 
@@ -262,7 +263,7 @@ class TestExtractSheetDrillholeSurvey30:
             extract_sheet_drillhole_survey(wb, cc, ["DD1234", "DEF123"], URIRef("http://test.com"))
         except ConversionError as e:
             assert str(e) == "The value DD1234x for DRILLHOLE_ID in row 10 of sheet DRILLHOLE_SURVEY is not " \
-                             "present on sheet DRILLHOLE_LOCATION, DRILLHOLE_ID, as required"
+                             "present on sheet DRILLHOLE_LOCATION in the DRILLHOLE_ID column, as required"
 
 
 class TestExtractSheetDrillholeSample30:
@@ -555,9 +556,54 @@ class TestExtractSheetDrillholeLithology30:
             assert str(e) == "The value OSO for ROCK_2 in row 10 of sheet DRILLHOLE_LITHOLOGY definedin the worksheet LITH_DICTIONARY in column B"
 
 
+@pytest.fixture()
+def make_cc() -> Graph:
+    return Graph().parse(TESTS_DIR / "data" / "concepts-combined-3.0.ttl")
+
+
+class TestExtractSheetDrillholeStructure30:
+    @pytest.fixture(autouse=True)
+    def _make_cc(self, make_cc):
+        self._make_cc = make_cc
+
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_STRUCTURE_01_valid.xlsx")
+        g = extract_sheet_drillhole_structure(wb, ["DD12346", "DD12347"], self._make_cc, URIRef("http://test.com"), "3.0")
+
+        no_obs = 0
+        for s, o in g.subject_objects(SOSA.hasMember):
+            no_obs += 1
+
+        assert no_obs == 14
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_STRUCTURE_02_invalid.xlsx")
+
+        try:
+            g = extract_sheet_drillhole_structure(wb, ["DD12346", "DD12347"], self._make_cc, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "The value WHAT for STRUCTURE in row 11 on the DRILLHOLE_STRUCTURE worksheet is not within the STRUCTURAL_FEATURE lookup list"
+
+    def test_03_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_STRUCTURE_03_invalid.xlsx")
+
+        try:
+            g = extract_sheet_drillhole_structure(wb, ["DD12346"], self._make_cc, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "The value DD12348 for DRILLHOLE_ID in row 11 of sheet DRILLHOLE_STRUCTURE is not present on sheet DRILLHOLE_LOCATION in the DRILLHOLE_ID column, as required"
+
+    def test_04_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_STRUCTURE_04_invalid.xlsx")
+
+        try:
+            g = extract_sheet_drillhole_structure(wb, ["DD12346", "DD12347", "DD12348"], self._make_cc, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "The value 500 for ALPHA_ANGLE in row 11 of sheet DRILLHOLE_STRUCTURE is not between 0 and 360 as required"
+
+
 class TestIntegration30:
     def test_01_valid(self):
         rdf = excel_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")
         g = Graph().parse(data=rdf, format="turtle")
 
-        assert len(g) == 1820
+        assert len(g) == 1879

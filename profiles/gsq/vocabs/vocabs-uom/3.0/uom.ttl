@@ -472,6 +472,17 @@ unit:DAYS
     skos:topConceptOf cs: ;
 .
 
+
+unit:DEG
+    a skos:Concept ;
+    skos:inScheme cs: ;
+    rdfs:isDefinedBy units: ;
+    skos:definition "A degree (in full, a degree of arc, arc degree, or arcdegree), usually denoted by (the degree symbol), is a measurement of plane angle, representing 1/360 of a full rotation; one degree is equivalent to , . It is not an SI unit, as the SI unit for angles is radian, but is an accepted SI unit." ;
+    skos:notation "DEG" ;
+    skos:prefLabel "Degrees"@en ;
+    skos:topConceptOf cs: ;
+.
+
 unit:DEG_C
     a skos:Concept ;
     skos:inScheme cs: ;

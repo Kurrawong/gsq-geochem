@@ -18,7 +18,11 @@ from .utils import check_template_version_supported
 GSQ_PROFILE_DIR = Path(__file__).parent.parent.resolve().parent
 
 
-def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Graph, template_version: Optional[str] = None) -> Tuple[Graph, URIRef]:
+def extract_sheet_dataset_metadata(
+        wb: openpyxl.Workbook,
+        combined_concepts: Graph,
+        template_version: Optional[str] = None
+) -> Tuple[Graph, URIRef]:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -47,7 +51,11 @@ def extract_sheet_dataset_metadata(wb: openpyxl.Workbook, combined_concepts: Gra
     return g, v
 
 
-def validate_sheet_validation_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph, template_version: Optional[str] = None):
+def validate_sheet_validation_dictionary(
+        wb: openpyxl.Workbook,
+        combined_concepts: Graph,
+        template_version: Optional[str] = None
+):
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -87,7 +95,10 @@ def validate_sheet_validation_dictionary(wb: openpyxl.Workbook, combined_concept
         allowed_codes.append(str(o))
 
 
-def extract_sheet_user_dictionary(wb: openpyxl.Workbook, combined_concepts: Graph, template_version: Optional[str] = None) -> Graph:
+def extract_sheet_user_dictionary(
+        wb: openpyxl.Workbook,
+        template_version: Optional[str] = None,
+) -> Graph:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -125,7 +136,11 @@ def extract_sheet_user_dictionary(wb: openpyxl.Workbook, combined_concepts: Grap
     return g
 
 
-def validate_sheet_uom(wb: openpyxl.Workbook, combined_concepts: Graph, template_version: Optional[str] = None):
+def validate_sheet_uom(
+        wb: openpyxl.Workbook,
+        combined_concepts: Graph,
+        template_version: Optional[str] = None
+):
     if template_version is None:
         template_version = check_template_version_supported(wb)
     
@@ -165,7 +180,11 @@ def validate_sheet_uom(wb: openpyxl.Workbook, combined_concepts: Graph, template
         allowed_codes.append(str(o))
 
 
-def extract_sheet_user_uom(wb: openpyxl.Workbook, combined_concepts: Graph, template_version: Optional[str] = None) -> Tuple[Graph, List]:
+def extract_sheet_user_uom(
+        wb: openpyxl.Workbook,
+        combined_concepts: Graph,
+        template_version: Optional[str] = None
+) -> Tuple[Graph, List]:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -216,7 +235,11 @@ def extract_sheet_user_uom(wb: openpyxl.Workbook, combined_concepts: Graph, temp
     return g, notations
 
 
-def extract_sheet_user_sample_prep_codes(wb: openpyxl.Workbook, dataset_iri: URIRef, template_version: Optional[str] = None) -> Tuple[Graph, List]:
+def extract_sheet_user_sample_prep_codes(
+        wb: openpyxl.Workbook,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Tuple[Graph, List]:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -288,7 +311,11 @@ def extract_sheet_user_sample_prep_codes(wb: openpyxl.Workbook, dataset_iri: URI
     return g, code_ids
 
 
-def extract_sheet_user_assay_codes(wb: openpyxl.Workbook, dataset_iri: URIRef, template_version: Optional[str] = None) -> Tuple[Graph, List]:
+def extract_sheet_user_assay_codes(
+        wb: openpyxl.Workbook,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Tuple[Graph, List]:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -360,7 +387,11 @@ def extract_sheet_user_assay_codes(wb: openpyxl.Workbook, dataset_iri: URIRef, t
     return g, code_ids
 
 
-def extract_sheet_user_laboratories(wb: openpyxl.Workbook, dataset_iri: URIRef, template_version: Optional[str] = None) -> Tuple[Graph, Dict]:
+def extract_sheet_user_laboratories(
+        wb: openpyxl.Workbook,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Tuple[Graph, Dict]:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -419,7 +450,11 @@ def extract_sheet_user_laboratories(wb: openpyxl.Workbook, dataset_iri: URIRef, 
     return g, labs_dict
 
 
-def extract_sheet_user_analytes(wb: openpyxl.Workbook, dataset_iri: URIRef, template_version: Optional[str] = None) -> Tuple[Graph, List]:
+def extract_sheet_user_analytes(
+        wb: openpyxl.Workbook,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Tuple[Graph, List]:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -491,7 +526,12 @@ def extract_sheet_user_analytes(wb: openpyxl.Workbook, dataset_iri: URIRef, temp
     return g, code_ids
 
 
-def extract_sheet_tenement(wb: openpyxl.Workbook, combined_concepts: Graph, dataset_iri: URIRef, template_version: Optional[str] = None) -> Graph:
+def extract_sheet_tenement(
+        wb: openpyxl.Workbook,
+        combined_concepts: Graph,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Graph:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -596,7 +636,12 @@ def extract_sheet_tenement(wb: openpyxl.Workbook, combined_concepts: Graph, data
     return g
 
 
-def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: Graph, dataset_iri: URIRef, template_version: Optional[str] = None) -> Tuple[Graph, List[str]]:
+def extract_sheet_drillhole_location(
+        wb: openpyxl.Workbook,
+        combined_concepts: Graph,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Tuple[Graph, List[str]]:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -617,14 +662,14 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
             data = {
                 "required": {
                     "drillhole_id": sheet[f"B{row}"].value,
-                    "easting": sheet[f"C{row}"].value,
-                    "northing": sheet[f"D{row}"].value,
-                    "elevation": sheet[f"E{row}"].value,
-                    "total_depth": sheet[f"F{row}"].value,
+                    "easting": int(sheet[f"C{row}"].value),
+                    "northing": int(sheet[f"D{row}"].value),
+                    "elevation": float(sheet[f"E{row}"].value),
+                    "total_depth": float(sheet[f"F{row}"].value),
                     "drill_type": sheet[f"H{row}"].value,
                     "drill_diameter": sheet[f"I{row}"].value,
-                    "dip": sheet[f"J{row}"].value,
-                    "azimuth": sheet[f"K{row}"].value,
+                    "dip": int(sheet[f"J{row}"].value),
+                    "azimuth": int(sheet[f"K{row}"].value),
                     "drill_start_date": sheet[f"M{row}"].value,
                     "drill_end_date": sheet[f"N{row}"].value,
                     "location_survey_type": sheet[f"O{row}"].value,
@@ -647,6 +692,9 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
                         f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
 
             # check lookup values are valid
+            drillhole_id = data["required"]["drillhole_id"]
+            drillhole_ids.append(drillhole_id)
+
             validate_code(
                 data["required"]["drill_type"], "DRILL_TYPE", "DRILL_TYPE", row, sheet_name,
                 combined_concepts
@@ -698,16 +746,26 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
                     f"The value {total_depth} for TOTAL_DEPTH in row {row} of sheet {sheet_name} is not an number"
                     f" as required")
 
-            dip = data["required"]["dip"]
-            if 0 > dip > 90:
-                raise ConversionError(
-                    f"The value {dip} for DIP in row {row} of sheet {sheet_name} is not between 0 and 90 as required")
+            total_depth_logger = data["optional"].get("total_depth_logger")
 
-            azimuth = data["required"]["dip"]
-            if 0 > azimuth > 360:
+            dip = data["required"]["dip"]
+            if not 0 >= dip >= -90:
                 raise ConversionError(
-                    f"The value {azimuth} for DIP in row {row} of sheet {sheet_name} is not between "
+                    f"The value {dip} for DIP in row {row} of sheet {sheet_name} is not between 0 and -90 as required")
+
+            azimuth = data["required"]["azimuth"]
+            if not 0 <= azimuth <= 360:
+                raise ConversionError(
+                    f"The value {azimuth} for AZIMUTH in row {row} of sheet {sheet_name} is not between "
                     f"0 and 360 as required")
+
+            drill_type = data["required"]["drill_type"]
+            drill_diameter = data["required"]["drill_diameter"]
+
+            dip = data["required"]["dip"]
+            azimuth = data["required"]["azimuth"]
+
+            current_class = data["optional"]["current_class"]
 
             drill_start_date = data["required"]["drill_start_date"]
             if type(drill_start_date) != datetime.datetime:
@@ -721,38 +779,47 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
                     f"The value {drill_end_date} for DRILL_END_DATE in row {row} of sheet {sheet_name} "
                     f"is not a date as required")
 
+            location_survey_type = data["required"]["location_survey_type"]
+            survey_company = data["optional"].get("survey_company")
+            pre_collar_method = data["required"]["pre_collar_method"]
             pre_collar_depth = data["required"]["pre_collar_depth"]
             if type(pre_collar_depth) not in [float, int] and total_depth < 0:
                 raise ConversionError(
                     f"The value {pre_collar_depth} for PRE_COLLAR_DEPTH in row {row} of sheet {sheet_name} "
                     f"is not an number as required")
+            drill_contractor = data["required"]["drill_contractor"]
+            remark = data["optional"].get("remark")
 
             # make RDFLib objects of the values
-            drillhole_id = str(data["required"]["drillhole_id"])
-            drillhole_ids.append(drillhole_id)
             drillhole_iri = URIRef(QLDBORES + drillhole_id)
+
             transformer = Transformer.from_crs("EPSG:32755", "EPSG:4326")
             lon, lat = transformer.transform(easting, northing)
             wkt = Literal(f"POINTZ({lon} {lat} {elevation})", datatype=GEO.wktLiteral)
-            total_depth_lit = Literal(total_depth)
-            if data["optional"]["total_depth_logger"] is not None:
-                total_depth_logger_lit = Literal(data["required"]["total_depth_logger"])
-            drill_type_iri = get_iri_from_code(data["required"]["drill_type"], combined_concepts)
-            drill_diameter_iri = get_iri_from_code(data["required"]["drill_diameter"], combined_concepts)
-            dip_lit = Literal(dip)
-            azimuth_lit = Literal(azimuth)
-            if data["optional"]["current_class"] is not None:
-                current_class_iri = get_iri_from_code(data["optional"]["current_class"], combined_concepts)
-            drill_start_date_date = Literal(datetime.datetime.strftime(data["required"]["drill_start_date"], "%Y-%m-%d"), datatype=XSD.date)
-            drill_end_date_date = Literal(datetime.datetime.strftime(data["required"]["drill_end_date"], "%Y-%m-%d"), datatype=XSD.date)
-            location_survey_type_iri = get_iri_from_code(data["required"]["location_survey_type"], combined_concepts)
+
+            total_depth_lit = make_rdflib_type(total_depth, "Number")
+            if total_depth_logger is not None:
+                total_depth_logger_lit = make_rdflib_type(total_depth_logger, "String")
+
+            drill_type_iri = make_rdflib_type(drill_type, "Concept", combined_concepts)
+            drill_diameter_iri = make_rdflib_type(drill_diameter, "Concept", combined_concepts)
+
+            dip_lit = make_rdflib_type(dip, "Number")
+            azimuth_lit = make_rdflib_type(azimuth, "Number")
+
+            if current_class is not None:
+                current_class_iri = make_rdflib_type(current_class, "Concept", combined_concepts)
+
+            drill_start_date_lit = make_rdflib_type(drill_start_date, "Date")
+            drill_end_date_lit = make_rdflib_type(drill_end_date, "Date")
+            location_survey_type_iri = make_rdflib_type(location_survey_type, "Concept", combined_concepts)
             if data["optional"]["survey_company"] is not None:
-                survey_company_lit = Literal(data["optional"]["survey_company"])
-            pre_collar_method_iri = get_iri_from_code(data["required"]["pre_collar_method"], combined_concepts)
-            pre_collar_depth_lit = Literal(data["required"]["pre_collar_depth"])
-            drill_contractor_lit = Literal(data["required"]["drill_contractor"])
-            if data["optional"]["remark"] is not None:
-                remark_lit = Literal(data["optional"]["remark"])
+                survey_company_lit = make_rdflib_type(survey_company, "String")
+            pre_collar_method_iri = make_rdflib_type(pre_collar_method, "Concept", combined_concepts)
+            pre_collar_depth_lit = make_rdflib_type(pre_collar_depth, "String")
+            drill_contractor_lit = make_rdflib_type(drill_contractor, "String")
+            if remark is not None:
+                remark_lit = make_rdflib_type(remark, "String")
 
             # make the graph
             g.add((dataset_iri, SDO.hasPart, drillhole_iri))
@@ -779,8 +846,8 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
 
             dt = BNode()
             g.add((dt, RDF.type, BORE.DrillingTime))
-            g.add((dt, PROV.startedAtTime, drill_start_date_date))
-            g.add((dt, PROV.endedAtTime, drill_end_date_date))
+            g.add((dt, PROV.startedAtTime, drill_start_date_lit))
+            g.add((dt, PROV.endedAtTime, drill_end_date_lit))
             g.add((drillhole_iri, TIME.hasTime, dt))
 
             g.add((drillhole_iri, EX.locationSurveyType, location_survey_type_iri))
@@ -814,7 +881,13 @@ def extract_sheet_drillhole_location(wb: openpyxl.Workbook, combined_concepts: G
 
 
 # dependent on extract_sheet_drillhole_location
-def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Graph, drillhole_ids: List[str], dataset_iri: URIRef, template_version: Optional[str] = None) -> Graph:
+def extract_sheet_drillhole_survey(
+        wb: openpyxl.Workbook,
+        combined_concepts: Graph,
+        drillhole_ids: List[str],
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Graph:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -867,16 +940,16 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
                     f"The value {survey_depth} for TOTAL_DEPTH in row {row} of sheet {sheet_name} is not an number"
                     f" as required")
 
-            azimuth = data["required"]["dip"]
-            if 0 > azimuth > 360:
+            azimuth = data["required"]["azimuth"]
+            if not 0 <= azimuth <= 360:
                 raise ConversionError(
-                    f"The value {azimuth} for DIP in row {row} of sheet {sheet_name} is not between "
+                    f"The value {azimuth} for AZIMUTH in row {row} of sheet {sheet_name} is not between "
                     f"0 and 360 as required")
 
             dip = data["required"]["dip"]
-            if 0 > dip > 90:
+            if not 0 >= dip >= -90:
                 raise ConversionError(
-                    f"The value {dip} for DIP in row {row} of sheet {sheet_name} is not between 0 and 90 as required")
+                    f"The value {dip} for DIP in row {row} of sheet {sheet_name} is not between 0 and -90 as required")
 
             survey_date = data["optional"]["survey_date"]
             if type(survey_date) != datetime.datetime:
@@ -886,21 +959,21 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
 
             azimuth_accuracy = data["optional"]["azimuth_accuracy"]
             if azimuth_accuracy is not None:
-                if 0 > azimuth_accuracy > 100:
+                if not 0 < azimuth_accuracy < 100:
                     raise ConversionError(
                         f"The value {azimuth_accuracy} for DRILL_END_DATE in row {row} of sheet {sheet_name} "
                         f"is not between 0 and 100 as required")
 
             inclination_accuracy = data["optional"]["azimuth_accuracy"]
             if inclination_accuracy is not None:
-                if 0 > inclination_accuracy > 100:
+                if not 0 < inclination_accuracy < 100:
                     raise ConversionError(
                         f"The value {inclination_accuracy} for DRILL_END_DATE in row {row} of sheet {sheet_name} "
                         f"is not between 0 and 100 as required")
 
             magnetic_field = data["optional"]["magnetic_field"]
             if magnetic_field is not None:
-                if 0 > magnetic_field > 10000000:
+                if not 0 < magnetic_field < 10000000:
                     raise ConversionError(
                         f"The value {magnetic_field} for DRILL_END_DATE in row {row} of sheet {sheet_name} "
                         f"is not between 0 and 10000000 as required")
@@ -912,7 +985,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
             if drillhole_id not in drillhole_ids:
                 raise ConversionError(
                     f"The value {drillhole_id} for DRILLHOLE_ID in row {row} of sheet {sheet_name} "
-                    f"is not present on sheet DRILLHOLE_LOCATION, DRILLHOLE_ID, as required")
+                    f"is not present on sheet DRILLHOLE_LOCATION in the DRILLHOLE_ID column, as required")
 
             # make RDFLib objects of the values
             drillhole_iri = QLDBORES[drillhole_id]
@@ -957,6 +1030,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
             g.add((s, SOSA.hasMember, depth_obs))
             g.add((depth_obs, SOSA.observedProperty, BORE.hasTotalDepth))
             g.add((depth_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
+            g.add((drillhole_iri, SOSA.isFeatureOfInterestOf, depth_obs))
             g.add((depth_obs, SOSA.hasResult, depth_res))
             g.add((depth_res, SDO.value, survey_depth_lit))
             g.add((depth_res, SDO.unitCode, URIRef("http://qudt.org/vocab/unit/M")))
@@ -966,6 +1040,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
             g.add((s, SOSA.hasMember, az_obs))
             g.add((az_obs, SOSA.observedProperty, BORE.hasAzimuth))
             g.add((az_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
+            g.add((drillhole_iri, SOSA.isFeatureOfInterestOf, az_obs))
             g.add((az_obs, SOSA.hasResult, az_res))
             g.add((az_res, SDO.value, azimuth_lit))
             g.add((az_res, SDO.unitCode, URIRef("http://qudt.org/vocab/unit/DEG")))
@@ -978,6 +1053,7 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
             g.add((s, SOSA.hasMember, dip_obs))
             g.add((dip_obs, SOSA.observedProperty, BORE.hasDip))
             g.add((dip_obs, SOSA.hasFeatureOfInterest, drillhole_iri))
+            g.add((drillhole_iri, SOSA.isFeatureOfInterestOf, dip_obs))
             g.add((dip_obs, SOSA.hasResult, dip_res))
             g.add((dip_res, SDO.value, dip_lit))
             g.add((dip_res, SDO.unitCode, URIRef("http://qudt.org/vocab/unit/DEG")))
@@ -1009,7 +1085,13 @@ def extract_sheet_drillhole_survey(wb: openpyxl.Workbook, combined_concepts: Gra
 
 
 # dependent on extract_sheet_drillhole_location
-def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Graph, drillhole_ids: List[str], dataset_iri: URIRef, template_version: Optional[str] = None) -> Graph:
+def extract_sheet_drillhole_sample(
+        wb: openpyxl.Workbook,
+        combined_concepts: Graph,
+        drillhole_ids: List[str],
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Graph:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -1113,7 +1195,7 @@ def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Gra
             if drillhole_id not in drillhole_ids:
                 raise ConversionError(
                     f"The value {drillhole_id} for DRILLHOLE_ID in row {row} of sheet {sheet_name} "
-                    f"is not present on sheet DRILLHOLE_LOCATION, DRILLHOLE_ID, as required")
+                    f"is not present on sheet DRILLHOLE_LOCATION in the DRILLHOLE_ID column, as required")
 
             # make RDFLib objects of the values
             drillhole_iri = QLDBORES[drillhole_id]
@@ -1184,7 +1266,12 @@ def extract_sheet_drillhole_sample(wb: openpyxl.Workbook, combined_concepts: Gra
     return g, sample_ids
 
 
-def extract_sheet_surface_sample(wb: openpyxl.Workbook, combined_concepts: Graph, dataset_iri: URIRef, template_version: Optional[str] = None) -> Graph:
+def extract_sheet_surface_sample(
+        wb: openpyxl.Workbook,
+        combined_concepts: Graph,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Graph:
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
@@ -2375,7 +2462,7 @@ def extract_sheet_drillhole_lithology(
                 if drillhole_id not in drillhole_ids:
                     raise ConversionError(
                         f"The value {drillhole_id} for DRILLHOLE_ID in row {row} of sheet {sheet_name} "
-                        f"is not present on sheet DRILLHOLE_LOCATION, DRILLHOLE_ID, as required")
+                        f"is not present on sheet DRILLHOLE_LOCATION in the DRILLHOLE_ID column, as required")
 
                 depth_from = data["required"]["from"]
                 if depth_from < 0:
@@ -2459,7 +2546,7 @@ def extract_sheet_drillhole_lithology(
                         raise ConversionError(
                             f"The value {rock_1_abund} for ROCK_1_ABUND in row {row} of sheet {sheet_name} "
                             f"cannot be converted to a number")
-                    if 0 > rock_1_abund > 100:
+                    if not 0 < rock_1_abund < 100:
                         raise ConversionError(
                             f"The value {rock_1_abund} for ROCK_1_ABUND in row {row} of sheet {sheet_name} "
                             f"is a percentage and must be between 0 and 100")
@@ -2472,7 +2559,7 @@ def extract_sheet_drillhole_lithology(
                         raise ConversionError(
                             f"The value {rock_2_abund} for ROCK_2_ABUND in row {row} of sheet {sheet_name} "
                             f"cannot be converted to a number")
-                    if 0 > rock_2_abund > 100:
+                    if not 0 < rock_2_abund < 100:
                         raise ConversionError(
                             f"The value {rock_2_abund} for ROCK_2_ABUND in row {row} of sheet {sheet_name} "
                             f"is a percentage and must be between 0 and 100")
@@ -2492,7 +2579,7 @@ def extract_sheet_drillhole_lithology(
                         raise ConversionError(
                             f"The value {min_1_abund} for PRIM_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
                             f"if given must be convertable into a number")
-                    if 0 > min_1_abund > 100:
+                    if not 0 < min_1_abund < 100:
                         raise ConversionError(
                             f"The value {min_1_abund} for PRIM_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
                             f"if given, must be a percentage between 0 and 100")
@@ -2512,7 +2599,7 @@ def extract_sheet_drillhole_lithology(
                         raise ConversionError(
                             f"The value {min_2_abund} for PRIM_MIN_ABUND_2 in row {row} of sheet {sheet_name}, "
                             f"if given must be convertable into a number")
-                    if 0 > min_2_abund > 100:
+                    if not 0 < min_2_abund < 100:
                         raise ConversionError(
                             f"The value {min_2_abund} for PRIM_MIN_ABUND_2 in row {row} of sheet {sheet_name}, "
                             f"if given, must be a percentage between 0 and 100")
@@ -2532,7 +2619,7 @@ def extract_sheet_drillhole_lithology(
                         raise ConversionError(
                             f"The value {min_3_abund} for PRIM_MIN_ABUND_3 in row {row} of sheet {sheet_name}, "
                             f"if given must be convertable into a number")
-                    if 0 > min_3_abund > 100:
+                    if not 0 < min_3_abund < 100:
                         raise ConversionError(
                             f"The value {min_3} for PRIM_MIN_ABUND_3 in row {row} of sheet {sheet_name}, "
                             f"if given, must be a percentage between 0 and 100")
@@ -2552,7 +2639,7 @@ def extract_sheet_drillhole_lithology(
                         raise ConversionError(
                             f"The value {alt_min_1_abund} for ATL_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
                             f"if given must be convertable into a number")
-                    if 0 > alt_min_1_abund > 100:
+                    if not 0 < alt_min_1_abund < 100:
                         raise ConversionError(
                             f"The value {alt_min_1_abund} for ATL_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
                             f"if given, must be a percentage between 0 and 100")
@@ -2572,7 +2659,7 @@ def extract_sheet_drillhole_lithology(
                         raise ConversionError(
                             f"The value {alt_min_2_abund} for ATL_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
                             f"if given must be convertable into a number")
-                    if 0 > alt_min_abund_2 > 100:
+                    if not 0 < alt_min_abund_2 < 100:
                         raise ConversionError(
                             f"The value {alt_min_abund_2} for ATL_MIN_ABUND_1 in row {row} of sheet {sheet_name}, "
                             f"if given, must be a percentage between 0 and 100")
@@ -2594,7 +2681,7 @@ def extract_sheet_drillhole_lithology(
                         raise ConversionError(
                             f"The value {vein_percent} for VEIN_PERCENT in row {row} of sheet {sheet_name}, "
                             f"if given must be convertable into a number")
-                    if 0 > vein_percent > 100:
+                    if not 0 < vein_percent < 100:
                         raise ConversionError(
                             f"The value {vein_percent} for VEIN_PERCENT in row {row} of sheet {sheet_name}, "
                             f"if given, must be a percentage between 0 and 100")
@@ -2611,7 +2698,7 @@ def extract_sheet_drillhole_lithology(
                     )
 
                 texture = data["optional"].get("texture")
-                if structure is not None:
+                if texture is not None:
                     validate_code(
                         texture,
                         "TEXTURE",
@@ -2701,39 +2788,25 @@ def extract_sheet_drillhole_lithology(
 
                 material_observations = [
                     # name, op, value, unit, desc
-                    ("Recovered Amount", length, recovered_amount_lit, m, None),
-                    ("Weathering", GEOSAMPLE.weathering, weathering_iri, None, None),
-                    ("Colour", GEOSAMPLE.colour, colour_iri, None, colour_shade_lit),
-                    ("Rock 1", rock_1_iri, rock_1_abund_lit, pc, None),
-                    ("Rock 2", rock_2_iri, rock_2_abund_lit, pc, None),
-                    ("Mineral 1", min_1_iri, min_1_abund_lit, pc, None),
-                    ("Mineral 2", min_2_iri, min_2_abund_lit, pc, None),
-                    ("Mineral 3", min_3_iri, min_3_abund_lit, pc, None),
-                    ("Alteration Type", alteration, alt_type_iri, None, alt_intensity_lit),
-                    ("Alteration Mineral 1", alt_min_1_iri, alt_min_1_abund_lit, pc, None),
-                    ("Alteration Mineral 2", alt_min_2_iri, alt_min_2_abund_lit, pc, None),
-                    ("Vein Composition", vein_composition_iri, vein_percent_lit, pc, vein_description_lit),
-                    ("Structure", GEOSAMPLE.structure, structure_iri, pc, vein_description_lit),
-                    ("Texture", GEOSAMPLE.texture, texture_iri, pc, vein_description_lit),
-                    ("Grain Size", GEOSAMPLE.grainSize, grain_size_iri, pc, vein_description_lit),
+                    (Literal("Recovered Amount"), length, recovered_amount_lit, m, None),
+                    (Literal("Weathering"), GEOSAMPLE.weathering, weathering_iri, None, None),
+                    (Literal("Colour"), GEOSAMPLE.colour, colour_iri, None, colour_shade_lit),
+                    (Literal("Rock 1"), rock_1_iri, rock_1_abund_lit, pc, None),
+                    (Literal("Rock 2"), rock_2_iri, rock_2_abund_lit, pc, None),
+                    (Literal("Mineral 1"), min_1_iri, min_1_abund_lit, pc, None),
+                    (Literal("Mineral 2"), min_2_iri, min_2_abund_lit, pc, None),
+                    (Literal("Mineral 3"), min_3_iri, min_3_abund_lit, pc, None),
+                    (Literal("Alteration Type"), alteration, alt_type_iri, None, alt_intensity_lit),
+                    (Literal("Alteration Mineral 1"), alt_min_1_iri, alt_min_1_abund_lit, pc, None),
+                    (Literal("Alteration Mineral 2"), alt_min_2_iri, alt_min_2_abund_lit, pc, None),
+                    (Literal("Vein Composition"), vein_composition_iri, vein_percent_lit, pc, vein_description_lit),
+                    (Literal("Structure"), GEOSAMPLE.structure, structure_iri, None, vein_description_lit),
+                    (Literal("Texture"), GEOSAMPLE.texture, texture_iri, None, vein_description_lit),
+                    (Literal("Grain Size"), GEOSAMPLE.grainSize, grain_size_iri, None, vein_description_lit),
                 ]
 
                 for n, op, v, u, d in material_observations:
-                    if op is not None:
-                        o = BNode()
-                        g.add((o, RDF.type, SOSA.Observation))
-                        g.add((o, RDFS.label, Literal(n)))
-                        if d is not None:
-                            g.add((o, RDFS.comment, Literal(n)))
-                        g.add((o, SOSA.observedProperty, op))
-                        if v is not None:
-                            r = BNode()
-                            g.add((r, RDF.type, SOSA.Result))
-                            g.add((r, SDO.value, v))
-                            if u is not None:
-                                g.add((r, SDO.unitCode, u))
-                            g.add((o, SOSA.hasResult, r))
-                        g.add((oc, SOSA.hasMember, o))
+                    g += make_observation(oc, n, op, v, u, d)
 
                 if remark_lit is not None:
                     g.add((oc, RDFS.comment, remark_lit))
@@ -2747,11 +2820,148 @@ def extract_sheet_drillhole_lithology(
     return g
 
 
-def extract_sheet_drillhole_structure(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
-    check_template_version_supported(wb)
+def extract_sheet_drillhole_structure(
+        wb: openpyxl.Workbook,
+        drillhole_ids: List[str],
+        combined_concepts: Graph,
+        dataset_iri: URIRef,
+        template_version: Optional[str] = None
+) -> Graph:
+    if template_version is None:
+        template_version = check_template_version_supported(wb)
 
     sheet_name = "DRILLHOLE_STRUCTURE"
     sheet = wb[sheet_name]
+
+    row = 9
+    if sheet["B9"].value == "DD12345":
+        row = 10
+
+    g = Graph()
+
+    while True:
+        if sheet[f"B{row}"].value is not None:
+            # make vars of all the sheet values
+            data = {
+                "required": {
+                    "drillhole_id": sheet[f"B{row}"].value,
+                    "measurement_depth": float(sheet[f"C{row}"].value),
+                    "structure": sheet[f"D{row}"].value,
+                    "dip": int(sheet[f"E{row}"].value),
+                    "dip_direction": int(sheet[f"F{row}"].value),
+                    "alpha_angle": int(sheet[f"G{row}"].value),
+                    "beta_angle": int(sheet[f"H{row}"].value),
+                    "azimuth": int(sheet[f"I{row}"].value),
+                },
+                "optional": {
+                    "remark": sheet[f"J{row}"].value,
+                }
+            }
+
+            # check required sheet values are present
+            for k, v in data["required"].items():
+                if v is None:
+                    raise ConversionError(
+                        f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+            # value validation
+            drillhole_id = str(data["required"]["drillhole_id"])
+            if drillhole_id not in drillhole_ids:
+                raise ConversionError(
+                    f"The value {drillhole_id} for DRILLHOLE_ID in row {row} of sheet {sheet_name} "
+                    f"is not present on sheet DRILLHOLE_LOCATION in the DRILLHOLE_ID column, as required")
+
+            measurement_depth = data["required"]["measurement_depth"]
+            if type(measurement_depth) not in [float, int] and measurement_depth < 0:
+                raise ConversionError(
+                    f"The value {measurement_depth} for MEASUREMENT_DEPTH in row {row} of sheet {sheet_name} is not an number"
+                    f" as required")
+
+            structure = data["required"]["structure"]
+            validate_code(
+                structure,
+                "STRUCTURAL_FEATURE",
+                "STRUCTURE",
+                row,
+                sheet_name,
+                combined_concepts
+            )
+
+            dip = data["required"]["dip"]
+            if not 0 >= dip >= -90:
+                raise ConversionError(
+                    f"The value {dip} for DIP in row {row} of sheet {sheet_name} is not between 0 and -90 as required")
+
+            dip_direction = data["required"]["dip_direction"]
+            if not -360 < dip_direction < 360:
+                raise ConversionError(
+                    f"The value {dip_direction} for DIP_DIRECTION in row {row} of sheet {sheet_name} is not between "
+                    f"0 and 360 as required")
+
+            alpha_angle = data["required"]["alpha_angle"]
+            if not 0 < alpha_angle < 360:
+                raise ConversionError(
+                    f"The value {alpha_angle} for ALPHA_ANGLE in row {row} of sheet {sheet_name} is not between "
+                    f"0 and 360 as required")
+            
+            beta_angle = data["required"]["beta_angle"]
+            if not 0 < beta_angle < 360:
+                raise ConversionError(
+                    f"The value {beta_angle} for BETA_ANGLE in row {row} of sheet {sheet_name} is not between "
+                    f"0 and 360 as required")
+
+            azimuth = data["required"]["azimuth"]
+            if not 0 <= azimuth <= 360:
+                raise ConversionError(
+                    f"The value {azimuth} for AZIMUTH in row {row} of sheet {sheet_name} is not between "
+                    f"0 and 360 as required")
+
+            if data["optional"].get("remark") is not None:
+                remark = data["optional"]["remark"]
+
+            # make RDFLib objects of the values
+            drillhole_iri = URIRef(QLDBORES + drillhole_id)
+            measurement_depth_lit = make_rdflib_type(measurement_depth, "Number")
+            structure_iri = make_rdflib_type(structure, "Concept", combined_concepts)
+            dip_lit = make_rdflib_type(dip, "Number")
+            dip_direction_lit = make_rdflib_type(dip_direction, "Number")
+            alpha_angle_lit = make_rdflib_type(alpha_angle, "Number")
+            beta_angle_lit = make_rdflib_type(beta_angle, "Number")
+            azimuth_lit = make_rdflib_type(azimuth, "Number")
+            remark_lit = make_rdflib_type(remark, "String")
+                
+            # make the graph
+            g.add((dataset_iri, SDO.hasPart, drillhole_iri))
+            oc = BNode()
+            g.add((oc, RDF.type, SOSA.ObservationCollection))
+            g.add((oc, SOSA.hasFeatureOfInterest, drillhole_iri))
+            g.add((drillhole_iri, SOSA.isFeatureOfInterestOf, oc))
+
+            material_observations = [
+                # name, op, value, unit, desc
+                (Literal("Depth"), SDO.depth, measurement_depth_lit, UNITS.M, None),
+                (Literal("Structure"), GEOSAMPLE.structure, structure_iri, None, None),
+                (Literal("Dip"), BORE.hasDip, dip_lit, UNITS.DEG, None),
+                (Literal("Dip Direction"), BORE.hasDipDirection, dip_direction_lit, UNITS.DEG, None),
+                (Literal("Alpha Angle"), BORE.hasAlphaAngle, alpha_angle_lit, UNITS.DEG, None),
+                (Literal("Beta Angle"), BORE.hasBetaAngle, beta_angle_lit, UNITS.DEG, None),
+                (Literal("Azimuth"), BORE.hasAzimuth, azimuth_lit, UNITS.DEG, None),
+            ]
+
+            for n, op, v, u, d in material_observations:
+                g += make_observation(oc, n, op, v, u, d)
+
+            if remark_lit is not None:
+                g.add((drillhole_iri, RDFS.comment, remark_lit))
+
+            row += 1
+        else:
+            break
+
+    g.bind("bore", BORE)
+    g.bind("ex", EX)
+
+    return g
 
 
 def extract_sheet_surface_lithology(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
@@ -2797,7 +3007,7 @@ def excel_to_rdf(
     dataset_iri: URIRef
 
     validate_sheet_validation_dictionary(wb, cc)
-    grf += extract_sheet_user_dictionary(wb, cc, template_version)
+    grf += extract_sheet_user_dictionary(wb, template_version)
     validate_sheet_uom(wb, cc)
     g, uuo_notations = extract_sheet_user_uom(wb, cc)
     grf += g
@@ -2837,6 +3047,8 @@ def excel_to_rdf(
     g, min_ids = extract_sheet_min_dictionary(wb, URIRef("http://test.com"), "3.0")
     grf += g
     grf += extract_sheet_drillhole_lithology(wb, drillhole_ids, lith_ids, min_ids, cc, dataset_iri, template_version)
+
+    grf += extract_sheet_drillhole_structure(wb, drillhole_ids, cc, dataset_iri, template_version)
 
     grf.bind("bore", BORE)
     grf.bind("ex", EX)

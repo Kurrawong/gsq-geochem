@@ -22,6 +22,9 @@ class BORE(DefinedNamespace):
     hasTotalDepthLogger: URIRef
     hasDiameter: URIRef
     hasDip: URIRef
+    hasDipDirection: URIRef
+    hasAlphaAngle: URIRef
+    hasBetaAngle: URIRef
     hasAzimuth: URIRef
     hasCollarDip: URIRef
     hasCollarAzimuth: URIRef
@@ -60,7 +63,7 @@ class MININGROLES(DefinedNamespace):
 
 class GEOSAMPLE(DefinedNamespace):
     _NS = Namespace("https://linked.data.gov.au/def/geosample/")
-    _fail = True
+    _fail = False
 
     # from GAS
     # ref https://kurrawong.github.io/gswa-supermodel/components/samples/
@@ -76,3 +79,7 @@ class GEOSAMPLE(DefinedNamespace):
     texture: URIRef
     grainSize: URIRef
 
+
+class UNITS(DefinedNamespace):
+    _NS = Namespace("http://qudt.org/vocab/unit/")
+    _fail = False

@@ -14,8 +14,8 @@ from openpyxl import load_workbook as _load_workbook
 from openpyxl.workbook.workbook import Workbook
 from pyshacl.pytypes import GraphLike
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
-from rdflib.namespace import DCAT, DCTERMS, PROV, RDF, RDFS, SKOS, XSD, TIME
-from .defined_namespaces import BORE, FOIS, SAMPLES
+from rdflib.namespace import DCAT, DCTERMS, PROV, RDF, RDFS, SKOS, XSD, TIME, SOSA, SDO
+from .defined_namespaces import BORE, FOIS, SAMPLES, UNITS
 import utm
 
 EXCEL_FILE_ENDINGS = ["xlsx"]
@@ -492,3 +492,24 @@ def make_rdflib_type(
         return Literal(datetime.datetime.strftime(value, "%Y-%m-%d"), datatype=XSD.date)
     elif rdflib_type == "Boolean":
         return Literal(value, datatype=XSD.boolean)
+
+
+def make_observation(oc: Union[URIRef, BNode], name: Literal, op: URIRef, v: Union[URIRef, Literal], u: URIRef, desc: Literal) -> Graph:
+    g = Graph()
+
+    o = BNode()
+    g.add((o, RDF.type, SOSA.Observation))
+    g.add((o, RDFS.label, name))
+    if desc is not None:
+        g.add((o, RDFS.comment, desc))
+    g.add((o, SOSA.observedProperty, op))
+    if v is not None:
+        r = BNode()
+        g.add((r, RDF.type, SOSA.Result))
+        g.add((r, SDO.value, v))
+        if u is not None:
+            g.add((r, SDO.unitCode, u))
+        g.add((o, SOSA.hasResult, r))
+    g.add((oc, SOSA.hasMember, o))
+
+    return g
