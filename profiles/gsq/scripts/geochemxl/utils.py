@@ -427,20 +427,24 @@ def create_vocab_validation_formula(wb: Workbook, tab, column_name: str):
     raise ValueError(f"A column header in sheet {tab} with value {column_name} could not be found")
 
 
-def get_codelist_id_for_code(code: str, combined_concepts: Graph):
+def get_codelist_ids_for_code(code: str, combined_concepts: Graph):
     # check the code is in the combined_concepts
     c = combined_concepts.value(predicate=SKOS.notation, object=Literal(code))
     if c is None:
         raise ConversionError(f"The code {code} is not in any codelist")
 
-    # return the code of the ConceptScheme or Collection it is in
-    cs = combined_concepts.value(subject=c, predicate=SKOS.inScheme)
-    # if it's in the UoM vocab. we need he Collection ID, not the CS ID
-    if cs != URIRef("https://linked.data.gov.au/def/gsq-geochem/uom"):
-        return str(combined_concepts.value(subject=cs, predicate=SKOS.notation))
-    else:
-        col = combined_concepts.value(predicate=SKOS.member, object=c)
-        return str(combined_concepts.value(subject=col, predicate=SKOS.notation))
+    # find the code of any ConceptScheme it is in
+    cses = []
+    for cs in combined_concepts.objects(c, SKOS.inScheme):
+        cses.append(cs)
+
+    # if it's in the UoM vocab, we need the Collection ID, not the CS ID
+    if URIRef("https://linked.data.gov.au/def/gsq-geochem/uom") in cses:
+        cses = []
+        for col in combined_concepts.subjects(SKOS.member, c):
+            cses.append(col)
+
+    return [str(combined_concepts.value(subject=x, predicate=SKOS.notation)) for x in cses]
 
 
 def get_iri_from_code(code: str, combined_concepts: Graph) -> URIRef:
@@ -451,10 +455,11 @@ def get_iri_from_code(code: str, combined_concepts: Graph) -> URIRef:
 
 def validate_code(code: str, codelist_id: str, column_name: str, row_num: int, sheet_name: str, combined_concepts: Graph) -> None:
     try:  # so we get better error reporting further down
-        codelist_id_actual = get_codelist_id_for_code(code, combined_concepts)
+        codelist_ids_actual = get_codelist_ids_for_code(code, combined_concepts)
     except:
-        codelist_id_actual = None
-    if codelist_id_actual != codelist_id:
+        codelist_ids_actual = []
+
+    if codelist_id not in codelist_ids_actual:
         raise ConversionError(
             f"The value {code} for {column_name} in row {row_num} on the {sheet_name} worksheet is not within "
             f"the {codelist_id} lookup list")

@@ -2896,7 +2896,7 @@ def extract_sheet_drillhole_structure(
                     f"The value {dip} for DIP in row {row} of sheet {sheet_name} is not between 0 and -90 as required")
 
             dip_direction = data["required"]["dip_direction"]
-            if not -360 < dip_direction < 360:
+            if not -360 <= dip_direction <= 360:
                 raise ConversionError(
                     f"The value {dip_direction} for DIP_DIRECTION in row {row} of sheet {sheet_name} is not between "
                     f"0 and 360 as required")
@@ -2988,9 +2988,9 @@ def extract_sheet_surface_lithology(
     g = Graph()
 
     while True:
-        dv = sheet[f"B{row}"].value
+        dv = sheet[f"D{row}"].value
         if dv is not None:
-            if dv == "SS12345":
+            if dv == "123456":
                 row += 1
                 continue
             else:
@@ -3058,10 +3058,11 @@ def extract_sheet_surface_lithology(
                     raise ConversionError(f"SAMPLE_ID and SITE_ID cannot both be filled")
 
                 # value validation
-                if sample_id not in sample_ids:
-                    raise ConversionError(
-                        f"The value {sample_id} for SAMPLE_ID in row {row} of sheet {sheet_name} "
-                        f"is not present on sheet SURFACE_SAMPLE in the SAMPLE_ID column, as required")
+                if sample_id is not None:
+                    if sample_id not in sample_ids:
+                        raise ConversionError(
+                            f"The value {sample_id} for SAMPLE_ID in row {row} of sheet {sheet_name} "
+                            f"is not present on sheet SURFACE_SAMPLE in the SAMPLE_ID column, as required")
 
                 easting = data["required"]["easting"]
                 if type(easting) != int or easting < 0:
@@ -3344,7 +3345,7 @@ def extract_sheet_surface_lithology(
 
                 # make RDFLib objects of the values
                 sample_iri = make_rdflib_type(sample_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
-                site_iri = make_rdflib_type(sample_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
+                site_iri = make_rdflib_type(site_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
 
                 transformer = Transformer.from_crs("EPSG:32755", "EPSG:4326")
                 lon, lat = transformer.transform(easting, northing)
@@ -3425,9 +3426,9 @@ def extract_sheet_surface_lithology(
                     (Literal("Alteration Mineral 1"), alt_min_1_iri, alt_min_1_abund_lit, pc, None),
                     (Literal("Alteration Mineral 2"), alt_min_2_iri, alt_min_2_abund_lit, pc, None),
                     (Literal("Vein Composition"), vein_composition_iri, vein_percent_lit, pc, vein_description_lit),
-                    (Literal("Structure"), GEOSAMPLE.structure, structure_iri, None, vein_description_lit),
-                    (Literal("Texture"), GEOSAMPLE.texture, texture_iri, None, vein_description_lit),
-                    (Literal("Grain Size"), GEOSAMPLE.grainSize, grain_size_iri, None, vein_description_lit),
+                    (Literal("Structure"), GEOSAMPLE.structure, structure_iri, None, None),
+                    (Literal("Texture"), GEOSAMPLE.texture, texture_iri, None, None),
+                    (Literal("Grain Size"), GEOSAMPLE.grainSize, grain_size_iri, None, None),
                 ]
 
                 for n, op, v, u, d in material_observations:
@@ -3447,18 +3448,367 @@ def extract_sheet_surface_lithology(
     return g
 
 
-def extract_sheet_surface_structure(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
-    check_template_version_supported(wb)
+def extract_sheet_surface_structure(
+    wb: openpyxl.Workbook,
+    sample_ids: List[str],
+    combined_concepts: Graph,
+    dataset_iri: URIRef,
+    template_version: Optional[str] = None
+) -> Graph:
+    if template_version is None:
+        template_version = check_template_version_supported(wb)
 
     sheet_name = "SURFACE_STRUCTURE"
     sheet = wb[sheet_name]
 
+    row = 9
+    g = Graph()
 
-def extract_sheet_reserves_resources(wb: openpyxl.Workbook, combined_concepts: Graph) -> Graph:
-    check_template_version_supported(wb)
+    while True:
+        dv = sheet[f"D{row}"].value
+        if dv is not None:
+            if dv == "123456":
+                row += 1
+                continue
+            else:
+                # make vars of all the sheet values
+                data = {
+                    "required": {
+                        "easting": int(sheet[f"D{row}"].value),
+                        "northing": int(sheet[f"E{row}"].value),
+
+                        "location_survey_type": sheet[f"G{row}"].value,
+                        "collection_date": sheet[f"H{row}"].value,
+
+                        "structure_type": sheet[f"I{row}"].value,
+
+                    },
+                    "optional": {
+                        "sample_id": sheet[f"B{row}"].value,
+                        "site_id": sheet[f"C{row}"].value,
+
+                        "elevation": float(sheet[f"F{row}"].value),
+
+                        "strike": sheet[f"J{row}"].value,
+                        "dip": int(sheet[f"K{row}"].value),
+                        "dip_direction": int(sheet[f"L{row}"].value),
+                        "remark": sheet[f"M{row}"].value,
+                    }
+                }
+
+                # check required sheet values are present
+                for k, v in data["required"].items():
+                    if v is None:
+                        raise ConversionError(
+                            f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+                sample_id = data["optional"].get("sample_id")
+                site_id = data["optional"].get("site_id")
+                if sample_id is None and site_id is None:
+                    raise ConversionError(f"One or other of SAMPLE_ID and SITE_ID must be filled")
+                if sample_id is not None and site_id is not None:
+                    raise ConversionError(f"SAMPLE_ID and SITE_ID cannot both be filled")
+
+                # value validation
+                if sample_id is not None:
+                    if sample_id not in sample_ids:
+                        raise ConversionError(
+                            f"The value {sample_id} for SAMPLE_ID in row {row} of sheet {sheet_name} "
+                            f"is not present on sheet SURFACE_SAMPLE in the SAMPLE_ID column, as required")
+
+                easting = data["required"]["easting"]
+                if type(easting) != int or easting < 0:
+                    raise ConversionError(
+                        f"The value {easting} for EASTING in row {row} of sheet {sheet_name} is not an integer "
+                        f"greater than 0 as required")
+
+                northing = data["required"]["northing"]
+                if type(easting) != int or easting < 0:
+                    raise ConversionError(
+                        f"The value {northing} for NORTHING in row {row} of sheet {sheet_name} is not an integer "
+                        f"greater than 0 as required")
+
+                elevation = data["optional"]["elevation"]
+                if elevation is not None:
+                    if type(elevation) not in [float, int]:
+                        raise ConversionError(
+                            f"The value {elevation} for ELEVATION in row {row} of sheet, if supplied on {sheet_name} "
+                            f"must be a number")
+
+                location_survey_type = data["required"]["location_survey_type"]
+                validate_code(
+                    location_survey_type, "LOC_SURVEY_TYPE", "LOCATION_SURVEY_TYPE", row,
+                    sheet_name,
+                    combined_concepts
+                )
+
+                collection_date = data["required"]["collection_date"]
+                if type(collection_date) != datetime.datetime:
+                    collection_date = dateparser.parse(collection_date)
+                    if type(collection_date) != datetime.datetime:
+                        raise ConversionError(
+                            f'The value {collection_date} for COLLECTION_DATE in row {row} of '
+                            f'sheet {sheet_name} is not a date as required')
+
+                structure = data["optional"].get("structure")
+                if structure is not None:
+                    validate_code(
+                        structure,
+                        "STRUCTURAL_FEATURE",
+                        "STRUCTURE_TYPE",
+                        row,
+                        sheet_name,
+                        combined_concepts
+                    )
+
+                strike = data["optional"].get("strike")
+
+                dip = data["optional"]["dip"]
+                if not 0 >= dip >= -90:
+                    raise ConversionError(
+                        f"The value {dip} for DIP in row {row} of sheet {sheet_name} is not between 0 and -90 as required")
+
+                dip_direction = data["optional"]["dip_direction"]
+                if not -360 <= dip_direction <= 360:
+                    raise ConversionError(
+                        f"The value {dip_direction} for DIP_DIRECTION in row {row} of sheet {sheet_name} is not between "
+                        f"0 and 360 as required")
+
+                remark = data["optional"].get("remark")
+
+                # make RDFLib objects of the values
+                sample_iri = make_rdflib_type(sample_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
+                site_iri = make_rdflib_type(site_id, "URIRef", None, Namespace(dataset_iri + "/sample/"))
+
+                transformer = Transformer.from_crs("EPSG:32755", "EPSG:4326")
+                lon, lat = transformer.transform(easting, northing)
+                if elevation is None:
+                    wkt = Literal(f"POINT({lon} {lat})", datatype=GEO.wktLiteral)
+                else:
+                    wkt = Literal(f"POINTZ({lon} {lat} {elevation})", datatype=GEO.wktLiteral)
+                location_survey_type_iri = make_rdflib_type(data["required"]["location_survey_type"], "Concept", combined_concepts)
+                collection_date_lit = make_rdflib_type(collection_date, "Date")
+                structure_iri = make_rdflib_type(structure, "Concept", combined_concepts)
+                strike_lit = make_rdflib_type(strike, "String")
+                dip_lit = make_rdflib_type(dip, "Number")
+                dip_direction_lit = make_rdflib_type(dip_direction, "Number")
+                remark_lit = make_rdflib_type(remark, "String")
+
+                # make the graph
+                if sample_iri is not None:
+                    s = sample_iri
+                else:
+                    s = site_iri
+
+                g.add((dataset_iri, SDO.hasPart, s))
+                g.add((s, RDF.type, SOSA.Sample))
+
+                geom = BNode()
+                g.add((s, GEO.hasGeometry, geom))  # sdo:location would be the location of the sample now
+                g.add((geom, RDF.type, GEO.Geometry))
+                g.add((geom, GEO.asWKT, wkt))
+
+                g.add((s, EX.locationSurveyType, location_survey_type_iri))
+                g.add((s, PROV.generatedAtTime, collection_date_lit))
+
+                oc = BNode()
+                g.add((oc, RDF.type, SOSA.ObservationCollection))
+
+                material_observations = [
+                    # name, op, value, unit, desc
+                    (Literal("Structure"), GEOSAMPLE.structure, structure_iri, None, None),
+                    (Literal("Strike"), GEOSAMPLE.strike, strike_lit, None, None),
+                    (Literal("Dip"), BORE.hasDip, dip_lit, UNITS.DEG, None),
+                    (Literal("Dip Direction"), BORE.hasDipDirection, dip_direction_lit, UNITS.DEG, None),
+                ]
+
+                for n, op, v, u, d in material_observations:
+                    g2 = make_observation(oc, n, op, v, u, d)
+                    if g2 is not None:
+                        g += g2
+
+                if remark_lit is not None:
+                    g.add((oc, RDFS.comment, remark_lit))
+
+                row += 1
+        else:
+            break
+
+    g.bind("ex", EX)
+
+    return g
+
+
+def extract_sheet_reserves_resources(
+    wb: openpyxl.Workbook,
+    combined_concepts: Graph,
+    dataset_iri: URIRef,
+    template_version: Optional[str] = None
+) -> Graph:
+    if template_version is None:
+        template_version = check_template_version_supported(wb)
 
     sheet_name = "RESERVES_RESOURCES"
     sheet = wb[sheet_name]
+
+    row = 9
+    g = Graph()
+
+    while True:
+        bv = sheet[f"B{row}"].value
+        if bv is not None:
+            if bv == "ABC MINE":
+                row += 1
+                continue
+            else:
+                # make vars of all the sheet values
+                data = {
+                    "required": {
+                        "project_name": sheet[f"B{row}"].value,
+                        "deposit_name": sheet[f"C{row}"].value,
+
+                        "mine_type": sheet[f"E{row}"].value,
+                        "commodity": sheet[f"F{row}"].value,
+                        "quantity_uom": sheet[f"G{row}"].value,
+                        "inferred_resource": sheet[f"H{row}"].value,
+                        "indicated_resource": sheet[f"I{row}"].value,
+                        "measured_resource": sheet[f"J{row}"].value,
+                        "probable_reserve": sheet[f"K{row}"].value,
+                        "proved_reserve": sheet[f"L{row}"].value,
+                        "est_date": sheet[f"N{row}"].value,
+                        "report_regime": sheet[f"O{row}"].value,
+                        "grade_uom": sheet[f"P{row}"].value,
+                        "reserve_grade": sheet[f"Q{row}"].value,
+                        "reserve_grade_cut_off": sheet[f"R{row}"].value,
+                        "resource_grade": sheet[f"S{row}"].value,
+                        "resource_grade_cut_off": sheet[f"T{row}"].value,
+                    },
+                    "optional": {
+                        "deposit_type": sheet[f"D{row}"].value,
+                        "marketable_quantity": sheet[f"M{row}"].value,
+                        "secondary_commodities": sheet[f"U{row}"].value,
+                        "resource_status": sheet[f"V{row}"].value,
+                        "remark": sheet[f"W{row}"].value,
+                    }
+                }
+
+                # check required sheet values are present
+                for k, v in data["required"].items():
+                    if v is None:
+                        raise ConversionError(
+                            f"For each row in the {sheet_name} worksheet, you must supply a {k.upper()} value")
+
+                # value validation
+                project_name = data["required"]["project_name"]
+                deposit_name = data["required"]["deposit_name"]
+                deposit_type = data["optional"].get("deposit_type")
+                mine_type = data["required"]["mine_type"]
+                commodity = data["required"]["commodity"]
+                validate_code(
+                    commodity,
+                    "COMMODITY",
+                    "COMMODITY",
+                    row,
+                    sheet_name,
+                    combined_concepts
+                )
+                quantity_uom = data["required"]["quantity_uom"].split("(")[1].split(")")[0]
+                validate_code(
+                    quantity_uom,
+                    "MASS",
+                    "QUANTITY_UOM",
+                    row,
+                    sheet_name,
+                    combined_concepts
+                )
+                inferred_resource = data["required"]["inferred_resource"]
+                indicated_resource = data["required"]["indicated_resource"]
+                measured_resource = data["required"]["measured_resource"]
+                probable_reserve = data["required"]["probable_reserve"]
+                proved_reserve = data["required"]["proved_reserve"]
+                marketable_quantity = data["optional"].get("marketable_quantity")
+                est_date = data["required"]["est_date"]
+                report_regime = data["required"]["report_regime"]
+                grade_uom = data["required"]["grade_uom"].split("(")[1].split(")")[0]
+                validate_code(
+                    grade_uom,
+                    "CONCENTRATION",
+                    "GRADE_UOM",
+                    row,
+                    sheet_name,
+                    combined_concepts
+                )
+                reserve_grade = data["required"]["reserve_grade"]
+                reserve_grade_cut_off = data["required"]["reserve_grade_cut_off"]
+                resource_grade = data["required"]["resource_grade"]
+                resource_grade_cut_off = data["required"]["resource_grade_cut_off"]
+                secondary_commodities = data["optional"].get("resource_grade_cut_off")
+                resource_status = data["optional"].get("resource_grade_cut_off")
+                remark = data["optional"].get("remark")
+
+                # make RDFLib objects of the values
+                project_name_lit = make_rdflib_type(project_name, "String")
+                deposit_name_lit = make_rdflib_type(deposit_name, "String")
+                deposit_type_lit = make_rdflib_type(deposit_type, "String")
+                mine_type_lit = make_rdflib_type(mine_type, "String")
+                commodity_iri = make_rdflib_type(commodity, "Concept", combined_concepts)
+                quantity_uom_iri = make_rdflib_type(quantity_uom, "Concept", combined_concepts)
+                inferred_resource_lit = make_rdflib_type(inferred_resource, "Number")
+                indicated_resource_lit = make_rdflib_type(indicated_resource, "Number")
+                measured_resource_lit = make_rdflib_type(measured_resource, "Number")
+                probable_reserve_lit = make_rdflib_type(probable_reserve, "Number")
+                proved_reserve_lit = make_rdflib_type(proved_reserve, "Number")
+                marketable_quantity_lit = make_rdflib_type(marketable_quantity, "Number")
+                est_date_lit = make_rdflib_type(est_date, "Date")
+                report_regime_lit = make_rdflib_type(report_regime, "String")
+                grade_uom_iri = make_rdflib_type(grade_uom, "Concept", combined_concepts)
+                reserve_grade_lit = make_rdflib_type(reserve_grade, "Number")
+                reserve_grade_cut_off_lit = make_rdflib_type(reserve_grade_cut_off, "Number")
+                resource_grade_lit = make_rdflib_type(resource_grade, "Number")
+                resource_grade_cut_off_lit = make_rdflib_type(resource_grade_cut_off, "Number")
+                secondary_commodities_lit = make_rdflib_type(secondary_commodities, "Number")
+                resource_status_lit = make_rdflib_type(resource_status, "String")
+                remark_lit = make_rdflib_type(remark, "String")
+
+                # make the graph
+                project_iri = URIRef(str(dataset_iri) + "/project/" + make_id_from_name(project_name_lit))
+                g.add((dataset_iri, SDO.hasPart, project_iri))
+                g.add((project_iri, RDF.type, SDO.Project))
+
+                g.add((project_iri, EX.depositName, deposit_name_lit))
+                if deposit_type is not None:
+                    g.add((project_iri, EX.depositType, deposit_type_lit))
+                g.add((project_iri, EX.mineType, mine_type_lit))
+                g.add((project_iri, EX.commodity, commodity_iri))
+                g.add((project_iri, EX.quantityUom, quantity_uom_iri))
+                g.add((project_iri, EX.inferredResource, inferred_resource_lit))
+                g.add((project_iri, EX.indicatedResource, indicated_resource_lit))
+                g.add((project_iri, EX.measuredResource, measured_resource_lit))
+                g.add((project_iri, EX.probableReserve, probable_reserve_lit))
+                g.add((project_iri, EX.provedReserve, proved_reserve_lit))
+                if marketable_quantity is not None:
+                    g.add((project_iri, EX.marketableQuantity, marketable_quantity_lit))
+                g.add((project_iri, EX.estDate, est_date_lit))
+                g.add((project_iri, EX.reportRegime, report_regime_lit))
+                g.add((project_iri, EX.gradeUom, grade_uom_iri))
+                g.add((project_iri, EX.reserveGrade, reserve_grade_lit))
+                g.add((project_iri, EX.reserveGradeCutOff, reserve_grade_cut_off_lit))
+                g.add((project_iri, EX.resourceGrade, resource_grade_lit))
+                g.add((project_iri, EX.resourceGradeCutOff, resource_grade_cut_off_lit))
+                if secondary_commodities is not None:
+                    g.add((project_iri, EX.secondaryCommodities, secondary_commodities_lit))
+                if resource_status is not None:
+                    g.add((project_iri, EX.resourceStatus, resource_status_lit))
+                if remark is not None:
+                    g.add((project_iri, EX.remark, remark_lit))
+
+                row += 1
+        else:
+            break
+
+    g.bind("ex", EX)
+
+    return g
 
 
 def excel_to_rdf(
@@ -3526,7 +3876,9 @@ def excel_to_rdf(
     grf += extract_sheet_drillhole_structure(wb, drillhole_ids, cc, dataset_iri, template_version)
 
     grf += extract_sheet_surface_lithology(wb, sample_ids2, lith_ids, min_ids, cc, dataset_iri, template_version)
-    # grf += extract_sheet_drillhole_structure(wb, sample_ids2, cc, dataset_iri, template_version)
+    grf += extract_sheet_surface_structure(wb, sample_ids2, cc, dataset_iri, template_version)
+
+    grf += extract_sheet_reserves_resources(wb, cc, dataset_iri, template_version)
 
     grf.bind("bore", BORE)
     grf.bind("ex", EX)

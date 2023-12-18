@@ -737,31 +737,54 @@ class TestExtractSheetSurfaceLithology30:
             assert str(e) == "For each row in the SURFACE_LITHOLOGY worksheet, you must supply a COLLECTION_DATE value"
 
 
-# class TestExtractSheetSurfaceStructure30:
-#     @pytest.fixture(autouse=True)
-#     def _make_cc(self, make_cc):
-#         self._make_cc = make_cc
-#
-#     def test_01_valid(self):
-#         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_STRUCTURE_01_valid.xlsx")
-#         g = extract_sheet_surface_structure(wb, ["DD12346", "DD12347"], self._make_cc, URIRef("http://test.com"),
-#                                               "3.0")
-#
-#         no_obs = 0
-#         for _, _ in g.subject_objects(SOSA.hasMember):
-#             no_obs += 1
-#
-#         assert no_obs == 14
-#
-#     def test_02_invalid(self):
-#         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_STRUCTURE_02_invalid.xlsx")
-#
-#         try:
-#             extract_sheet_surface_structure(wb, ["DD12346", "DD12347"], self._make_cc, URIRef("http://test.com"),
-#                                               "3.0")
-#         except ConversionError as e:
-#             assert str(e) == "The value WHAT for STRUCTURE in row 11 on the DRILLHOLE_STRUCTURE worksheet is not " \
-#                              "within the STRUCTURAL_FEATURE lookup list"
+class TestExtractSheetSurfaceStructure30:
+    @pytest.fixture(autouse=True)
+    def _make_cc(self, make_cc):
+        self._make_cc = make_cc
+
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-SURFACE_STRUCTURE_01_valid.xlsx")
+        g = extract_sheet_surface_structure(wb, [], self._make_cc, URIRef("http://test.com"), "3.0")
+
+        no_obs = 0
+        for _, _ in g.subject_objects(SOSA.hasMember):
+            no_obs += 1
+
+        assert no_obs == 4
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-SURFACE_STRUCTURE_02_invalid.xlsx")
+
+        try:
+            extract_sheet_surface_structure(wb, [], self._make_cc, URIRef("http://test.com"),  "3.0")
+        except ConversionError as e:
+            assert str(e) == "For each row in the SURFACE_STRUCTURE worksheet, you must supply a " \
+                             "LOCATION_SURVEY_TYPE value"
+
+
+class TestExtractSheetReservesResources30:
+    @pytest.fixture(autouse=True)
+    def _make_cc(self, make_cc):
+        self._make_cc = make_cc
+
+    def test_01_valid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-RESERVES_RESOURCES_01_valid.xlsx")
+        g = extract_sheet_reserves_resources(wb, self._make_cc, URIRef("http://test.com"), "3.0")
+
+        assert (
+            URIRef("http://test.com/project/ABC-MINE-2"),
+            RDF.type,
+            SDO.Project
+        ) in g
+
+    def test_02_invalid(self):
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-RESERVES_RESOURCES_02_invalid.xlsx")
+
+        try:
+            extract_sheet_reserves_resources(wb, self._make_cc, URIRef("http://test.com"),  "3.0")
+        except ConversionError as e:
+            assert str(e) == "For each row in the SURFACE_STRUCTURE worksheet, you must supply a " \
+                             "LOCATION_SURVEY_TYPE value"
 
 
 class TestIntegration30:
@@ -769,4 +792,4 @@ class TestIntegration30:
         rdf = excel_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")
         g = Graph().parse(data=rdf, format="turtle")
 
-        assert len(g) == 1948
+        assert len(g) == 1980

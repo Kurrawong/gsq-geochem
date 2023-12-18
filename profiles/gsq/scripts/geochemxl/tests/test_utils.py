@@ -6,6 +6,6 @@ CONCEPTS_COMBINED_GRAPH = Graph().parse(GSQ_PROFILE_DIR / "vocabs" / "concepts-c
 
 
 def test__get_codelist_id_for_code():
-    assert get_codelist_id_for_code("m", CONCEPTS_COMBINED_GRAPH) == "LENGTH"
+    assert "LENGTH" in get_codelist_ids_for_code("m", CONCEPTS_COMBINED_GRAPH)
 
-    assert get_codelist_id_for_code("DGPS", CONCEPTS_COMBINED_GRAPH) == "LOC_SURVEY_TYPE"
+    assert "LOC_SURVEY_TYPE" in get_codelist_ids_for_code("DGPS", CONCEPTS_COMBINED_GRAPH)
