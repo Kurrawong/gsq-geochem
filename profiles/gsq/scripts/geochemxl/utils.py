@@ -495,21 +495,23 @@ def make_rdflib_type(
 
 
 def make_observation(oc: Union[URIRef, BNode], name: Literal, op: URIRef, v: Union[URIRef, Literal], u: URIRef, desc: Literal) -> Graph:
-    g = Graph()
+    if op is not None:
+        g = Graph()
 
-    o = BNode()
-    g.add((o, RDF.type, SOSA.Observation))
-    g.add((o, RDFS.label, name))
-    if desc is not None:
-        g.add((o, RDFS.comment, desc))
-    g.add((o, SOSA.observedProperty, op))
-    if v is not None:
-        r = BNode()
-        g.add((r, RDF.type, SOSA.Result))
-        g.add((r, SDO.value, v))
-        if u is not None:
-            g.add((r, SDO.unitCode, u))
-        g.add((o, SOSA.hasResult, r))
-    g.add((oc, SOSA.hasMember, o))
+        o = BNode()
+        g.add((o, RDF.type, SOSA.Observation))
+        g.add((o, RDFS.label, name))
+        if desc is not None:
+            g.add((o, RDFS.comment, desc))
+        g.add((o, SOSA.observedProperty, op))
+        if v is not None:
+            r = BNode()
+            g.add((r, RDF.type, SOSA.Result))
+            g.add((r, SDO.value, v))
+            if u is not None:
+                g.add((r, SDO.unitCode, u))
+            g.add((o, SOSA.hasResult, r))
+        g.add((oc, SOSA.hasMember, o))
 
-    return g
+        return g
+    return None

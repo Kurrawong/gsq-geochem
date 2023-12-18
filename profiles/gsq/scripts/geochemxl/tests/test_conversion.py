@@ -608,7 +608,7 @@ class TestExtractSheetDrillholeLithology30:
             self._make_cc, URIRef("http://test.com"), "3.0")
 
         no_obs = 0
-        for _, __ in g.subject_objects(SOSA.hasMember):
+        for _, _ in g.subject_objects(SOSA.hasMember):
             no_obs += 1
 
         assert no_obs == 15
@@ -702,9 +702,71 @@ class TestExtractSheetDrillholeStructure30:
                       "between 0 and 360 as required"
 
 
+class TestExtractSheetSurfaceLithology30:
+    @pytest.fixture(autouse=True)
+    def _make_cc(self, make_cc):
+        self._make_cc = make_cc
+
+    def test_01_valid(self):
+        @pytest.fixture(autouse=True)
+        def _make_cc(make_cc):
+            self._make_cc = make_cc
+
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-SURFACE_LITHOLOGY_01_valid.xlsx")
+        g = extract_sheet_surface_lithology(
+            wb, ["SS12346"], ["TMO"], ["Qz", "Sp", "OL", "Ka", "As"],
+            self._make_cc, URIRef("http://test.com"), "3.0")
+
+        no_obs = 0
+        for _, _ in g.subject_objects(SOSA.hasMember):
+            no_obs += 1
+
+        assert no_obs == 10
+
+    def test_02_invalid(self):
+        @pytest.fixture(autouse=True)
+        def _make_cc(self, make_cc):
+            self._make_cc = make_cc
+
+        wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-SURFACE_LITHOLOGY_02_invalid.xlsx")
+
+        try:
+            extract_sheet_surface_lithology(wb, ["SS12346"], ["TMO"], ["Qz", "Sp", "OL", "Ka", "As"],
+                                              self._make_cc, URIRef("http://test.com"), "3.0")
+        except ConversionError as e:
+            assert str(e) == "For each row in the SURFACE_LITHOLOGY worksheet, you must supply a COLLECTION_DATE value"
+
+
+# class TestExtractSheetSurfaceStructure30:
+#     @pytest.fixture(autouse=True)
+#     def _make_cc(self, make_cc):
+#         self._make_cc = make_cc
+#
+#     def test_01_valid(self):
+#         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_STRUCTURE_01_valid.xlsx")
+#         g = extract_sheet_surface_structure(wb, ["DD12346", "DD12347"], self._make_cc, URIRef("http://test.com"),
+#                                               "3.0")
+#
+#         no_obs = 0
+#         for _, _ in g.subject_objects(SOSA.hasMember):
+#             no_obs += 1
+#
+#         assert no_obs == 14
+#
+#     def test_02_invalid(self):
+#         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_STRUCTURE_02_invalid.xlsx")
+#
+#         try:
+#             extract_sheet_surface_structure(wb, ["DD12346", "DD12347"], self._make_cc, URIRef("http://test.com"),
+#                                               "3.0")
+#         except ConversionError as e:
+#             assert str(e) == "The value WHAT for STRUCTURE in row 11 on the DRILLHOLE_STRUCTURE worksheet is not " \
+#                              "within the STRUCTURAL_FEATURE lookup list"
+
+
 class TestIntegration30:
     def test_01_valid(self):
         rdf = excel_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")
         g = Graph().parse(data=rdf, format="turtle")
 
-        assert len(g) == 1879
+        assert len(g) == 1948
