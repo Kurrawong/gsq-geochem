@@ -83,3 +83,13 @@ class GEOSAMPLE(DefinedNamespace):
 class UNITS(DefinedNamespace):
     _NS = Namespace("http://qudt.org/vocab/unit/")
     _fail = False
+
+    DEG: URIRef
+    M: URIRef
+
+
+class GEOSITE(DefinedNamespace):
+    _NS = Namespace("https://linked.data.gov.au/def/geosite/")
+    _fail = False
+
+    strike: URIRef

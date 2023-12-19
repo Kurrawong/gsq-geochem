@@ -4989,7 +4989,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 <https://linked.data.gov.au/def/gsq-geochem/structural-feature/bedding>
     a skos:Concept ;
     skos:inScheme <https://linked.data.gov.au/def/gsq-geochem/structural-feature> ;
-    skos:notation "BEDDING" ;
+    skos:notation "BEDDING STRUCTURE" ;
 .
 
 <https://linked.data.gov.au/def/gsq-geochem/structural-feature/boudinage>

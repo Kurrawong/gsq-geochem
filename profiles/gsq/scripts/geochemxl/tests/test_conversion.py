@@ -663,8 +663,8 @@ class TestExtractSheetDrillholeStructure30:
 
     def test_01_valid(self):
         wb = load_workbook(TESTS_DIR / "data" / "GeochemXL-v3.0-DRILLHOLE_STRUCTURE_01_valid.xlsx")
-        g = extract_sheet_drillhole_structure(wb, ["DD12346", "DD12347"], self._make_cc, URIRef("http://test.com"),
-                                              "3.0")
+        g = extract_sheet_drillhole_structure(
+            wb, ["DD12346", "DD12347"], self._make_cc, URIRef("http://test.com"), "3.0")
 
         no_obs = 0
         for _, _ in g.subject_objects(SOSA.hasMember):
@@ -789,7 +789,8 @@ class TestExtractSheetReservesResources30:
 
 class TestIntegration30:
     def test_01_valid(self):
-        rdf = excel_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")
-        g = Graph().parse(data=rdf, format="turtle")
+        g, dataset_iri = workbook_to_rdf(TESTS_DIR / "data" / "GeochemXL-v3.0-integration_01.xlsx")
 
-        assert len(g) == 1980
+        assert len(g) == 1979
+
+        assert type(dataset_iri) == URIRef

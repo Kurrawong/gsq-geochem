@@ -68,49 +68,31 @@ FIELD_VOCABS = {
     "AGENT": VOCABS_DIR_30 / "agents.ttl",
 }
 
-SHEETS_VOCABS = {
-    "DICTIONARY": {
-        "B": {
-            "tab": "VALIDATION_DICTIONARY",
-            "column_name": "METHOD_TYPE"
-        }
-    },
-    "DRILLHOLE_SAMPLE": {
-        "D": {
-            "tab": "VALIDATION_DICTIONARY",
-            "column_name": "SAMPLE_TYPE_DRILLING",
-        }
-    },
-    "SURFACE_SAMPLE": {
-        "C": {
-            "tab": "VALIDATION_DICTIONARY",
-            "column_name": "SAMPLE_MATERIAL",
-        },
-        "D": {
-            "tab": "VALIDATION_DICTIONARY",
-            "column_name": "SAMPLE_TYPE_SURFACE",
-        },
-        "E": {
-            "tab": "VALIDATION_DICTIONARY",
-            "column_name": "MESH_SIZE",
-        },
-        "G": {
-            "tab": "VALIDATION_DICTIONARY",
-            "column_name": "SOIL_COLOUR",
-        },
-        "L": {
-            "tab": "VALIDATION_DICTIONARY",
-            "column_name": "LOC_SURVEY_TYPE"
-        },
-    },
-    "SAMPLE_PREPARATION": {
-        # "E":
-        "F": {
-            "tab": "DICTIONARY",
-            "column_name": "CODE"
-        }
-    }
-}
+SHEETS = [
+    "DATASET_METADATA",
+    "USER_SAMPLE_PREP_CODES",
+    "USER_ASSAY_CODES",
+    "USER_LABORATORIES",
+    "USER_ANALYTES",
+    "TENEMENT",
+    "DRILLHOLE_LOCATION",
+    "DRILLHOLE_SURVEY",
+    "DRILLHOLE_SAMPLE",
+    "SURFACE_SAMPLE",
+    "SAMPLE_PREPARATION",
+    "GEOCHEMISTRY_META",
+    "SAMPLE_GEOCHEMISTRY",
+    "QAQC_META",
+    "QAQC_GEOCHEMISTRY",
+    "SAMPLE_PXRF",
+    "LITH_DICTIONARY",
+    "MIN_DICTIONARY",
+    "DRILLHOLE_LITHOLOGY",
+    "DRILLHOLE_STRUCTURE",
+    "SURFACE_LITHOLOGY",
+    "SURFACE_STRUCTURE",
+    "RESERVES_RESOURCES",
+]
 
 
 class ConversionError(Exception):

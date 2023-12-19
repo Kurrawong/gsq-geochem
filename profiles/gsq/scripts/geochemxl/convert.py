@@ -8,7 +8,7 @@ from pyproj import Transformer
 from rdflib import Namespace, Seq
 from rdflib.namespace import GEO, SDO, SOSA
 
-from .defined_namespaces import MININGROLES, TENEMENT, TENEMENTS, QLDBORES, QKINDS, GEOSAMPLE
+from .defined_namespaces import MININGROLES, TENEMENT, TENEMENTS, QLDBORES, QKINDS, GEOSAMPLE, GEOSITE
 
 EX = Namespace("http://example.com/")
 
@@ -26,14 +26,15 @@ def extract_sheet_dataset_metadata(
     if template_version is None:
         template_version = check_template_version_supported(wb)
 
-    sheet_name = wb["DATASET_METADATA"]
+    sheet_name = "DATASET_METADATA"
+    sheet = wb[sheet_name]
 
-    iri = sheet_name["B5"].value if string_is_http_iri(sheet_name["B5"].value) else "http://example.com/dataset/" + str(uuid4())
-    name = sheet_name["B6"].value
-    description = sheet_name["B7"].value
-    date_created = sheet_name["B8"].value
-    date_modified = sheet_name["B9"].value
-    author = get_iri_from_code(sheet_name["B10"].value, combined_concepts)
+    iri = sheet["B5"].value if string_is_http_iri(sheet["B5"].value) else "http://example.com/dataset/" + str(uuid4())
+    name = sheet["B6"].value
+    description = sheet["B7"].value
+    date_created = sheet["B8"].value
+    date_modified = sheet["B9"].value
+    author = get_iri_from_code(sheet["B10"].value, combined_concepts)
 
     g = Graph(bind_namespaces="rdflib")
     v = URIRef(iri)
@@ -1153,7 +1154,12 @@ def extract_sheet_drillhole_sample(
 
             collection_date = data["required"]["collection_date"]
             if type(collection_date) != datetime.datetime:
-                collection_date = dateparser.parse(collection_date)
+                try:
+                    collection_date = dateparser.parse(collection_date)
+                except:
+                    raise ConversionError(
+                        f"The value {collection_date} in row {row} of worksheet {sheet_name}"
+                        f"could not be converted into a date")
                 if type(collection_date) != datetime.datetime:
                     raise ConversionError(
                         f'The value {data["required"]["collection_date"]} for COLLECTION_DATE in row {row} of '
@@ -1161,7 +1167,12 @@ def extract_sheet_drillhole_sample(
 
             dispatch_date = data["required"]["dispatch_date"]
             if type(dispatch_date) != datetime.datetime:
-                dispatch_date = dateparser.parse(dispatch_date)
+                try:
+                    dispatch_date = dateparser.parse(dispatch_date)
+                except:
+                    raise ConversionError(
+                        f"The value {dispatch_date} in row {row} of worksheet {sheet_name}"
+                        f"could not be converted into a date")
                 if type(dispatch_date) != datetime.datetime:
                     raise ConversionError(
                         f'The value {data["required"]["dispatch_date"]} for DISPATCH_DATE in row {row} of '
@@ -1386,7 +1397,12 @@ def extract_sheet_surface_sample(
 
             collection_date = data["required"]["collection_date"]
             if type(collection_date) != datetime.datetime:
-                collection_date = dateparser.parse(collection_date)
+                try:
+                    collection_date = dateparser.parse(collection_date)
+                except:
+                    raise ConversionError(
+                        f"The value {collection_date} in row {row} of worksheet {sheet_name}"
+                        f"could not be converted into a date")
                 if type(collection_date) != datetime.datetime:
                     raise ConversionError(
                         f'The value {data["required"]["collection_date"]} for COLLECTION_DATE in row {row} of '
@@ -1394,7 +1410,12 @@ def extract_sheet_surface_sample(
 
             dispatch_date = data["required"]["dispatch_date"]
             if type(dispatch_date) != datetime.datetime:
-                dispatch_date = dateparser.parse(dispatch_date)
+                try:
+                    dispatch_date = dateparser.parse(dispatch_date)
+                except:
+                    raise ConversionError(
+                        f"The value {dispatch_date} in row {row} of worksheet {sheet_name}"
+                        f"could not be converted into a date")
                 if type(dispatch_date) != datetime.datetime:
                     raise ConversionError(
                         f'The value {data["required"]["dispatch_date"]} for DISPATCH_DATE in row {row} of '
@@ -2919,8 +2940,7 @@ def extract_sheet_drillhole_structure(
                     f"The value {azimuth} for AZIMUTH in row {row} of sheet {sheet_name} is not between "
                     f"0 and 360 as required")
 
-            if data["optional"].get("remark") is not None:
-                remark = data["optional"]["remark"]
+            remark = data["optional"].get("remark")
 
             # make RDFLib objects of the values
             drillhole_iri = URIRef(QLDBORES + drillhole_id)
@@ -3092,7 +3112,12 @@ def extract_sheet_surface_lithology(
 
                 collection_date = data["required"]["collection_date"]
                 if type(collection_date) != datetime.datetime:
-                    collection_date = dateparser.parse(collection_date)
+                    try:
+                        collection_date = dateparser.parse(collection_date)
+                    except:
+                        raise ConversionError(
+                            f"The value {collection_date} in row {row} of worksheet {sheet_name}"
+                            f"could not be converted into a date")
                     if type(collection_date) != datetime.datetime:
                         raise ConversionError(
                             f'The value {collection_date} for COLLECTION_DATE in row {row} of '
@@ -3544,7 +3569,12 @@ def extract_sheet_surface_structure(
 
                 collection_date = data["required"]["collection_date"]
                 if type(collection_date) != datetime.datetime:
-                    collection_date = dateparser.parse(collection_date)
+                    try:
+                        collection_date = dateparser.parse(collection_date)
+                    except:
+                        raise ConversionError(
+                            f"The value {collection_date} in row {row} of worksheet {sheet_name}"
+                            f"could not be converted into a date")
                     if type(collection_date) != datetime.datetime:
                         raise ConversionError(
                             f'The value {collection_date} for COLLECTION_DATE in row {row} of '
@@ -3617,7 +3647,7 @@ def extract_sheet_surface_structure(
                 material_observations = [
                     # name, op, value, unit, desc
                     (Literal("Structure"), GEOSAMPLE.structure, structure_iri, None, None),
-                    (Literal("Strike"), GEOSAMPLE.strike, strike_lit, None, None),
+                    (Literal("Strike"), GEOSITE.strike, strike_lit, None, None),
                     (Literal("Dip"), BORE.hasDip, dip_lit, UNITS.DEG, None),
                     (Literal("Dip Direction"), BORE.hasDipDirection, dip_direction_lit, UNITS.DEG, None),
                 ]
@@ -3811,7 +3841,7 @@ def extract_sheet_reserves_resources(
     return g
 
 
-def excel_to_rdf(
+def workbook_to_rdf(
     file_to_convert_path: Path | BinaryIO,
     output_file_path: Optional[Path] = None
 ):
@@ -3884,10 +3914,76 @@ def excel_to_rdf(
     grf.bind("ex", EX)
     grf.bind(TENEMENT.prefix, TENEMENT)
 
-    if output_file_path is not None:
-        grf.serialize(destination=str(output_file_path), format="longturtle")
-    else:  # print to std out
-        return grf.serialize(format="longturtle")
+    return grf, dataset_iri
+
+
+def worksheet_to_rdf(
+        file_to_convert_path: Path | BinaryIO,
+        sheet: Optional[str] = "DATASET_METADATA",
+        output_file_path: Optional[Path] = None
+):
+    wb = load_workbook(file_to_convert_path)
+    template_version = get_template_version(wb)
+
+    cc = Graph().parse(GSQ_PROFILE_DIR / "vocabs" / f"concepts-combined-{template_version}.ttl")
+
+    # test that we have a valid template variable
+    if template_version not in KNOWN_TEMPLATE_VERSIONS:
+        raise ConversionError(
+            f"Unknown Template Version. Known Template Versions are {', '.join(KNOWN_TEMPLATE_VERSIONS)},"
+            f" you supplied {template_version}"
+        )
+
+    grf = Graph()
+    dataset_iri = URIRef("http://example.com/dataset/")
+
+    if sheet == "DATASET_METADATA":
+        g, iri = extract_sheet_dataset_metadata(wb, cc, template_version)
+        return g
+    elif sheet == "USER_SAMPLE_PREP_CODES":
+        pass
+    elif sheet == "USER_ASSAY_CODES":
+        pass
+    elif sheet == "USER_LABORATORIES":
+        pass
+    elif sheet == "USER_ANALYTES":
+        pass
+    elif sheet == "TENEMENT":
+        pass
+    elif sheet == "DRILLHOLE_LOCATION":
+        pass
+    elif sheet == "DRILLHOLE_SURVEY":
+        pass
+    elif sheet == "DRILLHOLE_SAMPLE":
+        pass
+    elif sheet == "SURFACE_SAMPLE":
+        pass
+    elif sheet == "SAMPLE_PREPARATION":
+        pass
+    elif sheet == "GEOCHEMISTRY_META":
+        pass
+    elif sheet == "SAMPLE_GEOCHEMISTRY":
+        pass
+    elif sheet == "QAQC_META":
+        pass
+    elif sheet == "QAQC_GEOCHEMISTRY":
+        pass
+    elif sheet == "SAMPLE_PXRF":
+        pass
+    elif sheet == "LITH_DICTIONARY":
+        pass
+    elif sheet == "MIN_DICTIONARY":
+        pass
+    elif sheet == "DRILLHOLE_LITHOLOGY":
+        pass
+    elif sheet == "DRILLHOLE_STRUCTURE":
+        pass
+    elif sheet == "SURFACE_LITHOLOGY":
+        pass
+    elif sheet == "SURFACE_STRUCTURE":
+        pass
+    elif sheet == "RESERVES_RESOURCES":
+        pass
 
 
 def make_parser(args):
@@ -3917,19 +4013,17 @@ def make_parser(args):
     )
 
     parser.add_argument(
-        "-e",
-        "--external_metadata",
-        help="Metadata for the Dataset object that is supplied outside the Excel file in an RDF file",
-        type=Path,
-        required=False,
-        default=None
-    )
-
-    parser.add_argument(
         "-u",
         "--update_workbook",
         help="Update a given Excel Workbook's vocabularies",
         action="store_true",
+    )
+
+    parser.add_argument(
+        "-s",
+        "--sheet",
+        help="Convert a single worksheet in the given workbook, and it's dependencies",
+        required=False,
     )
 
     return parser.parse_args(args)
@@ -3946,7 +4040,6 @@ def main(args=None):
         # show help if no args are given
         args.print_help()
         args.exit()
-
     elif args.info:
         from .__init__ import __version__
 
@@ -3998,20 +4091,38 @@ def main(args=None):
 
         wb.save(Path(args.file_to_convert).with_suffix(".y.xlsx"))
     elif args.file_to_convert:
-        print(f"Processing file {args.file_to_convert}")
-
         # input file looks like an Excel file, so convert Excel -> RDF
         if not args.file_to_convert.suffix.lower().endswith(tuple(EXCEL_FILE_ENDINGS)):
             raise ConversionError("Only Excel files can be converted")
         else:
-            try:
-                o = excel_to_rdf(
-                    args.file_to_convert,
-                    output_file_path=args.outputfile,
-                    external_metadata=args.external_metadata
-                )
-                if args.outputfile is None:
-                    print(o)
-            except ConversionError as err:
-                logging.error("{0}".format(err))
-                return 1
+            g = Graph()
+
+            if args.outputfile is not None:
+                if args.sheet is not None:
+                    if args.sheet not in SHEETS:
+                        raise ConversionError(
+                            f"The value {args.sheet} you've supplied for the sheet parameter (-s or --sheet) is not "
+                            f"in the list of known worksheets")
+                    print(f"Processing worksheet {args.sheet} only")
+
+                    try:
+                        g, dataset_iri = worksheet_to_rdf(args.file_to_convert, output_file_path=args.outputfile)
+                        g.base = dataset_iri + "/"
+                    except ConversionError as err:
+                        logging.error("{0}".format(err))
+                        return 1
+
+                else:
+                    print(f"Processing workbook {args.file_to_convert}")
+
+                    try:
+                        g, dataset_iri = workbook_to_rdf(args.file_to_convert, output_file_path=args.outputfile)
+                        g.base = dataset_iri + "/"
+                    except ConversionError as err:
+                        logging.error("{0}".format(err))
+                        return 1
+
+            if args.outputfile is None:
+                g.serialize(format="longturtle")
+            else:
+                g.serialize(destination=str(args.outputfile), format="longturtle")
