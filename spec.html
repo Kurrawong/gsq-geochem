@@ -728,7 +728,7 @@ pre.rouge {
 <li><a href="#_modelling">7.5. Modelling</a></li>
 </ul>
 </li>
-<li><a href="#_profiles_2">8. Profiles</a>
+<li><a href="#profiles">8. Profiles</a>
 <ul class="sectlevel2">
 <li><a href="#_profiles_index">8.1. Profiles Index</a></li>
 <li><a href="#_core_profile">8.2. Core Profile</a>
@@ -767,38 +767,88 @@ pre.rouge {
 <div class="sectionbody">
 <div id="overview" class="imageblock text-center">
 <div class="content">
-<img src="img/sosa-overview.svg" alt="Model Overview">
+<a class="image" href="img/whole-model.svg"><img src="img/whole-model.svg" alt="Model Overview"></a>
 </div>
-<div class="title">Figure 1. An informal overview diagram of the main part of this Data Model</div>
+<div class="title">Figure 1. An overview diagram whole Data Model</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_metadata"><a class="anchor" href="#_metadata"></a>1. Metadata</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stripes-even" style="width: 50%;">
+<table class="tableblock frame-none grid-none stripes-even stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="#_iri">IRI</a></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem" class="bare">https://linked.data.gov.au/def/geochem</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://schema.org/name">Name</a></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Geochemistry Data Model - Specification</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Version</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://www.w3.org/TR/skos-reference/#definition">Definition</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This document is the normative specification of the Geochemistry Data Model that is being developed as a potential Australian national geochemistry data excahnge standard.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://schema.org/dateCreated">Created Date</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-09-15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://schema.org/dateModified">Modified Date</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2024-01-16</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://schema.org/dateIssued">Issued Date</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Not issued yet</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://schema.org/version">Version</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Ontology_IRI_and_Version_IRI">Version IRI</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/geochem/1.0">geochem:1.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#historyNote"><strong>History Note</strong></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>1.0</strong> - 2023 Sep - 2024 Jan - Initial version created for GSQ</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://schema.org/creator">Creator</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://kurrawong.ai">KurrawongAI</a> for the <a href="https://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://schema.org/owner">Owner</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://schema.org/publisher">Publisher</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://schema.org/license">License</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://www.w3.org/TR/vocab-dcat/#Property:resource_contact_point">Contacts</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Geoscience Information Team</strong><br>
+<a href="https://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a><br>
+Department of Resources, Brisbane, QLD, Australia<br>
+<a href="mailto:geological_info@resources.qld.gov.au">geological_info@resources.qld.gov.au</a></p>
+<p class="tableblock">For technical modelling matters:</p>
+<p class="tableblock"><strong>Nicholas Car</strong><br>
+<a href="https://kurrawong.ai">KurrawongAI</a><br>
+<a href="mailto:nick@kurrawong.ai">nick@kurrawong.ai</a></p>
+<p class="tableblock">Issue tracking is managed online at <a href="https://github.com/Kurrawong/gsq-geochem/issues" class="bare">https://github.com/Kurrawong/gsq-geochem/issues</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://schema.org/codeRepository">Code Repository</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/Kurrawong/gsq-geochem" class="bare">https://github.com/Kurrawong/gsq-geochem</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1474,7 +1524,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this class to describe a package of data that contains one or more <a href="#sosa:ObservationCollection">Observation Collection</a> objects.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this class to describe a package of data that contains one or more <a href="#sosa:ObservationCollection">Observation Collection</a> objects</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -1864,6 +1914,10 @@ Models such as this are extensible so what you see here is the minimum informati
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sosa:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/sosa/&gt;</span><span class="w">
 
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sampty:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/sample-type/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">material:</span><span class="w"> </span><span class="nl">&lt;http://pid.geoscience.gov.au/def/voc/ga/materialtype/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">colour:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/soil-colour/&gt;</span><span class="w">
+
 </span><span class="nn">ex:</span><span class="n">obs-a
 </span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Observation</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">hasFeatureOfInterest</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sample-c</span><span class="w"> </span><span class="p">;</span><span class="w">
@@ -1872,10 +1926,26 @@ Models such as this are extensible so what you see here is the minimum informati
 </span><span class="nn">ex:</span><span class="n">sample-c
 </span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Sample</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="s">"Sample C"</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">soil-sample</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">sampty:</span><span class="n">soil-sample</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">description</span><span class="w"> </span><span class="s">"A soil sample from Sandy Creek"</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">location</span><span class="w"> </span><span class="s">"Zillmere Rock Store: Zone 4, Shelf N, Box 3"</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sosa:</span><span class="n">isSampleOf</span><span class="w"> </span><span class="nn">ex:</span><span class="n">sandy-creek</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">material</span><span class="w"> </span><span class="nn">material:</span><span class="n">soil</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">color</span><span class="w"> </span><span class="nn">colour:</span><span class="n">yellow</span><span class="w"> </span><span class="p">;</span><span class="w">
+
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">sample-x
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sosa:</span><span class="n">Sample</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="s">"Sample X"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">sampty:</span><span class="n">core</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">description</span><span class="w"> </span><span class="s">"A 1/2 m core sample from Drillhole Y"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">location</span><span class="w"> </span><span class="s">"Zillmere Rock Store: Zone 23, Shelf P, Box 17"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sosa:</span><span class="n">isSampleOf</span><span class="w"> </span><span class="nn">ex:</span><span class="n">drillhole-y</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">material</span><span class="w"> </span><span class="nn">material:</span><span class="n">rock</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">depth
+</span><span class="w">        </span><span class="mf">327.3</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="mf">327.8</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span></code></pre>
 </div>
 </div></div></td>
@@ -2124,7 +2194,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#XSD2">[XSD2]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#XSD2">XSD2</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -2176,7 +2246,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#XSD2">[XSD2]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#XSD2">XSD2</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -2230,7 +2300,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;XSD2&gt;&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#XSD2">XSD2</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -2267,11 +2337,11 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this datatype for date &amp; time literal values</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this datatype for date literals with a time component</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;XSD2&gt;&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#XSD2">XSD2</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -3035,7 +3105,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The date on which the CreativeWork was created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The date on which the item was created</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
@@ -3076,7 +3146,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The date on which the CreativeWork was most recently modified</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The date on which the item was most recently modified</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
@@ -3109,11 +3179,11 @@ Models such as this are extensible so what you see here is the minimum informati
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdo:dateModified</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdo:keywords</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">date modified</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keywords</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
@@ -3281,11 +3351,11 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The simple data type - text, number, date etc. - representation of a quantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The representation of a quantity or a classification</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this predicate to indicate a literal value within the <a href="#sosa:Result">Result</a> of an <a href="#sosa:Observation">Observation</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this predicate to indicate a literal value or a classification, a <a href="#skos:Concept">Concept</a>, within the <a href="#sosa:Result">Result</a> of an <a href="#sosa:Observation">Observation</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -3490,7 +3560,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use this predicate to indicate the depth of a <a href="#sosa:Sample">Sample</a>, given as a float value. If the Sample is sensible described with a depth interval, use this property twoce for the top and bottom values</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this predicate to indicate the depth of a <a href="#sosa:Sample">Sample</a>, in metres, from ground height, given as a float value. If the Sample is sensible described with a depth interval, use this property twice for the top and bottom values</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
@@ -3621,7 +3691,7 @@ Models such as this are extensible so what you see here is the minimum informati
 </div>
 </div>
 <div class="sect1">
-<h2 id="_profiles_2"><a class="anchor" href="#_profiles_2"></a>8. Profiles</h2>
+<h2 id="profiles"><a class="anchor" href="#profiles"></a>8. Profiles</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A Profile (capital 'P') is "A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications"<a href="#PROF">[PROF]</a>. In the context of this geochemistry specification, Profiles mandate that certain classes and properties be present in data and that specific vocabularies are used for concept references.</p>
@@ -4728,7 +4798,7 @@ All three forms of data can be supplied to and validated in the <a href="https:/
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-10-23 11:52:39 UTC
+Last updated 2024-01-16 01:47:35 UTC
 </div>
 </div>
 </body>
