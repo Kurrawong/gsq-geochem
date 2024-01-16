@@ -905,7 +905,6 @@ The predicates (defined in <<Predicate, 'Predicate'>>) of this model are those i
 | Example | See the Example for <<sosa:Sample, Sample>>
 |===
 
-
 [[sdo:depth]]
 ===== depth
 
