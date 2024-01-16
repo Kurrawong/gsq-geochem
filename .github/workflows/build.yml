@@ -36,13 +36,16 @@ jobs:
         # echo "Add images to docs/"
         cp -r img docs/
 
-        # echo "Add model RDF file to docs/"
-        cp model.ttl docs/model.ttl
+        # echo "Add model ontology RDF file to docs/"
+        cp ont.ttl docs/ont.ttl
 
-        # echo "Add GSQ Profile files to docs/"
-        mkdir -p docs/profiles/gsq/vocabs
+        # echo "Add Profile files to docs/"
+        mkdir docs/profiles/core/
+        cp profiles/core/validator.ttl docs/profiles/core/validator.ttl
+
+        mkdir docs/profiles/gsq/
         cp profiles/gsq/validator.ttl docs/profiles/gsq/validator.ttl
-        cp profiles/gsq/vocabs/*.ttl docs/profiles/gsq/vocabs/
+
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
