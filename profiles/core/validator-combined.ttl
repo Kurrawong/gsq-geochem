@@ -112,9 +112,9 @@ gsq-shapes:ObservationMandatoryPredicates a sh:NodeShape ;
             sh:message "An Observation may have a maximum of one sosa:resultTime predicate, indicating a date or date time value" ;
             sh:or ( [ sh:datatype xsd:date ] [ sh:datatype xsd:dateTime ] ) ;
             sh:path sosa:resultTime ],
-        [ sh:message "An Observation must have at least one sosa:hasResult predicate, indicating an IRI of a Result" ;
+        [ sh:message "An Observation must have at least one sosa:hasResult predicate, indicating an IRI of a Result or a Blank Node" ;
             sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path sosa:hasResult ],
         [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
@@ -138,7 +138,7 @@ gsq-shapes:ResultMandatoryPredicates a sh:NodeShape ;
 
 gsq-shapes:SampleMandatoryPredicates a sh:NodeShape ;
     sh:property [ sh:maxCount 1 ;
-            sh:message "An Sample may have one sosa:isSampleOf predicate, indicating an IRI of another Sample or a Feature Of Interest" ;
+            sh:message "A Sample MAY have at most one sosa:isSampleOf predicate, indicating an IRI of another Sample or a Feature Of Interest" ;
             sh:nodeKind sh:IRI ;
             sh:path sosa:isSampleOf ] ;
     sh:targetClass sosa:Sample ;
@@ -176,6 +176,8 @@ gsq-shapes:oc-to-o a sh:NodeShape ;
             }
 			""" ;
             sh:prefixes sosa:,
-                sdo: ] ;
+                sdo: ;
+            sdo:description "Propagates to every Observation within an ObservationCollection certain predicates and values if present on the ObservationCollection and not present on the Observation. Predicates and values are propagated for are: schema:marginOfError, sosa:hasFeatureOfInterest, sosa:madeBySensor, sosa:observedProperty, sosa:resultTime, sosa:usedProcedure" ;
+            sdo:name "ObservationCollection to Observation predicate propagation" ] ;
     sh:targetClass sosa:ObservationCollection .
 

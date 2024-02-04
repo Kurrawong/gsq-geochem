@@ -28,12 +28,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         prov:hadRole rc:publisher ;
     ] ;
     sdo:dateCreated "2023-09-25"^^xsd:date ;
-    sdo:dateModified "2023-10-08"^^xsd:date ;
-    sdo:version "1.0.0" ;
+    sdo:dateModified "2024-02-04"^^xsd:date ;
+    sdo:version "1.0.1" ;
     owl:versionIRI <https://linked.data.gov.au/def/geochem/gsq/1.0.0> ;
-    owl:versionInfo """1.0.0: NJC: JSONSchema validator added and partially aligned with SHACL validator
+    owl:versionInfo """1.0.1: Allow Blank Nodes not just IRIs for many objects
 
-0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout"""
+1.0.0: NJC: JSONSchema validator added and partially aligned with SHACL validator
+
+0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout""" ;
 .
 
 gsq-shapes:DatasetMandatoryPredicates
@@ -120,7 +122,7 @@ gsq-shapes:ObservationMandatoryPredicates
     sh:property [
         sh:path sosa:usedProcedure ;
         sh:message "An Observation must have exactly one sosa:usedProcedure predicate, indicating an IRI of a Concept in a vocabulary" ;
-        sh:nodeKind sh:IRI ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ,
@@ -155,8 +157,8 @@ gsq-shapes:ObservationMandatoryPredicates
     ] ,
     [
         sh:path sosa:hasResult ;
-        sh:message "An Observation must have at least one sosa:hasResult predicate, indicating an IRI of a Result" ;
-        sh:nodeKind sh:IRI ;
+        sh:message "An Observation must have at least one sosa:hasResult predicate, indicating an IRI of a Result or a Blank Node" ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
         sh:minCount 1 ;
     ] ,
     [
@@ -192,8 +194,8 @@ gsq-shapes:SampleMandatoryPredicates
     sh:targetClass sosa:Sample ;
     sh:property [
         sh:path sosa:isSampleOf ;
-        sh:message "An Sample may have one sosa:isSampleOf predicate, indicating an IRI of another Sample or a Feature Of Interest" ;
-        sh:nodeKind sh:IRI ;
+        sh:message "A Sample MAY have at most one sosa:isSampleOf predicate, indicating an IRI of another Sample or a Feature Of Interest" ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
         sh:maxCount 1 ;
     ] ;
 .

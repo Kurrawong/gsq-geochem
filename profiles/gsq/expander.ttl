@@ -5,6 +5,29 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
+<https://linked.data.gov.au/def/geochem/gsq>
+    a owl:Ontology ;
+    sdo:name "Validator for GSQ Profile of the GSQ Geochemistry Data Exchange Model" ;
+    sdo:description "A SHACL validator for the GSQ Geochemistry Data Exchange Model implementing the constraints of the GSP Profile" ;
+    prov:qualifiedAttribution [
+        a prov:Attribution ;
+        prov:agent <https://orcid.org/0000-0002-8742-7730> ;
+        prov:hadRole rc:author ;
+    ] ,
+    [
+        a prov:Attribution ;
+        prov:agent <https://linked.data.gov.au/org/gsq> ;
+        prov:hadRole rc:publisher ;
+    ] ;
+    sdo:dateCreated "2023-09-25"^^xsd:date ;
+    sdo:dateModified "2023-10-08"^^xsd:date ;
+    sdo:version "1.0.0" ;
+    owl:versionIRI <https://linked.data.gov.au/def/geochem/gsq/1.0.0> ;
+    owl:versionInfo """1.0.0: NJC: JSONSchema validator added and partially aligned with SHACL validator
+
+0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout"""
+.
+
 gsq-shapes:oc-to-o
 	a sh:NodeShape ;
 	sh:targetClass sosa:ObservationCollection ;
@@ -40,7 +63,5 @@ gsq-shapes:oc-to-o
                 }
             }
 			""" ;
-		sdo:name "ObservationCollection to Observation predicate propagation" ;
-		sdo:description "Propagates to every Observation within an ObservationCollection certain predicates and values if present on the ObservationCollection and not present on the Observation. Predicates and values are propagated for are: schema:marginOfError, sosa:hasFeatureOfInterest, sosa:madeBySensor, sosa:observedProperty, sosa:resultTime, sosa:usedProcedure" ;
 	] ;
 .
