@@ -1,5 +1,5 @@
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX gsq-shapes: <https://linked.data.gov.au/def/geochem/gsq/>
+PREFIX gsq-shapes: <https://linked.data.gov.au/def/geochem/gsq/validator/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX rc: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
@@ -13,7 +13,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 #
 #   Predicate Mandates
 #
-<https://linked.data.gov.au/def/geochem/gsq>
+<https://linked.data.gov.au/def/geochem/gsq/validator>
     a owl:Ontology ;
     sdo:name "Validator for GSQ Profile of the GSQ Geochemistry Data Exchange Model" ;
     sdo:description "A SHACL validator for the GSQ Geochemistry Data Exchange Model implementing the constraints of the GSP Profile" ;

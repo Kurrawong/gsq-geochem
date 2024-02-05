@@ -1,5 +1,5 @@
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX gsq-shapes: <https://linked.data.gov.au/def/geochem/gsq/>
+PREFIX core-shapes: <https://linked.data.gov.au/def/geochem/core/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX rc: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
@@ -13,7 +13,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 #
 #   Predicate Mandates
 #
-<https://linked.data.gov.au/def/geochem/gsq>
+<https://linked.data.gov.au/def/geochem/core/validator>
     a owl:Ontology ;
     sdo:name "Validator for GSQ Profile of the GSQ Geochemistry Data Exchange Model" ;
     sdo:description "A SHACL validator for the GSQ Geochemistry Data Exchange Model implementing the constraints of the GSP Profile" ;
@@ -28,9 +28,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         prov:hadRole rc:publisher ;
     ] ;
     sdo:dateCreated "2023-09-25"^^xsd:date ;
-    sdo:dateModified "2024-02-04"^^xsd:date ;
+    sdo:dateModified "2024-02-05"^^xsd:date ;
     sdo:version "1.0.1" ;
-    owl:versionIRI <https://linked.data.gov.au/def/geochem/gsq/1.0.0> ;
+    owl:versionIRI core-shapes:1.0.1 ;
     owl:versionInfo """1.0.1: Allow Blank Nodes not just IRIs for many objects
 
 1.0.0: NJC: JSONSchema validator added and partially aligned with SHACL validator
@@ -38,7 +38,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout""" ;
 .
 
-gsq-shapes:DatasetMandatoryPredicates
+core-shapes:DatasetMandatoryPredicates
     a sh:NodeShape ;
     sdo:name "Dataset's Mandatory Predicates" ;
     sh:targetClass sdo:Dataset ;
@@ -95,7 +95,7 @@ gsq-shapes:DatasetMandatoryPredicates
     ] ;
 .
 
-gsq-shapes:AttributionMandatoryPredicates
+core-shapes:AttributionMandatoryPredicates
     a sh:NodeShape ;
     sdo:name "Attribution's Mandatory Predicates" ;
     sh:targetClass prov:Attribution ;
@@ -115,7 +115,7 @@ gsq-shapes:AttributionMandatoryPredicates
     ] ;
 .
 
-gsq-shapes:ObservationMandatoryPredicates
+core-shapes:ObservationMandatoryPredicates
     a sh:NodeShape ;
     sdo:name "Observation's Mandatory Predicates" ;
     sh:targetClass sosa:Observation ;
@@ -169,7 +169,7 @@ gsq-shapes:ObservationMandatoryPredicates
     ] ;
 .
 
-gsq-shapes:ResultMandatoryPredicates
+core-shapes:ResultMandatoryPredicates
     a sh:NodeShape ;
     sdo:name "Result's Mandatory Predicates" ;
     sh:targetClass sosa:Result ;
@@ -188,7 +188,7 @@ gsq-shapes:ResultMandatoryPredicates
     ] ;
 .
 
-gsq-shapes:SampleMandatoryPredicates
+core-shapes:SampleMandatoryPredicates
     a sh:NodeShape ;
     sdo:name "Sample's Mandatory Predicates" ;
     sh:targetClass sosa:Sample ;
@@ -200,7 +200,7 @@ gsq-shapes:SampleMandatoryPredicates
     ] ;
 .
 
-gsq-shapes:ObservationCollectionMandatoryPredicates
+core-shapes:ObservationCollectionMandatoryPredicates
     a sh:NodeShape ;
     sdo:name "ObservationCollection's Mandatory Predicates" ;
     sh:targetClass sosa:ObservationCollection ;
@@ -212,7 +212,7 @@ gsq-shapes:ObservationCollectionMandatoryPredicates
     ] ;
 .
 
-gsq-shapes:GeometryMandatoryPredicates
+core-shapes:GeometryMandatoryPredicates
     a sh:NodeShape ;
     sdo:name "Geometry's Mandatory Predicates" ;
     sh:targetClass geo:Geometry ;

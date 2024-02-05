@@ -1,3 +1,4 @@
+@prefix core-shapes: <https://linked.data.gov.au/def/geochem/core/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix gsq-shapes: <https://linked.data.gov.au/def/geochem/gsq/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -9,24 +10,7 @@
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://linked.data.gov.au/def/geochem/gsq> a owl:Ontology ;
-    owl:versionIRI gsq-shapes:1.0.0 ;
-    owl:versionInfo """1.0.0: NJC: JSONSchema validator added and partially aligned with SHACL validator
-
-0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout""" ;
-    prov:qualifiedAttribution [ a prov:Attribution ;
-            prov:agent <https://orcid.org/0000-0002-8742-7730> ;
-            prov:hadRole rc:author ],
-        [ a prov:Attribution ;
-            prov:agent <https://linked.data.gov.au/org/gsq> ;
-            prov:hadRole rc:publisher ] ;
-    sdo:dateCreated "2023-09-25"^^xsd:date ;
-    sdo:dateModified "2023-10-08"^^xsd:date ;
-    sdo:description "A SHACL validator for the GSQ Geochemistry Data Exchange Model implementing the constraints of the GSP Profile" ;
-    sdo:name "Validator for GSQ Profile of the GSQ Geochemistry Data Exchange Model" ;
-    sdo:version "1.0.0" .
-
-gsq-shapes:AttributionMandatoryPredicates a sh:NodeShape ;
+core-shapes:AttributionMandatoryPredicates a sh:NodeShape ;
     sh:property [ sh:maxCount 1 ;
             sh:message "An Attribution must have exactly one prov:agent predicate, indicating an IRI" ;
             sh:minCount 1 ;
@@ -40,7 +24,7 @@ gsq-shapes:AttributionMandatoryPredicates a sh:NodeShape ;
     sh:targetClass prov:Attribution ;
     sdo:name "Attribution's Mandatory Predicates" .
 
-gsq-shapes:DatasetMandatoryPredicates a sh:NodeShape ;
+core-shapes:DatasetMandatoryPredicates a sh:NodeShape ;
     sh:property [ sh:maxCount 1 ;
             sh:message "A Dataset must have exactly one sdo:dateCreated predicate, indicating a date or date time value" ;
             sh:minCount 1 ;
@@ -71,7 +55,7 @@ gsq-shapes:DatasetMandatoryPredicates a sh:NodeShape ;
     sh:targetClass sdo:Dataset ;
     sdo:name "Dataset's Mandatory Predicates" .
 
-gsq-shapes:GeometryMandatoryPredicates a sh:NodeShape ;
+core-shapes:GeometryMandatoryPredicates a sh:NodeShape ;
     sh:property [ sh:datatype geo:wktLiteral ;
             sh:maxCount 1 ;
             sh:message "A Geometry must have exactly one least geo:asWKT predicate, indicating a geo:wktLiteral object" ;
@@ -80,7 +64,7 @@ gsq-shapes:GeometryMandatoryPredicates a sh:NodeShape ;
     sh:targetClass geo:Geometry ;
     sdo:name "Geometry's Mandatory Predicates" .
 
-gsq-shapes:ObservationCollectionMandatoryPredicates a sh:NodeShape ;
+core-shapes:ObservationCollectionMandatoryPredicates a sh:NodeShape ;
     sh:property [ sh:class sosa:Observation ;
             sh:message "An ObservationCollection must have at least one sosa:hasMember predicate, indicating an Observation" ;
             sh:minCount 1 ;
@@ -88,11 +72,11 @@ gsq-shapes:ObservationCollectionMandatoryPredicates a sh:NodeShape ;
     sh:targetClass sosa:ObservationCollection ;
     sdo:name "ObservationCollection's Mandatory Predicates" .
 
-gsq-shapes:ObservationMandatoryPredicates a sh:NodeShape ;
+core-shapes:ObservationMandatoryPredicates a sh:NodeShape ;
     sh:property [ sh:maxCount 1 ;
             sh:message "An Observation must have exactly one sosa:usedProcedure predicate, indicating an IRI of a Concept in a vocabulary" ;
             sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path sosa:usedProcedure ],
         [ sh:maxCount 1 ;
             sh:message "An Observation may have exactly one sosa:madeBySensor predicate, indicating an IRI of a Concept in a vocabulary" ;
@@ -123,7 +107,7 @@ gsq-shapes:ObservationMandatoryPredicates a sh:NodeShape ;
     sh:targetClass sosa:Observation ;
     sdo:name "Observation's Mandatory Predicates" .
 
-gsq-shapes:ResultMandatoryPredicates a sh:NodeShape ;
+core-shapes:ResultMandatoryPredicates a sh:NodeShape ;
     sh:property [ sh:maxCount 1 ;
             sh:message "An Result must have exactly one sdo:value predicate, indicating any kind of value" ;
             sh:minCount 1 ;
@@ -136,13 +120,32 @@ gsq-shapes:ResultMandatoryPredicates a sh:NodeShape ;
     sh:targetClass sosa:Result ;
     sdo:name "Result's Mandatory Predicates" .
 
-gsq-shapes:SampleMandatoryPredicates a sh:NodeShape ;
+core-shapes:SampleMandatoryPredicates a sh:NodeShape ;
     sh:property [ sh:maxCount 1 ;
             sh:message "A Sample MAY have at most one sosa:isSampleOf predicate, indicating an IRI of another Sample or a Feature Of Interest" ;
-            sh:nodeKind sh:IRI ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path sosa:isSampleOf ] ;
     sh:targetClass sosa:Sample ;
     sdo:name "Sample's Mandatory Predicates" .
+
+core-shapes:validator a owl:Ontology ;
+    owl:versionIRI core-shapes:1.0.1 ;
+    owl:versionInfo """1.0.1: Allow Blank Nodes not just IRIs for many objects
+
+1.0.0: NJC: JSONSchema validator added and partially aligned with SHACL validator
+
+0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout""" ;
+    prov:qualifiedAttribution [ a prov:Attribution ;
+            prov:agent <https://orcid.org/0000-0002-8742-7730> ;
+            prov:hadRole rc:author ],
+        [ a prov:Attribution ;
+            prov:agent <https://linked.data.gov.au/org/gsq> ;
+            prov:hadRole rc:publisher ] ;
+    sdo:dateCreated "2023-09-25"^^xsd:date ;
+    sdo:dateModified "2024-02-05"^^xsd:date ;
+    sdo:description "A SHACL validator for the GSQ Geochemistry Data Exchange Model implementing the constraints of the GSP Profile" ;
+    sdo:name "Validator for GSQ Profile of the GSQ Geochemistry Data Exchange Model" ;
+    sdo:version "1.0.1" .
 
 gsq-shapes:oc-to-o a sh:NodeShape ;
     sh:order 1 ;

@@ -1,0 +1,41 @@
+@prefix gsq-shapes: <https://linked.data.gov.au/def/geochem/gsq/validator/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rc: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://linked.data.gov.au/def/geochem/gsq/validator> a owl:Ontology ;
+    owl:versionIRI <https://linked.data.gov.au/def/geochem/gsq/1.0.0> ;
+    owl:versionInfo """1.0.0: NJC: JSONSchema validator added and partially aligned with SHACL validator
+
+0.0.2: NJC: included tests for two specific vocab values; required sosa:observedProperty on Observation due to OC buildout""" ;
+    prov:qualifiedAttribution [ a prov:Attribution ;
+            prov:agent <https://orcid.org/0000-0002-8742-7730> ;
+            prov:hadRole rc:author ],
+        [ a prov:Attribution ;
+            prov:agent <https://linked.data.gov.au/org/gsq> ;
+            prov:hadRole rc:publisher ] ;
+    schema:dateCreated "2023-09-25"^^xsd:date ;
+    schema:dateModified "2023-10-08"^^xsd:date ;
+    schema:description "A SHACL validator for the GSQ Geochemistry Data Exchange Model implementing the constraints of the GSP Profile" ;
+    schema:name "Validator for GSQ Profile of the GSQ Geochemistry Data Exchange Model" ;
+    schema:version "1.0.0" .
+
+gsq-shapes:UsedProcedureValue a sh:NodeShape ;
+    sh:property [ sh:class skos:ConceptScheme ;
+            sh:maxCount 1 ;
+            sh:message "sosa:usedProcedure must indicate a Concept within GSQ's extended version of OneGeochemistry's Analytical Methods for Geochemistry vocabulary" ;
+            sh:minCount 1 ;
+            sh:path skos:inScheme ],
+        [ sh:class skos:ConceptScheme ;
+            sh:maxCount 1 ;
+            sh:message "sosa:observedProperty must indicate a Concept within GSQ's Observable Properties vocabulary" ;
+            sh:minCount 1 ;
+            sh:path skos:inScheme ] ;
+    sh:targetObjectsOf sosa:observedProperty,
+        sosa:usedProcedure .
+
